@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2f6f4f">
+<meta name="description" content="Track your groceries and cook what expires first.">
+<title>Pantry Pal</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pantry Pal">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main" data-t>Skip to content</a>
+
+<header class="topbar">
+  <h1>Pantry Pal</h1>
+  <div class="top-actions">
+    <button id="helpBtn" class="icon-btn" data-t-aria="Help" aria-label="Help">?</button>
+    <button id="langBtn" class="icon-btn lang" aria-label="Cambiar a español">ES</button>
+    <button id="settingsBtn" class="icon-btn" data-t-aria="Settings" aria-label="Settings">&#9881;</button>
+  </div>
+  <div id="timerBar" class="timer-slot timer-bar hidden" aria-live="polite"></div>
+</header>
+
+<main id="main">
+  <!-- MY FOOD -->
+  <section id="tab-pantry" class="tab active" aria-labelledby="tabbtn-pantry">
+    <div class="hint-slot" data-hint="food"></div>
+    <div id="alerts"></div>
+    <div class="toolbar">
+      <input id="pantrySearch" class="search" type="search" data-t-ph="Search your food..." placeholder="Search your food..." data-t-aria="Search your food" aria-label="Search your food">
+      <button id="quickAddBtn" class="icon-square" data-t-aria="Quick add several items" aria-label="Quick add several items">&#128221;</button>
+      <button id="receiptBtn" class="icon-square" data-t-aria="Scan a grocery receipt" aria-label="Scan a grocery receipt">&#129534;</button>
+      <button id="scanQuick" class="icon-square" data-t-aria="Scan a barcode" aria-label="Scan a barcode">&#128247;</button>
+      <input id="receiptFile" type="file" accept="image/*" capture="environment" hidden>
+    </div>
+    <div class="chips" id="locFilter" role="group" data-t-aria="Filter by place" aria-label="Filter by place"></div>
+    <ul id="itemList" class="list"></ul>
+    <div id="emptyPantry" class="empty hidden">
+      <p><strong data-t>Your kitchen is empty (in here, anyway).</strong></p>
+      <p data-t>Tap + to add food, the notepad to add several at once, or the camera to scan a barcode. Then check Recipes for ideas that use what expires first.</p>
+      <button id="emptyAuditBtn" class="primary"><span aria-hidden="true">&#9989;</span> <span data-t>Do a quick pantry audit</span></button>
+    </div>
+    <button id="addBtn" class="fab" data-t-aria="Add item" aria-label="Add item">+</button>
+  </section>
+
+  <!-- RECIPES -->
+  <section id="tab-recipes" class="tab" aria-labelledby="tabbtn-recipes">
+    <div class="hint-slot" data-hint="recipes"></div>
+    <div class="seg" id="recipeMode" role="group">
+      <button data-mode="foryou" class="on" aria-pressed="true" data-t>For you</button>
+      <button data-mode="browse" aria-pressed="false" data-t>Browse all</button>
+      <button data-mode="saved" aria-pressed="false" data-t>Saved</button>
+    </div>
+    <div id="planBanner" class="banner hidden"></div>
+    <div id="focusBanner" class="banner hidden"></div>
+    <input id="recipeSearch" class="search" type="search" data-t-ph="Search recipes or ingredients..." placeholder="Search recipes or ingredients..." data-t-aria="Search recipes" aria-label="Search recipes">
+    <div class="filters">
+      <select id="missingFilter" class="foryou-only" data-t-aria="Missing ingredients" aria-label="Missing ingredients">
+        <option value="0" data-t>Can make now</option>
+        <option value="1" data-t>Missing up to 1</option>
+        <option value="2" selected data-t>Missing up to 2</option>
+        <option value="99" data-t>Any</option>
+      </select>
+      <select id="sortSelect" class="browse-only hidden" data-t-aria="Sort" aria-label="Sort">
+        <option value="name" data-t>Name, A to Z</option>
+        <option value="time" data-t>Quickest first</option>
+        <option value="type" data-t>Meal type</option>
+        <option value="have" data-t>Most ingredients I have</option>
+        <option value="protein" data-t>Most protein</option>
+        <option value="calories" data-t>Fewest calories</option>
+        <option value="cost" data-t>Cheapest</option>
+      </select>
+      <select id="typeFilter" data-t-aria="Meal" aria-label="Meal"><option value="" data-t>All meals</option></select>
+      <select id="timeFilter" data-t-aria="Time" aria-label="Time">
+        <option value="0" data-t>Any time</option>
+        <option value="15" data-t>15 min or less</option>
+        <option value="20" data-t>20 min or less</option>
+        <option value="30" data-t>30 min or less</option>
+        <option value="45" data-t>45 min or less</option>
+        <option value="60" data-t>1 hour or less</option>
+      </select>
+    </div>
+    <div class="chips">
+      <button id="dietBtn" class="chip"><span aria-hidden="true">&#127807;</span> <span data-t>Diet:</span> <span id="dietSummary"></span></button>
+      <button id="quickBtn" class="chip"><span aria-hidden="true">&#9889;</span> <span data-t>20 minutes, use what I have</span></button>
+      <button id="kidBtn" class="chip" aria-pressed="false"><span aria-hidden="true">&#129490;</span> <span data-t>Kid-friendly</span></button>
+      <button id="newRecipeBtn" class="chip"><span aria-hidden="true">&#9997;</span> <span data-t>Add a recipe</span></button>
+      <button id="suggestBtn" class="chip hidden"><span aria-hidden="true">&#9993;</span> <span data-t>Suggest a recipe</span></button>
+    </div>
+    <p id="recipeCount" class="muted small" aria-live="polite"></p>
+    <ul id="recipeList" class="list"></ul>
+    <button id="moreRecipes" class="wide hidden" data-t>Show more</button>
+  </section>
+
+  <!-- PLAN -->
+  <section id="tab-plan" class="tab" aria-labelledby="tabbtn-plan">
+    <div class="hint-slot" data-hint="plan"></div>
+    <button id="autoPlanBtn" class="primary wide big-btn"><span aria-hidden="true">&#10024;</span> <span data-t>Plan my week</span></button>
+    <div class="grid2">
+      <button id="planShopBtn"><span aria-hidden="true">&#128722;</span> <span data-t>Shopping list</span></button>
+      <button id="prepBtn"><span aria-hidden="true">&#128298;</span> <span data-t>Prep day</span></button>
+      <button id="planPrintBtn"><span aria-hidden="true">&#128424;</span> <span data-t>Print</span></button>
+      <button id="planCalBtn"><span aria-hidden="true">&#128197;</span> <span data-t>Add to calendar</span></button>
+    </div>
+    <p class="muted small" data-t>Food a planned meal needs is set aside, so For You won't suggest using it twice.</p>
+    <div id="planBody"></div>
+  </section>
+
+  <!-- SHOPPING -->
+  <section id="tab-shopping" class="tab" aria-labelledby="tabbtn-shopping">
+    <div class="hint-slot" data-hint="shopping"></div>
+    <div class="toolbar">
+      <select id="listSelect" data-t-aria="Shopping list" aria-label="Shopping list"></select>
+      <button id="newListBtn" data-t>+ New</button>
+      <button id="shareListBtn" class="icon-square" data-t-aria="Share this list" aria-label="Share this list">&#128228;</button>
+      <button id="listMenuBtn" class="icon-square" data-t-aria="Rename or delete list" aria-label="Rename or delete list">&#8943;</button>
+    </div>
+    <form id="shopAddForm" class="toolbar">
+      <input id="shopAddInput" class="search" data-t-ph="Add an item..." placeholder="Add an item..." autocomplete="off" data-t-aria="Add an item" aria-label="Add an item">
+      <button type="submit" class="primary" data-t>Add</button>
+    </form>
+    <p id="shopEstimate" class="muted small"></p>
+    <div id="shopSuggest"></div>
+    <ul id="shopItems" class="list"></ul>
+    <div id="shopActions" class="row hidden">
+      <button id="moveToFood" class="primary" data-t>Move checked to My Food</button>
+      <button id="clearChecked" data-t>Remove checked</button>
+    </div>
+    <div id="emptyShop" class="empty hidden"></div>
+  </section>
+
+  <!-- WASTE LESS -->
+  <section id="tab-stats" class="tab" aria-labelledby="tabbtn-stats">
+    <div class="seg" id="statsRange" role="group">
+      <button data-range="30" class="on" aria-pressed="true" data-t>Last 30 days</button>
+      <button data-range="all" aria-pressed="false" data-t>All time</button>
+    </div>
+    <div id="statsBody"></div>
+  </section>
+</main>
+
+<nav class="tabbar" aria-label="Sections">
+  <button id="tabbtn-pantry" data-tab="pantry" class="active" aria-current="page"><span class="ico" aria-hidden="true">&#129530;</span><span data-t>My Food</span></button>
+  <button id="tabbtn-recipes" data-tab="recipes"><span class="ico" aria-hidden="true">&#127859;</span><span data-t>Recipes</span></button>
+  <button id="tabbtn-plan" data-tab="plan"><span class="ico" aria-hidden="true">&#128197;</span><span data-t>Plan</span></button>
+  <button id="tabbtn-shopping" data-tab="shopping"><span class="ico" aria-hidden="true">&#128722;</span><span data-t>Shopping</span></button>
+  <button id="tabbtn-stats" data-tab="stats"><span class="ico" aria-hidden="true">&#127793;</span><span data-t>Waste Less</span></button>
+</nav>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- ADD / EDIT ITEM -->
+<dialog id="itemDialog" aria-labelledby="itemDialogTitle">
+  <form id="itemForm">
+    <h2 id="itemDialogTitle"></h2>
+    <label><span data-t>Name</span>
+      <span class="name-row">
+        <input id="fName" required list="nameSuggestions" autocomplete="off" data-t-ph="e.g. Baby spinach" placeholder="e.g. Baby spinach">
+        <button type="button" id="scanBtn" class="icon-square" data-t-aria="Scan a barcode" aria-label="Scan a barcode">&#128247;</button>
+      </span>
+    </label>
+    <p id="scanNote" class="muted small" aria-live="polite"></p>
+    <input id="fBarcode" type="hidden">
+    <datalist id="nameSuggestions"></datalist>
+    <div class="row">
+      <label><span data-t>Amount</span> <input id="fAmount" type="number" inputmode="decimal" min="0" step="any" placeholder="6"></label>
+      <label><span data-t>Unit</span> <input id="fUnit" list="units" data-t-ph="eggs" placeholder="eggs"></label>
+    </div>
+    <datalist id="units"></datalist>
+    <label><span data-t>Where</span> <input id="fLoc" list="locations" data-t-ph="Fridge" placeholder="Fridge"></label>
+    <datalist id="locations"></datalist>
+    <div class="row">
+      <label><span data-t>Bought</span> <input id="fBought" type="date"></label>
+      <label><span data-t>Expires</span> <input id="fExpires" type="date"></label>
+    </div>
+    <div class="link-row">
+      <button type="button" id="suggestExpiry" class="link-btn" data-t>Suggest a date</button>
+      <button type="button" id="readDateBtn" class="link-btn"><span aria-hidden="true">&#128247;</span> <span data-t>Read date from package</span></button>
+      <input id="dateFile" type="file" accept="image/*" capture="environment" hidden>
+    </div>
+    <p id="suggestNote" class="muted small" aria-live="polite"></p>
+    <p id="usageNote" class="muted small"></p>
+    <div id="remixBox"></div>
+    <label class="check"><input type="checkbox" id="fStaple"> <span data-t>Staple: add it to my shopping list when it runs out</span></label>
+    <label><span data-t>Notes</span> <input id="fNotes" data-t-ph="Optional" placeholder="Optional"></label>
+    <div id="itemExtras" class="actions wrap hidden">
+      <button type="button" id="freezeBtn"></button>
+      <button type="button" id="useThisBtn"><span aria-hidden="true">&#127859;</span> <span data-t>Recipes with this</span></button>
+      <button type="button" id="itemReminder"><span aria-hidden="true">&#128197;</span> <span data-t>Reminder</span></button>
+    </div>
+    <div class="actions">
+      <button type="button" id="deleteItem" class="danger hidden" data-t>Remove</button>
+      <span class="spacer"></span>
+      <button type="button" id="cancelItem" data-t>Cancel</button>
+      <button type="submit" class="primary" data-t>Save</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- QUICK ADD -->
+<dialog id="quickDialog" aria-labelledby="quickTitle">
+  <div class="dialog-body">
+    <h2 id="quickTitle" data-t>Quick add</h2>
+    <p class="muted small" data-t>Type or paste items, separated by commas or new lines. Amounts are optional, like "12 eggs, 2 lbs chicken, spinach".</p>
+    <textarea id="quickText" rows="5" data-t-aria="Items to add" aria-label="Items to add"></textarea>
+    <ul id="quickPreview" class="mini-list"></ul>
+    <div class="actions">
+      <span class="spacer"></span>
+      <button id="cancelQuick" data-t>Cancel</button>
+      <button id="confirmQuick" class="primary"></button>
+    </div>
+  </div>
+</dialog>
+
+<!-- BARCODE SCANNER -->
+<dialog id="scanDialog" aria-labelledby="scanTitle">
+  <div class="dialog-body">
+    <h2 id="scanTitle" data-t>Scan a barcode</h2>
+    <video id="scanVideo" playsinline muted></video>
+    <p id="scanStatus" class="muted small" aria-live="polite"></p>
+    <form id="manualCodeForm" class="toolbar">
+      <input id="manualCode" class="search" inputmode="numeric" data-t-ph="Or type the barcode number" placeholder="Or type the barcode number" data-t-aria="Barcode number" aria-label="Barcode number">
+      <button type="submit" data-t>Look up</button>
+    </form>
+    <div class="actions"><span class="spacer"></span><button id="closeScan" data-t>Cancel</button></div>
+  </div>
+</dialog>
+
+<!-- REMOVE ITEM -->
+<dialog id="removeDialog" aria-labelledby="removeTitle">
+  <div class="dialog-body">
+    <h2 id="removeTitle"></h2>
+    <p class="muted small" data-t>This feeds your Waste Less stats.</p>
+    <div class="stack">
+      <button data-outcome="used" class="primary"><span aria-hidden="true">&#127869;</span> <span data-t>We used it</span></button>
+      <button data-outcome="wasted"><span aria-hidden="true">&#128465;</span> <span data-t>It got thrown out</span></button>
+      <button data-outcome="none" data-t>It was a mistake, just remove it</button>
+      <button data-outcome="cancel" class="link-btn" data-t>Cancel</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- RECIPE DETAIL -->
+<dialog id="recipeDialog" aria-labelledby="recipeTitle">
+  <div class="dialog-body">
+    <div class="recipe-head">
+      <h2 id="recipeTitle"></h2>
+      <button class="icon-square rate-btn" data-rate="1" data-t-aria="I liked this" aria-label="I liked this">&#128077;</button>
+      <button class="icon-square rate-btn" data-rate="-1" data-t-aria="Not for me" aria-label="Not for me">&#128078;</button>
+      <button id="favBtn" class="icon-square fav" aria-pressed="false"></button>
+    </div>
+    <p id="recipeMeta" class="muted small"></p>
+    <p id="recipeNutr" class="small nutr"></p>
+    <div class="servings">
+      <span data-t>Servings</span>
+      <button id="servMinus" class="icon-square" data-t-aria="Fewer servings" aria-label="Fewer servings">-</button>
+      <output id="servCount" aria-live="polite"></output>
+      <button id="servPlus" class="icon-square" data-t-aria="More servings" aria-label="More servings">+</button>
+    </div>
+    <div id="recipeBody"></div>
+
+    <div id="cookedPanel" class="panel hidden">
+      <h3 data-t>What did you use?</h3>
+      <p class="muted small" data-t>Enter how much you used. Anything that hits zero leaves My Food and counts as used.</p>
+      <div id="cookedList"></div>
+      <label class="check"><input type="checkbox" id="leftoverChk"> <span data-t>Save leftovers to My Food</span></label>
+      <label id="leftoverRow" class="plain hidden"><span data-t>Servings left over</span> <input id="leftoverServ" type="number" min="1" step="1" value="1"></label>
+      <div class="rate-row"><span data-t>How was it?</span>
+        <button class="icon-square rate-btn" data-rate="1" data-t-aria="I liked this" aria-label="I liked this">&#128077;</button>
+        <button class="icon-square rate-btn" data-rate="-1" data-t-aria="Not for me" aria-label="Not for me">&#128078;</button></div>
+      <button id="confirmCooked" class="primary wide" data-t>Update my food</button>
+    </div>
+
+    <div id="planPanel" class="panel hidden">
+      <h3 data-t>Add to meal plan</h3>
+      <label class="plain"><span data-t>Day</span> <select id="planDay"></select></label>
+      <button id="confirmPlan" class="primary wide" data-t>Add to plan</button>
+    </div>
+
+    <div class="actions wrap">
+      <button id="cookModeBtn" class="primary"><span aria-hidden="true">&#128105;&#8205;&#127859;</span> <span data-t>Cook mode</span></button>
+      <button id="ateBtn" class="primary hidden" data-t>We ate it</button>
+      <button id="planBtn"><span aria-hidden="true">&#128197;</span> <span data-t>Plan</span></button>
+      <button id="shopBtn"><span aria-hidden="true">&#128722;</span> <span data-t>Add to list</span></button>
+      <button id="cookedBtn" data-t>I made this</button>
+      <button id="editMineBtn" class="hidden" data-t>Edit</button>
+      <button id="deleteMineBtn" class="danger hidden" data-t>Delete</button>
+      <span class="spacer"></span>
+      <button id="closeRecipe" class="primary" data-t>Close</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- PICK ITEMS FOR A SHOPPING LIST -->
+<dialog id="listPickDialog" aria-labelledby="listPickTitle">
+  <div class="dialog-body">
+    <h2 id="listPickTitle" data-t>Add to a shopping list</h2>
+    <div id="shopPick"></div>
+    <label class="plain"><span data-t>List</span> <select id="shopListPick"></select></label>
+    <input id="shopNewName" class="search hidden" data-t-ph="New list name, e.g. Saturday groceries" placeholder="New list name, e.g. Saturday groceries" data-t-aria="New list name" aria-label="New list name">
+    <div class="actions">
+      <span class="spacer"></span>
+      <button id="cancelPick" data-t>Cancel</button>
+      <button id="confirmShop" class="primary" data-t>Add to list</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- DIET -->
+<dialog id="dietDialog" aria-labelledby="dietTitle">
+  <div class="dialog-body">
+    <h2 id="dietTitle" data-t>Diet and allergies</h2>
+    <p class="muted small" data-t>Recipes that don't fit are hidden. Some recipes stay in with a simple swap (like gluten-free pasta), shown in the recipe. This is a helper, not a guarantee, so always check labels if you have an allergy.</p>
+    <div id="dietOptions"></div>
+    <div class="actions"><span class="spacer"></span><button id="closeDiet" class="primary" data-t>Done</button></div>
+  </div>
+</dialog>
+
+<!-- ADD / EDIT / SUGGEST A RECIPE -->
+<dialog id="recipeFormDialog" aria-labelledby="rfTitle">
+  <form id="recipeForm">
+    <h2 id="rfTitle"></h2>
+    <p id="rfIntro" class="muted small"></p>
+    <button type="button" id="pasteToggle" class="link-btn"><span aria-hidden="true">&#128203;</span> <span data-t>Paste a recipe from a website</span></button>
+    <div id="pasteBox" class="hidden">
+      <textarea id="pasteText" rows="6" data-t-ph="Copy the whole recipe from the website, including the ingredients and steps, and paste it here." placeholder="Copy the whole recipe from the website, including the ingredients and steps, and paste it here." data-t-aria="Pasted recipe" aria-label="Pasted recipe"></textarea>
+      <button type="button" id="pasteFill" class="wide" data-t>Fill in the form</button>
+    </div>
+    <label><span data-t>Recipe name</span> <input id="sName" required></label>
+    <div class="row">
+      <label><span data-t>Meal</span> <select id="sType"></select></label>
+      <label><span data-t>Minutes</span> <input id="sTime" type="number" min="1" inputmode="numeric" placeholder="30"></label>
+      <label><span data-t>Serves</span> <input id="sServes" type="number" min="1" inputmode="numeric" placeholder="4"></label>
+    </div>
+    <label><span data-t>Ingredients, one per line</span>
+      <textarea id="sIng" rows="6" required data-t-ph="2 cups rice&#10;1 onion&#10;1 can black beans&#10;cilantro (optional)" placeholder="2 cups rice&#10;1 onion&#10;1 can black beans&#10;cilantro (optional)"></textarea>
+    </label>
+    <label><span data-t>Steps, one per line</span>
+      <textarea id="sSteps" rows="6" required data-t-ph="Cook the rice.&#10;Dice the onion and cook until soft.&#10;Stir in the beans and heat through." placeholder="Cook the rice.&#10;Dice the onion and cook until soft.&#10;Stir in the beans and heat through."></textarea>
+    </label>
+    <div id="suggestExtra" class="hidden">
+      <label><span data-t>Your name (optional)</span> <input id="sBy"></label>
+      <label><span data-t>Anything else? (optional)</span> <input id="sNotes" data-t-ph="Where it's from, tips, diet notes" placeholder="Where it's from, tips, diet notes"></label>
+    </div>
+    <p id="suggestError" class="error small" role="alert"></p>
+    <div class="actions wrap">
+      <span class="spacer"></span>
+      <button type="button" id="cancelRecipeForm" data-t>Cancel</button>
+      <button type="button" id="emailRecipe" class="hidden" data-t>Email as suggestion</button>
+      <button type="submit" id="saveRecipe" class="primary" data-t>Save to my recipes</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- SETTINGS -->
+<dialog id="settingsDialog" aria-labelledby="settingsTitle">
+  <div class="dialog-body">
+    <h2 id="settingsTitle" data-t>Settings</h2>
+
+    <h3 data-t>Household and kitchen</h3>
+    <div class="stack">
+      <button id="helpSettingsBtn"><span aria-hidden="true">&#10067;</span> <span data-t>How to use Pantry Pal</span></button>
+      <button id="diagBtn"><span aria-hidden="true">&#128241;</span> <span data-t>Check what this phone supports</span></button>
+      <button id="householdBtn"><span aria-hidden="true">&#127968;</span> <span data-t>People, diet, cooking time, and equipment</span></button>
+      <button id="auditBtn"><span aria-hidden="true">&#9989;</span> <span data-t>Run a pantry audit</span></button>
+    </div>
+
+    <h3 data-t>Language</h3>
+    <select id="langSelect" data-t-aria="Language" aria-label="Language">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+    </select>
+    <p class="muted small" data-t>The Spanish version was translated automatically and hasn't been checked by a fluent speaker yet.</p>
+
+    <h3 data-t>Recipes</h3>
+    <label class="check"><input type="checkbox" id="assumeBasics"> <span data-t>Assume I always have basics (salt, pepper, oil, flour, sugar, common spices, soy sauce, vinegar)</span></label>
+    <label class="check"><input type="checkbox" id="useSubs"> <span data-t>Count easy substitutions as having it (like yogurt for sour cream)</span></label>
+    <h3 data-t>Shopping and pantry</h3>
+    <label class="check"><input type="checkbox" id="groupAisles"> <span data-t>Group my shopping list by store section</span></label>
+    <label class="check"><input type="checkbox" id="checkinsToggle"> <span data-t>Ask every few days if I still have things</span></label>
+
+    <h3 data-t>Reminders</h3>
+    <label class="check"><input type="checkbox" id="remindersToggle"> <span data-t>Notify me when food expires tomorrow</span></label>
+    <p id="reminderStatus" class="muted small" aria-live="polite"></p>
+    <button id="calendarAll" class="wide"><span aria-hidden="true">&#128197;</span> <span data-t>Add expiry reminders to my calendar</span></button>
+    <p class="muted small" data-t>Works on any phone. It downloads a calendar file with a 9 AM reminder the day before each item expires. Open it to add the reminders to your calendar.</p>
+
+    <h3 data-t>Display</h3>
+    <label class="check"><input type="checkbox" id="largeText"> <span data-t>Larger text</span></label>
+    <label class="check"><input type="checkbox" id="highContrast"> <span data-t>High contrast</span></label>
+
+    <h3 data-t>Backup</h3>
+    <p class="muted small" data-t>Everything lives only in this browser on this device. Export a backup now and then, and use it to move your data to another phone or browser.</p>
+    <div class="row">
+      <button id="exportBtn" data-t>Export backup</button>
+      <label class="btn-like"><span data-t>Import backup</span><input type="file" id="importFile" accept=".json,application/json" hidden></label>
+    </div>
+
+    <h3 data-t>Danger zone</h3>
+    <button id="clearAll" class="danger" data-t>Delete all my data</button>
+    <div class="actions"><span class="spacer"></span><button id="closeSettings" class="primary" data-t>Done</button></div>
+  </div>
+</dialog>
+
+<!-- FIRST-RUN SETUP -->
+<dialog id="onboardDialog" aria-label="Setup">
+  <div class="dialog-body">
+    <div id="obBody"></div>
+    <div class="actions">
+      <button id="obBack" data-t>Back</button>
+      <span class="spacer"></span>
+      <button id="obSkip" class="link-btn" data-t>Skip setup</button>
+      <button id="obNext" class="primary" data-t>Next</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- PANTRY AUDIT -->
+<dialog id="auditDialog" aria-labelledby="auditTitle">
+  <div class="dialog-body">
+    <h2 id="auditTitle" data-t>Pantry audit</h2>
+    <p class="muted small" data-t>Tap everything you have right now. Amounts and dates are rough guesses you can fix later.</p>
+    <div id="auditBody"></div>
+    <form id="auditAddForm" class="toolbar">
+      <input id="auditAdd" class="search" data-t-ph="Something else? e.g. 2 lbs pork chops" placeholder="Something else? e.g. 2 lbs pork chops" data-t-aria="Add something else" aria-label="Add something else">
+      <button type="submit" data-t>Add</button>
+    </form>
+    <ul id="auditExtra" class="mini-list"></ul>
+    <div class="actions">
+      <button id="auditSkip" data-t>Skip for now</button>
+      <span class="spacer"></span>
+      <button id="auditDone" class="primary"></button>
+    </div>
+  </div>
+</dialog>
+
+<!-- PLAN MY WEEK -->
+<dialog id="plannerDialog" aria-labelledby="plannerTitle">
+  <div class="dialog-body">
+    <div class="r-head"><h2 id="plannerTitle" data-t>Plan my week</h2><button id="closePlanner" class="icon-square" data-t-aria="Close" aria-label="Close">&times;</button></div>
+    <div id="plannerOpts"></div>
+    <div id="plannerResult"></div>
+    <div id="plannerActions" class="actions"></div>
+  </div>
+</dialog>
+
+<!-- PREP DAY -->
+<dialog id="prepDialog" aria-labelledby="prepTitle">
+  <div class="dialog-body">
+    <h2 id="prepTitle"></h2>
+    <div class="timer-slot hidden"></div>
+    <div class="hint-slot" data-hint="prep"></div>
+    <div id="prepBody"></div>
+    <div id="prepActions" class="actions"></div>
+  </div>
+</dialog>
+
+<!-- COOK MODE -->
+<dialog id="cookDialog" class="cook" aria-labelledby="cookTitle">
+  <div class="cook-wrap">
+    <div class="r-head">
+      <div><h2 id="cookTitle"></h2><p id="cookProgress" class="muted small"></p></div>
+      <button id="cookExit" class="icon-square" data-t-aria="Exit cook mode" aria-label="Exit cook mode">&times;</button>
+    </div>
+    <div class="timer-slot hidden"></div>
+    <div class="hint-slot" data-hint="cook"></div>
+    <p id="cookStep" class="cook-step" aria-live="polite"></p>
+    <div id="cookStepTimer"></div>
+    <button id="cookIngrBtn" class="link-btn" aria-expanded="false" data-t>Show ingredients</button>
+    <div id="cookIngrWrap" class="hidden"><ul id="cookIngr" class="ings plain-list"></ul></div>
+    <div class="cook-tools">
+      <button id="cookRead" class="chip" aria-pressed="false"><span aria-hidden="true">&#128266;</span> <span data-t>Read aloud</span></button>
+      <button id="cookVoice" class="chip" aria-pressed="false"><span aria-hidden="true">&#127908;</span> <span data-t>Voice commands</span></button>
+    </div>
+    <div class="cook-nav">
+      <button id="cookPrev" data-t>Back</button>
+      <button id="cookNext" class="primary" data-t>Next</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- RECEIPT REVIEW -->
+<dialog id="receiptDialog" aria-labelledby="receiptTitle">
+  <div class="dialog-body">
+    <h2 id="receiptTitle" data-t>Check your receipt</h2>
+    <p class="muted small" data-t>Receipts use short codes, so fix any names that look off and uncheck anything that isn't food.</p>
+    <div id="receiptBody"></div>
+    <div class="actions">
+      <span class="spacer"></span>
+      <button id="cancelReceipt" data-t>Cancel</button>
+      <button id="confirmReceipt" class="primary" data-t>Add to My Food</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- HELP -->
+<dialog id="helpDialog" aria-labelledby="helpTitle">
+  <div class="dialog-body">
+    <div class="r-head"><h2 id="helpTitle" data-t>How to use Pantry Pal</h2><button id="closeHelp" class="icon-square" data-t-aria="Close" aria-label="Close">&times;</button></div>
+    <div id="helpBody"></div>
+  </div>
+</dialog>
+
+<!-- PHONE CHECK -->
+<dialog id="diagDialog" aria-labelledby="diagTitle">
+  <div class="dialog-body">
+    <div class="r-head"><h2 id="diagTitle" data-t>What this phone supports</h2><button id="closeDiag" class="icon-square" data-t-aria="Close" aria-label="Close">&times;</button></div>
+    <div id="diagBody"></div>
+  </div>
+</dialog>
+
+<div id="printArea"></div>
+
+<script src="recipes.js"></script>
+<script src="recipes-more.js"></script>
+<script src="recipes-es.js"></script>
+<script src="i18n.js"></script>
+<script src="units.js"></script>
+<script src="planner.js"></script>
+<script src="app.js"></script>
+<script src="kitchen.js"></script>
+<script src="extras.js"></script>
+</body>
+</html>
