@@ -1,0 +1,51 @@
+<!-- A recipe -->
+<dialog id="recipeDialog" data-accent="recipes" class="screen" aria-labelledby="recipeTitle">
+  <div class="dialog-body">
+    <div class="recipe-hero"><span id="recipeEmoji" class="hero-sticker" aria-hidden="true"></span></div>
+    <div class="recipe-head">
+      <h2 id="recipeTitle"></h2>
+      <button class="icon-square rate-btn" data-rate="1" data-t-aria="I liked this" aria-label="I liked this">&#128077;</button>
+      <button class="icon-square rate-btn" data-rate="-1" data-t-aria="Not for me" aria-label="Not for me">&#128078;</button>
+      <button id="favBtn" class="icon-square fav" aria-pressed="false"></button>
+    </div>
+    <div id="recipeMeta" class="meta-chips"></div>
+    <p id="recipeNutr" class="small nutr"></p>
+    <div class="servings">
+      <span data-t>Servings</span>
+      <button id="servMinus" class="icon-square" data-t-aria="Fewer servings" aria-label="Fewer servings">-</button>
+      <output id="servCount" aria-live="polite"></output>
+      <button id="servPlus" class="icon-square" data-t-aria="More servings" aria-label="More servings">+</button>
+    </div>
+    <div id="recipeBody"></div>
+
+    <div id="cookedPanel" class="panel hidden">
+      <h3 data-t>What did you use?</h3>
+      <p class="muted small" data-t>Enter how much you used. Anything that hits zero leaves My Food and counts as used.</p>
+      <div id="cookedList"></div>
+      <label class="check"><input type="checkbox" id="leftoverChk"> <span data-t>Save leftovers to My Food</span></label>
+      <label id="leftoverRow" class="plain hidden"><span data-t>Servings left over</span> <input id="leftoverServ" type="number" min="1" step="1" value="1"></label>
+      <div class="rate-row"><span data-t>How was it?</span>
+        <button class="icon-square rate-btn" data-rate="1" data-t-aria="I liked this" aria-label="I liked this">&#128077;</button>
+        <button class="icon-square rate-btn" data-rate="-1" data-t-aria="Not for me" aria-label="Not for me">&#128078;</button></div>
+      <button id="confirmCooked" class="primary wide" data-t>Update my food</button>
+    </div>
+
+    <div id="planPanel" class="panel hidden">
+      <h3 data-t>Add to meal plan</h3>
+      <label class="plain"><span data-t>Day</span> <select id="planDay"></select></label>
+      <button id="confirmPlan" class="primary wide" data-t>Add to plan</button>
+    </div>
+
+    <div class="actions wrap">
+      <button id="cookModeBtn" class="primary"><span aria-hidden="true">&#128105;&#8205;&#127859;</span> <span data-t>Cook mode</span></button>
+      <button id="ateBtn" class="primary hidden" data-t>We ate it</button>
+      <button id="planBtn"><span aria-hidden="true">&#128197;</span> <span data-t>Plan</span></button>
+      <button id="shopBtn"><span aria-hidden="true">&#128722;</span> <span data-t>Add to list</span></button>
+      <button id="cookedBtn" data-t>I made this</button>
+      <button id="editMineBtn" class="hidden" data-t>Edit</button>
+      <button id="deleteMineBtn" class="danger hidden" data-t>Delete</button>
+      <span class="spacer"></span>
+      <button id="closeRecipe" class="primary" data-t>Close</button>
+    </div>
+  </div>
+</dialog>

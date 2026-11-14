@@ -1,0 +1,13 @@
+<!-- Used it or tossed it -->
+<dialog id="removeDialog" data-accent="pantry" class="sheet" aria-labelledby="removeTitle">
+  <div class="dialog-body">
+    <h2 id="removeTitle"></h2>
+    <p class="muted small" data-t>This feeds your Waste Less stats.</p>
+    <div class="stack">
+      <button data-outcome="used" class="primary"><span aria-hidden="true">&#127869;</span> <span data-t>We used it</span></button>
+      <button data-outcome="wasted"><span aria-hidden="true">&#128465;</span> <span data-t>It got thrown out</span></button>
+      <button data-outcome="none" data-t>It was a mistake, just remove it</button>
+      <button data-outcome="cancel" class="link-btn" data-t>Cancel</button>
+    </div>
+  </div>
+</dialog>

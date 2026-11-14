@@ -1,0 +1,49 @@
+<!-- RECIPES -->
+<section id="tab-recipes" class="tab" aria-labelledby="tabbtn-recipes">
+  <div class="hint-slot" data-hint="recipes"></div>
+  <div class="seg" id="recipeMode" role="group">
+    <button data-mode="foryou" class="on" aria-pressed="true" data-t>For you</button>
+    <button data-mode="browse" aria-pressed="false" data-t>Browse all</button>
+    <button data-mode="saved" aria-pressed="false" data-t>Saved</button>
+  </div>
+  <div id="collectionStrip" class="collection-strip" role="list" data-t-aria="Recipe collections" aria-label="Recipe collections"></div>
+  <div id="planBanner" class="banner hidden"></div>
+  <div id="focusBanner" class="banner hidden"></div>
+  <input id="recipeSearch" class="search" type="search" data-t-ph="Search recipes or ingredients..." placeholder="Search recipes or ingredients..." data-t-aria="Search recipes" aria-label="Search recipes">
+  <div class="filters">
+    <select id="missingFilter" class="foryou-only" data-t-aria="Missing ingredients" aria-label="Missing ingredients">
+      <option value="0" data-t>Can make now</option>
+      <option value="1" data-t>Missing up to 1</option>
+      <option value="2" selected data-t>Missing up to 2</option>
+      <option value="99" data-t>Any</option>
+    </select>
+    <select id="sortSelect" class="browse-only hidden" data-t-aria="Sort" aria-label="Sort">
+      <option value="name" data-t>Name, A to Z</option>
+      <option value="time" data-t>Quickest first</option>
+      <option value="type" data-t>Meal type</option>
+      <option value="have" data-t>Most ingredients I have</option>
+      <option value="protein" data-t>Most protein</option>
+      <option value="calories" data-t>Fewest calories</option>
+      <option value="cost" data-t>Cheapest</option>
+    </select>
+    <select id="typeFilter" data-t-aria="Meal" aria-label="Meal"><option value="" data-t>All meals</option></select>
+    <select id="timeFilter" data-t-aria="Time" aria-label="Time">
+      <option value="0" data-t>Any time</option>
+      <option value="15" data-t>15 min or less</option>
+      <option value="20" data-t>20 min or less</option>
+      <option value="30" data-t>30 min or less</option>
+      <option value="45" data-t>45 min or less</option>
+      <option value="60" data-t>1 hour or less</option>
+    </select>
+  </div>
+  <div class="chips">
+    <button id="dietBtn" class="chip"><span aria-hidden="true">&#127807;</span> <span data-t>Diet:</span> <span id="dietSummary"></span></button>
+    <button id="quickBtn" class="chip"><span aria-hidden="true">&#9889;</span> <span data-t>20 minutes, use what I have</span></button>
+    <button id="kidBtn" class="chip" aria-pressed="false"><span aria-hidden="true">&#129490;</span> <span data-t>Kid-friendly</span></button>
+    <button id="newRecipeBtn" class="chip"><span aria-hidden="true">&#9997;</span> <span data-t>Add a recipe</span></button>
+    <button id="suggestBtn" class="chip hidden"><span aria-hidden="true">&#9993;</span> <span data-t>Suggest a recipe</span></button>
+  </div>
+  <p id="recipeCount" class="muted small" aria-live="polite"></p>
+  <ul id="recipeList" class="list"></ul>
+  <button id="moreRecipes" class="wide hidden" data-t>Show more</button>
+</section>

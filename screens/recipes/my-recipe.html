@@ -1,0 +1,35 @@
+<!-- Your own recipe -->
+<dialog id="recipeFormDialog" data-art="img/illustrations/chalkboard.svg" data-accent="recipes" class="screen" aria-labelledby="rfTitle">
+  <form id="recipeForm">
+    <h2 id="rfTitle"></h2>
+    <p id="rfIntro" class="muted small"></p>
+    <button type="button" id="pasteToggle" class="link-btn"><span aria-hidden="true">&#128203;</span> <span data-t>Paste a recipe from a website</span></button>
+    <div id="pasteBox" class="hidden">
+      <textarea id="pasteText" rows="6" data-t-ph="Copy the whole recipe from the website, including the ingredients and steps, and paste it here." placeholder="Copy the whole recipe from the website, including the ingredients and steps, and paste it here." data-t-aria="Pasted recipe" aria-label="Pasted recipe"></textarea>
+      <button type="button" id="pasteFill" class="wide" data-t>Fill in the form</button>
+    </div>
+    <label><span data-t>Recipe name</span> <input id="sName" required></label>
+    <div class="row">
+      <label><span data-t>Meal</span> <select id="sType"></select></label>
+      <label><span data-t>Minutes</span> <input id="sTime" type="number" min="1" inputmode="numeric" placeholder="30"></label>
+      <label><span data-t>Serves</span> <input id="sServes" type="number" min="1" inputmode="numeric" placeholder="4"></label>
+    </div>
+    <label><span data-t>Ingredients, one per line</span>
+      <textarea id="sIng" rows="6" required data-t-ph="2 cups rice&#10;1 onion&#10;1 can black beans&#10;cilantro (optional)" placeholder="2 cups rice&#10;1 onion&#10;1 can black beans&#10;cilantro (optional)"></textarea>
+    </label>
+    <label><span data-t>Steps, one per line</span>
+      <textarea id="sSteps" rows="6" required data-t-ph="Cook the rice.&#10;Dice the onion and cook until soft.&#10;Stir in the beans and heat through." placeholder="Cook the rice.&#10;Dice the onion and cook until soft.&#10;Stir in the beans and heat through."></textarea>
+    </label>
+    <div id="suggestExtra" class="hidden">
+      <label><span data-t>Your name (optional)</span> <input id="sBy"></label>
+      <label><span data-t>Anything else? (optional)</span> <input id="sNotes" data-t-ph="Where it's from, tips, diet notes" placeholder="Where it's from, tips, diet notes"></label>
+    </div>
+    <p id="suggestError" class="error small" role="alert"></p>
+    <div class="actions wrap">
+      <span class="spacer"></span>
+      <button type="button" id="cancelRecipeForm" data-t>Cancel</button>
+      <button type="button" id="emailRecipe" class="hidden" data-t>Email as suggestion</button>
+      <button type="submit" id="saveRecipe" class="primary" data-t>Save to my recipes</button>
+    </div>
+  </form>
+</dialog>

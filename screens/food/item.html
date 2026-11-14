@@ -1,0 +1,47 @@
+<!-- Add or edit food -->
+<dialog id="itemDialog" data-accent="pantry" class="screen" aria-labelledby="itemDialogTitle">
+  <form id="itemForm">
+    <h2 id="itemDialogTitle"></h2>
+    <label><span data-t>Name</span>
+      <span class="name-row">
+        <input id="fName" required list="nameSuggestions" autocomplete="off" data-t-ph="e.g. Baby spinach" placeholder="e.g. Baby spinach">
+        <button type="button" id="scanBtn" class="icon-square" data-t-aria="Scan a barcode" aria-label="Scan a barcode">&#128247;</button>
+      </span>
+    </label>
+    <p id="scanNote" class="muted small" aria-live="polite"></p>
+    <input id="fBarcode" type="hidden">
+    <datalist id="nameSuggestions"></datalist>
+    <div class="row">
+      <label><span data-t>Amount</span> <input id="fAmount" type="number" inputmode="decimal" min="0" step="any" placeholder="6"></label>
+      <label><span data-t>Unit</span> <input id="fUnit" list="units" data-t-ph="eggs" placeholder="eggs"></label>
+    </div>
+    <datalist id="units"></datalist>
+    <label><span data-t>Where</span> <input id="fLoc" list="locations" data-t-ph="Fridge" placeholder="Fridge"></label>
+    <datalist id="locations"></datalist>
+    <div class="row">
+      <label><span data-t>Bought</span> <input id="fBought" type="date"></label>
+      <label><span data-t>Expires</span> <input id="fExpires" type="date"></label>
+    </div>
+    <div class="link-row">
+      <button type="button" id="suggestExpiry" class="link-btn" data-t>Suggest a date</button>
+      <button type="button" id="readDateBtn" class="link-btn"><span aria-hidden="true">&#128247;</span> <span data-t>Read date from package</span></button>
+      <input id="dateFile" type="file" accept="image/*" capture="environment" hidden>
+    </div>
+    <p id="suggestNote" class="muted small" aria-live="polite"></p>
+    <p id="usageNote" class="muted small"></p>
+    <div id="remixBox"></div>
+    <label class="check"><input type="checkbox" id="fStaple"> <span data-t>Staple: add it to my shopping list when it runs out</span></label>
+    <label><span data-t>Notes</span> <input id="fNotes" data-t-ph="Optional" placeholder="Optional"></label>
+    <div id="itemExtras" class="actions wrap hidden">
+      <button type="button" id="freezeBtn"></button>
+      <button type="button" id="useThisBtn"><span aria-hidden="true">&#127859;</span> <span data-t>Recipes with this</span></button>
+      <button type="button" id="itemReminder"><span aria-hidden="true">&#128197;</span> <span data-t>Reminder</span></button>
+    </div>
+    <div class="actions">
+      <button type="button" id="deleteItem" class="danger hidden" data-t>Remove</button>
+      <span class="spacer"></span>
+      <button type="button" id="cancelItem" data-t>Cancel</button>
+      <button type="submit" class="primary" data-t>Save</button>
+    </div>
+  </form>
+</dialog>
