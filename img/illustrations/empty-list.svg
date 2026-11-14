@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 170" width="220" height="170" role="img"><title>A blank shopping list</title>
+<rect x="54" y="14" width="112" height="146" rx="10" fill="#FFFDF6" stroke="#233A31" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" transform="rotate(-4 110 87)"/>
+<path d="M76 52 H146 M76 80 H140 M76 108 H128" stroke="#DFF1FA" stroke-width="6" stroke-linecap="round" transform="rotate(-4 110 87)"/>
+<rect x="96" y="6" width="30" height="16" rx="4" fill="#E5482F" stroke="#233A31" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M178 104 l-22 34 q-2 4 3 2 l30 -26 z" fill="#F28C28" stroke="#233A31" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M178 104 l6 -12 M178 104 l12 -4 M178 104 l10 -10" stroke="#2F8F46" stroke-width="4" stroke-linecap="round"/>
+</svg>
