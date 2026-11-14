@@ -1,0 +1,27 @@
+/* Page basics and helpers. */
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--body); font-size: 16px; line-height: 1.45; color: var(--ink);
+  background: var(--sky);
+  background-image: radial-gradient(circle at 20% 0%, rgba(255,255,255,.55), transparent 45%);
+  padding-bottom: calc(84px + env(safe-area-inset-bottom));
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+h1, h2, h3 { font-family: var(--hand); font-weight: 900; font-synthesis: none; line-height: 1.1; letter-spacing: .01em; }
+h2 { font-size: 1.85rem; margin: 0 0 10px; }
+h3 { font-size: 1.35rem; margin: 18px 0 8px; }
+.hidden { display: none !important; }
+.muted { color: var(--muted); }
+.small { font-size: .88rem; }
+.error { color: var(--tomato); font-weight: 700; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.grow { flex: 1; min-width: 0; }
+.spacer { flex: 1; }
+:focus-visible { outline: 3px solid var(--sea); outline-offset: 2px; border-radius: 8px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--paper); color: var(--ink); padding: 8px 12px; border-radius: 10px; z-index: 100; }
+.skip:focus { left: 8px; }
+.center { text-align: center; }
+
+.aisle-head, .stat .num, .stat-hero .big, .steps li::marker { font-weight: 900; font-synthesis: none; }
+#tab-pantry { padding-bottom: 72px; }

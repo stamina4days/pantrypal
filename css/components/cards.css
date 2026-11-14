@@ -1,0 +1,26 @@
+/* Cards, alerts, and banners. */
+/* ---------- cards, alerts, banners ---------- */
+.card { background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.card h3 { margin: 0 0 6px; }
+.card ol, .card ul { margin: 0; padding-left: 20px; }
+.banner { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--lemon); color: #233A31;
+  border: 2px solid var(--ink); border-radius: 14px; padding: 6px 6px 6px 14px; margin-bottom: 10px; font-weight: 800; }
+.banner button { border: 0; background: none; box-shadow: none; font-size: 1.5rem; min-width: 44px; min-height: 40px; padding: 0; color: inherit; }
+.hint { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between; background: color-mix(in srgb, var(--lemon) 45%, var(--paper));
+  border: 2px dashed var(--ink); border-radius: 14px; padding: 10px 12px; margin-bottom: 12px; font-size: .9rem; font-weight: 600; }
+.hint .link-btn { flex: none; }
+.tip { background: color-mix(in srgb, var(--leaf) 12%, var(--paper)); border-radius: 12px; padding: 10px 12px; margin: 8px 0; }
+.tip ul { margin: 6px 0 0; padding-left: 18px; }
+.checkin { border-style: dashed; }
+.ci-row { display: flex; align-items: center; gap: 6px; padding: 8px 0; border-top: 1.5px dashed var(--line); flex-wrap: wrap; font-weight: 700; }
+.ci-row .row-btn { font-size: .8rem; padding: 0 9px; }
+.empty { text-align: center; color: var(--muted); margin-top: 24px; }
+.empty p { margin: 6px 0; }
+.mini-list { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 6px; max-height: 40vh; overflow: auto; }
+.mini-list li { padding: 8px 12px; border: 2px solid var(--line); border-radius: 12px; background: var(--paper); }
+
+.fab {
+  position: fixed; right: 18px; bottom: calc(92px + env(safe-area-inset-bottom)); z-index: 4;
+  width: 62px; height: 62px; border-radius: 50%; background: var(--accent); color: #fff; border: 3px solid var(--ink);
+  font-size: 2.1rem; line-height: 1; box-shadow: 0 4px 0 var(--ink); padding: 0;
+}

@@ -1,0 +1,24 @@
+/* One food page: freshness meter and where it keeps best */
+.fresh-card { background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius); padding: 12px 14px; box-shadow: var(--shadow); margin: 10px 0; }
+.fresh-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fresh-top span { color: var(--muted); font-weight: 700; font-size: .9rem; }
+.fresh-bar { height: 16px; border: 2px solid var(--ink); border-radius: 999px; background: var(--sky); margin-top: 8px; overflow: hidden; }
+.fresh-bar span { display: block; height: 100%; background: var(--leaf); border-right: 2px solid var(--ink); }
+.fresh-card.soon .fresh-bar span { background: var(--lemon); }
+.fresh-card.urgent .fresh-bar span { background: var(--tomato); }
+.fresh-card.expired .fresh-bar span { width: 0 !important; }
+.fresh-card.expired { background: #FFE3DC; }
+@media (prefers-color-scheme: dark) { .fresh-card.expired { background: #4E2A25; } }
+
+.shelf-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.shelf-cell {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center;
+  background: var(--paper); border: 2px solid var(--line); border-radius: 14px; padding: 10px 4px;
+}
+.shelf-cell.here { border-color: var(--ink); box-shadow: 0 3px 0 var(--ink); }
+.shelf-cell.nope { opacity: .55; }
+.here-tag {
+  position: absolute; top: -10px; right: -4px; transform: rotate(6deg);
+  background: var(--lemon); border: 2px solid var(--ink); border-radius: 999px; padding: 0 8px; font-size: .72rem; font-weight: 900;
+}
+#ipTip { margin-top: 12px; }

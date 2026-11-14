@@ -1,0 +1,18 @@
+/* Large text and high contrast. */
+/* ---------- display settings ---------- */
+body.large-text { font-size: 19px; }
+body.large-text .small { font-size: .94rem; }
+body.large-text .tabbar button { font-size: .8rem; }
+body.high-contrast {
+  --sky: #FFFFFF; --sky-deep: #E6E6E6; --paper: #FFFFFF; --ink: #000000; --muted: #222222; --line: #000000;
+  --tomato: #B3200C; --lemon: #FFD000; --leaf: #0A6B2A; --leaf-deep: #064A1C; --plum: #5A1F6B; --sea: #0B5E99; --chalk: #000000;
+  background-image: none;
+}
+@media (prefers-color-scheme: dark) {
+  body.high-contrast {
+    --sky: #000000; --sky-deep: #222222; --paper: #000000; --ink: #FFFFFF; --muted: #EEEEEE; --line: #FFFFFF;
+    --tomato: #FF8A7A; --lemon: #FFE34D; --leaf: #7DFFA6; --leaf-deep: #4CD97B; --plum: #E3A6F5; --sea: #8FD3FF; --chalk: #000000;
+  }
+  body.high-contrast button.primary { color: #000; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }

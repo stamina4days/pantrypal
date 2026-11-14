@@ -1,0 +1,17 @@
+/* Recipe cards. */
+/* recipe cards: crate labels */
+.recipe { padding-left: 14px; }
+.r-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.r-head strong { min-width: 0; overflow-wrap: anywhere; font-size: 1.05rem; }
+.r-head h2, .r-head h3 { margin: 0; }
+.r-emoji { font-size: 1.4rem; margin-right: 6px; }
+.r-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag { font-size: .78rem; font-weight: 800; padding: 3px 9px; border-radius: 999px; background: var(--sky); color: var(--ink); }
+.tag.urgent { background: var(--tomato); color: #fff; }
+.tag.miss { background: transparent; border: 1.5px dashed var(--muted); color: var(--muted); }
+.tag.ok { background: var(--leaf); color: #fff; }
+.tag.diet { background: color-mix(in srgb, var(--leaf) 18%, var(--paper)); color: var(--leaf-deep); }
+.tag.have { background: var(--lemon); color: #233A31; }
+.tag.fav-tag { background: color-mix(in srgb, var(--tomato) 15%, var(--paper)); color: var(--tomato); }
+.slot { font-family: var(--hand); font-size: 1.05rem; color: var(--plum); margin-right: 4px; font-weight: 900; font-synthesis: none; }
+.row-actions { display: flex; gap: 6px; flex: none; }
