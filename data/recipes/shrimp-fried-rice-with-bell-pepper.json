@@ -1,0 +1,43 @@
+{
+  "id": "shrimp-fried-rice-with-bell-pepper",
+  "name": "Shrimp Fried Rice with Bell Pepper",
+  "type": "Dinner",
+  "cuisine": "Asian",
+  "family": "fried-rice",
+  "time": 25,
+  "serves": 4,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "3 cups|rice",
+    "2|eggs",
+    "8 oz|shrimp",
+    "1|bell pepper",
+    "2 cloves|garlic",
+    "3 tbsp|soy sauce",
+    "2|scallions|o",
+    "2 tbsp|oil"
+  ],
+  "steps": [
+    "Cold leftover rice works best. If your rice is freshly cooked, spread it on a plate and chill it for 20 minutes so it doesn't turn mushy.",
+    "Peel the shrimp and cut them into pieces. Dice the pepper. Mince the garlic and slice the scallions, if using.",
+    "Heat 1 tablespoon of oil in a large skillet over medium-high heat. Cook the shrimp until pink, 2 to 3 minutes.",
+    "Add the bell pepper and garlic and cook for 2 to 3 minutes.",
+    "Push everything to one side, add the remaining oil, and scramble the eggs in the empty space.",
+    "Add the rice, breaking up any clumps, and stir-fry until hot, 3 to 4 minutes. Stir in the soy sauce and top with scallions."
+  ],
+  "es": {
+    "name": "Arroz frito con camarones y pimiento",
+    "steps": [
+      "El arroz frío del día anterior funciona mejor. Si está recién hecho, extiéndelo en un plato y enfríalo 20 minutos para que no quede pegajoso.",
+      "Pela los camarones y córtalos en trozos. Corta el pimiento en cubitos. Pica el ajo y rebana las cebollitas, si las usas.",
+      "Calienta 1 cucharada de aceite en una sartén grande a fuego medio-alto. Cocina los camarones hasta que estén rosados, de 2 a 3 minutos.",
+      "Agrega el pimiento y el ajo y cocina de 2 a 3 minutos.",
+      "Empuja todo hacia un lado, agrega el resto del aceite y revuelve los huevos en el espacio libre.",
+      "Agrega el arroz, deshaciendo los grumos, y saltea hasta que esté caliente, de 3 a 4 minutos. Añade la salsa de soya y decora con cebollitas."
+    ]
+  }
+}

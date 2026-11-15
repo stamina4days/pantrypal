@@ -1,0 +1,46 @@
+{
+  "id": "tofu-and-spinach-curry",
+  "name": "Tofu and Spinach Curry",
+  "type": "Dinner",
+  "cuisine": "Indian",
+  "family": "curry",
+  "time": 35,
+  "serves": 4,
+  "keeps": 4,
+  "prep": true,
+  "freezes": true,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "14 oz|tofu",
+    "4 cups|spinach",
+    "1|onion",
+    "3 cloves|garlic",
+    "1 tbsp|ginger|o",
+    "2 tbsp|curry powder",
+    "1 can|coconut milk",
+    "1 can (14 oz)|canned tomatoes",
+    "2 tbsp|oil",
+    "|salt",
+    "|rice|o"
+  ],
+  "steps": [
+    "Chop the onion and mince the garlic and ginger. Press the tofu dry and cut it into cubes.",
+    "Fry the tofu in 1 tablespoon of the oil in a large pot over medium-high heat until golden, 6 to 8 minutes. Set it aside.",
+    "Heat the remaining oil in a large pot over medium heat. Cook the onion until soft, about 5 minutes. Add the garlic, ginger, and curry powder and stir for 1 minute.",
+    "Pour in the coconut milk and tomatoes. Simmer, stirring now and then, for 10 minutes to let the flavors come together.",
+    "Stir the tofu back in. Stir in the spinach until it wilts, 1 to 2 minutes.",
+    "Season with salt and serve over rice."
+  ],
+  "es": {
+    "name": "Curry de tofu y espinaca",
+    "steps": [
+      "Pica la cebolla, el ajo y el jengibre. Seca bien el tofu y córtalo en cubos.",
+      "Fríe el tofu en 1 cucharada del aceite en una olla grande a fuego medio-alto hasta que se dore, de 6 a 8 minutos. Resérvalo.",
+      "Calienta el resto del aceite en una olla grande a fuego medio. Cocina la cebolla hasta que se suavice, unos 5 minutos. Agrega el ajo, el jengibre y el curry en polvo y revuelve por 1 minuto.",
+      "Vierte la leche de coco y los tomates. Cocina a fuego lento, moviendo de vez en cuando, durante 10 minutos para que se mezclen los sabores.",
+      "Regresa el tofu a la olla. Agrega la espinaca y mezcla hasta que se marchite, de 1 a 2 minutos.",
+      "Sazona con sal y sirve con arroz."
+    ]
+  }
+}
