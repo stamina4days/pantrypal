@@ -1,6 +1,0 @@
-/* Storage tips */
-.tip-list { display: grid; gap: 10px; margin-top: 8px; }
-.tip-card { display: flex; gap: 12px; align-items: flex-start; background: var(--paper); border: 2px solid var(--line); border-radius: var(--radius); padding: 12px; }
-.tip-card.mine { border-color: var(--ink); box-shadow: 0 3px 0 var(--leaf); }
-.tip-card .food-emoji { font-size: 1.8rem; }
-.tip-card p { margin: 4px 0; }

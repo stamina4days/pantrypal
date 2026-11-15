@@ -1,9 +1,0 @@
-/* Shopping. */
-/* shopping */
-.shop-item { display: flex; align-items: center; gap: 10px; cursor: default; }
-.shop-item label { flex: 1; display: flex; gap: 12px; align-items: center; cursor: pointer; }
-.shop-item input[type=checkbox] { width: 24px; height: 24px; flex: none; accent-color: var(--leaf); }
-.shop-item.done { opacity: .6; }
-.shop-item.done .shop-name { text-decoration: line-through; }
-.shop-name { display: flex; flex-direction: column; font-weight: 700; }
-.aisle-head { list-style: none; font-family: var(--hand); font-size: 1.35rem; color: var(--accent); margin: 8px 2px -4px; }

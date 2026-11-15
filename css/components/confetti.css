@@ -1,9 +1,0 @@
-/* Celebration */
-.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 2000; overflow: hidden; }
-.confetti span {
-  position: absolute; top: -20px; width: 12px; height: 16px; border: 2px solid var(--ink); border-radius: 4px;
-  animation: confetti-fall 1.6s cubic-bezier(.3, .6, .6, 1) forwards;
-}
-@keyframes confetti-fall {
-  to { transform: translate(var(--drift), 105vh) rotate(var(--spin)); }
-}
