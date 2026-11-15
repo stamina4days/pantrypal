@@ -1,0 +1,43 @@
+{
+  "id": "black-bean-tacos",
+  "name": "Black Bean Tacos",
+  "type": "Dinner",
+  "cuisine": "Mexican",
+  "family": "tacos",
+  "time": 25,
+  "serves": 4,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "2 cans|black beans",
+    "8|tortillas",
+    "1 tsp|chili powder",
+    "1 tsp|cumin",
+    "1 cup|lettuce|o",
+    "1|tomato|o",
+    "1/2 cup|cheese|o",
+    "|salsa|o",
+    "|avocado|o",
+    "1|lime|o",
+    "|cilantro|o",
+    "|sour cream|o"
+  ],
+  "steps": [
+    "Mix the chili powder, cumin, and a pinch of salt.",
+    "Warm the rinsed beans in a pan with a splash of water and the spice mix for 5 minutes, mashing a few.",
+    "Warm the tortillas in a dry skillet, or wrap them in a damp towel and microwave for 30 seconds.",
+    "Fill with the beans and whatever toppings you have: lettuce, tomato, cheese, salsa, avocado, cilantro, sour cream, and a squeeze of lime."
+  ],
+  "es": {
+    "name": "Tacos de frijoles negros",
+    "steps": [
+      "Mezcla el chile en polvo, el comino y una pizca de sal.",
+      "Calienta los frijoles enjuagados en una sartén con un chorrito de agua y la mezcla de especias por 5 minutos, aplastando algunos.",
+      "Calienta las tortillas en un comal o sartén seca, o envuélvelas en un trapo húmedo y caliéntalas 30 segundos en el microondas.",
+      "Rellena con los frijoles y los toppings que tengas: lechuga, tomate, queso, salsa, aguacate, cilantro, crema agria y un chorrito de limón."
+    ]
+  }
+}

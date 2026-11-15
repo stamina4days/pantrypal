@@ -1,0 +1,43 @@
+{
+  "id": "chicken-tacos",
+  "name": "Chicken Tacos",
+  "type": "Dinner",
+  "cuisine": "Mexican",
+  "family": "tacos",
+  "time": 25,
+  "serves": 4,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "1 lb|chicken thighs",
+    "8|tortillas",
+    "1 tsp|chili powder",
+    "1 tsp|cumin",
+    "1 cup|lettuce|o",
+    "1|tomato|o",
+    "1/2 cup|cheese|o",
+    "|salsa|o",
+    "|avocado|o",
+    "1|lime|o",
+    "|cilantro|o",
+    "|sour cream|o"
+  ],
+  "steps": [
+    "Mix the chili powder, cumin, and a pinch of salt.",
+    "Rub the chicken with the spice mix and cook in a little oil over medium-high heat until it reaches 165F, 5 to 6 minutes per side. Rest for 5 minutes, then slice.",
+    "Warm the tortillas in a dry skillet, or wrap them in a damp towel and microwave for 30 seconds.",
+    "Fill with the chicken and whatever toppings you have: lettuce, tomato, cheese, salsa, avocado, cilantro, sour cream, and a squeeze of lime."
+  ],
+  "es": {
+    "name": "Tacos de pollo",
+    "steps": [
+      "Mezcla el chile en polvo, el comino y una pizca de sal.",
+      "Unta el pollo con la mezcla de especias y cocínalo con un poco de aceite a fuego medio-alto hasta que llegue a 74 °C (165 °F), de 5 a 6 minutos por lado. Déjalo reposar 5 minutos y rebánalo.",
+      "Calienta las tortillas en un comal o sartén seca, o envuélvelas en un trapo húmedo y caliéntalas 30 segundos en el microondas.",
+      "Rellena con el pollo y los toppings que tengas: lechuga, tomate, queso, salsa, aguacate, cilantro, crema agria y un chorrito de limón."
+    ]
+  }
+}

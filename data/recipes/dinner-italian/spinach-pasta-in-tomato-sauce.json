@@ -1,0 +1,37 @@
+{
+  "id": "spinach-pasta-in-tomato-sauce",
+  "name": "Spinach Pasta in Tomato Sauce",
+  "type": "Dinner",
+  "cuisine": "Italian",
+  "family": "pasta",
+  "time": 30,
+  "serves": 4,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "12 oz|pasta",
+    "4 cups|spinach",
+    "1 can (28 oz)|canned tomatoes",
+    "1/2|onion",
+    "3 cloves|garlic",
+    "2 tbsp|olive oil",
+    "|basil|o",
+    "|salt"
+  ],
+  "steps": [
+    "Bring a large pot of salted water to a boil. Cook the pasta until al dente, following the package time. Save 1 cup of the pasta water before draining.",
+    "Meanwhile, use a large skillet. Heat the olive oil in the skillet over medium heat. Cook the diced onion until soft, about 5 minutes, then add the garlic for 30 seconds. Add the tomatoes, crush them with a spoon, and simmer for 15 minutes. Season with salt.",
+    "Add the drained pasta to the skillet. Add the spinach and toss until it wilts. Toss, adding pasta water if the sauce is thick. Top with basil if you have it."
+  ],
+  "es": {
+    "name": "Pasta con espinaca en salsa de tomate",
+    "steps": [
+      "Pon a hervir una olla grande de agua con sal. Cocina la pasta al dente, según el paquete. Guarda 1 taza del agua de cocción antes de escurrir.",
+      "Mientras tanto, usa una sartén grande. Calienta el aceite de oliva en la sartén a fuego medio. Cocina la cebolla picada hasta que se suavice, unos 5 minutos, y luego agrega el ajo por 30 segundos. Añade los tomates, aplástalos con una cuchara y cocina a fuego lento 15 minutos. Sazona con sal.",
+      "Agrega la pasta escurrida a la sartén. Añade la espinaca y mezcla hasta que se marchite. Mezcla, agregando agua de la pasta si la salsa está espesa. Decora con albahaca si tienes."
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lemon-garlic-baked-salmon",
+  "name": "Lemon Garlic Baked Salmon",
+  "type": "Dinner",
+  "cuisine": "Mediterranean",
+  "family": "Lemon Garlic Baked Salmon",
+  "time": 20,
+  "serves": 4,
+  "keeps": 2,
+  "prep": false,
+  "freezes": false,
+  "equip": [
+    "oven"
+  ],
+  "kid": false,
+  "ing": [
+    "4 fillets|salmon",
+    "1|lemon",
+    "3 cloves|garlic",
+    "2 tbsp|olive oil",
+    "|salt",
+    "|pepper"
+  ],
+  "steps": [
+    "Heat the oven to 400F (200C).",
+    "Put the salmon on a lined sheet. Mix the oil, minced garlic, lemon zest, salt, and pepper and spread it over the fish.",
+    "Bake until it flakes easily (145F), 12 to 15 minutes.",
+    "Squeeze lemon juice over the top and serve."
+  ],
+  "es": {
+    "name": "Salmón al horno con limón y ajo",
+    "steps": [
+      "Precalienta el horno a 200 °C (400 °F).",
+      "Pon el salmón en una charola forrada. Mezcla el aceite, el ajo picado, la ralladura de limón, sal y pimienta, y úntalo sobre el pescado.",
+      "Hornea hasta que se desmenuce fácilmente (63 °C / 145 °F), de 12 a 15 minutos.",
+      "Exprime jugo de limón encima y sirve."
+    ]
+  }
+}

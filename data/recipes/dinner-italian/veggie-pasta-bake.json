@@ -1,0 +1,49 @@
+{
+  "id": "veggie-pasta-bake",
+  "name": "Veggie Pasta Bake",
+  "type": "Dinner",
+  "cuisine": "Italian",
+  "family": "pasta-bake",
+  "time": 55,
+  "serves": 6,
+  "keeps": 4,
+  "prep": true,
+  "freezes": true,
+  "equip": [
+    "oven"
+  ],
+  "kid": true,
+  "ing": [
+    "1 lb|penne",
+    "2|zucchini",
+    "1|bell pepper",
+    "1|onion",
+    "3 cloves|garlic",
+    "3 cups|tomato sauce",
+    "2 cups|mozzarella",
+    "1/2 cup|parmesan",
+    "1 tbsp|oil",
+    "|salt"
+  ],
+  "steps": [
+    "Heat the oven to 375F (190C).",
+    "Cook the pasta in salted boiling water for 2 minutes less than the package says, then drain.",
+    "Dice the zucchini, pepper, and onion and cook in a little oil until soft, 8 to 10 minutes.",
+    "Add the minced garlic for 30 seconds, then stir in the tomato sauce.",
+    "Mix the pasta with the sauce and half the mozzarella. Spread it in a 9x13 inch baking dish and top with the rest of the mozzarella and the parmesan.",
+    "Bake until bubbling and golden, 20 to 25 minutes. Rest for 10 minutes before serving.",
+    "To freeze, cover the unbaked dish tightly for up to 3 months. Thaw overnight in the fridge, then bake about 10 minutes longer."
+  ],
+  "es": {
+    "name": "Pasta horneada con verduras",
+    "steps": [
+      "Precalienta el horno a 190 °C (375 °F).",
+      "Cocina la pasta en agua hirviendo con sal 2 minutos menos de lo que dice el paquete y escúrrela.",
+      "Pica la calabacita, el pimiento y la cebolla y cocínalos con un poco de aceite hasta que se suavicen, de 8 a 10 minutos.",
+      "Agrega el ajo picado por 30 segundos y luego la salsa de tomate.",
+      "Mezcla la pasta con la salsa y la mitad del queso mozzarella. Extiéndela en un refractario de 23 x 33 cm (9 x 13 pulgadas) y cubre con el resto del mozzarella y el parmesano.",
+      "Hornea hasta que burbujee y se dore, de 20 a 25 minutos. Deja reposar 10 minutos antes de servir.",
+      "Para congelar, tapa bien el refractario sin hornear hasta por 3 meses. Descongela en el refrigerador toda la noche y hornea unos 10 minutos más."
+    ]
+  }
+}
