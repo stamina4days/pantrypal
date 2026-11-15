@@ -1,0 +1,38 @@
+/* Spanish food words people type. */
+/* Spanish food words people type -> the English name the matcher knows.
+   Accents don't matter: "jamon" and "jamón" both work. */
+const ES_ALIASES = {
+  "huevo":"eggs","huevos":"eggs","leche":"milk","leche de coco":"coconut milk","leche de almendra":"milk","mantequilla":"butter",
+  "queso":"cheese","queso cheddar":"cheddar cheese","queso crema":"cream cheese","queso fresco":"cheese","queso oaxaca":"mozzarella",
+  "queso parmesano":"parmesan","parmesano":"parmesan","queso mozzarella":"mozzarella","queso feta":"feta","crema":"sour cream",
+  "crema agria":"sour cream","crema para batir":"cream","crema espesa":"cream","media crema":"cream","yogur":"yogurt","yogurt":"yogurt",
+  "pollo":"chicken","pechuga de pollo":"chicken breast","pechugas de pollo":"chicken breast","muslos de pollo":"chicken thighs",
+  "pollo rostizado":"rotisserie chicken","carne molida":"ground beef","carne molida de pavo":"ground beef","res":"beef","carne de res":"beef",
+  "bistec":"steak","carne para guisar":"stew meat","cerdo":"pork","puerco":"pork","chuleta de cerdo":"pork","tocino":"bacon","jamon":"ham",
+  "salchicha":"sausage","chorizo":"sausage","pescado":"fish","tilapia":"fish","salmon":"salmon","atun":"tuna","camaron":"shrimp",
+  "camarones":"shrimp","tofu":"tofu","espinaca":"spinach","espinacas":"spinach","lechuga":"lettuce","tomate":"tomatoes","jitomate":"tomatoes",
+  "tomates en lata":"canned tomatoes","tomate en lata":"canned tomatoes","pure de tomate":"tomato sauce","salsa de tomate":"tomato sauce",
+  "pasta de tomate":"tomato paste","cebolla":"onion","cebolla morada":"onion","cebollita":"scallions","cebollitas":"scallions",
+  "cebollin":"scallions","ajo":"garlic","papa":"potatoes","papas":"potatoes","patata":"potatoes","camote":"sweet potatoes",
+  "zanahoria":"carrots","apio":"celery","pepino":"cucumber","brocoli":"broccoli","coliflor":"cauliflower","pimiento":"bell pepper",
+  "pimiento morron":"bell pepper","chile morron":"bell pepper","calabacita":"zucchini","calabacin":"zucchini","calabaza":"butternut squash",
+  "champinon":"mushrooms","champinones":"mushrooms","hongos":"mushrooms","ejotes":"green beans","chicharos":"peas","guisantes":"peas",
+  "chicharos chinos":"snap peas","elote":"corn","maiz":"corn","repollo":"cabbage","col":"cabbage","esparragos":"asparagus",
+  "aguacate":"avocados","limon":"lime","lima":"lime","limon amarillo":"lemon","manzana":"apples","platano":"bananas","banana":"bananas",
+  "fresa":"strawberries","fresas":"strawberries","arandanos":"blueberries","moras":"berries","mango":"mango","durazno":"peaches",
+  "melocoton":"peaches","pina":"pineapple","cilantro":"cilantro","perejil":"parsley","albahaca":"basil","kale":"kale","col rizada":"kale",
+  "jengibre":"ginger","jalapeno":"jalapeno","pan":"bread","pan de caja":"bread","bolillo":"bread","pan molido":"breadcrumbs",
+  "tortilla":"tortillas","tortillas de maiz":"tortillas","tortillas de harina":"tortillas","arroz":"rice","pasta":"pasta",
+  "espagueti":"spaghetti","macarrones":"macaroni","fideos":"pasta","fideos de huevo":"egg noodles","harina":"flour","azucar":"sugar",
+  "azucar morena":"sugar","sal":"salt","pimienta":"pepper","pimienta negra":"pepper","aceite":"oil","aceite de oliva":"olive oil",
+  "aceite vegetal":"vegetable oil","vinagre":"vinegar","salsa de soya":"soy sauce","salsa de soja":"soy sauce","frijoles":"black beans",
+  "frijoles negros":"black beans","frijoles rojos":"kidney beans","frijoles pintos":"black beans","garbanzos":"chickpeas","garbanzo":"chickpeas",
+  "lentejas":"lentils","lentejas rojas":"red lentils","caldo":"broth","caldo de pollo":"broth","caldo de res":"broth",
+  "caldo de verduras":"broth","consome":"broth","mayonesa":"mayonnaise","mostaza":"mustard","miel":"honey","avena":"oats",
+  "granola":"granola","aceitunas":"olives","tahini":"tahini","pinones":"pine nuts","crema de cacahuate":"peanut butter",
+  "mantequilla de mani":"peanut butter","comino":"cumin","chile en polvo":"chili powder","canela":"cinnamon","vainilla":"vanilla",
+  "curry en polvo":"curry powder","oregano":"oregano","paprika":"paprika","polvo para hornear":"baking powder",
+  "bicarbonato":"baking soda","maicena":"cornstarch","fecula de maiz":"cornstarch","crutones":"croutons","aderezo cesar":"caesar dressing",
+  "jarabe de maple":"maple syrup","salsa barbecue":"barbecue sauce","salsa bbq":"barbecue sauce","pavo molido":"ground turkey","sobras":"leftover","coles de bruselas":"brussels sprouts",
+  "ajo en polvo":"", "cebolla en polvo":"", "jugo de naranja":"", "jugo de manzana":"", "helado":"", "sopa de tomate":""
+};
