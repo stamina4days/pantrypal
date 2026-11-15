@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 140" width="220" height="140" role="img"><title>Chalkboard</title>
+<rect x="10" y="10" width="200" height="110" rx="8" fill="#2C4A3C" stroke="#8A5A2B" stroke-width="10"/>
+<path d="M40 50 q30 -20 60 0 t60 0" stroke="#FFFDF6" stroke-width="4" fill="none" opacity=".8" stroke-linecap="round"/><path d="M40 84 H120" stroke="#FFD23F" stroke-width="4" stroke-linecap="round"/>
+<path d="M60 120 l-12 16 M160 120 l12 16" stroke="#8A5A2B" stroke-width="6" stroke-linecap="round"/>
+</svg>
