@@ -1,0 +1,45 @@
+{
+  "id": "shepherds-pie",
+  "name": "Shepherd's Pie",
+  "type": "Dinner",
+  "cuisine": "American",
+  "family": "Shepherd's Pie",
+  "time": 60,
+  "serves": 6,
+  "keeps": 4,
+  "prep": true,
+  "freezes": true,
+  "equip": [
+    "oven"
+  ],
+  "kid": false,
+  "ing": [
+    "1 lb|ground beef",
+    "2 lb|potatoes",
+    "2|carrots",
+    "1 cup|peas",
+    "1|onion",
+    "1 cup|broth",
+    "2 tbsp|tomato paste|o",
+    "3 tbsp|butter",
+    "1/2 cup|milk",
+    "|salt"
+  ],
+  "steps": [
+    "Peel and chunk the potatoes, boil until tender, then mash with the butter, milk, and salt.",
+    "Heat the oven to 400F (200C).",
+    "Brown the beef with the diced onion and carrots. Stir in the tomato paste and broth and simmer for 10 minutes. Stir in the peas.",
+    "Spread the filling in a baking dish and top with the mashed potatoes.",
+    "Bake until golden on top, about 20 minutes."
+  ],
+  "es": {
+    "name": "Pastel de carne y puré de papa",
+    "steps": [
+      "Pela y corta las papas, hiérvelas hasta que estén suaves y machácalas con la mantequilla, la leche y sal.",
+      "Precalienta el horno a 200 °C (400 °F).",
+      "Dora la carne con la cebolla y las zanahorias picadas. Agrega la pasta de tomate y el caldo y cocina a fuego lento 10 minutos. Añade los chícharos.",
+      "Extiende el relleno en un refractario y cúbrelo con el puré de papa.",
+      "Hornea hasta que se dore encima, unos 20 minutos."
+    ]
+  }
+}

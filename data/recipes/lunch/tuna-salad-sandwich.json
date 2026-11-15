@@ -1,0 +1,35 @@
+{
+  "id": "tuna-salad-sandwich",
+  "name": "Tuna Salad Sandwich",
+  "type": "Lunch",
+  "cuisine": "American",
+  "family": "Tuna Salad Sandwich",
+  "time": 10,
+  "serves": 2,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "1 can|tuna",
+    "2 tbsp|mayonnaise",
+    "1 stalk|celery|o",
+    "1 tsp|lemon|o",
+    "2 slices|bread",
+    "|pepper"
+  ],
+  "steps": [
+    "Drain the tuna and flake it into a bowl.",
+    "Stir in the mayonnaise, finely diced celery, lemon juice, and pepper.",
+    "Spread it on the bread."
+  ],
+  "es": {
+    "name": "Sándwich de ensalada de atún",
+    "steps": [
+      "Escurre el atún y desmenúzalo en un tazón.",
+      "Agrega la mayonesa, el apio picado finamente, el jugo de limón y la pimienta.",
+      "Úntalo en el pan."
+    ]
+  }
+}

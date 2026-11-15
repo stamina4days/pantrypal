@@ -1,0 +1,42 @@
+{
+  "id": "turkey-chili",
+  "name": "Turkey Chili",
+  "type": "Dinner",
+  "cuisine": "American",
+  "family": "chili",
+  "time": 45,
+  "serves": 6,
+  "keeps": 5,
+  "prep": true,
+  "freezes": true,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "1 lb|ground turkey",
+    "1 can|kidney beans",
+    "1 can|black beans",
+    "1 can (28 oz)|canned tomatoes",
+    "1|onion",
+    "1|bell pepper",
+    "3 cloves|garlic",
+    "2 tbsp|chili powder",
+    "2 tsp|cumin",
+    "1 tbsp|oil",
+    "|sour cream|o"
+  ],
+  "steps": [
+    "Dice the onion and pepper and mince the garlic.",
+    "Brown the turkey in the oil in a large pot, breaking it up, until no pink remains, 6 to 8 minutes. Add the onion and pepper and cook until soft, about 6 minutes.",
+    "Stir in the garlic, chili powder, and cumin for 1 minute, then add the rinsed beans and tomatoes.",
+    "Simmer for 25 minutes, season with salt, and top with sour cream."
+  ],
+  "es": {
+    "name": "Chili de pavo",
+    "steps": [
+      "Pica la cebolla y el pimiento, y pica finamente el ajo.",
+      "Dora el pavo en el aceite en una olla grande, desmenuzándolo, hasta que ya no esté rosado, de 6 a 8 minutos. Agrega la cebolla y el pimiento y cocina hasta que se suavicen, unos 6 minutos.",
+      "Agrega el ajo, el chile en polvo y el comino por 1 minuto, y luego los frijoles enjuagados y los tomates.",
+      "Cocina a fuego lento 25 minutos, sazona con sal y sirve con crema agria."
+    ]
+  }
+}

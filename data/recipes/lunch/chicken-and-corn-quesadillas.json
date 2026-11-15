@@ -1,0 +1,38 @@
+{
+  "id": "chicken-and-corn-quesadillas",
+  "name": "Chicken and Corn Quesadillas",
+  "type": "Lunch",
+  "cuisine": "Mexican",
+  "family": "quesadilla",
+  "time": 20,
+  "serves": 2,
+  "keeps": 1,
+  "prep": false,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "4|tortillas",
+    "1 1/2 cups|cheese",
+    "1 cup|chicken",
+    "1/2 cup|corn",
+    "1 tbsp|oil",
+    "|salsa|o",
+    "|sour cream|o"
+  ],
+  "steps": [
+    "Shred or chop cooked chicken (leftovers or rotisserie work great).",
+    "Sprinkle cheese over half of each tortilla, add the fillings, top with a little more cheese, and fold.",
+    "Cook in a dry or lightly oiled skillet over medium heat until golden and the cheese melts, 2 to 3 minutes per side.",
+    "Cut into wedges and serve with salsa and sour cream."
+  ],
+  "es": {
+    "name": "Quesadillas de pollo y elote",
+    "steps": [
+      "Deshebra o pica pollo cocido (las sobras o el pollo rostizado funcionan muy bien).",
+      "Espolvorea queso sobre la mitad de cada tortilla, agrega el relleno, cubre con un poco más de queso y dobla.",
+      "Cocina en una sartén seca o con poco aceite a fuego medio hasta que se doren y el queso se derrita, de 2 a 3 minutos por lado.",
+      "Corta en triángulos y sirve con salsa y crema agria."
+    ]
+  }
+}

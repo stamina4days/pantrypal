@@ -1,0 +1,43 @@
+{
+  "id": "beef-stew",
+  "name": "Beef Stew",
+  "type": "Dinner",
+  "cuisine": "American",
+  "family": "stew",
+  "time": 150,
+  "serves": 6,
+  "keeps": 4,
+  "prep": true,
+  "freezes": true,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "2 lb|stew meat",
+    "4|potatoes",
+    "3|carrots",
+    "1|onion",
+    "4 cups|broth",
+    "2 tbsp|tomato paste",
+    "2 tbsp|flour",
+    "2 tbsp|oil",
+    "|salt",
+    "|pepper"
+  ],
+  "steps": [
+    "Toss the beef with the flour, salt, and pepper.",
+    "Heat the oil in a large pot over medium-high heat and brown the beef in batches. Set it aside.",
+    "Cook the chopped onion until soft, about 5 minutes. Stir in the tomato paste for 1 minute.",
+    "Add the broth and beef, scraping up the browned bits. Cover and simmer gently for 1 1/2 hours.",
+    "Add the chunked potatoes and carrots and simmer until tender, 30 to 40 minutes."
+  ],
+  "es": {
+    "name": "Estofado de res",
+    "steps": [
+      "Mezcla la carne con la harina, la sal y la pimienta.",
+      "Calienta el aceite en una olla grande a fuego medio-alto y dora la carne por tandas. Resérvala.",
+      "Cocina la cebolla picada hasta que se suavice, unos 5 minutos. Agrega la pasta de tomate y revuelve 1 minuto.",
+      "Agrega el caldo y la carne, raspando lo pegado al fondo. Tapa y cocina a fuego muy bajo 1 hora y media.",
+      "Agrega las papas y las zanahorias en trozos y cocina hasta que estén suaves, de 30 a 40 minutos."
+    ]
+  }
+}

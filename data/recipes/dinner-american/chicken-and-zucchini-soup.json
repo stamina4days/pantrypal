@@ -1,0 +1,46 @@
+{
+  "id": "chicken-and-zucchini-soup",
+  "name": "Chicken and Zucchini Soup",
+  "type": "Dinner",
+  "cuisine": "American",
+  "family": "chicken-soup",
+  "time": 45,
+  "serves": 6,
+  "keeps": 4,
+  "prep": true,
+  "freezes": true,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "1 lb|chicken breast",
+    "2|zucchini",
+    "1|onion",
+    "2|carrots",
+    "2 stalks|celery",
+    "2 cloves|garlic",
+    "6 cups|broth",
+    "1 tsp|italian seasoning",
+    "1 tbsp|oil",
+    "|salt",
+    "|pepper"
+  ],
+  "steps": [
+    "Dice the onion, carrots, and celery, and mince the garlic.",
+    "Heat the oil in a large pot over medium heat. Cook the onion, carrots, and celery until soft, 6 to 8 minutes. Add the garlic and Italian seasoning for 30 seconds.",
+    "Add the broth and the whole chicken. Simmer until the chicken reaches 165F, 15 to 18 minutes.",
+    "Take out the chicken and shred it.",
+    "Add the diced zucchini and simmer for 8 minutes.",
+    "Return the chicken, season with salt and pepper, and serve. Keeps 4 days in the fridge or 3 months frozen."
+  ],
+  "es": {
+    "name": "Sopa de pollo con calabacita",
+    "steps": [
+      "Pica la cebolla, las zanahorias y el apio en cubitos, y pica finamente el ajo.",
+      "Calienta el aceite en una olla grande a fuego medio. Cocina la cebolla, las zanahorias y el apio hasta que se suavicen, de 6 a 8 minutos. Agrega el ajo y las hierbas italianas por 30 segundos.",
+      "Agrega el caldo y el pollo entero. Cocina a fuego lento hasta que el pollo llegue a 74 °C (165 °F), de 15 a 18 minutos.",
+      "Saca el pollo y deshébralo.",
+      "Agrega la calabacita picada y cocina a fuego lento 8 minutos.",
+      "Regresa el pollo, sazona con sal y pimienta y sirve. Dura 4 días en el refrigerador o 3 meses congelada."
+    ]
+  }
+}

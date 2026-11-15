@@ -1,0 +1,40 @@
+{
+  "id": "loaded-baked-potatoes",
+  "name": "Loaded Baked Potatoes",
+  "type": "Dinner",
+  "cuisine": "American",
+  "family": "Loaded Baked Potatoes",
+  "time": 65,
+  "serves": 4,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [
+    "oven"
+  ],
+  "kid": true,
+  "ing": [
+    "4|potatoes",
+    "2 tbsp|butter",
+    "1/2 cup|sour cream|o",
+    "1 cup|cheese|o",
+    "4 slices|bacon|o",
+    "2|scallions|o",
+    "|salt"
+  ],
+  "steps": [
+    "Heat the oven to 425F (220C). Scrub the potatoes, poke them with a fork, rub with oil and salt.",
+    "Bake directly on the rack until soft inside, 50 to 60 minutes.",
+    "Split them open and add butter, cheese, cooked bacon, sour cream, and scallions."
+  ],
+  "airfry": "Air fryer option: cook in batches at 400F (200C) for about two-thirds of the oven time, shaking halfway.",
+  "airfryEs": "Opción en freidora de aire: cocina por tandas a 200 °C (400 °F) más o menos dos tercios del tiempo del horno, sacudiendo a la mitad.",
+  "es": {
+    "name": "Papas al horno con todo",
+    "steps": [
+      "Precalienta el horno a 220 °C (425 °F). Lava las papas, pícalas con un tenedor y úntalas con aceite y sal.",
+      "Hornéalas directo sobre la rejilla hasta que estén suaves por dentro, de 50 a 60 minutos.",
+      "Ábrelas y agrega mantequilla, queso, tocino cocido, crema agria y cebollitas."
+    ]
+  }
+}
