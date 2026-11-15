@@ -1,0 +1,38 @@
+{
+  "id": "ham-and-tomato-omelette",
+  "name": "Ham and Tomato Omelette",
+  "type": "Breakfast",
+  "cuisine": "American",
+  "family": "omelette",
+  "time": 15,
+  "serves": 1,
+  "keeps": 0,
+  "prep": false,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "3|eggs",
+    "1 tbsp|milk|o",
+    "1 tbsp|butter",
+    "1/4 cup|ham",
+    "1 small|tomato",
+    "|salt",
+    "|pepper"
+  ],
+  "steps": [
+    "Dice the ham. Dice the tomato and pat it dry.",
+    "Whisk the eggs with the milk if using, a pinch of salt, and some pepper.",
+    "Melt the remaining butter in the pan over medium-low heat. Pour in the eggs and cook, gently pulling the edges toward the center, until mostly set but still a little glossy on top, 2 to 3 minutes.",
+    "Scatter the ham and tomato over one half, fold the omelette over, and slide it onto a plate."
+  ],
+  "es": {
+    "name": "Omelet de jamón y tomate",
+    "steps": [
+      "Corta el jamón en cubitos. Corta el tomate en cubitos y sécalo con papel.",
+      "Bate los huevos con la leche si la usas, una pizca de sal y un poco de pimienta.",
+      "Derrite el resto de la mantequilla a fuego medio-bajo. Vierte los huevos y cocina, llevando las orillas hacia el centro con cuidado, hasta que estén casi cuajados pero todavía un poco brillantes arriba, de 2 a 3 minutos.",
+      "Reparte el jamón y el tomate sobre una mitad, dobla el omelet y pásalo a un plato."
+    ]
+  }
+}

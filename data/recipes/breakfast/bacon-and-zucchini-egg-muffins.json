@@ -1,0 +1,44 @@
+{
+  "id": "bacon-and-zucchini-egg-muffins",
+  "name": "Bacon and Zucchini Egg Muffins",
+  "type": "Breakfast",
+  "cuisine": "American",
+  "family": "egg-muffin",
+  "time": 35,
+  "serves": 6,
+  "keeps": 4,
+  "prep": true,
+  "freezes": true,
+  "equip": [
+    "oven"
+  ],
+  "kid": true,
+  "ing": [
+    "10|eggs",
+    "1/4 cup|milk",
+    "6 slices|bacon",
+    "1|zucchini",
+    "1 tbsp|oil",
+    "|salt",
+    "|pepper"
+  ],
+  "steps": [
+    "Heat the oven to 350F (175C) and grease a 12-cup muffin pan well.",
+    "Heat the oil in a skillet over medium heat and cook the chopped bacon until crisp, 6 to 8 minutes, then the diced zucchini until tender, 4 to 5 minutes. Let the filling cool a little.",
+    "Divide the bacon and zucchini among the muffin cups.",
+    "Whisk the eggs, milk, a pinch of salt, and some pepper. Pour it over the filling until each cup is about three-quarters full.",
+    "Bake for 20 to 25 minutes, until the centers are set.",
+    "Cool for 5 minutes, then loosen them with a knife. They keep 4 days in the fridge or 2 months in the freezer. Reheat for 30 to 45 seconds in the microwave."
+  ],
+  "es": {
+    "name": "Muffins de huevo con tocino y calabacita",
+    "steps": [
+      "Precalienta el horno a 175 °C (350 °F) y engrasa bien un molde para 12 muffins.",
+      "Calienta el aceite en una sartén a fuego medio y cocina el tocino picado hasta que esté crujiente, de 6 a 8 minutos, y luego la calabacita picada hasta que esté tierna, de 4 a 5 minutos. Deja que el relleno se enfríe un poco.",
+      "Reparte el tocino y la calabacita en los moldes.",
+      "Bate los huevos, la leche, una pizca de sal y un poco de pimienta. Viértelo sobre el relleno hasta llenar cada molde a tres cuartos.",
+      "Hornea de 20 a 25 minutos, hasta que el centro esté cuajado.",
+      "Deja enfriar 5 minutos y despégalos con un cuchillo. Duran 4 días en el refrigerador o 2 meses en el congelador. Recaliéntalos de 30 a 45 segundos en el microondas."
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "mango-overnight-oats",
+  "name": "Mango Overnight Oats",
+  "type": "Breakfast",
+  "cuisine": "American",
+  "family": "oats",
+  "time": 10,
+  "serves": 4,
+  "keeps": 4,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "2 cups|oats",
+    "2 cups|milk",
+    "1 cup|yogurt",
+    "2 tbsp|honey|o",
+    "2 cups|mango"
+  ],
+  "steps": [
+    "Stir together the oats, milk, yogurt, and honey if using.",
+    "Chop the mango and fold it in.",
+    "Divide among 4 jars or containers, cover, and refrigerate overnight. They keep up to 4 days.",
+    "Stir before eating, and add a splash of milk if it's too thick."
+  ],
+  "es": {
+    "name": "Avena remojada de mango",
+    "steps": [
+      "Mezcla la avena, la leche, el yogur y la miel si la usas.",
+      "Pica el mango e incorpóralo.",
+      "Reparte en 4 frascos o recipientes, tapa y refrigera toda la noche. Duran hasta 4 días.",
+      "Revuelve antes de comer y agrega un chorrito de leche si está muy espesa."
+    ]
+  }
+}
