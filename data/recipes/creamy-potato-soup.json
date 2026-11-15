@@ -1,0 +1,43 @@
+{
+  "id": "creamy-potato-soup",
+  "name": "Creamy Potato Soup",
+  "type": "Lunch",
+  "cuisine": "American",
+  "family": "blended-soup",
+  "time": 40,
+  "serves": 4,
+  "keeps": 4,
+  "prep": true,
+  "freezes": true,
+  "equip": [
+    "blender"
+  ],
+  "kid": false,
+  "ing": [
+    "4|potatoes",
+    "1|onion",
+    "2 cloves|garlic",
+    "4 cups|broth",
+    "2 tbsp|butter",
+    "1/2 cup|cream|o",
+    "|salt",
+    "|pepper"
+  ],
+  "steps": [
+    "Peel and cube the potatoes. Chop the onion and garlic.",
+    "Melt the butter in a large pot over medium heat. Cook the onion until soft, about 5 minutes, then add the garlic for 30 seconds.",
+    "Add the potato and broth. Bring to a boil, then simmer until very tender, 15 to 20 minutes.",
+    "Blend until smooth with an immersion blender, or carefully in batches in a regular blender with the lid vented.",
+    "Stir in the cream if using, season with salt and pepper, and warm through."
+  ],
+  "es": {
+    "name": "Crema de papa",
+    "steps": [
+      "Pela y corta las papas en cubos. Pica la cebolla y el ajo.",
+      "Derrite la mantequilla en una olla grande a fuego medio. Cocina la cebolla hasta que se suavice, unos 5 minutos, y luego agrega el ajo por 30 segundos.",
+      "Agrega las papas y el caldo. Deja que hierva y luego cocina a fuego lento hasta que todo esté muy suave, de 15 a 20 minutos.",
+      "Licúa hasta que quede terso con una licuadora de inmersión, o con cuidado por tandas en una licuadora normal con la tapa entreabierta para que salga el vapor.",
+      "Agrega la crema si la usas, sazona con sal y pimienta y calienta bien."
+    ]
+  }
+}

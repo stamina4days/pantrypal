@@ -1,0 +1,36 @@
+{
+  "id": "guacamole",
+  "name": "Guacamole",
+  "type": "Snack",
+  "cuisine": "Mexican",
+  "family": "Guacamole",
+  "time": 10,
+  "serves": 4,
+  "keeps": 1,
+  "prep": false,
+  "freezes": false,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "3|avocados",
+    "1|lime",
+    "1/4|onion",
+    "1|tomato|o",
+    "|cilantro|o",
+    "|jalapeno|o",
+    "|salt"
+  ],
+  "steps": [
+    "Mash the avocados in a bowl.",
+    "Stir in the lime juice, finely diced onion, tomato, cilantro, and jalapeno.",
+    "Season with salt to taste."
+  ],
+  "es": {
+    "name": "Guacamole",
+    "steps": [
+      "Machaca los aguacates en un tazón.",
+      "Agrega el jugo de limón, la cebolla picada finamente, el tomate, el cilantro y el jalapeño.",
+      "Sazona con sal al gusto."
+    ]
+  }
+}

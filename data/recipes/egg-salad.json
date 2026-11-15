@@ -1,0 +1,35 @@
+{
+  "id": "egg-salad",
+  "name": "Egg Salad",
+  "type": "Lunch",
+  "cuisine": "American",
+  "family": "Egg Salad",
+  "time": 20,
+  "serves": 2,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "4|eggs",
+    "3 tbsp|mayonnaise",
+    "1 tsp|mustard",
+    "|bread|o",
+    "|salt",
+    "|pepper"
+  ],
+  "steps": [
+    "Cover the eggs with water, bring to a boil, then turn off the heat, cover, and let them sit for 11 minutes.",
+    "Cool them in cold water, peel, and chop.",
+    "Mix with the mayonnaise, mustard, salt, and pepper. Serve on bread or lettuce."
+  ],
+  "es": {
+    "name": "Ensalada de huevo",
+    "steps": [
+      "Cubre los huevos con agua y deja que hiervan. Apaga el fuego, tapa y déjalos reposar 11 minutos.",
+      "Enfríalos en agua fría, pélalos y pícalos.",
+      "Mezcla con la mayonesa, la mostaza, la sal y la pimienta. Sirve en pan o sobre lechuga."
+    ]
+  }
+}
