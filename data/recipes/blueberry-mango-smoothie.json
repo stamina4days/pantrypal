@@ -1,0 +1,35 @@
+{
+  "id": "blueberry-mango-smoothie",
+  "name": "Blueberry Mango Smoothie",
+  "type": "Drink",
+  "cuisine": "American",
+  "family": "smoothie",
+  "time": 5,
+  "serves": 2,
+  "keeps": 0,
+  "prep": false,
+  "freezes": false,
+  "equip": [
+    "blender"
+  ],
+  "kid": true,
+  "ing": [
+    "1 cup|blueberries",
+    "1 cup|mango",
+    "1/2 cup|yogurt",
+    "3/4 cup|milk",
+    "1 handful|spinach|o",
+    "1 tsp|honey|o"
+  ],
+  "steps": [
+    "Add everything to a blender, liquids first.",
+    "Blend until smooth, adding more milk if it's too thick. If all your fruit is fresh, add a few ice cubes to make it cold and thick."
+  ],
+  "es": {
+    "name": "Licuado de arándanos y mango",
+    "steps": [
+      "Pon todo en la licuadora, primero los líquidos.",
+      "Licúa hasta que quede terso y agrega más leche si está muy espeso. Si toda tu fruta es fresca, agrega unos cubos de hielo para que quede frío y espeso."
+    ]
+  }
+}

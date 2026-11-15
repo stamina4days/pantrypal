@@ -1,0 +1,34 @@
+{
+  "id": "blt-sandwich",
+  "name": "BLT Sandwich",
+  "type": "Lunch",
+  "cuisine": "American",
+  "family": "BLT Sandwich",
+  "time": 15,
+  "serves": 1,
+  "keeps": 0,
+  "prep": false,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "4 slices|bacon",
+    "2 slices|bread",
+    "2 leaves|lettuce",
+    "1|tomato",
+    "1 tbsp|mayonnaise"
+  ],
+  "steps": [
+    "Cook the bacon until crisp and drain on paper towels.",
+    "Toast the bread and spread it with mayonnaise.",
+    "Layer the lettuce, sliced tomato, and bacon between the slices."
+  ],
+  "es": {
+    "name": "Sándwich de tocino, lechuga y tomate",
+    "steps": [
+      "Cocina el tocino hasta que esté crujiente y escúrrelo en papel.",
+      "Tuesta el pan y úntale mayonesa.",
+      "Acomoda la lechuga, el tomate rebanado y el tocino entre las rebanadas."
+    ]
+  }
+}

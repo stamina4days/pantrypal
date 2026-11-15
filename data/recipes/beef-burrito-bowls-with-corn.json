@@ -1,0 +1,47 @@
+{
+  "id": "beef-burrito-bowls-with-corn",
+  "name": "Beef Burrito Bowls with Corn",
+  "type": "Dinner",
+  "cuisine": "Mexican",
+  "family": "burrito-bowl",
+  "time": 35,
+  "serves": 4,
+  "keeps": 4,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "4 cups|rice",
+    "1 lb|ground beef",
+    "2 cups|corn",
+    "2 tsp|chili powder",
+    "1 tsp|cumin",
+    "2 tbsp|oil",
+    "1 cup|salsa",
+    "1|lime",
+    "1 cup|cheese|o",
+    "2 cups|lettuce|o",
+    "|avocado|o",
+    "|sour cream|o"
+  ],
+  "steps": [
+    "Cook the rice, or warm 4 cups of leftover rice. Squeeze in half the lime and stir.",
+    "Mix the chili powder, cumin, and a pinch of salt.",
+    "Brown the beef with the spice mix, breaking it up, until no pink remains, 7 to 8 minutes. Drain extra fat.",
+    "Cook the corn in a dry skillet over high heat until lightly charred, 4 to 5 minutes.",
+    "Divide the rice among bowls or containers and top with the protein, vegetables, and salsa. Add cheese, lettuce, avocado, and sour cream when serving.",
+    "For meal prep, pack wet toppings separately. The bowls keep 4 days in the fridge."
+  ],
+  "es": {
+    "name": "Bowls de burrito con carne molida y elote",
+    "steps": [
+      "Cocina el arroz, o calienta 4 tazas de arroz que te haya sobrado. Exprime la mitad del limón y revuelve.",
+      "Mezcla el chile en polvo, el comino y una pizca de sal.",
+      "Dora la carne con la mezcla de especias, desmenuzándola, hasta que ya no esté rosada, de 7 a 8 minutos. Escurre el exceso de grasa.",
+      "Cocina el elote en una sartén seca a fuego alto hasta que se tueste un poco, de 4 a 5 minutos.",
+      "Reparte el arroz en tazones o recipientes y agrega la proteína, las verduras y la salsa. Pon el queso, la lechuga, el aguacate y la crema agria al servir.",
+      "Si los preparas con anticipación, guarda aparte lo más jugoso. Los bowls duran 4 días en el refrigerador."
+    ]
+  }
+}

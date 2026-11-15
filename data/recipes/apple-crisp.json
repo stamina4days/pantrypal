@@ -1,0 +1,39 @@
+{
+  "id": "apple-crisp",
+  "name": "Apple Crisp",
+  "type": "Dessert",
+  "cuisine": "American",
+  "family": "Apple Crisp",
+  "time": 55,
+  "serves": 6,
+  "keeps": 4,
+  "prep": false,
+  "freezes": true,
+  "equip": [
+    "oven"
+  ],
+  "kid": true,
+  "ing": [
+    "5|apples",
+    "1 cup|oats",
+    "1/2 cup|flour",
+    "1/2 cup|sugar",
+    "1 tsp|cinnamon",
+    "6 tbsp|butter"
+  ],
+  "steps": [
+    "Heat the oven to 350F (175C).",
+    "Peel and slice the apples and spread them in a baking dish.",
+    "Mix the oats, flour, sugar, and cinnamon. Rub in the cold butter until crumbly.",
+    "Scatter the topping over the apples and bake until golden and bubbling, 40 to 45 minutes."
+  ],
+  "es": {
+    "name": "Crujiente de manzana",
+    "steps": [
+      "Precalienta el horno a 175 °C (350 °F).",
+      "Pela y rebana las manzanas y extiéndelas en un refractario.",
+      "Mezcla la avena, la harina, el azúcar y la canela. Agrega la mantequilla fría y frótala con los dedos hasta que quede como migajas.",
+      "Esparce la mezcla sobre las manzanas y hornea hasta que se dore y burbujee, de 40 a 45 minutos."
+    ]
+  }
+}
