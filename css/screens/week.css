@@ -1,0 +1,18 @@
+/* Week at a glance: each day is a placemat with three plates */
+.week-btn { margin-bottom: 8px; }
+.week-days { display: grid; gap: 12px; }
+.week-day { background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius); padding: 10px; box-shadow: var(--shadow); }
+.week-day.today { border-width: 3px; box-shadow: 0 4px 0 var(--plum); }
+.wd-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 4px 8px; }
+.wd-head strong { font-family: var(--hand); font-size: 1.35rem; }
+.wd-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.plate {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 104px; padding: 8px 4px;
+  border-radius: 18px; border: 2px solid var(--ink); background: var(--sky); text-align: center; min-width: 0;
+}
+.plate.empty { border-style: dashed; background: transparent; color: var(--muted); justify-content: center; }
+.plate-slot { font-size: .7rem; font-weight: 900; color: var(--muted); }
+.plate-emoji { font-size: 1.7rem; }
+.plate-plus { font-size: 1.8rem; font-weight: 900; }
+.plate-name { font-size: .8rem; font-weight: 800; line-height: 1.15; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+.plate-note { font-size: .68rem; background: var(--lemon); color: #233A31; border-radius: 99px; padding: 0 6px; font-weight: 800; }

@@ -1,0 +1,36 @@
+/* The striped awning header. */
+/* ---------- the awning header ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 5;
+  background: var(--sky);
+  padding-top: env(safe-area-inset-top);
+}
+.awning {
+  height: 18px;
+  background: repeating-linear-gradient(90deg, var(--tomato) 0 26px, #FFF8EC 26px 52px);
+  position: relative;
+}
+.awning::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 18px; height: 12px;
+  background:
+    radial-gradient(circle at 13px 0, var(--tomato) 12.5px, transparent 13px) 0 0 / 52px 13px repeat-x,
+    radial-gradient(circle at 13px 0, #FFF8EC 12.5px, transparent 13px) 26px 0 / 52px 13px repeat-x;
+  filter: drop-shadow(0 2px 0 rgba(35, 58, 49, .12));
+}
+.bar-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 18px 16px 8px; max-width: 760px; margin: 0 auto; }
+.brand { display: flex; flex-direction: column; min-width: 0; }
+.brand-name { font-size: .78rem; font-weight: 800; color: var(--muted); letter-spacing: .02em; }
+#pageTitle { margin: 0; font-size: 2.3rem; color: var(--accent); }
+.top-actions { display: flex; gap: 6px; align-items: center; }
+.icon-btn {
+  min-width: 42px; min-height: 42px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper);
+  font-weight: 800; font-size: 1.05rem; display: grid; place-items: center; padding: 0; cursor: pointer;
+}
+.icon-btn.lang { border-radius: 14px; font-size: .85rem; padding: 0 8px; }
+.timer-bar { flex-basis: 100%; margin: 0 auto; padding: 0 16px 8px; max-width: 760px; }
+
+main { padding: 6px 14px 12px; max-width: 760px; margin: 0 auto; }
+.tab { display: none; }
+.tab.active { display: block; }
+.brand { flex: 1; }
+#pageTitle { font-size: clamp(1.7rem, 7.5vw, 2.3rem); overflow-wrap: anywhere; }

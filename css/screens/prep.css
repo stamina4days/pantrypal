@@ -1,0 +1,15 @@
+/* Prep, timers, receipts. */
+/* prep, timers, receipts */
+.task { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1.5px dashed var(--line); color: var(--ink); font-size: .96rem; line-height: 1.45; font-weight: 600; }
+.task input { width: 22px; height: 22px; min-height: 22px; flex: none; margin-top: 1px; accent-color: var(--leaf); }
+.task.done span { text-decoration: line-through; color: var(--muted); }
+.timer-btn { margin: 4px 0 6px 32px; }
+.timer-btn.big { margin: 8px 0; font-size: 1.02rem; padding: 10px 16px; }
+.timer-slot { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.timer { display: inline-flex; align-items: center; gap: 6px; background: var(--paper); border: 2px solid var(--ink); border-radius: 999px; padding: 4px 6px 4px 12px; font-size: .9rem; font-weight: 700; }
+.timer.ring { background: var(--lemon); color: #233A31; }
+@media (prefers-reduced-motion: no-preference) { .timer.ring { animation: ring .5s ease-in-out infinite alternate; } @keyframes ring { to { transform: rotate(-3deg) scale(1.04); } } }
+.timer-x { border: 0; background: none; box-shadow: none; min-height: 32px; min-width: 32px; padding: 0; font-size: 1.2rem; }
+.receipt-row { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1.5px dashed var(--line); }
+.receipt-row input[type=checkbox] { width: 22px; height: 22px; min-height: 22px; margin-top: 12px; flex: none; accent-color: var(--leaf); }
+.receipt-row .r-name { margin-top: 0; }

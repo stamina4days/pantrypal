@@ -1,0 +1,37 @@
+/* Shelf tiles on My Food, and collection cards on Recipes */
+.place-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 2px 0 12px; }
+.place-tile {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 8px 4px 8px;
+  background: var(--paper); border: 2px solid var(--ink); border-radius: 16px; box-shadow: 0 3px 0 var(--ink);
+  text-decoration: none; color: inherit; text-align: center; min-width: 0;
+}
+.place-tile:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.place-tile img { width: 44px; height: 44px; }
+.pt-name { font-weight: 900; font-size: .88rem; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pt-count { font-size: .74rem; color: var(--muted); font-weight: 700; }
+.pt-flag {
+  position: absolute; top: -9px; right: -6px; transform: rotate(8deg);
+  background: var(--tomato); color: #fff; border: 2px solid var(--ink); border-radius: 999px; padding: 0 7px; font-size: .7rem; font-weight: 900;
+}
+
+.collection-strip {
+  display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 12px; margin: 0 -14px 6px; padding-left: 14px; padding-right: 14px;
+  scroll-snap-type: x proximity; scrollbar-width: none;
+}
+.collection-strip::-webkit-scrollbar { display: none; }
+.collection-card {
+  --cc: var(--leaf);
+  flex: none; width: 108px; min-height: 96px; scroll-snap-align: start;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 6px; padding: 10px;
+  border: 2px solid var(--ink); border-radius: 16px; box-shadow: 0 3px 0 var(--ink);
+  background: var(--paper); text-decoration: none; color: inherit;
+  background-image: linear-gradient(var(--cc), var(--cc)); background-size: 100% 10px; background-repeat: no-repeat;
+}
+.collection-card:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.c-tomato { --cc: var(--tomato); } .c-leaf { --cc: var(--leaf); } .c-lemon { --cc: var(--lemon); } .c-sea { --cc: var(--sea); } .c-plum { --cc: var(--plum); }
+.cc-emoji { font-size: 1.8rem; margin-top: 6px; }
+.cc-name { font-weight: 900; font-size: .9rem; line-height: 1.15; }
+#collectionPage[data-color="lemon"] { --scr: #B98A00; }
+#collectionPage[data-color="sea"] { --scr: var(--sea); }
+#collectionPage[data-color="plum"] { --scr: var(--plum); }
+#collectionPage[data-color="leaf"] { --scr: var(--leaf); }

@@ -1,0 +1,7 @@
+/* Phone check. */
+/* phone check */
+.diag { list-style: none; padding: 0; margin: 0; }
+.diag li { display: flex; gap: 10px; padding: 9px 0; border-bottom: 1.5px dashed var(--line); }
+.diag .mark { font-weight: 900; width: 1.4em; flex: none; }
+.diag li.ok .mark { color: var(--leaf); }
+.diag li.no .mark { color: var(--tomato); }

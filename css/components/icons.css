@@ -1,0 +1,30 @@
+/* Hand-drawn icons and food stickers. Icons take the text color; --icf is the little accent fill. */
+.ic { width: 1.35em; height: 1.35em; vertical-align: -.32em; flex: none; overflow: visible; }
+button .ic + span, button .ic { margin-right: 2px; }
+.icon-square .ic, .icon-btn .ic { width: 26px; height: 26px; margin: 0; vertical-align: middle; }
+.icon-btn .ic { width: 24px; height: 24px; }
+button.primary { --icf: rgba(255, 255, 255, .28); }
+.chip.on, .chip[aria-pressed="true"] { --icf: #fff; }
+.back-btn { --icf: none; }
+.back-btn .ic { width: 22px; height: 22px; stroke-width: 3; }
+.go .ic { width: 22px; height: 22px; color: var(--muted); }
+.tabbar .ico { display: grid; place-items: center; height: 30px; }
+.tabbar .ico .ic { width: 28px; height: 28px; }
+.tabbar button { --icf: transparent; }
+.tabbar button.active { --icf: var(--lemon); }
+#favBtn .ic { --icf: none; }
+#favBtn .ic.on { --icf: var(--lemon); }
+.rate-btn.on { --icf: var(--lemon); }
+
+/* Food stickers in lists replace the old emoji tiles */
+img.food-emoji, img.r-emoji, img.plate-emoji, img.cc-art { background: none; border-radius: 0; display: block; }
+img.food-emoji { width: 44px; height: 44px; }
+img.r-emoji { width: 38px; height: 38px; display: inline-block; vertical-align: middle; margin-right: 8px; }
+.recipe-mini img.r-emoji, .food-mini img.food-emoji { width: 46px; height: 46px; margin-right: 0; }
+img.plate-emoji { width: 40px; height: 40px; }
+img.cc-art { width: 44px; height: 44px; margin-top: 8px; }
+.tip-card img.food-emoji { width: 46px; height: 46px; }
+.hero-sticker .hero-art-img { width: 76px; height: 76px; }
+@media (prefers-reduced-motion: no-preference) {
+  .item:active img.food-emoji, .recipe-mini:active img.r-emoji { transform: rotate(-8deg) scale(1.06); transition: transform .12s; }
+}
