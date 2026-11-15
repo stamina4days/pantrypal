@@ -1,0 +1,42 @@
+{
+  "id": "shrimp-and-zucchini-stir-fry",
+  "name": "Shrimp and Zucchini Stir-Fry",
+  "type": "Dinner",
+  "cuisine": "Asian",
+  "family": "stir-fry",
+  "time": 25,
+  "serves": 4,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "1 lb|shrimp",
+    "2|zucchini",
+    "3 cloves|garlic",
+    "1 tbsp|ginger|o",
+    "3 tbsp|soy sauce",
+    "1 tsp|cornstarch",
+    "1 tbsp|honey|o",
+    "2 tbsp|oil",
+    "|rice|o"
+  ],
+  "steps": [
+    "Peel and devein the shrimp if needed. Halve the zucchini lengthwise and slice it. Mince the garlic, and the ginger if using.",
+    "Stir together the soy sauce, cornstarch, 3 tablespoons of water, and the honey if using. Set it aside.",
+    "Heat 1 tablespoon of oil in a large skillet or wok over high heat. Cook the shrimp until pink, 2 to 3 minutes, then move them to a plate.",
+    "Add the remaining oil and the zucchini. Stir-fry until just tender, 3 to 4 minutes. Add the garlic and ginger for the last 30 seconds.",
+    "Return the shrimp to the pan, stir the sauce, and pour it in. Toss for about 1 minute, until it thickens and coats everything. Serve over rice."
+  ],
+  "es": {
+    "name": "Salteado de camarones y calabacita",
+    "steps": [
+      "Pela y desvena los camarones si hace falta. Parte la calabacita a lo largo y rebánala. Pica el ajo, y el jengibre si lo usas.",
+      "Mezcla la salsa de soya, la maicena, 3 cucharadas de agua y la miel si la usas. Reserva.",
+      "Calienta 1 cucharada de aceite en una sartén grande o wok a fuego alto. Cocina los camarones hasta que estén rosados, de 2 a 3 minutos, y pásalos a un plato.",
+      "Agrega el resto del aceite y la calabacita. Saltea hasta que esté apenas tierna, de 3 a 4 minutos. Añade el ajo y el jengibre durante los últimos 30 segundos.",
+      "Regresa los camarones a la sartén, mezcla la salsa y viértela. Revuelve por 1 minuto, hasta que espese y cubra todo. Sirve con arroz."
+    ]
+  }
+}

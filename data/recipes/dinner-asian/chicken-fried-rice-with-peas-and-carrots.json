@@ -1,0 +1,44 @@
+{
+  "id": "chicken-fried-rice-with-peas-and-carrots",
+  "name": "Chicken Fried Rice with Peas and Carrots",
+  "type": "Dinner",
+  "cuisine": "Asian",
+  "family": "fried-rice",
+  "time": 25,
+  "serves": 4,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "3 cups|rice",
+    "2|eggs",
+    "8 oz|chicken breast",
+    "1/2 cup|peas",
+    "1|carrot",
+    "2 cloves|garlic",
+    "3 tbsp|soy sauce",
+    "2|scallions|o",
+    "2 tbsp|oil"
+  ],
+  "steps": [
+    "Cold leftover rice works best. If your rice is freshly cooked, spread it on a plate and chill it for 20 minutes so it doesn't turn mushy.",
+    "Dice the chicken. Dice the carrot. Mince the garlic and slice the scallions, if using.",
+    "Heat 1 tablespoon of oil in a large skillet over medium-high heat. Cook the chicken until no pink remains, 5 to 6 minutes.",
+    "Add the peas and carrots and garlic and cook for 2 to 3 minutes.",
+    "Push everything to one side, add the remaining oil, and scramble the eggs in the empty space.",
+    "Add the rice, breaking up any clumps, and stir-fry until hot, 3 to 4 minutes. Stir in the soy sauce and top with scallions."
+  ],
+  "es": {
+    "name": "Arroz frito con pollo y chícharos y zanahoria",
+    "steps": [
+      "El arroz frío del día anterior funciona mejor. Si está recién hecho, extiéndelo en un plato y enfríalo 20 minutos para que no quede pegajoso.",
+      "Corta el pollo en cubitos. Corta la zanahoria en cubitos. Pica el ajo y rebana las cebollitas, si las usas.",
+      "Calienta 1 cucharada de aceite en una sartén grande a fuego medio-alto. Cocina el pollo hasta que ya no esté rosado, de 5 a 6 minutos.",
+      "Agrega los chícharos y la zanahoria y el ajo y cocina de 2 a 3 minutos.",
+      "Empuja todo hacia un lado, agrega el resto del aceite y revuelve los huevos en el espacio libre.",
+      "Agrega el arroz, deshaciendo los grumos, y saltea hasta que esté caliente, de 3 a 4 minutos. Añade la salsa de soya y decora con cebollitas."
+    ]
+  }
+}
