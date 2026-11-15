@@ -1,0 +1,38 @@
+{
+  "id": "potato-salad",
+  "name": "Potato Salad",
+  "type": "Side",
+  "cuisine": "American",
+  "family": "Potato Salad",
+  "time": 40,
+  "serves": 6,
+  "keeps": 4,
+  "prep": false,
+  "freezes": false,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "2 lb|potatoes",
+    "1/2 cup|mayonnaise",
+    "1 tbsp|mustard",
+    "2 stalks|celery",
+    "1/4|onion",
+    "2|eggs|o",
+    "|salt"
+  ],
+  "steps": [
+    "Cube the potatoes and boil them in salted water until just tender, 10 to 12 minutes. Drain and cool.",
+    "Hard-boil the eggs if using, then chop.",
+    "Mix the mayonnaise, mustard, diced celery, and finely diced onion.",
+    "Fold in the potatoes and eggs and season. Chill until serving."
+  ],
+  "es": {
+    "name": "Ensalada de papa",
+    "steps": [
+      "Corta las papas en cubos y hiérvelas en agua con sal hasta que estén apenas suaves, de 10 a 12 minutos. Escúrrelas y deja que se enfríen.",
+      "Si usas huevos, cuécelos duros y pícalos.",
+      "Mezcla la mayonesa, la mostaza, el apio picado y la cebolla picada finamente.",
+      "Incorpora las papas y los huevos y sazona. Refrigera hasta servir."
+    ]
+  }
+}

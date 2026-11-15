@@ -1,0 +1,42 @@
+{
+  "id": "sheet-pan-chicken-thighs-with-carrots",
+  "name": "Sheet-Pan Chicken Thighs with Carrots",
+  "type": "Dinner",
+  "cuisine": "American",
+  "family": "sheet-pan",
+  "time": 40,
+  "serves": 4,
+  "keeps": 3,
+  "prep": true,
+  "freezes": false,
+  "equip": [
+    "oven"
+  ],
+  "kid": true,
+  "ing": [
+    "1 1/2 lb|chicken thighs",
+    "1 lb|carrots",
+    "3 tbsp|olive oil",
+    "1 tsp|paprika",
+    "|salt",
+    "|pepper",
+    "1|lemon|o"
+  ],
+  "steps": [
+    "Heat the oven to 425F (220C).",
+    "Cut the carrots into sticks. Pat the chicken dry. Toss each with olive oil, paprika, salt, and pepper.",
+    "Spread everything on a large sheet pan and roast for 30 minutes, until the chicken reaches 165F inside and the vegetables are tender.",
+    "Squeeze lemon over the top if you have one, and serve."
+  ],
+  "airfry": "Air fryer option: cook in batches at 400F (200C) for about two-thirds of the oven time, shaking halfway.",
+  "airfryEs": "Opción en freidora de aire: cocina por tandas a 200 °C (400 °F) más o menos dos tercios del tiempo del horno, sacudiendo a la mitad.",
+  "es": {
+    "name": "Muslos de pollo al horno con zanahorias",
+    "steps": [
+      "Precalienta el horno a 220 °C (425 °F).",
+      "Corta las zanahorias en bastones. Seca el pollo con papel. Mezcla cada uno con aceite de oliva, paprika, sal y pimienta.",
+      "Extiende todo en una charola grande y hornea 30 minutos, hasta que el pollo llegue a 74 °C (165 °F) por dentro y las verduras estén tiernas.",
+      "Exprime limón encima si tienes y sirve."
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "overnight-oats",
+  "name": "Overnight Oats",
+  "type": "Breakfast",
+  "cuisine": "American",
+  "family": "Overnight Oats",
+  "time": 5,
+  "serves": 1,
+  "keeps": 4,
+  "prep": true,
+  "freezes": false,
+  "equip": [],
+  "kid": true,
+  "ing": [
+    "1/2 cup|oats",
+    "1/2 cup|milk",
+    "1/4 cup|yogurt|o",
+    "1 tsp|honey|o",
+    "1/2 cup|berries|o",
+    "1/2|banana|o"
+  ],
+  "steps": [
+    "Stir the oats, milk, yogurt, and honey together in a jar.",
+    "Cover and refrigerate overnight, or at least 4 hours.",
+    "Top with fruit in the morning."
+  ],
+  "es": {
+    "name": "Avena remojada",
+    "steps": [
+      "Mezcla la avena, la leche, el yogur y la miel en un frasco.",
+      "Tapa y refrigera toda la noche, o al menos 4 horas.",
+      "En la mañana, agrega la fruta encima."
+    ]
+  }
+}
