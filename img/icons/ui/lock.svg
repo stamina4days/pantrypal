@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Locked</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="14" width="20" height="14" rx="3" fill="var(--icf, #FFD23F)"/><path d="M10.5 14V10a5.5 5.5 0 0 1 11 0v4"/><circle cx="16" cy="21" r="1.8" fill="currentColor"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

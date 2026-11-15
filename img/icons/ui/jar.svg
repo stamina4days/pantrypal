@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Tips</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7.5" y="9" width="17" height="19" rx="4" fill="var(--icf, #FFD23F)"/><rect x="9" y="4" width="14" height="5" rx="1.5" fill="#fff"/><path d="M12 17h8"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

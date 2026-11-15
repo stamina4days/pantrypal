@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Basket</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h24l-3 13H7z" fill="var(--icf, #FFD23F)"/><path d="M9 13l5-8M23 13l-5-8M11 17v5M16 17v5M21 17v5"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

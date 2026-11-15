@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Chef hat</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v8h14v-8"/><path d="M9 18a6 6 0 0 1-1-11.5 7 7 0 0 1 16 0A6 6 0 0 1 23 18z" fill="var(--icf, #FFD23F)"/><path d="M9 22h14"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

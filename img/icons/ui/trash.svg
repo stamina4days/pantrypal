@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Trash</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9l1.5 17a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2L25 9z" fill="var(--icf, #FFD23F)"/><path d="M4.5 9h23M12.5 9V5.5h7V9M13 14v9M19 14v9"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

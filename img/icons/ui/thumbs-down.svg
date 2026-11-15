@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Not for me</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18V6H5v12z" fill="var(--icf, #FFD23F)"/><path d="M10 18l5 9c2 0 3-1.5 2.5-3.5L16.5 20H25a2 2 0 0 0 2-2.4l-2-10A2 2 0 0 0 23 6H10"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

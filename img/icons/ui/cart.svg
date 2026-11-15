@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Shopping cart</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6h4l3 14h13l3-10H9"/><path d="M10 10h16.5l-3 10H11z" fill="var(--icf, #FFD23F)"/><circle cx="12.5" cy="25.5" r="2" fill="currentColor"/><circle cx="22" cy="25.5" r="2" fill="currentColor"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

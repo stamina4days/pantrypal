@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Camera</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5a2.5 2.5 0 0 1 2.5-2.5H10l2-3h8l2 3h3.5A2.5 2.5 0 0 1 28 11.5V24a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" fill="var(--icf, #FFD23F)"/><circle cx="16" cy="17" r="5" fill="#fff"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

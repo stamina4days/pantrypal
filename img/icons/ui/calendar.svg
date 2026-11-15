@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Calendar</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="22" height="20" rx="3" fill="var(--icf, #FFD23F)"/><path d="M5 13h22M11 4v6M21 4v6"/><circle cx="11" cy="19" r="1.2" fill="currentColor"/><circle cx="16" cy="19" r="1.2" fill="currentColor"/><circle cx="21" cy="19" r="1.2" fill="currentColor"/><circle cx="11" cy="23.5" r="1.2" fill="currentColor"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

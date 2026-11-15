@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Special</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="25" height="17" rx="2" fill="var(--icf, #FFD23F)"/><path d="M9 28l3-5M23 28l-3-5M8.5 12.5c2-2 4 2 6 0s4 2 6 0"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

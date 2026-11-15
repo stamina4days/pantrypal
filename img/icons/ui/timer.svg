@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Timer</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="18" r="10" fill="var(--icf, #FFD23F)"/><path d="M16 18v-5M13 4h6M16 4v4M24.5 9.5l2-2"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

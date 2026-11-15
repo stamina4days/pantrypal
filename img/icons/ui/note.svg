@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Notepad</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h13l5 5v19H7z" fill="var(--icf, #FFD23F)"/><path d="M20 4v5h5M11 14h10M11 18.5h10M11 23h6"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

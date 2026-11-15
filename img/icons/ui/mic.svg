@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Voice</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="3.5" width="10" height="16" rx="5" fill="var(--icf, #FFD23F)"/><path d="M6.5 15a9.5 9.5 0 0 0 19 0M16 24.5V28.5M11 28.5h10"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

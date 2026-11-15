@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Knife</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 25L22 7c2.5-1.5 5 .5 4 3L13 23z" fill="#E8EEF1"/><path d="M4 25l-1 2 4-1 6-3"/><path d="M8 21l3 3" /><path d="M13 23l3.5 3.5"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

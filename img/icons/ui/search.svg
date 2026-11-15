@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Search</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="8.5" fill="var(--icf, #FFD23F)"/><path d="M20.5 20.5L27 27"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>
