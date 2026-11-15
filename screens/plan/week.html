@@ -1,0 +1,17 @@
+<!-- The week at a glance: every planned meal, with calories, cost, and food it rescues -->
+<dialog id="weekPage" class="screen page" data-accent="plan" aria-labelledby="wkTitle">
+  <div class="page-body">
+    <div class="page-hero">
+      <img class="hero-art" src="img/illustrations/calendar.svg" width="150" height="120" alt="">
+      <h2 id="wkTitle" data-t>Week at a glance</h2>
+      <p id="wkMeta" class="hero-meta"></p>
+    </div>
+    <div id="wkTotals" class="stat-chips"></div>
+    <div id="wkDays" class="week-days"></div>
+    <div id="wkEmpty" class="empty-art hidden">
+      <img src="img/illustrations/empty-plan.svg" width="180" height="139" alt="">
+      <p data-t>Nothing planned yet. Let Pal plan your week, or add meals from any recipe.</p>
+      <button id="wkPlan" class="primary" type="button"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> <span data-t>Plan my week</span></button>
+    </div>
+  </div>
+</dialog>
