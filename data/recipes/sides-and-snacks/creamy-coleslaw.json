@@ -1,0 +1,35 @@
+{
+  "id": "creamy-coleslaw",
+  "name": "Creamy Coleslaw",
+  "type": "Side",
+  "cuisine": "American",
+  "family": "Creamy Coleslaw",
+  "time": 15,
+  "serves": 6,
+  "keeps": 3,
+  "prep": false,
+  "freezes": false,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "4 cups|cabbage",
+    "1|carrot",
+    "1/2 cup|mayonnaise",
+    "1 tbsp|vinegar",
+    "1 tsp|sugar",
+    "|salt"
+  ],
+  "steps": [
+    "Thinly shred the cabbage and grate the carrot.",
+    "Whisk the mayonnaise, vinegar, sugar, and a pinch of salt.",
+    "Toss everything together and chill for 20 minutes."
+  ],
+  "es": {
+    "name": "Ensalada de col cremosa",
+    "steps": [
+      "Rebana el repollo en tiras finas y ralla la zanahoria.",
+      "Bate la mayonesa, el vinagre, el azúcar y una pizca de sal.",
+      "Mezcla todo y refrigera 20 minutos."
+    ]
+  }
+}

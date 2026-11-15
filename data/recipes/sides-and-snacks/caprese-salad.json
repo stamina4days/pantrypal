@@ -1,0 +1,35 @@
+{
+  "id": "caprese-salad",
+  "name": "Caprese Salad",
+  "type": "Side",
+  "cuisine": "Italian",
+  "family": "Caprese Salad",
+  "time": 10,
+  "serves": 4,
+  "keeps": 0,
+  "prep": false,
+  "freezes": false,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "3|tomatoes",
+    "8 oz|mozzarella",
+    "1 handful|basil",
+    "2 tbsp|olive oil",
+    "1 tbsp|vinegar|o",
+    "|salt"
+  ],
+  "steps": [
+    "Slice the tomatoes and mozzarella.",
+    "Layer them on a plate with the basil leaves.",
+    "Drizzle with oil and vinegar and sprinkle with salt."
+  ],
+  "es": {
+    "name": "Ensalada caprese",
+    "steps": [
+      "Rebana los tomates y el queso mozzarella.",
+      "Acomódalos en un plato intercalando hojas de albahaca.",
+      "Rocía con aceite y vinagre y espolvorea sal."
+    ]
+  }
+}

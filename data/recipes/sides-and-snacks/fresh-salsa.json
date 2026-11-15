@@ -1,0 +1,35 @@
+{
+  "id": "fresh-salsa",
+  "name": "Fresh Salsa",
+  "type": "Snack",
+  "cuisine": "Mexican",
+  "family": "Fresh Salsa",
+  "time": 10,
+  "serves": 6,
+  "keeps": 3,
+  "prep": false,
+  "freezes": false,
+  "equip": [],
+  "kid": false,
+  "ing": [
+    "4|tomatoes",
+    "1/2|onion",
+    "1|jalapeno|o",
+    "|cilantro",
+    "1|lime",
+    "|salt"
+  ],
+  "steps": [
+    "Finely dice the tomatoes, onion, and jalapeno and chop the cilantro.",
+    "Mix with the lime juice and season with salt.",
+    "Let it rest for 10 minutes for the flavors to blend."
+  ],
+  "es": {
+    "name": "Salsa fresca (pico de gallo)",
+    "steps": [
+      "Pica finamente los tomates, la cebolla y el jalapeño, y pica el cilantro.",
+      "Mezcla con el jugo de limón y sazona con sal.",
+      "Deja reposar 10 minutos para que se mezclen los sabores."
+    ]
+  }
+}

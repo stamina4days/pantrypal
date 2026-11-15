@@ -1,0 +1,45 @@
+{
+  "id": "slow-cooker-red-lentil-curry",
+  "name": "Slow Cooker Red Lentil Curry",
+  "type": "Dinner",
+  "cuisine": "Indian",
+  "family": "slow-cooker",
+  "time": 15,
+  "serves": 6,
+  "keeps": 5,
+  "prep": true,
+  "freezes": true,
+  "equip": [
+    "slowcooker|pressure"
+  ],
+  "kid": false,
+  "ing": [
+    "1 1/2 cups|red lentils",
+    "1 can|coconut milk",
+    "1 can (14 oz)|canned tomatoes",
+    "3 cups|broth",
+    "1|onion",
+    "3 cloves|garlic",
+    "1 tbsp|ginger",
+    "2 tbsp|curry powder",
+    "3 cups|spinach|o",
+    "|rice|o"
+  ],
+  "steps": [
+    "Rinse the lentils. Put them in the slow cooker with the coconut milk, tomatoes, broth, diced onion, minced garlic, grated ginger, and curry powder.",
+    "Cook on low for 6 to 8 hours or high for 3 to 4 hours, until the lentils are soft.",
+    "Stir in the spinach until it wilts and season with salt.",
+    "Serve over rice. Pressure cooker: cook on high pressure for 8 minutes and let the pressure release naturally for 10 minutes."
+  ],
+  "wait": "plus 3 to 8 hours of hands-off cooking",
+  "waitEs": "más 3 a 8 horas de cocción sin atender",
+  "es": {
+    "name": "Curry de lentejas rojas en olla de cocción lenta",
+    "steps": [
+      "Enjuaga las lentejas. Ponlas en la olla con la leche de coco, los tomates, el caldo, la cebolla picada, el ajo picado, el jengibre rallado y el curry en polvo.",
+      "Cocina en bajo de 6 a 8 horas o en alto de 3 a 4 horas, hasta que las lentejas estén suaves.",
+      "Agrega la espinaca hasta que se marchite y sazona con sal.",
+      "Sirve con arroz. Olla de presión: cocina a presión alta 8 minutos y deja que la presión baje sola 10 minutos."
+    ]
+  }
+}

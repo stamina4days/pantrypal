@@ -1,0 +1,37 @@
+{
+  "id": "hummus",
+  "name": "Hummus",
+  "type": "Snack",
+  "cuisine": "Mediterranean",
+  "family": "Hummus",
+  "time": 10,
+  "serves": 6,
+  "keeps": 5,
+  "prep": false,
+  "freezes": true,
+  "equip": [
+    "blender"
+  ],
+  "kid": false,
+  "ing": [
+    "1 can|chickpeas",
+    "1/4 cup|tahini",
+    "1|lemon",
+    "1 clove|garlic",
+    "2 tbsp|olive oil",
+    "|salt"
+  ],
+  "steps": [
+    "Drain the chickpeas, saving the liquid.",
+    "Blend the chickpeas, tahini, lemon juice, garlic, and oil until smooth, adding a few spoons of the saved liquid as needed.",
+    "Season with salt and drizzle with more oil."
+  ],
+  "es": {
+    "name": "Hummus",
+    "steps": [
+      "Escurre los garbanzos y guarda el líquido.",
+      "Licúa los garbanzos, el tahini, el jugo de limón, el ajo y el aceite hasta que quede terso, agregando unas cucharadas del líquido si hace falta.",
+      "Sazona con sal y rocía con más aceite."
+    ]
+  }
+}
