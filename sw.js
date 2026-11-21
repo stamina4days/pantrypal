@@ -4,7 +4,7 @@
      right away and refreshes in the background, so the app opens fast with no signal.
    Bump CACHE when you publish a big change to clear out old copies. */
 importScripts("offline-files.js");   // defines OFFLINE_FILES
-const CACHE = "pantrypal-v10b";
+const CACHE = "pantrypal-v11a";
 const DATA_CACHE = "pantrypal-data";
 
 self.addEventListener("install", e => {

@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#17242E" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Track your groceries and cook what expires first.">
 <title>Pantry Pal</title>
+<script>try { if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast"); } catch (e) {}</script>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="img/icons/icon.svg" type="image/svg+xml">
 <link rel="icon" href="img/icons/icon-192.png" type="image/png" sizes="192x192">
@@ -39,6 +40,7 @@
 <link rel="stylesheet" href="css/components/pal-life.css">
 <link rel="stylesheet" href="css/components/simple.css">
 <link rel="stylesheet" href="css/components/materials.css">
+<link rel="stylesheet" href="css/components/app-feel.css">
 <link rel="stylesheet" href="css/screens/recipe.css">
 <link rel="stylesheet" href="css/screens/plan.css">
 <link rel="stylesheet" href="css/screens/prep.css">
@@ -48,6 +50,9 @@
 <link rel="stylesheet" href="css/themes/contrast.css">
 <link rel="stylesheet" href="css/screens/splash.css">
 <link rel="stylesheet" href="css/screens/item-page.css">
+<link rel="stylesheet" href="css/screens/today.css">
+<link rel="stylesheet" href="css/screens/add-food.css">
+<link rel="stylesheet" href="css/screens/my-food.css">
 <link rel="stylesheet" href="css/screens/week.css">
 <link rel="stylesheet" href="css/screens/badges.css">
 <link rel="stylesheet" href="css/screens/tips.css">
@@ -74,7 +79,7 @@
 <header class="topbar">
   <div class="awning" aria-hidden="true"></div>
   <div class="bar-row">
-  <div class="brand"><span class="brand-name">Pantry Pal</span><h1 id="pageTitle">My Food</h1></div>
+  <div class="brand"><span class="brand-name">Pantry Pal</span><h1 id="pageTitle">Today</h1></div>
   <div class="top-actions">
     <button id="helpBtn" class="icon-btn" data-t-aria="Help" aria-label="Help"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg><span class="btn-label" data-t>Help</span></button>
     <button id="langBtn" class="icon-btn lang" aria-label="Cambiar a español">ES</button>
@@ -88,11 +93,11 @@
 <main id="main"></main>
 
 <nav class="tabbar" aria-label="Sections">
-  <button id="tabbtn-pantry" data-tab="pantry" class="active" aria-current="page"><span class="ico" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/fridge.svg#i"/></svg></span><span data-t>My Food</span></button>
+  <button id="tabbtn-today" data-tab="today" class="active" aria-current="page"><span class="ico" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sun.svg#i"/></svg></span><span data-t>Today</span></button>
+  <button id="tabbtn-pantry" data-tab="pantry"><span class="ico" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/fridge.svg#i"/></svg></span><span data-t>My Food</span></button>
   <button id="tabbtn-recipes" data-tab="recipes"><span class="ico" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/book.svg#i"/></svg></span><span data-t>Recipes</span></button>
   <button id="tabbtn-plan" data-tab="plan"><span class="ico" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/calendar.svg#i"/></svg></span><span data-t>Plan</span></button>
   <button id="tabbtn-shopping" data-tab="shopping"><span class="ico" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/cart.svg#i"/></svg></span><span data-t>Shopping</span></button>
-  <button id="tabbtn-stats" data-tab="stats"><span class="ico" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sprout.svg#i"/></svg></span><span data-t>Waste Less</span></button>
 </nav>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -173,6 +178,7 @@
 <script src="js/core/amount-sums.js" defer></script>
 <script src="js/ui/helpers.js" defer></script>
 <script src="js/ui/cards.js" defer></script>
+<script src="js/ui/ask.js" defer></script>
 <script src="js/ui/confetti.js" defer></script>
 <script src="js/pal/face.js" defer></script>
 <script src="js/pal/lines.js" defer></script>
@@ -219,6 +225,7 @@
 <script src="js/features/opened/opened.js" defer></script>
 <script src="js/features/voice/talk-to-add.js" defer></script>
 <script src="js/features/share/kitchen-link.js" defer></script>
+<script src="js/features/swipe/swipe-rows.js" defer></script>
 <script src="js/screens/food/food.js" defer></script>
 <script src="js/screens/item/item.js" defer></script>
 <script src="js/screens/quick/quick.js" defer></script>
@@ -252,6 +259,7 @@
 <script src="js/screens/food/special.js" defer></script>
 <script src="js/screens/stats/jar.js" defer></script>
 <script src="js/screens/home-screen/home-screen.js" defer></script>
+<script src="js/screens/today/today.js" defer></script>
 <script src="js/app/display.js" defer></script>
 <script src="js/app/tabs.js" defer></script>
 <script src="js/app/wire-kitchen.js" defer></script>
