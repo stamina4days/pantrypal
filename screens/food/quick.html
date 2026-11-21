@@ -3,6 +3,8 @@
   <div class="dialog-body">
     <h2 id="quickTitle" data-t>Quick add</h2>
     <p class="muted small" data-t>Type or paste items, separated by commas or new lines. Amounts are optional, like "12 eggs, 2 lbs chicken, spinach".</p>
+    <button id="sayItBtn" class="say-it hidden" type="button"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/mic.svg#i"/></svg> <span id="sayItLabel" data-t>Say it instead</span></button>
+    <p id="sayItHeard" class="muted small hidden" aria-live="polite"></p>
     <textarea id="quickText" rows="5" data-t-aria="Items to add" aria-label="Items to add"></textarea>
     <ul id="quickPreview" class="mini-list"></ul>
     <div class="actions">

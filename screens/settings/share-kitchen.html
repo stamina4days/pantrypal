@@ -1,0 +1,19 @@
+<!-- Sharing your kitchen with someone else's phone using a link -->
+<dialog id="shareKitchenPage" class="screen page" data-accent="shopping" aria-labelledby="skTitle">
+  <div class="page-body">
+    <div class="page-hero">
+      <img class="hero-art" src="img/illustrations/market-crate.svg" width="170" height="116" alt="">
+      <h2 id="skTitle" data-t>Share your kitchen</h2>
+      <p class="hero-meta" data-t>Send a link to someone in your house. When they open it, your kitchen copies onto their phone.</p>
+    </div>
+    <div class="card">
+      <h3 data-t>What to send</h3>
+      <label class="check"><input type="checkbox" id="skFood" checked> <span id="skFoodLabel" data-t>My Food</span></label>
+      <label class="check"><input type="checkbox" id="skLists" checked> <span id="skListsLabel" data-t>Shopping lists</span></label>
+      <label class="check"><input type="checkbox" id="skPlan" checked> <span id="skPlanLabel" data-t>Meal plan</span></label>
+      <label class="check"><input type="checkbox" id="skMine" checked> <span id="skMineLabel" data-t>My recipes and notes</span></label>
+    </div>
+    <button id="skSend" class="primary wide big-add" type="button"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/share.svg#i"/></svg> <span data-t>Send the link</span></button>
+    <p class="muted small center" data-t>It's a copy, not a live connection. If either of you changes something later, send a new link.</p>
+  </div>
+</dialog>

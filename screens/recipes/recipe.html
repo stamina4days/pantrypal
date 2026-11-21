@@ -6,7 +6,7 @@
       <h2 id="recipeTitle"></h2>
       <button class="icon-square rate-btn" data-rate="1" data-t-aria="I liked this" aria-label="I liked this"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/thumbs-up.svg#i"/></svg></button>
       <button class="icon-square rate-btn" data-rate="-1" data-t-aria="Not for me" aria-label="Not for me"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/thumbs-down.svg#i"/></svg></button>
-      <button id="favBtn" class="icon-square fav" aria-pressed="false"></button>
+      <button id="favBtn" class="icon-square fav" aria-pressed="false" data-t-aria="Save to favorites" aria-label="Save to favorites"></button>
     </div>
     <div id="recipeMeta" class="meta-chips"></div>
     <p id="recipeNutr" class="small nutr"></p>
@@ -17,6 +17,11 @@
       <button id="servPlus" class="icon-square" data-t-aria="More servings" aria-label="More servings">+</button>
     </div>
     <div id="recipeBody"></div>
+    <div id="recipeNote" class="sticky-note">
+      <h3 data-t>Your notes</h3>
+      <textarea id="recipeNoteText" rows="3" data-t-ph="Like: Mom adds extra garlic" placeholder="Like: Mom adds extra garlic" data-t-aria="Your notes on this recipe" aria-label="Your notes on this recipe"></textarea>
+      <label class="plain"><span data-t>Whose favorite is it?</span> <input id="recipeFavBy" data-t-ph="Like: Grandma's favorite" placeholder="Like: Grandma's favorite"></label>
+    </div>
 
     <div id="cookedPanel" class="panel hidden">
       <h3 data-t>What did you use?</h3>

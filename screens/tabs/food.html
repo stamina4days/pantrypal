@@ -2,22 +2,26 @@
 <section id="tab-pantry" class="tab active" aria-labelledby="tabbtn-pantry">
   <div class="hint-slot" data-hint="food"></div>
   <div id="alerts"></div>
+  <div id="installSlot"></div>
   <div id="todaySpecial"></div>
   <div id="placeTiles" class="place-tiles" role="group" data-t-aria="Your shelves" aria-label="Your shelves"></div>
-  <div class="toolbar">
-    <input id="pantrySearch" class="search" type="search" data-t-ph="Search your food..." placeholder="Search your food..." data-t-aria="Search your food" aria-label="Search your food">
-    <button id="quickAddBtn" class="icon-square" data-t-aria="Quick add several items" aria-label="Quick add several items"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/note.svg#i"/></svg></button>
-    <button id="receiptBtn" class="icon-square" data-t-aria="Scan a grocery receipt" aria-label="Scan a grocery receipt"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/receipt.svg#i"/></svg></button>
-    <button id="scanQuick" class="icon-square" data-t-aria="Scan a barcode" aria-label="Scan a barcode"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/camera.svg#i"/></svg></button>
+  <div class="add-row">
+    <button id="bigAddBtn" class="primary big-add"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/plus.svg#i"/></svg> <span data-t>Add food</span></button>
+    <button id="talkAddBtn" class="tool-btn hidden"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/mic.svg#i"/></svg><span class="btn-label" data-t>Say it</span></button>
+    <button id="quickAddBtn" class="tool-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/note.svg#i"/></svg><span class="btn-label" data-t>A list</span></button>
+    <button id="receiptBtn" class="tool-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/receipt.svg#i"/></svg><span class="btn-label" data-t>Receipt</span></button>
+    <button id="scanQuick" class="tool-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/camera.svg#i"/></svg><span class="btn-label" data-t>Barcode</span></button>
     <input id="receiptFile" type="file" accept="image/*" capture="environment" hidden>
   </div>
-  <div class="chips" id="locFilter" role="group" data-t-aria="Filter by place" aria-label="Filter by place"></div>
+  <input id="pantrySearch" class="search food-search" type="search" data-t-ph="Find food..." placeholder="Find food..." data-t-aria="Find food" aria-label="Find food">
+  <div class="chips full-only" id="locFilter" role="group" data-t-aria="Filter by place" aria-label="Filter by place"></div>
   <ul id="itemList" class="list"></ul>
   <div id="emptyPantry" class="empty hidden">
     <img class="empty-img" src="img/illustrations/empty-fridge.svg" width="180" height="139" alt="">
     <p><strong data-t>Your kitchen is empty (in here, anyway).</strong></p>
-    <p data-t>Tap + to add food, the notepad to add several at once, or the camera to scan a barcode. Then check Recipes for ideas that use what expires first.</p>
+    <p data-t>Tap "Add food" to start, or "A list" to add several things at once. Then Pal will tell you what to cook first.</p>
     <button id="emptyAuditBtn" class="primary"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> <span data-t>Do a quick pantry audit</span></button>
   </div>
-  <button id="addBtn" class="fab" data-t-aria="Add item" aria-label="Add item">+</button>
+  <button id="addBtn" class="fab full-only" data-t-aria="Add item" aria-label="Add item">+</button>
+  <button id="viewToggle" class="link-btn" type="button"></button>
 </section>
