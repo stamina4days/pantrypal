@@ -15,7 +15,7 @@ function renderAlerts() {
   let html = "";
   if (soon) html += `<div class="alert urgent"><span><svg class="ic" aria-hidden="true"><use href="img/icons/ui/alarm.svg#i"/></svg> ${esc(tn(soon, "1 item expires within 3 days", "{n} items expire within 3 days"))}</span><button data-go="recipes">${esc(t("Use them"))}</button></div>`;
   if (expired) html += `<div class="alert expired"><span>${esc(tn(expired, "1 item is past its date and left out of recipe picks.", "{n} items are past their date and left out of recipe picks."))}</span><button data-toss="1">${esc(t("Toss"))}</button></div>`;
-  $("#alerts").innerHTML = palFoodHtml() + checkinHtml();
+  $("#alerts").innerHTML = palTodayHtml() + checkinHtml();
 }
 function renderPantry() {
   renderAlerts();
@@ -31,17 +31,26 @@ function renderPantry() {
     .filter(i => (locFilter === "All" || i.location === locFilter) && (!q || norm(i.name).includes(q)))
     .sort((a, b) => daySort(daysLeft(a.expires)) - daySort(daysLeft(b.expires)) || a.name.localeCompare(b.name));
 
-  $("#itemList").innerHTML = list.map(i => {
+  const rowHtml = i => {
     const lab = expiryLabel(daysLeft(i.expires));
-    const meta = [locLabel(i.location), amountText(i), i.opened ? friendlyOpened(i.opened) : friendlyBought(i.bought)]
-      .filter(Boolean).map(m => `<span>${esc(m)}</span>`).join("");
+    const sub = [locFilter === "All" ? locLabel(i.location) : "", amountText(i), i.opened ? friendlyOpened(i.opened) : ""].filter(Boolean).join(", ");
     const tags = (i.staple ? `<span class="mini-tag">${esc(t("staple"))}</span>` : "") + (i.leftover ? `<span class="mini-tag">${esc(t("leftovers"))}</span>` : "");
-    const minus = hasAmount(i) ? `<button class="row-btn" data-minus="${i.id}" aria-label="${esc(t("Use one {name}", { name: i.name }))}">-1</button>` : "";
-    return `<li class="item ${lab.cls}" data-id="${i.id}" role="button" tabindex="0" aria-label="${esc(i.name + ", " + lab.text)}">
-      ${foodArt(i.name, i, "food-emoji")}
-      <div class="item-main"><strong>${esc(i.name)} ${tags}</strong><span class="meta">${meta}</span></div>
-      <span class="badge ${lab.cls}">${esc(friendlyWhen(i.expires))}</span>${minus}</li>`;
-  }).join("");
+    const frozen = locIndex(i.location) === 2;
+    return `<li class="item swipe-row ${lab.cls}" data-id="${i.id}">
+      <button type="button" class="swipe-btn freeze" data-swipe="freeze" data-id="${i.id}" tabindex="-1">${frozen ? `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/sun.svg#i"/></svg>${esc(t("Thaw"))}` : `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/snow.svg#i"/></svg>${esc(t("Freeze"))}`}</button>
+      <span class="swipe-right-btns"><button type="button" class="swipe-btn used" data-swipe="used" data-id="${i.id}" tabindex="-1"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg>${esc(t("Used it"))}</button><button type="button" class="swipe-btn tossed" data-swipe="tossed" data-id="${i.id}" tabindex="-1"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/trash.svg#i"/></svg>${esc(t("Tossed"))}</button></span>
+      <div class="row-face" role="button" tabindex="0" aria-label="${esc(i.name + ", " + friendlyWhen(i.expires))}">
+        ${foodArt(i.name, i, "food-emoji")}
+        <span class="fr-main"><strong>${esc(i.name)}</strong>${tags}<span class="fr-sub">${esc(sub)}</span></span>
+        <span class="fr-when ${lab.cls}">${esc(friendlyWhen(i.expires))}</span>
+      </div></li>`;
+  };
+  const soon = list.filter(i => { const d = daysLeft(i.expires); return d !== null && d <= 3; });
+  const later = list.filter(i => !soon.includes(i));
+  const group = (title, cls, rows, hint) => rows.length ? `<li class="food-group ${cls}"><div class="fg-head"><h2>${esc(title)}</h2>${hint ? `<span>${esc(hint)}</span>` : ""}</div><ul class="food-card">${rows.map(rowHtml).join("")}</ul></li>` : "";
+  const hint = settings.swipeLearned ? "" : t("Swipe a food for quick actions");
+  $("#itemList").innerHTML = group(t("Eat soon"), "soon", soon, hint) + group(soon.length ? t("Good for now") : t("All good"), "later", later, soon.length ? "" : hint);
+  if (q && !list.length) $("#itemList").innerHTML = `<li class="muted center small">${esc(t("Nothing called that. Try another word."))}</li>`;
   $("#emptyPantry").classList.add("hidden");
   document.body.classList.toggle("few-items", items.length <= 6 && !$("#pantrySearch").value);
 }

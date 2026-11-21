@@ -16,7 +16,7 @@ const Router = (() => {
   }
   function currentTab() {
     const a = document.querySelector(".tab.active");
-    return a ? a.id.slice(4) : "pantry";
+    return a ? a.id.slice(4) : "today";
   }
   function url() {
     const top = stack[stack.length - 1];

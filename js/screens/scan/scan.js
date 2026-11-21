@@ -64,6 +64,7 @@ async function lookupBarcode(code) {
     if (loc) $("#fLoc").value = locLabel(loc);
     $("#fStaple").checked = isStaple(name);
     if (!$("#fExpires").value) suggestExpiry(true);
+    if (typeof itemFormChanged === "function") itemFormChanged();
   };
   const saved = barcodes[code];
   if (saved) { fill(saved.name, saved.unit, saved.location); note.textContent = t("Found in your saved barcodes."); return; }
