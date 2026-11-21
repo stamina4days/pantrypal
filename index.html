@@ -7,7 +7,25 @@
 <meta name="theme-color" content="#17242E" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Track your groceries and cook what expires first.">
 <title>Pantry Pal</title>
-<script>try { if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast"); } catch (e) {}</script>
+<script>
+/* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
+(function () {
+  var BUILD = "11.0.1";
+  try {
+    if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
+    var had = localStorage.getItem("pantrypal.build");
+    if (had === BUILD) return;
+    localStorage.setItem("pantrypal.build", BUILD);
+    var sw = navigator.serviceWorker;
+    if (!(sw && sw.controller) && had === null) return;
+    window.PP_UPDATING = true;
+    var jobs = [];
+    if (window.caches) jobs.push(caches.keys().then(function (ks) { return Promise.all(ks.filter(function (k) { return k !== "pantrypal-data"; }).map(function (k) { return caches.delete(k); })); }));
+    if (sw) jobs.push(sw.getRegistrations().then(function (rs) { return Promise.all(rs.map(function (r) { return r.unregister(); })); }));
+    Promise.all(jobs).then(function () { location.reload(); }, function () { location.reload(); });
+  } catch (e) {}
+})();
+</script>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="img/icons/icon.svg" type="image/svg+xml">
 <link rel="icon" href="img/icons/icon-192.png" type="image/png" sizes="192x192">

@@ -96,7 +96,18 @@ async function checkRecipeEdits() {
   if (changed) renderAll();
 }
 
+/* If something goes wrong while starting, clear the offline copy and try once more. */
+function healAndReload() {
+  try { if (sessionStorage.getItem("pantrypal.healed")) return false; sessionStorage.setItem("pantrypal.healed", "1"); } catch (e) { return false; }
+  const jobs = [];
+  if (window.caches) jobs.push(caches.keys().then(ks => Promise.all(ks.filter(k => k !== "pantrypal-data").map(k => caches.delete(k)))));
+  if (navigator.serviceWorker) jobs.push(navigator.serviceWorker.getRegistrations().then(rs => Promise.all(rs.map(r => r.unregister()))));
+  Promise.all(jobs).finally(() => location.reload());
+  return true;
+}
+
 async function boot() {
+  if (window.PP_UPDATING) return;   // the page is about to reload with fresh files
   // English only for now. The Spanish files are still here; set SPANISH_READY to true to bring the language switch back.
   if (!SPANISH_READY) settings.lang = "en";
   LANG = settings.lang === "es" ? "es" : "en";
@@ -107,12 +118,19 @@ async function boot() {
     await loadPages();
     await loadRecipes();
   } catch (e) {
-    Splash.fail(e);
+    if (!healAndReload()) Splash.fail(e);
     return;
   }
-  Router.prepare();
-  init();
-  Router.start();
+  try {
+    Router.prepare();
+    init();
+    Router.start();
+  } catch (e) {
+    console.error(e);
+    if (!healAndReload()) Splash.fail(e);
+    return;
+  }
+  try { sessionStorage.removeItem("pantrypal.healed"); } catch (e) {}
   await Splash.finish();
   if (typeof afterSplash === "function") afterSplash();
   setTimeout(() => checkRecipeEdits().catch(() => {}), 4000);
