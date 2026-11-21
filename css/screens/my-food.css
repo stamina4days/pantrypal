@@ -1,0 +1,55 @@
+/* My Food: calm grouped rows you can swipe. */
+#tab-pantry { padding-bottom: 96px; }
+.shelf-chips { padding-top: 2px; }
+.shelf-chips .chip { border: 0; box-shadow: none; min-height: 42px; padding: 0 16px; font-size: .95rem; background: var(--paper); }
+.shelf-chips .chip.on { background: var(--ink); color: var(--paper); }
+.shelf-chips .chip small { font-weight: 700; opacity: .75; margin-left: 2px; }
+#itemList { display: grid; gap: 14px; padding: 0; margin: 6px 0 0; list-style: none; }
+.food-group { list-style: none; }
+.fg-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 0 6px 6px; }
+.fg-head h2 { margin: 0; font-size: 1rem; font-weight: 900; }
+.fg-head span { font-size: .82rem; font-weight: 700; color: var(--muted); text-align: right; }
+.food-group.soon .fg-head h2 { color: var(--tomato-text-bg); }
+.food-group.later .fg-head h2 { color: var(--leaf-deep); }
+.food-card { list-style: none; margin: 0; padding: 0; background: var(--paper); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+
+#itemList .swipe-row {
+  position: relative; display: block; padding: 0; margin: 0; border: 0; border-radius: 0; box-shadow: none; background: #2A7F3F;
+  min-height: 0; overflow: hidden;
+}
+#itemList .swipe-row + .swipe-row .row-face { border-top: 1px solid var(--line); }
+#itemList .swipe-row::before, #itemList .swipe-row::after { display: none; }
+#itemList .swipe-row.show-left, #itemList .swipe-row.open-right { background: #2E8FC7; }
+.row-face {
+  position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 6px 16px;
+  background: var(--paper); background-image: var(--grain); touch-action: pan-y; cursor: pointer;
+  transition: transform .22s cubic-bezier(.2, .85, .25, 1);
+}
+.swipe-row.dragging .row-face { transition: none; }
+.row-face .food-emoji { width: 38px; height: 38px; flex: none; font-size: 28px; line-height: 38px; text-align: center; }
+.row-face img.food-emoji { object-fit: contain; }
+.fr-main { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 6px; }
+.fr-main strong { font-size: 1.06rem; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.fr-sub { flex-basis: 100%; font-size: .88rem; font-weight: 600; color: var(--muted); }
+.fr-sub:empty { display: none; }
+.fr-when { flex: none; font-size: .92rem; font-weight: 900; color: var(--muted); text-align: right; max-width: 40%; }
+.fr-when.urgent { color: var(--tomato-text-bg); }
+.fr-when.expired { color: var(--plum); }
+.fr-when.soon { color: var(--ink); }
+@media (prefers-color-scheme: dark) { .fr-when.urgent { color: #FF9C84; } }
+
+.swipe-btn {
+  position: absolute; top: 0; bottom: 0; width: 88px; min-height: 0; border: 0; border-radius: 0; box-shadow: none; padding: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  color: #fff; font-size: .85rem; font-weight: 900; --icf: rgba(255, 255, 255, .3);
+}
+.swipe-btn:active { transform: none; box-shadow: none; filter: brightness(.92); }
+.swipe-btn .ic { width: 22px; height: 22px; margin: 0; stroke: #fff; }
+.swipe-btn.freeze { left: 0; width: 96px; background: #1B6A99; }
+.swipe-right-btns { position: absolute; top: 0; bottom: 0; right: 0; width: 176px; }
+.swipe-btn.used { right: 88px; background: #22703A; }
+.swipe-btn.tossed { right: 0; background: #B5321C; }
+
+/* The round add button sits above the tab bar */
+#addBtn.fab { width: 62px; height: 62px; border: 0; background: var(--leaf); box-shadow: 0 4px 0 var(--leaf-deep), 0 10px 20px rgba(35, 58, 49, .25); font-size: 2.2rem; font-weight: 700; }
+body:not([data-tab="pantry"]) #addBtn.fab { display: none; }

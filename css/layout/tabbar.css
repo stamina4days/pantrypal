@@ -15,7 +15,7 @@
 #tabbtn-recipes.active { background: color-mix(in srgb, var(--tomato) 20%, transparent); }
 #tabbtn-plan.active { background: color-mix(in srgb, var(--plum) 20%, transparent); }
 #tabbtn-shopping.active { background: color-mix(in srgb, var(--sea) 22%, transparent); }
-#tabbtn-stats.active { background: color-mix(in srgb, var(--lemon) 45%, transparent); }
+#tabbtn-today.active { background: color-mix(in srgb, var(--lemon) 45%, transparent); }
 
 .toast {
   position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom)); z-index: 50; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;

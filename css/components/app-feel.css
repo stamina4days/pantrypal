@@ -1,0 +1,54 @@
+/* Make it feel like an app on the phone, not a web page. */
+html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overscroll-behavior-y: none; }
+body { overscroll-behavior-y: none; }
+button, a, label, .chip, .tabbar, .topbar, .item, .recipe, .shop-item, .place-tile, .pal-row, .ask-head, img, svg {
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+}
+input, textarea, select, .ask-copy, #recipeBody .steps, #recipeBody .ings, .sticky-note { -webkit-user-select: text; user-select: text; }
+img { -webkit-user-drag: none; }
+button, a, input, select, textarea, label, [role="button"] { touch-action: manipulation; }
+:focus:not(:focus-visible) { outline: none; }
+
+/* Quick start: on a return visit the opening screen is just a short fade */
+html.fast .splash-stage, html.fast .splash-awning { display: none; }
+html.fast .splash.done { transition-duration: .18s; transform: none; }
+
+/* ---------- Pal-styled sheets (js/ui/ask.js) ---------- */
+dialog.ask-sheet {
+  width: min(520px, 100vw); max-width: 100vw; margin: auto auto 0; padding: 0; border: 0;
+  border-radius: 28px 28px 0 0; background: var(--paper); color: var(--ink);
+  box-shadow: 0 -8px 28px rgba(23, 36, 46, .22);
+}
+dialog.ask-sheet::backdrop { background: rgba(23, 36, 46, .45); }
+.ask-body { padding: 10px 20px calc(22px + env(safe-area-inset-bottom)); display: grid; gap: 14px; }
+.ask-grip { justify-self: center; width: 44px; height: 5px; border-radius: 3px; background: var(--line); }
+.ask-head { display: flex; align-items: center; gap: 10px; }
+.ask-head .pal { flex: none; }
+.ask-head h2 { margin: 0; font-size: 1.35rem; font-weight: 900; line-height: 1.2; }
+.ask-text { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.45; }
+.ask-label { display: grid; gap: 6px; margin: 0; font-size: .95rem; font-weight: 800; color: var(--muted); }
+.ask-input { min-height: 56px; border-radius: 16px; font-size: 1.15rem; font-weight: 800; color: var(--ink); margin: 0; }
+.ask-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ask-chip { min-height: 40px; padding: 0 14px; border-radius: 20px; border: 0; box-shadow: none; background: var(--sky); font-weight: 800; }
+.ask-extra { justify-self: start; min-height: 44px; border: 0; box-shadow: none; background: none; padding: 0 2px; color: var(--tomato); font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+.ask-copy { width: 100%; box-sizing: border-box; border-radius: 14px; font-size: .95rem; }
+.ask-actions { display: flex; gap: 10px; margin-top: 4px; }
+.ask-actions button { flex: 1; min-height: 56px; border-radius: 18px; font-size: 1.05rem; font-weight: 900; }
+.ask-actions .ask-yes { flex: 1.4; }
+.ask-actions .ask-no { background: var(--sky); border-color: transparent; box-shadow: none; }
+button.danger-fill { background: #C93A23; color: #fff; border-color: #9E2C19; box-shadow: 0 3px 0 #9E2C19; }
+@media (prefers-color-scheme: dark) { button.danger-fill { background: #D9573D; border-color: #A63E28; box-shadow: 0 3px 0 #A63E28; } }
+@media (prefers-reduced-motion: no-preference) {
+  dialog.ask-sheet[open] { animation: ask-up .26s cubic-bezier(.2, .9, .3, 1); }
+  dialog.ask-sheet[open]::backdrop { animation: ask-fade .26s ease; }
+  dialog.ask-sheet.closing { animation: ask-down .18s ease-in forwards; }
+  @keyframes ask-up { from { transform: translateY(100%); } to { transform: none; } }
+  @keyframes ask-down { to { transform: translateY(100%); } }
+  @keyframes ask-fade { from { opacity: 0; } }
+}
+
+/* Spanish is off for now: hide its setting too */
+body.english-only .lang-setting { display: none !important; }
+dialog.ask-sheet form.ask-form { padding: 0; display: grid; gap: 14px; }
+dialog.ask-sheet form.ask-form::before { display: none; }
+dialog.ask-sheet .ask-label { margin: 0; }
