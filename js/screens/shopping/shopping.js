@@ -42,20 +42,20 @@ function renderShopping() {
   empty.innerHTML = palBubble("happy", t("This list is empty. Add something above or from any recipe."), [], "pal-big");
   empty.classList.toggle("hidden", list.items.length > 0);
 }
-function newList() {
-  const name = prompt(t("Name for the new list:"), t("Groceries"));
+async function newList() {
+  const name = await Ask.prompt({ title: t("Start a new list"), label: t("Name it"), value: "", chips: [t("Groceries"), t("This week's meals"), t("Party")], yes: t("Make the list") });
   if (name === null) return;
   const list = { id: uid(), name: name.trim() || t("Shopping list"), items: [] };
   shopping.push(list);
   settings.activeList = list.id;
   saveShopping(); saveSettings(); renderShopping();
 }
-function listMenu() {
+async function listMenu() {
   const list = currentList(); if (!list) return;
-  const name = prompt(t("Rename \"{name}\", or clear the box and tap OK to delete the list:", { name: list.name }), list.name);
+  const name = await Ask.prompt({ title: t("Rename this list"), label: t("Name"), value: list.name, yes: t("Save"), extra: t("Delete this list") });
   if (name === null) return;
-  if (name.trim()) list.name = name.trim();
-  else if (confirm(t("Delete \"{name}\" and its {n} items?", { name: list.name, n: list.items.length }))) {
+  if (name !== Ask.EXTRA && name) list.name = name;
+  else if (name === Ask.EXTRA && await Ask.confirm({ title: t("Delete this list?"), text: t("Delete \"{name}\" and its {n} items?", { name: list.name, n: list.items.length }), yes: t("Delete"), danger: true })) {
     shopping = shopping.filter(l => l.id !== list.id);
     settings.activeList = shopping[0] ? shopping[0].id : null;
   }
@@ -91,16 +91,17 @@ async function shareList() {
     toast(t("List copied. Paste it into a text or email."));
   } catch (e) {
     if (e && e.name === "AbortError") return;
-    prompt(t("Copy this list:"), text);
+    Ask.copy({ title: t("Copy this list:"), value: text });
   }
 }
-function importSharedList() {
+async function importSharedList() {
   const h = location.hash;
   if (!h.startsWith("#list=")) return;
   try {
     const data = JSON.parse(decodeURIComponent(h.slice(6)));
     const itemsIn = Array.isArray(data.i) ? data.i : [];
-    if (confirm(t("Add the shared list \"{name}\" with {n} items?", { name: data.n || t("Shopping list"), n: itemsIn.length }))) {
+    history_replace();
+    if (await Ask.confirm({ title: t("Someone sent you a list"), text: t("Add the shared list \"{name}\" with {n} items?", { name: data.n || t("Shopping list"), n: itemsIn.length }), yes: t("Add it") })) {
       const list = { id: uid(), name: String(data.n || t("Shopping list")).slice(0, 80), items: [] };
       itemsIn.forEach(([name, amt]) => { if (name) addToList(list, String(name).slice(0, 120), String(amt || "").slice(0, 60), ""); });
       shopping.push(list);

@@ -49,6 +49,7 @@ function init() {
   $("#readDateBtn").addEventListener("click", () => $("#dateFile").click());
   $("#dateFile").addEventListener("change", e => { if (e.target.files[0]) readDateFromPhoto(e.target.files[0]); e.target.value = ""; });
   $("#scanBtn").addEventListener("click", openScanner);
+  itemFormInit();
 
   // Scanner
   $("#closeScan").addEventListener("click", () => $("#scanDialog").close());
@@ -177,8 +178,8 @@ function init() {
   $("#calendarAll").addEventListener("click", () => calendarReminders(items));
   $("#exportBtn").addEventListener("click", exportBackup);
   $("#importFile").addEventListener("change", e => { if (e.target.files[0]) importBackup(e.target.files[0]); e.target.value = ""; });
-  $("#clearAll").addEventListener("click", () => {
-    if (!confirm(t("Delete ALL your food, lists, plan, recipes, and stats? Export a backup first if you might want them back."))) return;
+  $("#clearAll").addEventListener("click", async () => {
+    if (!await Ask.confirm({ title: t("Empty your whole kitchen?"), text: t("Delete ALL your food, lists, plan, recipes, and stats? Export a backup first if you might want them back."), yes: t("Empty it"), danger: true })) return;
     items = []; history = []; shopping = []; plan = []; cookedLog = [];
     RECIPES.filter(r => r.mine).forEach(r => RECIPES.splice(RECIPES.indexOf(r), 1));
     myRecipes = []; settings.activeList = null; settings.favorites = []; settings.staples = [];

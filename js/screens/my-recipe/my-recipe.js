@@ -70,9 +70,9 @@ function saveMyRecipe(e) {
   showTab("recipes");
   return r;
 }
-function deleteMine() {
+async function deleteMine() {
   const r = openResult.recipe;
-  if (!r.mine || !confirm(t("Delete {name} from your recipes?", { name: r.name }))) return;
+  if (!r.mine || !await Ask.confirm({ title: t("Delete this recipe?"), text: t("Delete {name} from your recipes?", { name: r.name }), yes: t("Delete"), danger: true })) return;
   myRecipes = myRecipes.filter(m => m.id !== r.id);
   const idx = RECIPES.indexOf(r); if (idx >= 0) RECIPES.splice(idx, 1);
   plan = plan.filter(m => m.recipe !== r.name);
