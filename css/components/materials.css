@@ -1,0 +1,98 @@
+/* Real kitchen materials: paper with a little grain, a wooden shelf, masking tape labels,
+   recipe index cards, and a notepad stuck to the fridge door with a magnet. */
+:root {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  --tape: rgba(243, 222, 168, .85);
+  --card-line: rgba(46, 143, 199, .22);
+  --card-margin: rgba(229, 72, 47, .45);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --tape: rgba(140, 115, 70, .55); --card-line: rgba(111, 192, 232, .14); --card-margin: rgba(255, 122, 92, .35); }
+}
+
+/* Paper grain on everything made of paper */
+.item, .recipe, .shop-item, .card, .bubble, .fresh-card, .facts, .recipe-mini, .food-mini, .link-card,
+.place-tile, .collection-card, .badge-card, .tip-card, .week-day, .stat-chip, .hint, dialog.screen .panel {
+  background-image: var(--grain);
+}
+
+/* A wooden shelf under the Fridge, Freezer, Pantry, and Counter tiles */
+.place-tiles { position: relative; padding-bottom: 18px; margin-bottom: 16px; }
+.place-tiles::after {
+  content: ""; position: absolute; left: -6px; right: -6px; bottom: 0; height: 16px; border-radius: 4px;
+  border: 2px solid #5A3A1E;
+  background: repeating-linear-gradient(90deg, rgba(0, 0, 0, .06) 0 2px, transparent 2px 48px),
+              linear-gradient(#C98B4B, #A86E36 70%, #8C5A2B);
+  box-shadow: 0 4px 0 rgba(90, 58, 30, .35);
+}
+.place-tiles:empty::after { display: none; }
+.place-tile { box-shadow: 0 2px 0 var(--ink); }
+
+/* Food names on a strip of masking tape */
+.item-main strong {
+  align-self: flex-start; max-width: 100%;
+  background: var(--tape); padding: 1px 10px; margin: 0 0 4px -4px;
+  clip-path: polygon(0 8%, 3% 0, 97% 6%, 100% 0, 99% 92%, 96% 100%, 3% 94%, 0 100%);
+  transform: rotate(-1deg);
+}
+.item:nth-child(even) .item-main strong { transform: rotate(.8deg); }
+
+/* Recipe index cards: blue lines, a red margin line, and a coffee ring */
+.recipe, #recipeBody {
+  background-color: var(--paper);
+  background-image: radial-gradient(circle at 92% 14%, transparent 15px, rgba(160, 110, 60, .14) 16px, rgba(160, 110, 60, .14) 18px, transparent 19px),
+    linear-gradient(90deg, transparent 22px, var(--card-margin) 22px, var(--card-margin) 24px, transparent 24px),
+    repeating-linear-gradient(transparent 0 27px, var(--card-line) 27px 28px), var(--grain);
+  background-position: 0 0, 0 0, 0 6px, 0 0;
+}
+.recipe { border-radius: 4px; padding-left: 34px; }
+.recipe .r-head strong, .recipe h3 { font-family: var(--hand); font-size: 1.35rem; font-weight: 400; line-height: 1.15; }
+#recipeBody { border: 2px solid var(--ink); border-radius: 4px; padding: 6px 14px 10px 36px; box-shadow: var(--shadow); margin-top: 10px; }
+#recipeBody h3 { font-family: var(--hand); font-weight: 400; font-size: 1.6rem; }
+
+/* The shopping list is a notepad held to the fridge with a magnet */
+#shopItems:not(:empty) {
+  position: relative; gap: 0; padding: 26px 12px 14px 40px; margin-top: 16px;
+  background-color: #FFFBEA;
+  background-image: linear-gradient(90deg, transparent 28px, var(--card-margin) 28px, var(--card-margin) 30px, transparent 30px),
+    repeating-linear-gradient(transparent 0 55px, var(--card-line) 55px 56px), var(--grain);
+  background-position: 0 0, 0 18px, 0 0;
+  border: 2px solid var(--ink); border-radius: 4px 4px 10px 10px; box-shadow: var(--shadow);
+}
+@media (prefers-color-scheme: dark) { #shopItems:not(:empty) { background-color: #3A3127; } }
+#shopItems:not(:empty)::before {   /* the magnet */
+  content: ""; position: absolute; top: -14px; left: 50%; width: 30px; height: 30px; margin-left: -15px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FF8A6E, var(--tomato) 60%, #B8321C);
+  border: 2px solid var(--ink); box-shadow: 0 3px 0 rgba(0, 0, 0, .25);
+}
+#shopItems > li.shop-item { background: transparent; border: 0; box-shadow: none; border-radius: 0; min-height: 56px; padding: 6px 4px; }
+#shopItems > li.shop-item::before { display: none; }
+#shopItems > li:not(.shop-item) { background: transparent; }
+
+/* Pal's notes stuck on with magnets */
+.hint, .pal-tip { position: relative; }
+.hint::before, .pal-tip::before {
+  content: ""; position: absolute; top: -10px; right: 18px; width: 22px; height: 22px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #7FD3FF, var(--sea) 60%, #1B6A99);
+  border: 2px solid var(--ink); box-shadow: 0 2px 0 rgba(0, 0, 0, .25);
+}
+.hint { transform: rotate(-.6deg); }
+
+/* Your notes on a recipe, on a yellow sticky note */
+.sticky-note {
+  position: relative; margin: 18px 6px 8px; padding: 14px 14px 12px; background: #FFF3A8; color: #3A3320;
+  border-radius: 2px 2px 14px 2px; box-shadow: 0 6px 12px rgba(35, 58, 49, .18); transform: rotate(-1deg);
+  background-image: var(--grain);
+}
+.sticky-note::before {   /* tape at the top */
+  content: ""; position: absolute; top: -10px; left: 50%; width: 70px; height: 20px; margin-left: -35px;
+  background: rgba(255, 255, 255, .55); border: 1px dashed rgba(58, 51, 32, .25); transform: rotate(2deg);
+}
+.sticky-note h3 { margin: 0 0 6px; font-family: var(--hand); font-weight: 400; font-size: 1.5rem; color: #3A3320; }
+.sticky-note textarea, .sticky-note input {
+  background: transparent; border: 0; border-bottom: 2px dashed rgba(58, 51, 32, .35); border-radius: 0;
+  font-family: var(--hand); font-size: 1.3rem; color: #3A3320; box-shadow: none; padding: 4px 2px; min-height: 40px;
+}
+.sticky-note label.plain { color: #3A3320; font-weight: 700; }
+.tag.family-tag { background: #FFE1E6; color: #8A2236; border-color: #8A2236; font-weight: 900; }
+.tag.family-tag::before { content: "\2665  "; }

@@ -45,3 +45,7 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
   .splash { background-image: radial-gradient(circle at 50% 30%, rgba(93, 182, 234, .16), transparent 55%); }
   .splash-name { color: var(--leaf); }
 }
+/* No numbers or progress bars: just Pal getting the kitchen ready */
+.splash-meter { display: none; }
+.splash:not(.failed) .splash-count { display: none; }
+.splash-line { font-size: 1.05rem; }

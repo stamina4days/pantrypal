@@ -52,10 +52,10 @@
 .cb-row { display: flex; gap: 12px; align-items: center; }
 img.cb-art { width: 64px; height: 64px; flex: none; transform: rotate(-6deg); }
 .cb-text { display: flex; flex-direction: column; min-width: 0; }
-.cb-theme { font-size: .78rem; font-weight: 900; color: #F4A6A0; }
+.cb-theme { font-size: .9rem; font-weight: 900; color: #FFC2B8; }
 .cb-name { font-family: var(--hand); font-size: 1.45rem; line-height: 1.1; font-weight: 400; }
 .cb-why { font-size: .9rem; color: #D9E4DD; }
-.cb-meta { font-size: .8rem; color: #B9C9BF; font-weight: 700; margin-top: 2px; }
+.cb-meta { font-size: .9rem; color: #DCE7E0; font-weight: 800; margin-top: 2px; }
 .chalkboard:active { transform: translateY(2px); box-shadow: 0 2px 0 #6E4520; }
 .moment-box { display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .moment-say {
@@ -65,3 +65,10 @@ img.cb-art { width: 64px; height: 64px; flex: none; transform: rotate(-6deg); }
 }
 @keyframes say-in { from { opacity: 0; transform: translateY(10px) scale(.9); } to { opacity: 1; transform: none; } }
 .stamp { animation: stamp-down .5s cubic-bezier(.2, 1.4, .4, 1) both, stamp-fade .4s 1.6s ease-in forwards; }
+/* Read-aloud button tucked in the corner of Pal's speech bubble */
+.bubble { position: relative; }
+.read-aloud {
+  float: right; margin: -4px -6px 4px 8px; width: 40px; height: 40px; min-height: 40px; padding: 0; border-radius: 50%;
+  display: grid; place-items: center; box-shadow: 0 2px 0 var(--ink); --icf: var(--sky-deep);
+}
+.read-aloud .ic { width: 22px; height: 22px; margin: 0; }

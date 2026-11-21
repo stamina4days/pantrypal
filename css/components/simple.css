@@ -1,0 +1,69 @@
+/* Calm by default: words under every icon, one big way to add food,
+   and extra controls only when you choose "Show me everything". */
+
+/* Header buttons: icon on top, a word underneath */
+.icon-btn {
+  min-width: 56px; min-height: 54px; border-radius: 16px; padding: 4px 6px 3px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+  box-shadow: 0 3px 0 var(--ink);
+}
+.icon-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.icon-btn.lang { border-radius: 16px; padding: 4px 6px 3px; }
+.lang-code { font-size: 1rem; font-weight: 900; line-height: 24px; }
+.btn-label { display: block; font-size: .7rem; font-weight: 800; line-height: 1.1; white-space: nowrap; }
+.top-actions { gap: 6px; }
+
+/* My Food: big add button with labeled helpers */
+.add-row { display: flex; gap: 7px; margin: 0 0 10px; }
+.add-row > button { flex: 1 1 0; min-width: 0; }
+.add-row > .big-add { flex: 1.7 1 0; }
+.add-row .btn-label { font-size: .68rem; }
+.big-add { min-height: 64px; font-size: 1.15rem; border-radius: 18px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.big-add .ic { width: 26px; height: 26px; stroke-width: 3; }
+.tool-btn, .icon-square {
+  min-height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  padding: 4px 2px; border-radius: 16px;
+}
+.tool-btn .ic, .icon-square .ic { width: 28px; height: 28px; }
+.icon-square { min-width: 58px; }
+.food-search { margin-bottom: 10px; }
+.link-btn {
+  display: block; margin: 18px auto 70px; background: none; border: 0; box-shadow: none; min-height: 44px;
+  color: var(--leaf-deep); font-weight: 800; text-decoration: underline; text-underline-offset: 4px; cursor: pointer;
+}
+.link-btn:active { transform: none; }
+
+/* Simple view hides the extras */
+body.simple .full-only { display: none !important; }
+body.simple #tab-pantry { padding-bottom: 0; }
+body.simple .item { padding-top: 14px; padding-bottom: 14px; }
+body.simple .item strong { font-size: 1.15rem; }
+body.simple .badge { font-size: .95rem; }
+body.simple.few-items .food-search { display: none; }
+.view-pick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.view-card { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left; padding: 14px; min-height: 104px; border-radius: 18px; }
+.view-card strong { font-size: 1.05rem; }
+.view-card span { font-size: .88rem; font-weight: 600; color: var(--muted); }
+.view-card.on { background: var(--leaf); color: #fff; }
+.view-card.on span { color: #EAF7EC; }
+body.simple .item .row-btn { display: none; }
+/* English only for now */
+body.english-only #langBtn, body.english-only .lang-pick { display: none !important; }
+/* Talk to add */
+.say-it { width: 100%; min-height: 60px; font-size: 1.08rem; margin: 6px 0 8px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.say-it .ic { width: 26px; height: 26px; }
+.say-it.listening { background: var(--tomato); color: #fff; --icf: rgba(255, 255, 255, .35); }
+@media (prefers-reduced-motion: no-preference) {
+  .say-it.listening .ic { animation: mic-pulse 1s ease-in-out infinite; }
+  @keyframes mic-pulse { 50% { transform: scale(1.18); } }
+}
+#sayItHeard { font-size: 1rem; font-weight: 700; color: var(--ink); min-height: 1.4em; }
+/* Home screen steps */
+.install-steps { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 12px; counter-reset: step; }
+.install-step { display: flex; gap: 12px; align-items: center; background: var(--paper); background-image: var(--grain); border: 2px solid var(--ink); border-radius: 18px; padding: 10px 14px 10px 10px; box-shadow: var(--shadow); counter-increment: step; }
+.install-step img { flex: none; width: 92px; height: auto; }
+.install-step p { margin: 0; font-size: 1.05rem; font-weight: 700; }
+.install-step p::before { content: counter(step) ". "; font-family: var(--hand); font-size: 1.5rem; color: var(--leaf-deep); }
+/* Recipes: in simple view the few buttons under the search box wrap onto a second line
+   instead of hiding off the edge, so "Add a recipe" is always in sight. */
+body.simple #tab-recipes .chips { flex-wrap: wrap; overflow: visible; }
