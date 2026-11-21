@@ -1,47 +1,78 @@
-<!-- Add or edit food -->
-<dialog id="itemDialog" data-accent="pantry" class="screen" aria-labelledby="itemDialogTitle">
-  <form id="itemForm">
-    <h2 id="itemDialogTitle"></h2>
-    <label><span data-t>Name</span>
+<!-- Add or edit food: a sheet that slides up from the bottom -->
+<dialog id="itemDialog" data-accent="pantry" class="screen sheet-page" aria-labelledby="itemDialogTitle">
+  <form id="itemForm" novalidate>
+    <div class="sheet-grip" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 id="itemDialogTitle"></h2>
+      <button type="button" id="cancelItem" class="sheet-close" data-t-aria="Close" aria-label="Close"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/close.svg#i"/></svg></button>
+    </div>
+
+    <label class="field"><span data-t>What did you get?</span>
       <span class="name-row">
-        <input id="fName" required list="nameSuggestions" autocomplete="off" data-t-ph="e.g. Baby spinach" placeholder="e.g. Baby spinach">
+        <span id="fNameArt" class="name-art" aria-hidden="true"></span>
+        <input id="fName" required list="nameSuggestions" autocomplete="off" data-t-ph="Type a food" placeholder="Type a food">
         <button type="button" id="scanBtn" class="icon-square" data-t-aria="Scan a barcode" aria-label="Scan a barcode"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/camera.svg#i"/></svg></button>
       </span>
     </label>
+    <div id="quickPicks" class="pick-chips" role="group" data-t-aria="Quick picks" aria-label="Quick picks"></div>
+    <div id="addWays" class="add-ways">
+      <button type="button" id="addWayList" class="text-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/note.svg#i"/></svg> <span data-t>Add several</span></button>
+      <button type="button" id="addWayReceipt" class="text-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/receipt.svg#i"/></svg> <span data-t>From a receipt</span></button>
+    </div>
     <p id="scanNote" class="muted small" aria-live="polite"></p>
     <input id="fBarcode" type="hidden">
     <datalist id="nameSuggestions"></datalist>
-    <div class="row">
-      <label><span data-t>Amount</span> <input id="fAmount" type="number" inputmode="decimal" min="0" step="any" placeholder="6"></label>
-      <label><span data-t>Unit</span> <input id="fUnit" list="units" data-t-ph="eggs" placeholder="eggs"></label>
+
+    <div class="field"><span class="field-label" data-t>Where does it go?</span>
+      <div id="locSeg" class="seg-pick" role="group" data-t-aria="Where does it go?" aria-label="Where does it go?">
+        <button type="button" data-loc="Fridge" aria-pressed="false" data-t>Fridge</button>
+        <button type="button" data-loc="Freezer" aria-pressed="false" data-t>Freezer</button>
+        <button type="button" data-loc="Pantry" aria-pressed="false" data-t>Pantry</button>
+        <button type="button" data-loc="Counter" aria-pressed="false" data-t>Counter</button>
+      </div>
+    </div>
+
+    <div class="field"><span class="field-label" data-t>Good until</span>
+      <div id="expChips" class="pick-chips wrap" role="group" data-t-aria="Good until" aria-label="Good until"></div>
+      <label id="expPickRow" class="date-pick hidden"><span class="sr-only" data-t>Expires</span><input id="fExpires" type="date"></label>
+      <p id="suggestNote" class="muted small" aria-live="polite"></p>
+    </div>
+
+    <div class="field how-much"><span class="field-label"><span data-t>How much</span> <span class="opt" data-t>(optional)</span></span>
+      <div class="stepper">
+        <button type="button" id="amtMinus" data-t-aria="Less" aria-label="Less">-</button>
+        <input id="fAmount" type="number" inputmode="decimal" min="0" step="any" data-t-aria="Amount" aria-label="Amount">
+        <input id="fUnit" list="units" data-t-ph="unit" placeholder="unit" data-t-aria="Unit" aria-label="Unit">
+        <button type="button" id="amtPlus" data-t-aria="More" aria-label="More">+</button>
+      </div>
     </div>
     <datalist id="units"></datalist>
-    <label><span data-t>Where</span> <input id="fLoc" list="locations" data-t-ph="Fridge" placeholder="Fridge"></label>
-    <datalist id="locations"></datalist>
-    <div class="row">
-      <label><span data-t>Bought</span> <input id="fBought" type="date"></label>
-      <label><span data-t>Expires</span> <input id="fExpires" type="date"></label>
-    </div>
-    <div class="link-row">
-      <button type="button" id="suggestExpiry" class="link-btn" data-t>Suggest a date</button>
-      <button type="button" id="readDateBtn" class="link-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/camera.svg#i"/></svg> <span data-t>Read date from package</span></button>
-      <input id="dateFile" type="file" accept="image/*" capture="environment" hidden>
-    </div>
-    <p id="suggestNote" class="muted small" aria-live="polite"></p>
+
+    <details id="itemMore" class="more-details">
+      <summary data-t>More details: date bought, notes, staple</summary>
+      <label class="field"><span data-t>Bought</span> <input id="fBought" type="date"></label>
+      <label class="field"><span data-t>Somewhere else? Name the place</span> <input id="fLoc" list="locations" autocomplete="off"></label>
+      <datalist id="locations"></datalist>
+      <div class="link-row">
+        <button type="button" id="suggestExpiry" class="link-btn" data-t>Suggest a date</button>
+        <button type="button" id="readDateBtn" class="link-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/camera.svg#i"/></svg> <span data-t>Read date from package</span></button>
+        <input id="dateFile" type="file" accept="image/*" capture="environment" hidden>
+      </div>
+      <label class="check"><input type="checkbox" id="fStaple"> <span data-t>Staple: add it to my shopping list when it runs out</span></label>
+      <label class="field"><span data-t>Notes</span> <input id="fNotes" data-t-ph="Optional" placeholder="Optional"></label>
+    </details>
+
     <p id="usageNote" class="muted small"></p>
     <div id="remixBox"></div>
-    <label class="check"><input type="checkbox" id="fStaple"> <span data-t>Staple: add it to my shopping list when it runs out</span></label>
-    <label><span data-t>Notes</span> <input id="fNotes" data-t-ph="Optional" placeholder="Optional"></label>
     <div id="itemExtras" class="actions wrap hidden">
       <button type="button" id="freezeBtn"></button>
       <button type="button" id="useThisBtn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/pan.svg#i"/></svg> <span data-t>Recipes with this</span></button>
       <button type="button" id="itemReminder"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/calendar.svg#i"/></svg> <span data-t>Reminder</span></button>
     </div>
-    <div class="actions">
+    <div class="sheet-actions">
       <button type="button" id="deleteItem" class="danger hidden" data-t>Remove</button>
-      <span class="spacer"></span>
-      <button type="button" id="cancelItem" data-t>Cancel</button>
-      <button type="submit" class="primary" data-t>Save</button>
+      <button type="button" id="addAnother" class="secondary-btn" data-t>Add another</button>
+      <button type="submit" id="saveItemBtn" class="primary" data-t>Save</button>
     </div>
   </form>
 </dialog>

@@ -1,11 +1,9 @@
 <!-- MY FOOD -->
-<section id="tab-pantry" class="tab active" aria-labelledby="tabbtn-pantry">
+<section id="tab-pantry" class="tab" aria-labelledby="tabbtn-pantry">
   <div class="hint-slot" data-hint="food"></div>
-  <div id="alerts"></div>
   <div id="installSlot"></div>
-  <div id="todaySpecial"></div>
-  <div id="placeTiles" class="place-tiles" role="group" data-t-aria="Your shelves" aria-label="Your shelves"></div>
-  <div class="add-row">
+  <div id="placeTiles" class="place-tiles full-only" role="group" data-t-aria="Your shelves" aria-label="Your shelves"></div>
+  <div class="add-row full-only">
     <button id="bigAddBtn" class="primary big-add"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/plus.svg#i"/></svg> <span data-t>Add food</span></button>
     <button id="talkAddBtn" class="tool-btn hidden"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/mic.svg#i"/></svg><span class="btn-label" data-t>Say it</span></button>
     <button id="quickAddBtn" class="tool-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/note.svg#i"/></svg><span class="btn-label" data-t>A list</span></button>
@@ -14,7 +12,7 @@
     <input id="receiptFile" type="file" accept="image/*" capture="environment" hidden>
   </div>
   <input id="pantrySearch" class="search food-search" type="search" data-t-ph="Find food..." placeholder="Find food..." data-t-aria="Find food" aria-label="Find food">
-  <div class="chips full-only" id="locFilter" role="group" data-t-aria="Filter by place" aria-label="Filter by place"></div>
+  <div class="chips shelf-chips" id="locFilter" role="group" data-t-aria="Filter by place" aria-label="Filter by place"></div>
   <ul id="itemList" class="list"></ul>
   <div id="emptyPantry" class="empty hidden">
     <img class="empty-img" src="img/illustrations/empty-fridge.svg" width="180" height="139" alt="">
@@ -22,6 +20,6 @@
     <p data-t>Tap "Add food" to start, or "A list" to add several things at once. Then Pal will tell you what to cook first.</p>
     <button id="emptyAuditBtn" class="primary"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> <span data-t>Do a quick pantry audit</span></button>
   </div>
-  <button id="addBtn" class="fab full-only" data-t-aria="Add item" aria-label="Add item">+</button>
+  <button id="addBtn" class="fab" data-t-aria="Add item" aria-label="Add item">+</button>
   <button id="viewToggle" class="link-btn" type="button"></button>
 </section>
