@@ -68,6 +68,7 @@ function renderItemPage() {
   const frozen = locIndex(i.location) === 2;
   $("#ipActions").innerHTML = [
     `<button data-ip="edit"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/pencil.svg#i"/></svg> ${esc(t("Edit"))}</button>`,
+    canOpen(i) ? `<button data-ip="open"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/jar.svg#i"/></svg> ${esc(t("I opened it"))}</button>` : "",
     hasAmount(i) ? `<button data-ip="one"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/minus.svg#i"/></svg> ${esc(t("Use one"))}</button>` : "",
     `<button data-ip="freeze"><span aria-hidden="true">${frozen ? `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/sun.svg#i"/></svg>` : `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/snow.svg#i"/></svg>`}</span> ${esc(frozen ? t("Thaw it") : t("Freeze it"))}</button>`,
     `<button data-ip="list"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/cart.svg#i"/></svg> ${esc(t("Add to list"))}</button>`,
@@ -88,6 +89,7 @@ function renderItemPage() {
   const facts = [
     [t("Bought"), i.bought ? prettyDate(i.bought) : ""],
     [t("Expires"), i.expires ? prettyDate(i.expires) : t("No date")],
+    [t("Opened"), i.opened ? prettyDate(i.opened) : ""],
     [t("Where"), locLabel(i.location)],
     [t("Amount"), amountText(i)],
     [t("Last checked"), i.verified ? prettyDate(i.verified) : ""],
@@ -101,6 +103,7 @@ function itemPageAction(a) {
   const i = items.find(x => x.id === itemPageId);
   if (!i) return;
   if (a === "edit") openItem(i.id);
+  if (a === "open") { markOpened(i.id); renderItemPage(); }
   if (a === "one") { useOne(i.id); renderItemPage(); }
   if (a === "freeze") { editingId = i.id; freezeOrThaw(); renderItemPage(); }
   if (a === "list") {

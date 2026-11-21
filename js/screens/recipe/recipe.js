@@ -20,6 +20,7 @@ function renderRecipeDetail() {
   const fav = settings.favorites.includes(r.name);
   $("#recipeTitle").textContent = rName(r);
   $("#recipeEmoji").innerHTML = recipeArt(r, "hero-art-img");
+  if (typeof renderRecipeNote === "function") renderRecipeNote();
   $("#favBtn").innerHTML = fav ? `<svg class="ic on" aria-hidden="true"><use href="img/icons/ui/star.svg#i"/></svg>` : `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/star.svg#i"/></svg>`;
   $("#favBtn").setAttribute("aria-pressed", fav);
   $("#favBtn").setAttribute("aria-label", fav ? t("Remove from favorites") : t("Add to favorites"));

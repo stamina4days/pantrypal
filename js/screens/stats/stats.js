@@ -26,10 +26,8 @@ function renderStats() {
     : top[0][1] > 1 ? t("You've tossed {name} {n} times. Try buying less of it, or freezing it sooner.", { name: top[0][0], n: top[0][1] })
     : t("Check the For You recipes when the orange alert shows up. That's where most savings happen.");
   body.innerHTML = palStatsHtml(pct, total) + `
-    <div class="stat-hero"><div class="big">${pct}%</div><div>${esc(t("of your food was used before its date"))}</div>
-      <div class="bar" role="img" aria-label="${esc(t("{a} used in time, {b} used late, {c} thrown out", { a: inTime.length, b: late.length, c: wasted.length }))}"><span class="u" style="width:${w(inTime.length)}"></span><span class="l" style="width:${w(late.length)}"></span><span class="w" style="width:${w(wasted.length)}"></span></div>
-    </div>
-    <div class="stat-grid">
+    ${savingsJarHtml(inTime, total)}
+    <div class="stat-grid full-only">
       <div class="stat good"><div class="num">${inTime.length}</div><div class="small">${esc(t("Used in time"))}</div></div>
       <div class="stat good"><div class="num">${rescued.length}</div><div class="small">${esc(t("Rescued (used in its last 3 days)"))}</div></div>
       <div class="stat"><div class="num">${late.length}</div><div class="small">${esc(t("Used after the date"))}</div></div>

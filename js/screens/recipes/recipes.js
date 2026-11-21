@@ -71,7 +71,7 @@ function renderRecipes() {
 
   $("#recipeList").innerHTML = shown.map((x, idx) => {
     const r = x.recipe;
-    let tags = "";
+    let tags = familyTagHtml(r);
     if (recipeMode === "foryou") {
       const seen = new Set();
       tags += x.have.filter(h => !h.g.basic && h.d !== null && h.d <= 3 && !seen.has(h.item.id) && seen.add(h.item.id))
