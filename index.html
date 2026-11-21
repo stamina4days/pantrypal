@@ -37,12 +37,15 @@
 <link rel="stylesheet" href="css/components/icons.css">
 <link rel="stylesheet" href="css/components/custom-controls.css">
 <link rel="stylesheet" href="css/components/pal-life.css">
+<link rel="stylesheet" href="css/components/simple.css">
+<link rel="stylesheet" href="css/components/materials.css">
 <link rel="stylesheet" href="css/screens/recipe.css">
 <link rel="stylesheet" href="css/screens/plan.css">
 <link rel="stylesheet" href="css/screens/prep.css">
 <link rel="stylesheet" href="css/screens/cook.css">
 <link rel="stylesheet" href="css/screens/stats.css">
 <link rel="stylesheet" href="css/screens/diagnostics.css">
+<link rel="stylesheet" href="css/themes/contrast.css">
 <link rel="stylesheet" href="css/screens/splash.css">
 <link rel="stylesheet" href="css/screens/item-page.css">
 <link rel="stylesheet" href="css/screens/week.css">
@@ -73,9 +76,9 @@
   <div class="bar-row">
   <div class="brand"><span class="brand-name">Pantry Pal</span><h1 id="pageTitle">My Food</h1></div>
   <div class="top-actions">
-    <button id="helpBtn" class="icon-btn" data-t-aria="Help" aria-label="Help"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg></button>
+    <button id="helpBtn" class="icon-btn" data-t-aria="Help" aria-label="Help"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg><span class="btn-label" data-t>Help</span></button>
     <button id="langBtn" class="icon-btn lang" aria-label="Cambiar a español">ES</button>
-    <button id="settingsBtn" class="icon-btn" data-t-aria="Settings" aria-label="Settings"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/gear.svg#i"/></svg></button>
+    <button id="settingsBtn" class="icon-btn" data-t-aria="Settings" aria-label="Settings"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/gear.svg#i"/></svg><span class="btn-label" data-t>Settings</span></button>
   </div>
   </div>
   <div id="timerBar" class="timer-slot timer-bar hidden" aria-live="polite"></div>
@@ -137,6 +140,7 @@
 <script src="data/food/shelf-life.js" defer></script>
 <script src="data/food/storage-tips.js" defer></script>
 <script src="data/food/stickers.js" defer></script>
+<script src="data/food/opened.js" defer></script>
 <script src="data/badges.js" defer></script>
 <script src="data/collections.js" defer></script>
 <script src="data/specials.js" defer></script>
@@ -151,6 +155,8 @@
 <script src="data/lang/en/casual.js" defer></script>
 <script src="data/lang/es/pal.js" defer></script>
 <script src="data/lang/es/pages.js" defer></script>
+<script src="data/lang/en/plain-words.js" defer></script>
+<script src="data/lang/es/plain-words.js" defer></script>
 <script src="js/core/config.js" defer></script>
 <script src="js/core/storage.js" defer></script>
 <script src="js/core/dates.js" defer></script>
@@ -206,6 +212,13 @@
 <script src="js/features/badges/counters.js" defer></script>
 <script src="js/features/moments/sounds.js" defer></script>
 <script src="js/features/moments/stamps.js" defer></script>
+<script src="js/core/friendly-dates.js" defer></script>
+<script src="js/features/household/kitchen.js" defer></script>
+<script src="js/features/household/recipe-notes.js" defer></script>
+<script src="js/features/kids/little-helper.js" defer></script>
+<script src="js/features/opened/opened.js" defer></script>
+<script src="js/features/voice/talk-to-add.js" defer></script>
+<script src="js/features/share/kitchen-link.js" defer></script>
 <script src="js/screens/food/food.js" defer></script>
 <script src="js/screens/item/item.js" defer></script>
 <script src="js/screens/quick/quick.js" defer></script>
@@ -237,6 +250,8 @@
 <script src="js/screens/stats/chart.js" defer></script>
 <script src="js/screens/stats/extras.js" defer></script>
 <script src="js/screens/food/special.js" defer></script>
+<script src="js/screens/stats/jar.js" defer></script>
+<script src="js/screens/home-screen/home-screen.js" defer></script>
 <script src="js/app/display.js" defer></script>
 <script src="js/app/tabs.js" defer></script>
 <script src="js/app/wire-kitchen.js" defer></script>
