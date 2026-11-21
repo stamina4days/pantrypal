@@ -7,7 +7,7 @@ function load(key, fallback) {
 }
 function store(key, val) {
   try { localStorage.setItem(key, JSON.stringify(val)); return true; }
-  catch (e) { alert(t("Couldn't save. Your browser storage may be full or blocked.")); return false; }
+  catch (e) { try { toast(t("Couldn't save. Your browser storage may be full or blocked.")); } catch (e2) {} return false; }
 }
 let items = load(KEYS.items, []);
 let history = load(KEYS.history, []);

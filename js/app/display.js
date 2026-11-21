@@ -18,7 +18,7 @@ function applyLang() {
   tf.value = cur;
   RECIPES.forEach(r => { if (!r.search.includes(norm(t(r.type)).trim())) r.search += " " + t(r.type).toLowerCase(); });
   renderDietSummary();
-  if (typeof setPageTitle === "function") setPageTitle(document.body.dataset.tab || "pantry");
+  if (typeof setPageTitle === "function") setPageTitle(document.body.dataset.tab || "today");
   renderAll();
   syncForReminders();
   applyDisplay();

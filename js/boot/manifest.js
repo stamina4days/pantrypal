@@ -2,6 +2,7 @@
 /* The pages that make up the app. Each one is its own HTML file in screens/.
    Tabs go in the main area; everything else is a full page that slides in on top. */
 const PP_TABS = [
+  "screens/tabs/today.html",
   "screens/tabs/food.html",
   "screens/tabs/recipes.html",
   "screens/tabs/plan.html",

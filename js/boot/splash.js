@@ -41,17 +41,20 @@ const Splash = (() => {
   /* Keep the splash up for a beat so it doesn't just flash, then slide it away. */
   function finish() {
     const s = el(); if (!s) return Promise.resolve();
-    const wait = Math.max(0, 900 - (Date.now() - started));
+    const fast = document.documentElement.classList.contains("fast");
+    const wait = fast ? 0 : Math.max(0, 900 - (Date.now() - started));
     return new Promise(res => setTimeout(() => {
       clearInterval(lineTimer);
       s.classList.add("done");
       document.body.classList.remove("booting");
-      setTimeout(() => { s.remove(); res(); }, 520);
+      setTimeout(() => { s.remove(); res(); }, fast ? 200 : 520);
+      try { localStorage.setItem("pantrypal.fast", "1"); } catch (e) {}
     }, wait));
   }
   function fail(err) {
     clearInterval(lineTimer);
     const s = el(); if (!s) return;
+    document.documentElement.classList.remove("fast");
     s.classList.add("failed");
     const n = s.querySelector(".splash-line");
     const fileHint = location.protocol === "file:"

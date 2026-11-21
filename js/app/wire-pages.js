@@ -44,6 +44,8 @@ function pagesInit() {
   });
   $("#soundsToggle").addEventListener("change", e => { settings.sounds = e.target.checked; saveSettings(); if (e.target.checked) sfx("ding"); });
   $("#outfitsToggle").addEventListener("change", e => { settings.palOutfits = e.target.checked; saveSettings(); renderAll(); });
+  todayInit();
+  swipeInit();
   palLifeInit();
   talkInit();
   homeScreenInit();
@@ -57,7 +59,6 @@ function pagesInit() {
   $("#aboutBtn").addEventListener("click", () => { $("#settingsDialog").close(); openAbout(); });
 
   // Stats tab redraws its extras whenever you switch to it.
-  $("#tabbtn-stats").addEventListener("click", renderStatsExtras);
   segment("#statsRange", "range", () => renderStatsExtras());
 }
 
