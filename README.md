@@ -10,6 +10,13 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11
+- **Today:** a new home screen that fits on one phone screen. It shows Pal's note, the three foods to use first, tonight's pick, your saved-food jar, and a big Add food button. Waste Less opens from the jar.
+- **Swipe on My Food:** swipe a food left for "Used it" or "Tossed," or right to freeze it. Foods are grouped into "Eat soon" and "Good for now," with shelf buttons across the top.
+- **A quicker Add food:** a sheet slides up. Type the name or tap a quick pick, tap where it goes, and tap when it goes bad (Pal's guess is already picked). Extra details are tucked away.
+- **No more browser pop-ups:** new lists, renaming, deleting, and shared kitchens all use Pal sheets that slide up from the bottom.
+- **Feels like an app:** opens instantly after the first visit, with no tap flashes or accidental text selection.
+
 ## New in version 10
 - **Say it:** tap the microphone on My Food and say what you bought ("milk, a dozen eggs, and two pounds of chicken"). Works in Chrome on Android; the button hides itself where the phone can't do it.
 - **I bought these:** check things off your shopping list, then one tap puts them all in My Food with their amounts and dates.
