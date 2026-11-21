@@ -9,12 +9,12 @@ function exportBackup() {
 }
 function importBackup(file) {
   const reader = new FileReader();
-  reader.onload = () => {
+  reader.onload = async () => {
     try {
       const data = JSON.parse(reader.result);
       const incoming = Array.isArray(data) ? data : data.items;
       if (!Array.isArray(incoming)) throw new Error("bad file");
-      if (!confirm(t("Replace everything here with this backup ({n} food items)?", { n: incoming.length }))) return;
+      if (!await Ask.confirm({ title: t("Bring back a copy?"), text: t("Replace everything here with this backup ({n} food items)?", { n: incoming.length }), yes: t("Replace"), danger: true })) return;
       items = incoming.filter(i => i && typeof i.name === "string").map(i => Object.assign({ id: uid() }, i));
       if (Array.isArray(data.history)) history = data.history;
       if (Array.isArray(data.shopping)) shopping = data.shopping;
@@ -33,8 +33,8 @@ function importBackup(file) {
       }
       saveItems(); saveHistory(); saveShopping(); saveBarcodes(); savePlan(); saveCooked(); saveMine(); saveSettings();
       renderDietSummary(); renderAll();
-      alert(t("Backup restored."));
-    } catch (e) { alert(t("That file doesn't look like a Pantry Pal backup.")); }
+      toast(t("Backup restored."));
+    } catch (e) { Ask.notice({ title: t("Hmm, that didn't work"), text: t("That file doesn't look like a Pantry Pal backup."), mood: "worried" }); }
   };
   reader.readAsText(file);
 }

@@ -42,7 +42,7 @@ async function sendKitchen() {
     if (navigator.share) { await navigator.share({ title: "Pantry Pal", text, url }); return; }
   } catch (e) { if (e && e.name === "AbortError") return; }
   try { await navigator.clipboard.writeText(url); toast(t("Link copied. Paste it in a text or email.")); }
-  catch (e) { prompt(t("Copy this link and send it:"), url); }
+  catch (e) { Ask.copy({ title: t("Copy this link and send it:"), value: url }); }
 }
 
 /* Opening a kitchen link: add it to what's here, or swap everything for it. */
@@ -56,7 +56,7 @@ async function importKitchenLink() {
   try { pack = await unpackKitchen(h.slice(9)); } catch (e) { toast(t("That kitchen link didn't come through whole. Ask for a new one.")); return; }
   const who = pack.from ? t("{name}'s kitchen", { name: pack.from }) : t("this kitchen");
   const n = (pack.items || []).length;
-  if (!confirm(t("Copy {who} onto this phone? It has {n} foods. Press OK to add it to what's here.", { who, n }))) return;
+  if (!await Ask.confirm({ title: t("Someone shared a kitchen"), text: t("Copy {who} onto this phone? It has {n} foods. It gets added to what's here.", { who, n }), yes: t("Add it") })) return;
   const snap = snapshot();
   const ids = new Set(items.map(i => i.id));
   (pack.items || []).forEach(i => { if (!ids.has(i.id)) items.push(i); });

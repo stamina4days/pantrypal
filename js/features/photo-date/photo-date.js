@@ -59,7 +59,7 @@ async function readDateFromPhoto(file) {
     await worker.terminate();
     const found = findExpiryDate(data.text);
     if (found) {
-      $("#fExpires").value = found.date;
+      $("#fExpires").value = found.date; expTouched = true; itemFormChanged();
       note.textContent = t("Read \"{raw}\" as {date}. Please double-check it.", { raw: found.raw, date: prettyDate(found.date) });
     } else {
       note.textContent = t("Couldn't find a date. Try a close, well-lit photo of just the date, or type it in.");

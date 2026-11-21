@@ -49,9 +49,10 @@ function useOne(id) {
   else { saveItems(); toast(t("{name}: {left} left", { name: it.name, left: amountText(it) }), snap); }
   renderAll();
 }
-function tossExpired() {
+async function tossExpired() {
   const expired = items.filter(i => { const d = daysLeft(i.expires); return d !== null && d < 0; });
-  if (!expired.length || !confirm(tn(expired.length, "Log 1 expired item as thrown out and remove it?", "Log {n} expired items as thrown out and remove them?"))) return;
+  if (!expired.length) return;
+  if (!await Ask.confirm({ title: t("Clear out old food?"), text: tn(expired.length, "This takes {names} off your list and counts it as thrown out.", "This takes {names} off your list and counts them as thrown out.", { names: expired.map(i => i.name).join(", ") }), yes: t("Clear them out"), danger: true })) return;
   const snap = snapshot();
   expired.forEach(i => removeItem(i, "wasted"));
   toast(tn(expired.length, "Removed 1 expired item.", "Removed {n} expired items.") + stapleSuffix(), snap);

@@ -2,7 +2,7 @@
 /* Every page and its address. Addresses are what you see after # in the browser,
    so you can bookmark a recipe or send someone a link to it. */
 
-const TAB_ROUTES = { pantry: "food", recipes: "recipes", plan: "plan", shopping: "shopping", stats: "waste-less" };
+const TAB_ROUTES = { today: "today", pantry: "food", recipes: "recipes", plan: "plan", shopping: "shopping", stats: "waste-less" };
 
 /* Address shown while a page is open. */
 const ROUTES = {

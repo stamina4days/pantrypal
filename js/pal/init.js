@@ -11,5 +11,5 @@ function buddyInit() {
     if (a === "use") { focusItemId = b.dataset.id; recipeMode = "foryou"; setPressed("#recipeMode", $('#recipeMode [data-mode="foryou"]')); showTab("recipes"); }
     if (a === "freeze") { editingId = b.dataset.id; freezeOrThaw(); }
   });
-  setPageTitle("pantry");
+  setPageTitle("today");
 }
