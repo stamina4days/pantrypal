@@ -10,6 +10,25 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 10
+- **Say it:** tap the microphone on My Food and say what you bought ("milk, a dozen eggs, and two pounds of chicken"). Works in Chrome on Android; the button hides itself where the phone can't do it.
+- **I bought these:** check things off your shopping list, then one tap puts them all in My Food with their amounts and dates.
+- **I opened it:** on a food's page. Milk, salsa, sauces, and the like switch to their shorter opened shelf life and move to the fridge.
+- **Faster first load:** recipes come from one file instead of 347.
+- **Home screen guide:** pictures for iPhone and Android, plus a one-tap button where the phone allows it (Settings, or Pal asks after a couple of days).
+- **Share your kitchen:** Settings, then "Share your kitchen" sends a link that copies your food, lists, plan, and recipes onto another phone. No accounts, no server.
+- **Readability:** every word passes the standard contrast check in day and evening colors, and keyboard focus shows a clear ring.
+- **English only for now.** The Spanish files are still in the project; set `SPANISH_READY` to `true` in `js/core/config.js` to bring the language switch back.
+
+## Made for every age
+- **Simple view by default:** one big "Add food" button, large rows, and Pal. "Show me everything" at the bottom of My Food (or in Settings) brings back filters and extras. Setup asks which you prefer.
+- **A word under every icon,** everyday words instead of computer words ("Save a copy," not "Export backup"), and dates like "Eat by Thursday" or "bought Saturday."
+- **Easy to read:** bigger text, Undo stays up for 12 seconds, and a speaker button on Pal's bubble reads it aloud.
+- **A warm kitchen look:** paper grain, a wooden shelf, masking tape labels, recipe index cards, a notepad shopping list with a magnet, and lamplight colors at night.
+- **Your kitchen:** Pal uses your name and the header says whose kitchen it is. Add your own notes to any recipe on a sticky note, and mark whose favorite it is.
+- **Waste Less jar:** fills with stickers of the food you saved.
+- **Little helper:** steps kids can safely do get a hand mark in cook mode, and finishing earns a sticker.
+
 ## Pal's personality
 - **Hand-drawn everything.** 55 icons, 68 food stickers, and 28 dish drawings replace the phone's emoji, so the app looks the same on every phone.
 - **Pal is alive.** Pal blinks, bounces and says something when you tap it, dances when you rescue food, greets you differently by time of day, and dresses for the season (a switch in Settings turns outfits off).
@@ -101,7 +120,7 @@ tools/list-files.py   rebuilds offline-files.js after you add or rename files
 1. Copy any file from the folder it belongs in (like `data/recipes/breakfast/`) and rename it, like `my-new-dish.json`.
 2. Change the name, time, servings, ingredients (`"amount|ingredient"`, add `|o` at the end for optional), steps, and the Spanish `es` name and steps.
 3. Add it to `data/recipes/index.json` with its folder, like `"breakfast/my-new-dish.json"`. A new category is just a new folder.
-That's it. The offline cache reads the index on its own. `data/recipes.json` is a backup copy of every recipe in one file that the app uses if a recipe file won't load; rebuild it with `tools/build-recipe-bundle.py` when you can, but new recipes work without it.
+That's it. To open fast, the app reads `data/recipes.json`, which holds every recipe in one file, and downloads only the recipe files it doesn't find there, so new recipes show up right away. Edits to an existing recipe file are picked up by a quiet check once a day. To have them show up immediately, ask me to rebuild `data/recipes.json`.
 
 ## Recipe suggestions
 Set your address near the top of `js/core/config.js`: `const SUGGEST_EMAIL = ["yourname", "gmail.com"].join("@");`
