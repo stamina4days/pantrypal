@@ -15,7 +15,7 @@ function foodMiniHtml(i) {
   return `<li><a class="food-mini ${lab.cls}" href="#/food/${esc(i.id)}">
     ${foodArt(i.name, i, "food-emoji")}
     <span class="grow"><strong>${esc(i.name)}</strong><span class="muted small">${esc([amountText(i), locLabel(i.location)].filter(Boolean).join(", "))}</span></span>
-    <span class="badge ${lab.cls}">${esc(lab.text)}</span></a></li>`;
+    <span class="badge ${lab.cls}">${esc(friendlyWhen(i.expires))}</span></a></li>`;
 }
 
 /* Best recipes that use a given food, using what you have. */

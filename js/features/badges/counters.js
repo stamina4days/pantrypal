@@ -56,7 +56,8 @@ function badgeStats() {
     streak: Math.max((settings.streak || {}).best || 0, (settings.streak || {}).n || 0),
     mine: myRecipes.length,
     saved: inTime.reduce((sum, e) => sum + (e.v || 0), 0),
-    lateCook: c.lateCook || 0
+    lateCook: c.lateCook || 0,
+    helper: c.helper || 0
   };
 }
 

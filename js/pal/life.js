@@ -14,12 +14,16 @@ function palTapped(btn) {
   if (svg) { svg.classList.remove("boing"); void svg.getBoundingClientRect(); svg.classList.add("boing"); }
   sfx("pop"); buzz(8);
   const lines = palLines("tap");
-  palSay(btn.closest(".pal-row"), lines[palTapIdx++ % lines.length]);
+  palSay(btn.closest(".pal-row"), palYou(lines[palTapIdx++ % lines.length]));
 }
 function palDance() {
   $$(".pal").forEach(p => { p.classList.remove("dance"); void p.getBoundingClientRect(); p.classList.add("dance"); });
   setTimeout(() => $$(".pal.dance").forEach(p => p.classList.remove("dance")), 1600);
 }
 function palLifeInit() {
-  document.addEventListener("click", e => { const b = e.target.closest(".pal-tap"); if (b) palTapped(b); });
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".pal-tap"); if (b) palTapped(b);
+    const r = e.target.closest(".read-aloud");
+    if (r) { const p = r.parentNode.querySelector("p"); if (p) speak(p.textContent); }
+  });
 }

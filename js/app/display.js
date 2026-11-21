@@ -10,7 +10,7 @@ function applyLang() {
   });
   $$("[data-t-ph]").forEach(el => { el.placeholder = t(el.dataset.tPh); });
   $$("[data-t-aria]").forEach(el => { el.setAttribute("aria-label", t(el.dataset.tAria)); });
-  $("#langBtn").textContent = LANG === "es" ? "EN" : "ES";
+  $("#langBtn").innerHTML = `<span class="lang-code">${LANG === "es" ? "EN" : "ES"}</span><span class="btn-label">${LANG === "es" ? "English" : "Español"}</span>`;
   $("#langBtn").setAttribute("aria-label", LANG === "es" ? "Switch to English" : "Cambiar a español");
   $("#langSelect").value = LANG;
   const tf = $("#typeFilter"), cur = tf.value;
@@ -21,8 +21,18 @@ function applyLang() {
   if (typeof setPageTitle === "function") setPageTitle(document.body.dataset.tab || "pantry");
   renderAll();
   syncForReminders();
+  applyDisplay();
 }
 function applyDisplay() {
   document.body.classList.toggle("large-text", !!settings.largeText);
   document.body.classList.toggle("high-contrast", !!settings.highContrast);
+  document.body.classList.toggle("simple", settings.view !== "full");
+  const vt = document.getElementById("viewToggle");
+  if (vt) vt.textContent = settings.view === "full" ? t("Keep it simple") : t("Show me everything");
+  const vs = document.getElementById("viewSimple");
+  if (vs) vs.checked = settings.view !== "full";
+}
+function setView(v) {
+  settings.view = v; saveSettings(); applyDisplay();
+  toast(v === "full" ? t("Everything's showing now. Settings can make it simple again.") : t("Nice and simple. You can show everything again any time."));
 }

@@ -25,10 +25,10 @@ function palFoodHtml() {
   const day = Math.floor(Date.now() / 86400000);
   const hello = palDaily(palTimeOfDay());
   const picks = [
-    () => palBubble("happy", hello + " " + t("Everything in here is fresh and happy. Want me to plan your week?"), [{ attrs: 'data-pal="plan" class="primary"', label: t("Plan my week") }]),
-    () => palBubble("wink", hello + " " + t("Hungry? I've got recipes you can make with what's here right now."), [{ attrs: 'data-pal="quick" class="primary"', label: t("What can I make?") }]),
-    () => palBubble("happy", palDaily(palSeason()), []),
-    () => palBubble("happy", hello + " " + tn(live.length, "I'm keeping an eye on 1 thing for you. I'll speak up if it needs eating.", "I'm keeping an eye on {n} things for you. I'll speak up if anything needs eating."), [])
+    () => palBubble("wink", palYou(hello), [{ attrs: 'data-pal="quick" class="primary"', label: t("What can I make?") }]),
+    () => palBubble("happy", t("Everything in here is fresh and happy. Want me to plan your week?"), [{ attrs: 'data-pal="plan" class="primary"', label: t("Plan my week") }]),
+    () => palBubble("happy", palYou(palDaily(palSeason())), []),
+    () => palBubble("happy", tn(live.length, "I'm keeping an eye on 1 thing for you. I'll speak up if it needs eating.", "I'm keeping an eye on {n} things for you. I'll speak up if anything needs eating."), [])
   ];
   return picks[day % picks.length]();
 }

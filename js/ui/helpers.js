@@ -9,11 +9,14 @@ const tn = (n, one, many, v) => t(n === 1 ? one : many, Object.assign({ n }, v |
 let toastTimer = null;
 function toast(msg, undoSnap) {
   const el = $("#toast");
+  // Over a full page, the message has to sit inside that page to be seen.
+  const host = (typeof Router !== "undefined" && Router.top()) || document.body;
+  if (el.parentNode !== host) host.appendChild(el);
   el.innerHTML = `<span>${esc(msg)}</span>` + (undoSnap ? `<button id="undoBtn">${esc(t("Undo"))}</button>` : "");
   el.classList.add("show");
   if (undoSnap) $("#undoBtn").onclick = () => { restore(undoSnap); el.classList.remove("show"); };
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove("show"), 6000);
+  toastTimer = setTimeout(() => el.classList.remove("show"), undoSnap ? 12000 : 7000);   // plenty of time to read, and to undo
 }
 const snapshot = () => JSON.stringify({ items, history, shopping, plan, cookedLog });
 function restore(s) {

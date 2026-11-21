@@ -12,7 +12,7 @@ function palSeason(d) {
 }
 function palOutfit() {
   if (settings.palOutfits === false) return "";
-  const ink = 'stroke="var(--ink)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"';
+  const ink = 'stroke="var(--pal-ink)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"';
   switch (palSeason()) {
     case "winter":          // knit hat with a pom-pom, and a scarf
       return `<path d="M30 8c0-18 60-18 60 0z" fill="#2E8FC7" ${ink}/><path d="M26 8h68" ${ink}/><circle cx="60" cy="-14" r="7" fill="#FFFDF6" ${ink}/>
@@ -24,7 +24,7 @@ function palOutfit() {
     case "summer":          // straw sun hat
       return `<ellipse cx="60" cy="6" rx="52" ry="9" fill="#F3D27A" ${ink}/><path d="M34 6c0-22 52-22 52 0z" fill="#F3D27A" ${ink}/><path d="M35 0h50" stroke="#E5482F" stroke-width="6"/>`;
     case "fall-pumpkin":    // a little pumpkin on top
-      return `<path d="M60 -12v-8c0-4 6-6 8-2" fill="none" ${ink}/><ellipse cx="60" cy="-2" rx="22" ry="13" fill="#F28C28" ${ink}/><path d="M50 -12c-4 8-4 14 0 22M70 -12c4 8 4 14 0 22" fill="none" stroke="var(--ink)" stroke-width="3"/>`;
+      return `<path d="M60 -12v-8c0-4 6-6 8-2" fill="none" ${ink}/><ellipse cx="60" cy="-2" rx="22" ry="13" fill="#F28C28" ${ink}/><path d="M50 -12c-4 8-4 14 0 22M70 -12c4 8 4 14 0 22" fill="none" stroke="var(--pal-ink)" stroke-width="3"/>`;
     default:                // fall: a cozy scarf
       return `<path d="M14 112c20 8 72 8 92 0v10c-20 8-72 8-92 0z" fill="#F28C28" ${ink}/><path d="M30 120v16l10-2v-14" fill="#F28C28" ${ink}/><path d="M34 122v8" stroke="#FFD23F" stroke-width="3"/>`;
   }
