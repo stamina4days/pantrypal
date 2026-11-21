@@ -1,0 +1,28 @@
+/* Everyday words in place of computer words. Each line: the app's original wording -> what people see. */
+Object.assign(I18N_EN, {
+  "Backup": "Keep a copy",
+  "Export backup": "Save a copy",
+  "Import backup": "Bring back a copy",
+  "Backup restored.": "Your copy is back. Welcome home!",
+  "Everything lives only in this browser on this device. Export a backup now and then, and use it to move your data to another phone or browser.": "Everything you add stays on this phone. Save a copy now and then, so you can bring it back or move it to a new phone.",
+  "Replace everything here with this backup ({n} food items)?": "Swap everything here for this copy ({n} foods)?",
+  "That file doesn't look like a Pantry Pal backup.": "That doesn't look like a Pantry Pal copy.",
+  "Danger zone": "Start fresh",
+  "Delete all my data": "Empty my whole kitchen",
+  "Delete ALL your food, lists, plan, recipes, and stats? Export a backup first if you might want them back.": "Clear out all your food, lists, plans, recipes, and wins? Save a copy first if you might want them back.",
+  "Notify me when food expires tomorrow": "Remind me the day before food goes bad",
+  "Notifications are blocked. You can allow them in your browser's site settings, or use the calendar option below.": "Reminders are turned off for this site. Try the calendar button below instead.",
+  "This browser can't show notifications. Use the calendar option below instead.": "This phone can't send reminders from here. Try the calendar button below instead.",
+  "Works on any phone. It downloads a calendar file with a 9 AM reminder the day before each item expires. Open it to add the reminders to your calendar.": "Puts a 9 AM reminder in your calendar the day before each food goes bad.",
+  "Check what this phone supports": "What works on this phone",
+  "What this phone supports": "What works on this phone",
+  "Works offline": "Works without internet",
+  "Once Pantry Pal loads one time, every recipe and page is saved on your phone, so it works in the store with no signal.": "Once Pantry Pal opens one time, it keeps working in the store, even with no signal.",
+  "There's no account and no server. Everything you add is saved only in this browser on this phone. Export a backup in Settings to move it somewhere else.": "No sign-up, no passwords. Everything you add stays right here on your phone. Save a copy in Settings to move it to a new phone.",
+  "Your food stays yours": "Your kitchen stays yours",
+  "Couldn't save. Your browser storage may be full or blocked.": "I couldn't save that. Your phone may be out of room.",
+  "Your recipes are saved on this device and show up in Saved, For You, and Browse.": "Your recipes stay on this phone and show up with all the others.",
+  "Voice commands aren't supported in this browser. Try Chrome on Android.": "Talking to Pal doesn't work on this phone yet.",
+  "Couldn't look up {code} (are you offline?). Type a name and it'll be remembered next time.": "I couldn't look that one up. Type the name and I'll remember it next time.",
+  "Check your connection and try again. Once it loads one time, it works offline.": "Check your internet and try again. Once it opens one time, it works without internet."
+});

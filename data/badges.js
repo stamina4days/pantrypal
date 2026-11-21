@@ -18,5 +18,6 @@ const BADGES = [
   { id: "streak-7", name: "On a roll", desc: "Open Pantry Pal 7 days in a row.", test: s => [s.streak, 7] },
   { id: "my-recipe", name: "Recipe writer", desc: "Add a recipe of your own.", test: s => [s.mine, 1] },
   { id: "saver", name: "Money saver", desc: "Save about $50 of food from the trash.", test: s => [Math.floor(s.saved), 50] },
+  { id: "little-helper", name: "Little helper", desc: "Cook a recipe with a kid's help.", test: s => [s.helper, 1] },
   { id: "night-owl", name: "Midnight snack", desc: "Cook something after 10 pm.", test: s => [s.lateCook, 1] }
 ];
