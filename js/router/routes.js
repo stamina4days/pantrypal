@@ -28,6 +28,8 @@ const ROUTES = {
   badgesPage: "badges",
   tipsPage: "tips",
   aboutPage: "about",
+  homeScreenPage: "home-screen",
+  shareKitchenPage: "share-kitchen",
   helpDialog: "help",
   diagDialog: "phone-check"
 };
@@ -71,5 +73,7 @@ const DEEP_LINKS = [
   [/^plan\/week$/, () => openWeek()],
   [/^badges$/, () => openBadges()],
   [/^tips$/, () => openTips()],
-  [/^about$/, () => openAbout()]
+  [/^about$/, () => openAbout()],
+  [/^home-screen$/, () => openHomeScreen()],
+  [/^share-kitchen$/, () => openShareKitchen()]
 ];
