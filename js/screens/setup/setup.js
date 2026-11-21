@@ -4,7 +4,8 @@
 let ob = null;
 function openOnboarding(mode) {
   const P = profile();
-  ob = { mode, step: mode === "first" ? 0 : 1, data: { ...P, cuisines: [...P.cuisines], equipment: [...P.equipment], diets: [...settings.diets] } };
+  ob = { mode, step: mode === "first" ? 0 : 1, data: { ...P, cuisines: [...P.cuisines], equipment: [...P.equipment], diets: [...settings.diets],
+    userName: settings.userName || "", kitchenName: settings.kitchenName || "", view: settings.view || "simple" } };
   renderOnboarding();
   if (!$("#onboardDialog").open) $("#onboardDialog").showModal();
 }
@@ -17,7 +18,13 @@ function renderOnboarding() {
   if (ob.step === 0) {
     h += palBubble("wink", t("It plans meals around the food you already have, so less goes to waste. Setup takes about a minute, and you can change any of it later."), [], "pal-big")
       + `<h2 class="center">${esc(t("Welcome to Pantry Pal"))}</h2>
-      <div class="row"><button data-lang="en" class="${LANG === "en" ? "primary" : ""}">English</button><button data-lang="es" class="${LANG === "es" ? "primary" : ""}">Español</button></div>`;
+      <div class="row lang-pick"><button data-lang="en" class="${LANG === "en" ? "primary" : ""}">English</button><button data-lang="es" class="${LANG === "es" ? "primary" : ""}">Español</button></div>
+      <label class="plain">${esc(t("What should Pal call you?"))} <input data-ob="userName" value="${esc(d.userName)}" autocomplete="given-name" placeholder="${esc(t("Your first name (optional)"))}"></label>
+      <h3>${esc(t("How much do you want to see?"))}</h3>
+      <div class="view-pick">
+        <button type="button" data-view="simple" class="view-card ${d.view !== "full" ? "on" : ""}" aria-pressed="${d.view !== "full"}"><strong>${esc(t("Keep it simple"))}</strong><span>${esc(t("Big buttons, just the basics. Great for anyone."))}</span></button>
+        <button type="button" data-view="full" class="view-card ${d.view === "full" ? "on" : ""}" aria-pressed="${d.view === "full"}"><strong>${esc(t("Show me everything"))}</strong><span>${esc(t("All the filters and extras."))}</span></button>
+      </div>`;
   } else if (ob.step === 1) {
     h += `<h2>${esc(t("Who are you cooking for?"))}</h2>
       <div class="servings"><span>${esc(t("People"))}</span><button type="button" class="icon-square" data-people="-1" aria-label="${esc(t("Fewer people"))}">-</button>
@@ -70,9 +77,13 @@ function obRead() {
   });
 }
 function obSave() {
-  const { diets, ...house } = ob.data;
+  const { diets, userName, kitchenName, view, ...house } = ob.data;
   settings.household = house;
   settings.diets = diets;
+  settings.userName = (userName || "").trim();
+  settings.view = view === "full" ? "full" : "simple";
+  applyDisplay();
+  renderKitchenName();
   settings.onboarded = true;
   saveSettings();
   renderDietSummary();

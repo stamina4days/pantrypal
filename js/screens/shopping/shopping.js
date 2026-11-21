@@ -36,7 +36,9 @@ function renderShopping() {
   $("#shopSuggest").innerHTML = restockHtml(list);
   const est = listEstimate(list);
   $("#shopEstimate").textContent = open.length ? t("Estimated total: about {total}", { total: fmtMoney(est.total) }) + (est.unknown ? " " + tn(est.unknown, "(1 item without a price)", "({n} items without a price)") : "") : "";
-  $("#shopActions").classList.toggle("hidden", !list.items.some(x => x.done));
+  const nDone = list.items.filter(x => x.done).length;
+  $("#shopActions").classList.toggle("hidden", !nDone);
+  $("#moveToFoodLabel").textContent = tn(nDone, "I bought this one", "I bought these {n}");
   empty.innerHTML = palBubble("happy", t("This list is empty. Add something above or from any recipe."), [], "pal-big");
   empty.classList.toggle("hidden", list.items.length > 0);
 }
@@ -64,14 +66,18 @@ function moveCheckedToFood() {
   const done = list.items.filter(x => x.done);
   const snap = snapshot();
   done.forEach(x => {
+    // "2 lb" on the list becomes the amount in My Food
+    const parsed = x.amt ? parseQuick(x.amt + " " + x.name)[0] : null;
     const loc = guessLoc(x.name), est = estimateShelf(x.name, loc);
-    items.push({ id: uid(), added: todayStr(), name: x.name, amount: null, unit: "", location: loc,
+    items.push({ id: uid(), added: todayStr(), name: x.name, amount: parsed && parsed.amount != null ? parsed.amount : null,
+      unit: parsed ? parsed.unit : "", location: loc,
       bought: todayStr(), expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(x.name) });
   });
+  if (done.length) { sfx("ding"); buzz([10, 40, 10]); }
   list.items = list.items.filter(x => !x.done);
   saveItems(); saveShopping();
   renderAll();
-  toast(tn(done.length, "Moved 1 item to My Food with an estimated date. Tap it to adjust.", "Moved {n} items to My Food with estimated dates. Tap any to adjust."), snap);
+  toast(tn(done.length, "Put 1 thing away in My Food. Tap it to change the date.", "Put {n} things away in My Food. Tap any to change its date."), snap);
 }
 async function shareList() {
   const list = currentList(); if (!list) return;
