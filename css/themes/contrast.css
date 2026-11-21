@@ -1,0 +1,34 @@
+/* Readability fixes from the accessibility check: every word meets the WCAG AA contrast standard
+   (4.5 to 1 for regular text, 3 to 1 for large text), in both light and evening colors. */
+:root { --on-color: #fff; --tomato-text-bg: #C2381F; --link: #1E6B32; }
+@media (prefers-color-scheme: dark) { :root { --on-color: #1B1612; --tomato-text-bg: var(--tomato); --link: #9EDC9F; } }
+
+/* Words on colored backgrounds */
+button.primary, .chip.on, .chip[aria-pressed="true"], .earned-tag, .fab, .view-card.on { color: var(--on-color); }
+.view-card.on span { color: var(--on-color); opacity: .85; }
+.badge.urgent, .tag.urgent, .pt-flag { background: var(--tomato-text-bg); color: var(--on-color); }
+.badge.ok, .tag.ok { color: var(--on-color); }
+.badge.expired { color: var(--on-color); }
+.here-tag { color: #1B1612; }
+button.danger { color: #B3301A; border-color: #B3301A; box-shadow: 0 3px 0 #B3301A; }
+@media (prefers-color-scheme: dark) { button.danger { color: #FF9C84; border-color: #FF9C84; box-shadow: 0 3px 0 #FF9C84; } }
+
+/* Back button: paper with dark words, the page's color on the arrow */
+.back-btn { background: var(--paper); color: var(--ink); }
+.back-btn .ic { color: var(--scr); }
+dialog.screen[data-accent="cook"] .back-btn { background: var(--lemon); color: #1B1612; }
+dialog.screen[data-accent="cook"] .back-btn .ic { color: #1B1612; }
+
+/* Links */
+.link-btn, .pal-tip a, .page-body a:not([class]) { color: var(--link); }
+#collectionPage[data-color="lemon"] { --scr: #7A5A00; }
+@media (prefers-color-scheme: dark) { #collectionPage[data-color="lemon"] { --scr: var(--lemon); } }
+
+/* Masking tape names in the evening */
+@media (prefers-color-scheme: dark) { :root { --tape: #5A4A33; } }
+
+/* Keyboard focus: a thick, visible ring everywhere */
+:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; border-radius: 10px; }
+.badge-card .earned-tag { color: var(--on-color); }
+.hint .link-btn, .tip.pal-tip a, .pal-tip a.small { color: var(--link); }
+dialog.cook .hint { color: #1B1612; }

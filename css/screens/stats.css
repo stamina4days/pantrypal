@@ -11,3 +11,14 @@
 .bar .u { background: var(--leaf); }
 .bar .l { background: var(--lemon); }
 .bar .w { background: var(--tomato); }
+/* The savings jar */
+.jar-card { text-align: center; background: var(--paper); background-image: var(--grain); border: 2px solid var(--ink); border-radius: 18px; padding: 14px 14px 12px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.jar { width: min(170px, 55%); height: auto; display: block; margin: 0 auto; }
+.jar-glass { fill: rgba(191, 227, 244, .45); }
+.jar-edge { fill: none; stroke: var(--ink); stroke-width: 4; }
+.jar-shine { fill: none; stroke: #fff; stroke-width: 5; stroke-linecap: round; opacity: .6; }
+.jar-lid { fill: var(--leaf); stroke: var(--ink); stroke-width: 4; }
+.jar-label { fill: #FFF8DF; stroke: var(--ink); stroke-width: 3; }
+.jar-label-text { font-family: var(--hand); font-size: 22px; fill: #233A31; }
+.jar-count { font-family: var(--hand); font-size: 2.2rem; line-height: 1; margin: 8px 0 2px; color: var(--leaf-deep); }
+.jar-say { margin: 0 0 4px; font-weight: 700; }

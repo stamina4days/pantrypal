@@ -9,7 +9,7 @@
   --tomato: #E5482F;
   --tomato-ink: #FFFFFF;
   --lemon: #FFD23F;
-  --leaf: #2F8F46;
+  --leaf: #2A7F3F;
   --leaf-deep: #22703A;
   --plum: #7B3F8C;
   --sea: #2E8FC7;
@@ -19,12 +19,15 @@
   --body: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --radius: 16px;
   --shadow: 0 2px 0 rgba(35, 58, 49, .12), 0 6px 14px rgba(35, 58, 49, .08);
+  --pal-body: #FFFDF6; --pal-ink: #233A31;   /* Pal stays cream in every mode */
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --sky: #17242E; --sky-deep: #213443; --paper: #22313C; --ink: #F3EFE4; --muted: #A9B8BF; --line: #34495A;
-    --tomato: #FF6B52; --lemon: #FFD95A; --leaf: #5CC274; --leaf-deep: #3FA35A; --plum: #C389D6; --sea: #5DB6EA; --chalk: #1E3A2D;
-    --shadow: 0 2px 0 rgba(0, 0, 0, .35), 0 6px 14px rgba(0, 0, 0, .25);
+    /* Evening kitchen: lamplight on walnut, not cold blue screens */
+    --sky: #1F1A15; --sky-deep: #2D251E; --paper: #2E2721; --ink: #F6EBD9; --muted: #C9B9A2; --line: #4A3F34;
+    --tomato: #FF7A5C; --lemon: #FFC94D; --leaf: #7CCB7E; --leaf-deep: #5DB062; --plum: #D59BE0; --sea: #6FC0E8; --chalk: #22382B;
+    --shadow: 0 2px 0 rgba(0, 0, 0, .4), 0 6px 14px rgba(0, 0, 0, .3);
+    --icf: rgba(255, 201, 77, .28);
   }
 }
 body[data-tab="pantry"] { --accent: var(--leaf); }
