@@ -3,6 +3,8 @@
 
 /* Called by renderAll, so anything open stays current after you change something. */
 function renderPageExtras() {
+  const slot = $("#installSlot"); if (slot) slot.innerHTML = installNudgeHtml();
+  renderKitchenName();
   renderSpecial();
   renderPlaceTiles();
   renderCollectionStrip();
@@ -43,6 +45,15 @@ function pagesInit() {
   $("#soundsToggle").addEventListener("change", e => { settings.sounds = e.target.checked; saveSettings(); if (e.target.checked) sfx("ding"); });
   $("#outfitsToggle").addEventListener("change", e => { settings.palOutfits = e.target.checked; saveSettings(); renderAll(); });
   palLifeInit();
+  talkInit();
+  homeScreenInit();
+  kitchenShareInit();
+  $("#recipeNoteText").addEventListener("input", saveRecipeNote);
+  $("#recipeFavBy").addEventListener("input", saveRecipeNote);
+  $("#userNameInput").addEventListener("change", e => { settings.userName = e.target.value.trim(); saveSettings(); renderKitchenName(); renderAll(); });
+  $("#bigAddBtn").addEventListener("click", () => openItem());
+  $("#viewToggle").addEventListener("click", () => setView(settings.view === "full" ? "simple" : "full"));
+  $("#viewSimple").addEventListener("change", e => setView(e.target.checked ? "simple" : "full"));
   $("#aboutBtn").addEventListener("click", () => { $("#settingsDialog").close(); openAbout(); });
 
   // Stats tab redraws its extras whenever you switch to it.
@@ -57,6 +68,7 @@ function onScreenOpen(d) {
 
 /* Runs once the opening screen slides away. */
 function afterSplash() {
+  importKitchenLink();
   updateStreak();
   checkNewBadges();
 }

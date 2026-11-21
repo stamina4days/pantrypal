@@ -11,13 +11,14 @@ function todaysSpecial() {
     if (best.length) return { title: t("Today's special"), theme: t("Rescue mission"), x: best[seed % best.length],
       why: t("Uses your {name} before it turns.", { name: i.name }) };
   }
-  const theme = DAY_SPECIALS[parseDay(today).getDay()];
+  const late = new Date().getHours() >= 20;
+  const theme = DAY_SPECIALS[(parseDay(today).getDay() + (late ? 1 : 0)) % 7];
   const pool = availablePool(), dk = dislikeKeys();
   const list = RECIPES.filter(r => { try { return theme.test(r) && fitsProfile(r, dk); } catch (e) { return false; } })
     .map(r => evaluate(r, pool, settings.diets, householdServings(r) / r.serves))
     .sort((a, b) => a.missing.length - b.missing.length || b.score - a.score).slice(0, 6);
   if (!list.length) return null;
-  return { title: t("Today's special"), theme: t(theme.name), x: list[seed % list.length], why: t(theme.why) };
+  return { title: late ? t("Tomorrow's special") : t("Today's special"), theme: t(theme.name), x: list[(seed + (late ? 1 : 0)) % list.length], why: t(theme.why) };
 }
 function renderSpecial() {
   const box = $("#todaySpecial");

@@ -13,6 +13,7 @@ function renderCook() {
   $("#cookTitle").textContent = rName(cook.r);
   $("#cookProgress").textContent = t("Step {a} of {b}", { a: cook.idx + 1, b: steps.length });
   $("#cookStep").textContent = s;
+  $("#cookHelper").innerHTML = helperHtml(cook.r, cook.idx);
   const min = stepMinutes(s);
   $("#cookStepTimer").innerHTML = min ? `<button class="chip timer-btn big" data-timer="${min}" data-label="${esc(rName(cook.r))}"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/timer.svg#i"/></svg> ${esc(t("Start a {n} minute timer", { n: min }))}</button>` : "";
   $("#cookIngr").innerHTML = cook.r.ingredients.map(g => `<li>${esc(ingLabel(g, cook.f, cook.r))}${g.opt ? ` <span class="muted small">(${esc(t("optional"))})</span>` : ""}</li>`).join("");
@@ -27,6 +28,7 @@ function cookGo(delta) {
   const steps = rSteps(cook.r);
   if (delta > 0 && cook.idx === steps.length - 1) {
     const back = cook.fromRecipe;
+    helperFinished(cook.r);
     closeCook();
     if (back && $("#recipeDialog").open) showCookedPanel();
     return;

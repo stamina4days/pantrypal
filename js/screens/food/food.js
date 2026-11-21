@@ -33,16 +33,17 @@ function renderPantry() {
 
   $("#itemList").innerHTML = list.map(i => {
     const lab = expiryLabel(daysLeft(i.expires));
-    const meta = [locLabel(i.location), amountText(i), i.bought ? t("bought {date}", { date: prettyDate(i.bought) }) : ""]
+    const meta = [locLabel(i.location), amountText(i), i.opened ? friendlyOpened(i.opened) : friendlyBought(i.bought)]
       .filter(Boolean).map(m => `<span>${esc(m)}</span>`).join("");
     const tags = (i.staple ? `<span class="mini-tag">${esc(t("staple"))}</span>` : "") + (i.leftover ? `<span class="mini-tag">${esc(t("leftovers"))}</span>` : "");
     const minus = hasAmount(i) ? `<button class="row-btn" data-minus="${i.id}" aria-label="${esc(t("Use one {name}", { name: i.name }))}">-1</button>` : "";
     return `<li class="item ${lab.cls}" data-id="${i.id}" role="button" tabindex="0" aria-label="${esc(i.name + ", " + lab.text)}">
       ${foodArt(i.name, i, "food-emoji")}
       <div class="item-main"><strong>${esc(i.name)} ${tags}</strong><span class="meta">${meta}</span></div>
-      <span class="badge ${lab.cls}">${esc(lab.cls === "expired" ? t("Past date") : lab.text)}</span>${minus}</li>`;
+      <span class="badge ${lab.cls}">${esc(friendlyWhen(i.expires))}</span>${minus}</li>`;
   }).join("");
   $("#emptyPantry").classList.add("hidden");
+  document.body.classList.toggle("few-items", items.length <= 6 && !$("#pantrySearch").value);
 }
 
 function fillDatalists() {

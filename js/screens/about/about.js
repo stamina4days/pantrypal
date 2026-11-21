@@ -1,6 +1,6 @@
 "use strict";
 /* About page. */
-const APP_VERSION = "8.0";
+const APP_VERSION = "10.0";
 function openAbout() {
   const cuisines = new Set(RECIPES.map(r => r.cuisine));
   $("#abVersion").textContent = t("Version {v}", { v: APP_VERSION });
@@ -10,7 +10,7 @@ function openAbout() {
     [t("Cuisines"), cuisines.size],
     [t("Storage tips"), STORAGE_TIPS.length],
     [t("Badges to earn"), BADGES.length],
-    [t("Languages"), "English, Español"]
+    [t("Languages"), SPANISH_READY ? "English, Español" : "English (Spanish coming soon)"]
   ].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(String(v))}</dd></div>`).join("");
   $("#aboutPage").showModal();
 }
