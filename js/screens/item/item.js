@@ -54,7 +54,7 @@ function renderQuickPicks() {
   box.innerHTML = names.map(n => `<button type="button" class="pick-chip" data-pick="${esc(n)}">${foodArt(n, null, "pick-art")}<span>${esc(n)}</span></button>`).join("");
 }
 
-/* Pal's guess for how long it keeps, from the name and the place. */
+/* Benji's guess for how long it keeps, from the name and the place. */
 function palGuess() {
   const name = $("#fName").value.trim();
   if (!name) return null;
@@ -80,7 +80,7 @@ function itemFormChanged() {
   if (!expTouched) $("#fExpires").value = guess ? guess.date : "";
   const cur = $("#fExpires").value;
   const opts = [];
-  if (guess) opts.push({ date: guess.date, label: t("Pal's guess: {when}", { when: whenLabel(guess.date) }), pal: true });
+  if (guess) opts.push({ date: guess.date, label: t("Benji's guess: {when}", { when: whenLabel(guess.date) }), pal: true });
   [[3, t("3 days")], [7, t("A week")], [14, t("2 weeks")], [30, t("A month")]].forEach(([n, label]) => {
     const date = addDaysFrom(todayStr(), n);
     if (!guess || date !== guess.date) opts.push({ date, label });
@@ -89,7 +89,7 @@ function itemFormChanged() {
   const chip = o => {
     const on = !!cur && o.date === cur && !matched;
     if (on) matched = true;
-    return `<button type="button" class="exp-chip ${on ? "on" : ""} ${o.pal ? "pal-guess" : ""}" aria-pressed="${on}" data-exp="${o.date}">${o.pal ? `<img src="img/pal/happy.svg" width="18" height="21" alt="">` : ""}${esc(o.label)}</button>`;
+    return `<button type="button" class="exp-chip ${on ? "on" : ""} ${o.pal ? "pal-guess" : ""}" aria-pressed="${on}" data-exp="${o.date}">${o.pal ? `<img src="img/pal/happy.svg" width="18" height="24" alt="">` : ""}${esc(o.label)}</button>`;
   };
   const html = opts.map(chip).join("");
   const custom = !!cur && !matched;

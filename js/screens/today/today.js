@@ -1,5 +1,5 @@
 "use strict";
-/* Today: the home screen. Pal's note, the foods to use first, tonight's recipe,
+/* Today: the home screen. Benji's note, the foods to use first, tonight's recipe,
    the saved-food jar, and one big Add food button. Built to fit one phone screen. */
 
 function greeting() {
@@ -7,11 +7,11 @@ function greeting() {
   return h >= 5 && h < 12 ? t("Good morning") : h < 17 ? t("Good afternoon") : t("Good evening");
 }
 
-/* Pal's one short line for the day (at most one button). */
+/* Benji's one short line for the day (at most one button). */
 function palTodayHtml() {
   const dl = i => daysLeft(i.expires);
   if (!items.length) return palBubble("hungry", t("I'm empty and kind of hungry. Add what you bought, or show me what's in your kitchen!"),
-    [{ attrs: 'data-pal="audit" class="primary"', label: t("Show Pal my kitchen") }]);
+    [{ attrs: 'data-pal="audit" class="primary"', label: t("Show Benji my kitchen") }]);
   const expired = items.filter(i => { const d = dl(i); return d !== null && d < 0; });
   if (expired.length) return palBubble("worried", tn(expired.length, "1 thing is past its date. Want me to clear it out?", "{n} things are past their date. Want me to clear them out?"),
     [{ attrs: 'data-toss="1" class="primary"', label: t("Clear them out") }]);

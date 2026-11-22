@@ -44,7 +44,7 @@ function renderSort() {
       <span class="sort-tag">${esc(t("From your kitchen"))}</span>
       ${foodArt(it.name, it, "sort-art")}
       <h3>${esc(t("Is your {name} still in the {place}?", { name: it.name, place: locLabel(it.location).toLowerCase() }))}</h3>
-      ${a ? `<p class="sort-why">${esc(a === "keep" ? t("Thanks! Pal checked it off.") : a === "used" ? t("Nice, that counts as used.") : t("Got it. It's off your list."))}</p>
+      ${a ? `<p class="sort-why">${esc(a === "keep" ? t("Thanks! Benji checked it off.") : a === "used" ? t("Nice, that counts as used.") : t("Got it. It's off your list."))}</p>
         <button class="primary sort-next" type="button" data-sort-next>${esc(t("Next card"))}</button>`
       : `<div class="sort-answers three">
         <button type="button" data-real="keep"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg>${esc(t("Still have it"))}</button>
@@ -72,7 +72,7 @@ function sortEndHtml() {
   const stars = r.right >= r.quizN ? 3 : r.right >= Math.ceil(r.quizN * 0.7) ? 2 : r.right ? 1 : 0;
   const best = Math.max(st.sortBest || 0, r.score);
   return `<div class="sort-end">
-    ${palBubble(stars >= 2 ? "proud" : "happy", stars === 3 ? t("A perfect round! You know your kitchen.") : stars === 2 ? t("Nice sorting! You really know where things go.") : t("Every round teaches Pal and you something new."), [], "pal-big")}
+    ${palBubble(stars >= 2 ? "proud" : "happy", stars === 3 ? t("A perfect round! You know your kitchen.") : stars === 2 ? t("Nice sorting! You really know where things go.") : t("Every round teaches Benji and you something new."), [], "pal-big")}
     <p class="sort-stars" aria-label="${esc(tn(stars, "1 star out of 3", "{n} stars out of 3"))}">${[0, 1, 2].map(k => `<svg class="ic ${k < stars ? "lit" : ""}" aria-hidden="true"><use href="img/icons/ui/star.svg#i"/></svg>`).join("")}</p>
     <p class="sort-result">${esc(t("{a} of {b} right", { a: r.right, b: r.quizN }))}</p>
     ${r.checks ? `<p class="sort-checks">${esc(tn(r.checks, "You checked 1 food in your kitchen, so your list is up to date.", "You checked {n} foods in your kitchen, so your list is up to date."))}</p>` : ""}
