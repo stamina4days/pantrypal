@@ -87,6 +87,7 @@ function afterSplash(choice, landing) {
   importKitchenLink();
   updateStreak();
   checkNewBadges();
+  if (choice === "shop") return openShop();
   if (choice === "hats") return openHats();
   if (choice === "play") return openPlay();
   if (choice === "tour") return startTour();

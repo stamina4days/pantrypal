@@ -125,6 +125,19 @@ body .top-actions .icon-btn { width: 44px; height: 44px; min-width: 44px; min-he
   @keyframes kBlink { 0%, 88%, 100% { background: #22382B; } 94% { background: #7CCB7E; } }
 }
 
+/* A flyer for Benji's shop, stuck to the bottom of the fridge door with a magnet */
+.k-flyer { position: absolute; left: 10px; right: 28px; bottom: 12px; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  min-height: 0; padding: 14px 6px 7px; border: 2px dashed #C43820; border-radius: 6px; background: #FFF3DC; color: #8E2412;
+  font-weight: 900; font-size: .85rem; line-height: 1.1; text-align: center; transform: rotate(3deg); box-shadow: 0 3px 0 rgba(0, 0, 0, .18); cursor: pointer; }
+.k-flyer::before { content: ""; position: absolute; top: -7px; left: 50%; margin-left: -8px; width: 16px; height: 16px; border-radius: 50%; z-index: 2;
+  background: #2E8FC7; box-shadow: 0 2px 0 rgba(0, 0, 0, .25); }
+.k-flyer-awning { position: absolute; left: 0; right: 0; top: 0; height: 9px;
+  border-radius: 4px 4px 0 0; background: repeating-linear-gradient(90deg, #E5482F 0 10px, #FFF3DC 10px 20px); border-bottom: 1px solid rgba(0, 0, 0, .12); }
+.k-flyer .ic { width: 26px; height: 26px; margin: 0; color: #C43820; }
+.k-flyer:active { transform: rotate(3deg) translateY(2px); box-shadow: 0 1px 0 rgba(0, 0, 0, .18); }
+.k-flyer:focus-visible { outline: 3px solid #2E8FC7; outline-offset: 2px; }
+.k-fridge .k-door { padding-bottom: 74px; }
+
 /* ---------- the floor ---------- */
 .k-floor { flex: none; position: sticky; bottom: var(--tabbar-h, 76px); z-index: 4; display: flex; align-items: center; gap: 10px; padding: 8px 14px 10px; background: var(--k-floor); }
 .k-bag { flex: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 6px 6px 16px 16px;
