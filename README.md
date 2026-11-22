@@ -10,6 +10,10 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.14
+- **The music menu.** The music button at the top now opens a menu: what's playing with a Play or Off button, a volume slider, and every song. Pick any song you own, or "Your kitchen's song" to let the music follow your kitchen theme. Locked songs show a lock, play a 10 second sample when tapped, and say which shop item unlocks them, with a button to Benji's shop. The Play page's radio card and Search ("music") open it too, and so does `#/music`.
+- **The tabs stay in one row.** If a style file fails to load, for example on a weak connection while the site is updating, the app now notices and loads it again, so the tabs no longer break into two rows with a gap above them. The tab labels also stay on one line when your phone's text size is turned up.
+
 ## New in version 11.13
 - **Real music.** Pantry Pal now plays real songs. The Pantry Pal song starts when you tap Start, and the music button at the top turns it on and off. Each kitchen theme has its own song, like "Bubblegum Love" in the diner. The radio pack stations are real songs too, including "All I Move Is Caffeine" at the Coffee Shop. Shop samples play from the middle of each song. Songs need a connection and aren't saved for offline use.
 
