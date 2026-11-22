@@ -66,14 +66,18 @@ function palSVG(mood, size, opts) {
     hold: coin + arm(34, 110, 38, 132, 56, 136, "fist") + arm(134, 124, 128, 140, 108, 136, "fist")
   }[pose] || "";
 
-  const st = o.sprout == null ? benjiSprout() : o.sprout;
+  const st0 = o.sprout == null ? benjiSprout() : o.sprout;
+  // A golden sprout from a tip is at least as big as the tip earned
+  const st = golden && o.sprout == null && typeof benjiGoldStage === "function" ? Math.max(st0, benjiGoldStage()) : st0;
   const leaf = d => `<path d="${d}" fill="${golden ? "#F4C542" : "var(--pal-leaf)"}" stroke="${INK}" stroke-width="3"/>`;
   const sprout = `<g transform="translate(0 ${-outfit.lift})">` + (st <= 0
     ? `<circle cx="80" cy="2" r="5" fill="#C98F55" stroke="${INK}" stroke-width="3"/>`
     : `<path d="M80 ${outfit.lift ? 10 : 6} V${st >= 2 ? -14 : -6}" stroke="#2F7A3D" stroke-width="4" stroke-linecap="round"/>`
       + leaf("M80 -4 Q66 -16 58 -6 Q68 2 80 -4Z") + leaf("M80 -6 Q94 -18 104 -8 Q92 2 80 -6Z")
       + (st >= 2 ? leaf("M80 -14 Q70 -26 62 -20 Q70 -12 80 -14Z") + leaf("M80 -14 Q90 -28 100 -22 Q92 -12 80 -14Z") : "")
-      + (st >= 3 ? `<circle cx="80" cy="-22" r="7" fill="#F4D27A" stroke="${INK}" stroke-width="3"/><circle cx="80" cy="-22" r="2.5" fill="#E5482F"/>` : "")) + `</g>`;
+      + (st >= 3 ? (golden
+        ? `<path d="M80 -34 L83 -26 L91 -25 L85 -20 L87 -12 L80 -16 L73 -12 L75 -20 L69 -25 L77 -26 Z" fill="#FFE27A" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/><circle cx="80" cy="-21" r="2.5" fill="#FFFDF6"/>`
+        : `<circle cx="80" cy="-22" r="7" fill="#F4D27A" stroke="${INK}" stroke-width="3"/><circle cx="80" cy="-22" r="2.5" fill="#E5482F"/>`) : "")) + `</g>`;
 
   const dot = (x, y) => `<ellipse class="pe" cx="${x}" cy="${y}" rx="5.5" ry="6.5" fill="${INK}"/><circle cx="${x + 2}" cy="${y - 2}" r="1.9" fill="#fff"/>`;
   const arc = (x, y) => `<path d="M${x - 6} ${y + 2} Q${x} ${y - 7} ${x + 6} ${y + 2}" stroke="${INK}" stroke-width="3.8" fill="none" stroke-linecap="round"/>`;

@@ -19,6 +19,8 @@ const ownsItem = id => {
 /* Anyone who left a tip gets the Supporter badge and a golden sprout (unless they turn it off). */
 const isSupporter = () => (settings.owned || []).some(id => /^tip-/.test(id));
 const benjiGolden = () => isSupporter() && settings.goldenSprout !== false;
+/* Bigger tips grow a bigger golden sprout: $1 a sprout, $3 a leafy one, $5 in full bloom. */
+const benjiGoldStage = () => !benjiGolden() ? 0 : ownsItem("tip-5") ? 3 : ownsItem("tip-3") ? 2 : 1;
 const hatFromShop = h => !!(h && h.shop);
 
 function b64urlBytes(s) {
@@ -65,13 +67,14 @@ async function redeemCode(raw) {
   }
   const it = res.item;
   if ((settings.storeCodes || []).includes(res.code) || (it.kind !== "tip" && ownsItem(it.id))) { toast(t("You already have the {item}.", { item: t(it.name) })); return true; }
-  const wasSupporter = isSupporter();
+  const wasSupporter = isSupporter(), wasStage = benjiGoldStage();
   if (!(settings.owned || []).includes(it.id)) settings.owned = [...(settings.owned || []), it.id];
   settings.storeCodes = [...(settings.storeCodes || []), res.code];
   // The thank-you below already mentions the Supporter badge, so don't celebrate it twice
   if (it.kind === "tip" && Array.isArray(settings.badges) && !settings.badges.includes("supporter")) settings.badges = [...settings.badges, "supporter"];
   saveSettings();
-  toast(it.kind === "tip" ? (wasSupporter ? t("Thank you for another tip! You're the best.") : t("Thank you for the tip! Benji's sprout turned gold, and you earned the Supporter badge."))
+  toast(it.kind === "tip" ? (!wasSupporter ? t("Thank you for the tip! Benji's sprout turned gold, and you earned the Supporter badge.")
+      : benjiGoldStage() > wasStage ? t("Thank you! Benji's golden sprout just grew.") : t("Thank you for another tip! You're the best."))
     : it.kind === "bundle" ? t("Unlocked everything in Benji's shop! Thank you for supporting Pantry Pal.")
     : t("Unlocked the {item}! Thank you for supporting Pantry Pal.", { item: t(it.name) }));
   if (typeof applyKitchenTheme === "function") applyKitchenTheme();
@@ -115,7 +118,8 @@ function renderShop() {
         <p>${esc(t(it.desc))}</p>
         <div class="store-tips">${tiers}</div>
         ${it.tiers.every(tr => !tr.buyUrl) ? `<p class="muted small">${esc(t("Coming soon"))}</p>` : ""}
-        <div class="store-tip-reward">${palSVG("cheer", 56, { pose: "cheer", sprout: 2, outfit: false, wear: false, golden: true })}<span class="small">${esc(t(isSupporter() ? "Thank you! Your golden sprout and Supporter badge are unlocked." : "A golden sprout and the Supporter badge, with any tip"))}</span></div>
+        <div class="store-tip-reward">${[1, 2, 3].map(n => `<span class="store-tip-stage">${palSVG("cheer", 56, { pose: "cheer", sprout: n, outfit: false, wear: false, golden: true })}<span class="small">${["$1", "$3", "$5"][n - 1]}</span></span>`).join("")}</div>
+        ${isSupporter() ? `<p class="store-owned"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> ${esc(t("Thank you! Your golden sprout and Supporter badge are unlocked."))}</p>` : ""}
       </li>`;
     }
     const own = ownsItem(it.id);
