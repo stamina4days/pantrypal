@@ -23,7 +23,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.11.1";
+  var BUILD = "11.12";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
