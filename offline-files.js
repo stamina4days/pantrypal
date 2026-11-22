@@ -40,6 +40,7 @@ const OFFLINE_FILES = [
  "css/screens/week.css",
  "css/themes/contrast.css",
  "css/themes/display.css",
+ "css/themes/kitchen.css",
  "css/themes/print.css",
  "data/badges.js",
  "data/collections.js",

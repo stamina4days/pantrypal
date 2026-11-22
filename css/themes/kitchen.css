@@ -1,0 +1,189 @@
+/* Family kitchen table (version 11.1).
+   Cream paper, a red gingham cloth along the top, cards taped down with butter yellow tape,
+   handwritten headings, and a honey wood shelf for the tabs. Loaded last so it wins. */
+:root {
+  --sky: #FBF3E4; --sky-deep: #F3E3C8; --paper: #FFFCF5; --ink: #3B2F2A; --muted: #7A6558; --line: #E9C9A8;
+  --tomato: #C8442E; --lemon: #F4D27A; --leaf: #3E6A4C; --leaf-deep: #2D4F38; --plum: #8A4A9C; --sea: #3F6E95; --chalk: #3E6A4C;
+  --edge: #AD7D51; --press: #D9B48C; --dash: #E2CDB4;
+  --tomato-text-bg: #A8341F; --link: #2D4F38; --on-color: #fff;
+  --butter-ink: #5A3E10; --plum-pill: #EADCF0; --plum-ink: #5E2E6E;
+  --hand: "Kalam", "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+  --radius: 10px;
+  --shadow: 0 2px 0 #E9C9A8, 0 8px 16px rgba(91, 60, 30, .10);
+  --tape: rgba(244, 210, 122, .85);
+  --wood: repeating-linear-gradient(90deg, rgba(0, 0, 0, .05) 0 2px, transparent 2px 60px), linear-gradient(#D49A5E, #B97F46);
+  --wood-edge: #8C5A2B; --wood-ink: #2A1B10;
+  --check: rgba(200, 68, 46, .55);
+  --card-line: rgba(63, 110, 149, .22); --card-margin: rgba(200, 68, 46, .45);
+}
+@media (prefers-color-scheme: dark) {
+  /* Warm lamplight: the same table after dinner */
+  :root {
+    --sky: #1E1813; --sky-deep: #2A221B; --paper: #2E2721; --ink: #F6EBD9; --muted: #C9B9A2; --line: #4A3F34;
+    --tomato: #FF8A6E; --lemon: #F4C95D; --leaf: #8FCB95; --leaf-deep: #6FB078; --plum: #D59BE0; --sea: #8DBCE3; --chalk: #2D4F38;
+    --edge: #8A735C; --press: #120E0B; --dash: #4A3F34;
+    --tomato-text-bg: #FF8A6E; --link: #9EDC9F; --on-color: #1B1612;
+    --butter-ink: #3A2A0A; --plum-pill: #4A3352; --plum-ink: #F0D9F6;
+    --shadow: 0 2px 0 rgba(0, 0, 0, .35), 0 8px 16px rgba(0, 0, 0, .3);
+    --tape: rgba(170, 135, 70, .55);
+    --wood: repeating-linear-gradient(90deg, rgba(0, 0, 0, .12) 0 2px, transparent 2px 60px), linear-gradient(#6E4A2B, #56381F);
+    --wood-edge: #3A2412; --wood-ink: #F6EBD9;
+    --check: rgba(255, 138, 110, .35);
+    --card-line: rgba(141, 188, 227, .14); --card-margin: rgba(255, 138, 110, .35);
+  }
+}
+
+body { background: var(--sky); }
+::selection { background: var(--lemon); color: #3B2F2A; }
+
+/* ---------- the gingham cloth along the top ---------- */
+.awning, .splash-awning {
+  height: 22px; background-color: var(--sky);
+  background-image: linear-gradient(90deg, var(--check) 50%, transparent 50%), linear-gradient(var(--check) 50%, transparent 50%);
+  background-size: 22px 22px; border-bottom: 2px solid var(--line);
+}
+.awning::after { display: none; }
+.bar-row { padding-top: 10px; }
+#pageTitle { font-weight: 700; color: var(--ink); font-size: clamp(1.6rem, 7.4vw, 2.3rem); }
+body[data-tab="recipes"] #pageTitle { color: var(--tomato-text-bg); }
+.brand-name { color: var(--muted); }
+.screen-bar { border-bottom: 2px solid var(--line); }
+.screen-bar::before {
+  height: 12px; background-color: var(--paper);
+  background-image: linear-gradient(90deg, var(--check) 50%, transparent 50%), linear-gradient(var(--check) 50%, transparent 50%);
+  background-size: 12px 12px; border-bottom: 1px solid var(--line);
+}
+dialog.screen { background-image: none; }
+.back-btn { color: var(--ink); background: var(--paper); }
+.back-btn .ic { color: var(--scr); }
+
+/* ---------- handwriting for headings only; everything you read stays in Nunito ---------- */
+h1, h2, h3 { font-weight: 700; letter-spacing: 0; }
+.cb-name, .recipe .r-head strong, .recipe h3, #recipeBody h3, .sticky-note h3, .wd-head strong, .aisle-head, .badge-card strong { font-weight: 700; }
+
+/* ---------- buttons and fields: softer wood edges ---------- */
+button, .btn-like { border-radius: 16px; }
+button.primary { background: var(--leaf); border-color: var(--leaf-deep); color: var(--on-color); box-shadow: 0 4px 0 var(--leaf-deep); }
+@media (prefers-color-scheme: dark) { button.primary { border-color: #4E8D58; box-shadow: 0 4px 0 #3F7448; } }
+button.danger { background: var(--paper); }
+.search, select, dialog input, textarea { border-color: var(--edge); background-color: var(--paper); border-radius: 14px; }
+input.search[type="search"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='14' cy='14' r='8.5' fill='%23F4D27A' stroke='%233B2F2A' stroke-width='2.6'/%3E%3Cpath d='M20.5 20.5L27 27' stroke='%233B2F2A' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: dark) {
+  input.search[type="search"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='14' cy='14' r='8.5' fill='none' stroke='%23F4C95D' stroke-width='2.6'/%3E%3Cpath d='M20.5 20.5L27 27' stroke='%23F4C95D' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E"); }
+}
+.chip { box-shadow: none; border-color: var(--line); background: var(--paper); }
+.chip.on, .chip[aria-pressed="true"] { background: var(--tomato-text-bg); border-color: var(--tomato-text-bg); color: var(--on-color); }
+.seg { background: var(--paper); border: 2px dashed var(--dash); }
+.seg button.on { background: var(--leaf); color: var(--on-color); border-color: var(--leaf); box-shadow: none; }
+.icon-btn { border-color: var(--line); background: var(--paper); }
+.text-btn, .more-details summary, .today-jar .go { color: var(--link); }
+.toast { background: #3B2F2A; color: #FBF3E4; border-color: #3B2F2A; }
+.toast button { background: var(--lemon); color: #3B2F2A; }
+.hint { background: color-mix(in srgb, var(--lemon) 35%, var(--paper)); border-color: var(--edge); }
+
+/* ---------- taped cards ---------- */
+.card, .today-card, .food-group, .bubble, .today-jar { border-radius: 8px; }
+.card { border-color: var(--line); }
+.today-card, .food-group { position: relative; background: var(--paper); box-shadow: var(--shadow); }
+.today-card::before, .food-group::before {
+  content: ""; position: absolute; top: -9px; left: 26px; width: 70px; height: 20px; z-index: 2; pointer-events: none;
+  background: var(--tape); transform: rotate(-3deg);
+}
+.food-group.later::before { left: auto; right: 30px; transform: rotate(3deg); }
+.bubble, .bubble::before { border-color: var(--line); }
+
+/* Section headings in handwriting */
+.today-card-head h2, .fg-head h2 { font-family: var(--hand); font-weight: 700; font-size: 1.4rem; line-height: 1.1; }
+.food-group.soon .fg-head h2 { color: var(--tomato-text-bg); }
+.food-group.later .fg-head h2 { color: var(--leaf-deep); }
+@media (prefers-color-scheme: dark) { .food-group.later .fg-head h2 { color: var(--leaf); } }
+
+/* ---------- My Food ---------- */
+#itemList { gap: 22px; margin-top: 14px; }
+.food-group { padding-top: 12px; }
+.fg-head { margin: 0 16px 6px; }
+.food-card { background: transparent; box-shadow: none; border-radius: 0 0 8px 8px; }
+#itemList .swipe-row .row-face { border-top: 1px dashed var(--dash); }
+#itemList .swipe-row + .swipe-row .row-face { border-top: 1px dashed var(--dash); }
+.row-face { background-image: none; }
+.fr-when.urgent { color: var(--tomato-text-bg); font-family: var(--hand); font-weight: 700; font-size: 1.08rem; }
+.shelf-chips .chip { border: 2px solid var(--line); background: var(--paper); }
+.shelf-chips .chip.on { background: var(--tomato-text-bg); border-color: var(--tomato-text-bg); color: var(--on-color); }
+.swipe-btn.used { background: #3E6A4C; }
+.swipe-btn.tossed { background: #B5321C; }
+.swipe-btn.freeze { background: #3F6E95; }
+#itemList .swipe-row { background: #3E6A4C; }
+#itemList .swipe-row.show-left, #itemList .swipe-row.open-right { background: #3F6E95; }
+#addBtn.fab, .fab { background: var(--leaf); color: var(--on-color); border: 0; box-shadow: 0 4px 0 var(--leaf-deep), 0 10px 20px rgba(91, 60, 30, .25); }
+@media (prefers-color-scheme: dark) { #addBtn.fab, .fab { box-shadow: 0 4px 0 #3F7448, 0 10px 20px rgba(0, 0, 0, .4); } }
+
+/* ---------- Today ---------- */
+#tab-today.active { gap: 14px; }
+.today-row { border-top: 1px dashed var(--dash); }
+.today-row .when { background: var(--sky-deep); }
+.today-row .when.urgent, .today-row .when.today { background: var(--tomato-text-bg); color: var(--on-color); }
+.today-row .when.soon { background: var(--lemon); color: var(--butter-ink); }
+.today-row .when.expired { background: var(--plum-pill); color: var(--plum-ink); }
+.today-jar { border: 2px dashed var(--dash); box-shadow: none; background: var(--paper); }
+
+/* Today's special: a recipe index card instead of a chalkboard */
+.chalkboard, #tab-today .chalkboard {
+  color: var(--ink); border: 0; border-radius: 4px; box-shadow: var(--shadow); padding: 10px 14px 10px 34px;
+  background-color: var(--paper);
+  background-image: linear-gradient(90deg, transparent 22px, var(--card-margin) 22px, var(--card-margin) 24px, transparent 24px),
+    repeating-linear-gradient(transparent 0 25px, var(--card-line) 25px 26px);
+  background-position: 0 0, 0 4px;
+  transform: rotate(-.6deg);
+}
+.chalkboard:active { transform: rotate(-.6deg) translateY(2px); box-shadow: 0 1px 0 #E9C9A8; }
+.cb-title, #tab-today .cb-title { color: var(--tomato-text-bg); font-weight: 700; }
+.cb-theme { color: var(--tomato-text-bg); }
+.cb-why, .cb-meta { color: var(--muted); }
+
+/* ---------- Add food sheet ---------- */
+dialog.screen.sheet-page { background: var(--sky); }
+dialog.screen.sheet-page::backdrop { background: rgba(59, 47, 42, .45); }
+.sheet-actions { background: var(--sky); }
+.sheet-grip { background: var(--dash); }
+.sheet-head h2 { font-family: var(--hand); font-weight: 700; font-size: 1.9rem; }
+.sheet-close { background: var(--paper); border: 2px solid var(--line); }
+#itemDialog .field { color: var(--ink); }
+#itemDialog .field-label { font-family: var(--hand); font-weight: 700; font-size: 1.2rem; }
+#itemDialog .field-label .opt { font-family: var(--body); font-size: .9rem; font-weight: 700; color: var(--muted); }
+.pick-chip, .exp-chip { background: var(--paper); border: 2px solid var(--line); }
+.exp-chip.on { background: var(--lemon); border-color: #D9B04E; color: var(--butter-ink); }
+.exp-chip.quiet { border: 0; background: none; }
+.seg-pick { background: var(--paper); border: 2px dashed var(--dash); }
+.seg-pick button.on { background: var(--leaf); color: var(--on-color); box-shadow: none; }
+.stepper { background: var(--paper); border: 2px solid var(--line); border-radius: 999px; }
+.stepper button { background: var(--sky); border-radius: 50%; }
+.more-details { border-top: 1px dashed var(--dash); }
+.secondary-btn { background: var(--paper); color: var(--leaf-deep); border-color: var(--leaf-deep); }
+@media (prefers-color-scheme: dark) { .secondary-btn { color: var(--leaf); border-color: var(--leaf); } }
+.pal-guess, .guess-chip { background: var(--plum-pill); color: var(--plum-ink); }
+
+/* Pal's sheets */
+dialog.ask-sheet { background: var(--sky); }
+dialog.ask-sheet h2 { font-family: var(--hand); font-weight: 700; font-size: 1.55rem; }
+dialog.ask-sheet::backdrop { background: rgba(59, 47, 42, .45); }
+.ask-grip { background: var(--dash); }
+.ask-chip { background: var(--paper); border: 2px solid var(--line); }
+.ask-actions .ask-no { background: var(--paper); border: 2px solid var(--line); }
+.ask-extra { color: var(--tomato-text-bg); }
+
+/* ---------- the honey wood shelf for the tabs ---------- */
+.tabbar { background: var(--wood); border-top: 3px solid var(--wood-edge); gap: 2px; }
+.tabbar button { color: var(--wood-ink); font-weight: 800; background: none; }
+.tabbar button.active { color: var(--wood-ink); font-weight: 900; }
+.tabbar button.active, #tabbtn-today.active, #tabbtn-pantry.active, #tabbtn-recipes.active, #tabbtn-plan.active, #tabbtn-shopping.active { background: none; }
+.tabbar .ico { display: grid; place-items: center; width: 54px; height: 32px; border-radius: 16px; }
+.tabbar button.active .ico { background: #FBF3E4; color: #C8442E; }
+@media (prefers-color-scheme: dark) { .tabbar button.active .ico { background: #F6EBD9; color: #A8341F; } }
+
+/* ---------- opening screen ---------- */
+.splash { background-image: none; }
+.splash-name { font-weight: 700; color: var(--ink); }
+.splash-fill { background: var(--leaf); }
+
+/* Little labels sit on a slightly deeper cream so they still read as labels */
+.tag, .meta-chips span, .nbox { background-color: var(--sky-deep); }
