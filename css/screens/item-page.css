@@ -22,3 +22,5 @@
   background: var(--lemon); border: 2px solid var(--edge); border-radius: 999px; padding: 0 8px; font-size: .72rem; font-weight: 900;
 }
 #ipTip { margin-top: 12px; }
+
+.fresh-note { margin: 8px 0 0; font-size: .85rem; font-weight: 700; color: var(--muted); }

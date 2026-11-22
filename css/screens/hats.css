@@ -19,3 +19,20 @@
 .hat-reward { font-weight: 800; color: var(--plum-ink, #6A3E8C); }
 .hats-link { margin: 0 0 14px; }
 @media (max-width: 359px) { .hat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Benji's shop */
+.store-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.store-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.store-head h3 { margin: 0; }
+.store-price { font-weight: 900; font-size: 1.15rem; color: var(--leaf-deep); }
+.store-hats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 10px 0 12px; }
+.store-hat { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; }
+.store-hat .pal { width: 64px; height: auto; }
+.store-buy { display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 16px; background: #2A7F3F; color: #FFFFFF;
+  font-weight: 900; font-size: 1.1rem; text-decoration: none; box-shadow: 0 4px 0 #1C5A2C; }
+.store-buy:active { transform: translateY(3px); box-shadow: 0 1px 0 #1C5A2C; }
+.store-owned { display: flex; align-items: center; gap: 6px; margin: 0; font-weight: 800; color: var(--leaf-deep); }
+.store-owned .ic { width: 22px; height: 22px; margin: 0; }
+.store-steps { margin: 6px 0 8px; padding-left: 22px; line-height: 1.5; }
+.store-steps li + li { margin-top: 4px; }
+#storeCode { width: 100%; box-sizing: border-box; font-family: ui-monospace, monospace; font-size: .85rem; margin: 6px 0 10px; }

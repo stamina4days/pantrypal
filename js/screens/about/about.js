@@ -1,6 +1,6 @@
 "use strict";
 /* About page. */
-const APP_VERSION = "11.7";
+const APP_VERSION = "11.8";
 function openAbout() {
   const cuisines = new Set(RECIPES.map(r => r.cuisine));
   $("#abVersion").textContent = t("Version {v}", { v: APP_VERSION });
@@ -13,4 +13,7 @@ function openAbout() {
     [t("Languages"), "English (more coming soon)"]
   ].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(String(v))}</dd></div>`).join("");
   $("#aboutPage").showModal();
+}
+function openTerms() {
+  if (!$("#termsPage").open) $("#termsPage").showModal();
 }

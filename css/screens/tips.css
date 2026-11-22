@@ -4,3 +4,10 @@
 .tip-card.mine { border-color: var(--ink); box-shadow: 0 3px 0 var(--leaf); }
 .tip-card .food-emoji { font-size: 1.8rem; }
 .tip-card p { margin: 4px 0; }
+
+/* Terms page */
+.terms .card h3 { margin-top: 0; }
+.terms .card p { line-height: 1.5; }
+.terms ul { margin: 8px 0 0; padding-left: 20px; line-height: 1.5; }
+.terms li + li { margin-top: 6px; }
+#termsPage .card.terms-key { border: 3px solid var(--tomato); }

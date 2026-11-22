@@ -1,23 +1,39 @@
-<!-- TODAY: the home screen. Everything fits on one phone screen. -->
+<!-- TODAY: the home screen, drawn as Benji's kitchen. Every part of the room is a button. -->
 <section id="tab-today" class="tab active" aria-labelledby="tabbtn-today">
-  <div id="alerts" class="today-pal"></div>
-  <section class="today-card" aria-labelledby="useFirstTitle">
-    <div class="today-card-head">
-      <h2 id="useFirstTitle" data-t>Use these first</h2>
-      <button id="todayAllFood" class="text-btn" type="button"></button>
-      <button id="todayCookBtn" class="cook-these hidden" type="button"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/chef.svg#i"/></svg> <span data-t>Cook these</span></button>
+  <div class="kitchen">
+    <div class="k-wall">
+      <div class="k-board"><div id="todaySpecial"></div></div>
+      <div class="k-corner">
+        <button id="todayHatsBtn" class="k-hat" type="button" data-go-hats data-t-aria="Benji's hats" aria-label="Benji's hats">
+          <span class="k-peg" aria-hidden="true"></span>
+          <span id="todayHatArt" class="k-hat-art" aria-hidden="true"></span>
+          <span class="k-label" data-t>Hats</span>
+        </button>
+        <button id="todayJar" class="k-jar" type="button"></button>
+        <span class="k-shelf" aria-hidden="true"></span>
+      </div>
     </div>
-    <ul id="todayUseFirst" class="today-rows"></ul>
-  </section>
-  <div id="todaySpecial"></div>
-  <div class="today-pair">
-    <button id="todayJar" class="today-jar" type="button"></button>
-    <button id="todayPlayBtn" class="today-play" type="button"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/game.svg#i"/></svg><span data-t>Play</span></button>
-    <button id="todayHatsBtn" class="today-play today-hats" type="button" data-go-hats><svg class="ic" aria-hidden="true"><use href="img/icons/ui/hat.svg#i"/></svg><span data-t>Hats</span></button>
-  </div>
-  <div class="today-add">
-    <button id="todayAddBtn" class="primary big-add" type="button"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/plus.svg#i"/></svg> <span data-t>Add food</span></button>
-    <button id="todayTalkBtn" class="round-tool hidden" type="button" data-t-aria="Say what you bought" aria-label="Say what you bought"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/mic.svg#i"/></svg></button>
-    <button id="todayScanBtn" class="round-tool" type="button" data-t-aria="Scan a barcode" aria-label="Scan a barcode"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/camera.svg#i"/></svg></button>
+    <div class="k-room">
+      <div id="alerts" class="today-pal k-benji"></div>
+      <div id="todayFridge" class="k-fridge">
+        <span class="k-freezer" aria-hidden="true"></span>
+        <div class="k-door">
+          <button id="todayAllFood" class="k-note" type="button"></button>
+          <button id="todayCookBtn" class="k-note k-cook hidden" type="button"><span data-t>Cook these</span></button>
+          <ul id="todayUseFirst" class="k-magnets"></ul>
+        </div>
+      </div>
+      <button id="todayPlayBtn" class="k-console" type="button" data-t-aria="Play a game" aria-label="Play a game">
+        <span class="k-screen" aria-hidden="true"></span>
+        <span class="k-keys" aria-hidden="true"><span></span><span></span></span>
+        <span class="k-console-label" data-t>Play</span>
+      </button>
+      <span class="k-counter" aria-hidden="true"></span>
+    </div>
+    <div class="k-floor today-add">
+      <button id="todayAddBtn" class="k-bag" type="button"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/plus.svg#i"/></svg> <span data-t>Add food</span></button>
+      <button id="todayTalkBtn" class="k-round hidden" type="button" data-t-aria="Say what you bought" aria-label="Say what you bought"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/mic.svg#i"/></svg></button>
+      <button id="todayScanBtn" class="k-round" type="button" data-t-aria="Scan a barcode" aria-label="Scan a barcode"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/camera.svg#i"/></svg></button>
+    </div>
   </div>
 </section>

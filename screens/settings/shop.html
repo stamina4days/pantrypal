@@ -1,0 +1,27 @@
+<!-- Benji's shop: extras you can buy to support Pantry Pal. Everything that saves food and money stays free. -->
+<dialog id="shopPage" class="screen page" data-accent="settings" aria-labelledby="spTitle">
+  <div class="page-body store">
+    <div class="page-hero">
+      <img class="hero-art benji-art" src="img/pal/cheer.svg" width="110" height="147" alt="">
+      <h2 id="spTitle" data-t>Benji's shop</h2>
+      <p class="hero-meta" data-t>Fun extras that help keep Pantry Pal going. Every feature that saves you food and money is free, always.</p>
+    </div>
+    <ul id="storeItems" class="store-list"></ul>
+    <div class="card">
+      <h3 data-t>How buying works</h3>
+      <ol class="store-steps">
+        <li data-t>Tap Buy. You'll pay on a secure Square checkout page.</li>
+        <li data-t>We'll email you an unlock code, usually within a day.</li>
+        <li data-t>Tap the link in that email, or paste the code below. Your item unlocks on this phone.</li>
+      </ol>
+      <p class="muted small" data-t>Your code is saved in your backup. On a new phone, enter it again to get your items back.</p>
+    </div>
+    <form id="storeRedeem" class="card">
+      <h3><label for="storeCode" data-t>Have a code?</label></h3>
+      <textarea id="storeCode" rows="3" autocomplete="off" autocapitalize="off" spellcheck="false" data-t-ph="Paste your code here" placeholder="Paste your code here"></textarea>
+      <button type="submit" class="primary wide"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> <span data-t>Unlock</span></button>
+    </form>
+    <p class="center"><button type="button" class="wide" data-go-hats><svg class="ic" aria-hidden="true"><use href="img/icons/ui/hat.svg#i"/></svg> <span data-t>See Benji's hats</span></button></p>
+    <p class="muted small center"><a href="#/terms" data-t>Terms, including purchases</a></p>
+  </div>
+</dialog>

@@ -1,0 +1,23 @@
+/* Money at risk: dollars saved on recipes, Today's risk line, the planner's rescue report, and Benji's kitchen check. */
+.tag.saves { background: #DCEFD9; color: #1F4D2A; font-weight: 900; }
+@media (prefers-color-scheme: dark) { .tag.saves { background: #2E4A35; color: #E4F4E4; } }
+.today-risk { display: flex; align-items: center; gap: 6px; margin: -2px 4px 6px; font-size: .9rem; font-weight: 800; color: #8A3A22; }
+.today-risk .ic { width: 20px; height: 20px; margin: 0; flex: none; }
+@media (prefers-color-scheme: dark) { .today-risk { color: #FFB4A3; } }
+/* Planner rescue report */
+.rescue-card { border: 2px solid #8CC28F; background: #F1F8EE; }
+.rescue-card h3 { margin: 0 0 4px; font-size: 1.15rem; }
+.rescue-total { font-family: var(--hand); font-weight: 700; font-size: 1.9rem; line-height: 1.1; color: #2F6F3E; margin: 0; }
+.at-risk-list { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 6px; }
+.at-risk-list li { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+.at-risk-list li .grow { flex: 1; min-width: 0; }
+.at-risk-list button { min-height: 40px; padding: 4px 12px; font-size: .9rem; }
+@media (prefers-color-scheme: dark) { .rescue-card { background: #24352A; border-color: #4E7A56; } .rescue-total { color: #9AD39F; } }
+/* Kitchen check (Fridge Sort) */
+.sure-meter { display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin: 6px 0 0; font-weight: 800; }
+.sure-meter .bar { display: block; width: 100%; height: 10px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.sure-meter .bar span { display: block; height: 100%; background: var(--leaf); border-radius: 999px; }
+.sort-sure { margin: 4px 0 0; font-weight: 800; color: var(--leaf-deep); max-width: 32ch; }
+@media (prefers-color-scheme: dark) { .sort-sure { color: var(--leaf); } }
+.sort-answers.five { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sort-answers.five button { min-height: 72px; font-size: .88rem; }
