@@ -49,3 +49,10 @@ function segment(id, attr, onPick) {
     onPick(b.dataset[attr]);
   });
 }
+/* "milk", "milk and eggs", "milk, eggs, and bread" (with the serial comma). */
+function listJoin(names) {
+  const a = names.filter(Boolean);
+  if (a.length <= 1) return a[0] || "";
+  if (a.length === 2) return a[0] + " " + t("and") + " " + a[1];
+  return a.slice(0, -1).join(", ") + ", " + t("and") + " " + a[a.length - 1];
+}

@@ -44,6 +44,10 @@ function renderToday() {
       <span class="when ${lab.cls}">${esc(friendlyWhen(i.expires))}</span></a></li>`;
   }).join("");
 
+  const expiring = items.some(i => { const d = daysLeft(i.expires); return d !== null && d >= 0 && d <= RESCUE_DAYS && !i.leftover; });
+  $("#todayCookBtn").classList.toggle("hidden", !expiring);
+  if (expiring) $("#todayAllFood").classList.add("hidden");
+
   const since = addDaysFrom(todayStr(), -30);
   const saved = history.filter(h => h.outcome === "used" && h.date >= since && (h.d === null || h.d >= 0)).length;
   $("#todayJar").innerHTML = `<img src="img/illustrations/tips-jar.svg" width="34" height="34" alt="">
@@ -55,6 +59,7 @@ function todayInit() {
   $("#todayAllFood").addEventListener("click", () => showTab("pantry"));
   $("#todayJar").addEventListener("click", () => showTab("stats"));
   $("#todayAddBtn").addEventListener("click", () => openItem());
+  $("#todayCookBtn").addEventListener("click", () => openCollection("rescue"));
   $("#todayScanBtn").addEventListener("click", () => { openItem(null); openScanner(); });
   if (typeof talkSupported === "function" && talkSupported()) {
     $("#todayTalkBtn").classList.remove("hidden");
