@@ -79,7 +79,8 @@ function checkNewBadges() {
   if (fresh.length) {
     saveSettings();
     const b = BADGES.find(x => x.id === fresh[0]);
-    toast(t("New badge: {name}!", { name: t(b.name) }));
+    const hat = typeof hatForBadge === "function" ? hatForBadge(b.id) : null;
+    toast(hat ? t("New badge: {name}! Benji unlocked the {hat}.", { name: t(b.name), hat: t(hat.name).toLowerCase() }) : t("New badge: {name}!", { name: t(b.name) }));
     confetti(); sfx("cheer"); buzz([10, 50, 10, 50, 20]);
   }
 }

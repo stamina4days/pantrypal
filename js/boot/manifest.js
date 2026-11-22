@@ -37,5 +37,6 @@ const PP_PAGES = [
   "screens/sheets/remove.html",
   "screens/sheets/list-pick.html",
   "screens/search/search.html",
-  "screens/play/play.html"
+  "screens/play/play.html",
+  "screens/settings/hats.html"
 ];

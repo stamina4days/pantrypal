@@ -35,7 +35,8 @@ const ROUTES = {
   searchPage: "search",
   playPage: "play",
   sortPage: "play/fridge-sort",
-  wordPage: "play/food-word"
+  wordPage: "play/food-word",
+  hatsPage: "benji/hats"
 };
 
 const recipeId = r => r ? (r.mine ? "mine-" + r.id : (r.id || recipeSlug(r.name))) : "";
@@ -81,6 +82,8 @@ const DEEP_LINKS = [
   [/^home-screen$/, () => openHomeScreen()],
   [/^share-kitchen$/, () => openShareKitchen()],
   [/^search$/, () => openSearch()],
+  [/^benji\/hats$/, () => openHats()],
+  [/^tour$/, () => { setTimeout(startTour, 300); }],
   [/^play$/, () => openPlay()],
   [/^play\/fridge-sort$/, () => openSort()],
   [/^play\/food-word$/, () => openWord()]
