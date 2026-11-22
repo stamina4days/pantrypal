@@ -1,0 +1,161 @@
+/* The tab scenes after Today's kitchen: Recipes (recipe box and cookbook), Plan (wall calendar), Shopping (notepad on the fridge).
+   Each one fills the screen between the header and the tabs; the part with the long list scrolls inside the scene. */
+.recipe-scene, .plan-scene, .shop-scene { display: flex; flex-direction: column; margin: -6px -14px 0; padding: 10px 12px 0; box-sizing: border-box;
+  height: var(--scene-h); color: var(--ink); }
+.recipe-scene > *, .plan-scene > *, .shop-scene > * { flex: none; }
+#tab-recipes, #tab-plan, #tab-shopping { padding-bottom: 0; }
+
+/* ---------- Recipes: the counter, the recipe box, the cookbook ---------- */
+.recipe-scene { --wood: #C98F5A; --wood-line: #B87E4C; background-color: var(--wood);
+  background-image: repeating-linear-gradient(0deg, var(--wood) 0 38px, var(--wood-line) 38px 41px); }
+@media (prefers-color-scheme: dark) { .recipe-scene { --wood: #5A3F2A; --wood-line: #4E3624; } }
+.rbox { position: relative; margin: 0 -2px; padding-bottom: 34px; }
+.recipe-scene .collection-strip { position: relative; z-index: 1; margin: 0; padding: 10px 14px 0; gap: 6px; align-items: flex-end; }
+.recipe-scene .collection-card { width: 92px; min-height: 0; height: 102px; padding: 6px 5px 24px; gap: 2px; justify-content: flex-start; align-items: center; text-align: center;
+  border: 3px solid #233A31; border-radius: 8px 8px 0 0; box-shadow: none; background: #FFFDF6; background-image: none; color: #233A31; transform-origin: 50% 100%; }
+.recipe-scene .collection-card:nth-child(4n+1) { transform: rotate(-4deg); }
+.recipe-scene .collection-card:nth-child(4n+2) { transform: rotate(2deg); background: #FFF6A8; }
+.recipe-scene .collection-card:nth-child(4n+3) { transform: rotate(-2deg); background: #DFF1FA; }
+.recipe-scene .collection-card:nth-child(4n) { transform: rotate(3deg); background: #FCE3DD; }
+.recipe-scene .collection-card:active { translate: 0 -4px; }
+.recipe-scene .collection-card .cc-art { width: 34px; height: 34px; flex: none; }
+.recipe-scene .cc-name { font-family: var(--hand); font-weight: 700; font-size: .95rem; line-height: 1.05; }
+.rbox-front { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 48px; display: flex; align-items: center; justify-content: center; pointer-events: none;
+  background: #A0693B; border: 4px solid #6E4524; border-radius: 4px 4px 10px 10px; box-shadow: 0 6px 0 rgba(0, 0, 0, .3); }
+.rbox-front span { background: #FFFDF6; color: #233A31; border: 2px solid #6E4524; padding: 0 14px; font-family: var(--hand); font-weight: 700; font-size: 1.05rem; }
+/* The cookbook, with ribbon bookmarks along its top edge */
+.recipe-scene .rbook { flex: 1 1 auto; min-height: 0; position: relative; display: flex; flex-direction: column; margin-top: 12px; }
+.recipe-scene .seg { position: absolute; z-index: 3; top: -10px; right: 8px; display: flex; gap: 5px; margin: 0; padding: 0; background: none; border: 0; }
+.recipe-scene .seg button { flex: none; width: 76px; min-height: 0; height: 50px; padding: 0 0 12px; border: 0; border-radius: 0; color: #FFFFFF; font-weight: 900; font-size: .85rem;
+  display: flex; align-items: flex-end; justify-content: center; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 10px), 0 100%); background: #2E8FC7; box-shadow: none; }
+.recipe-scene .seg button[data-mode="foryou"] { background: #E5482F; }
+.recipe-scene .seg button[data-mode="saved"] { background: #8A5AB8; }
+.recipe-scene .seg button.on { height: 62px; }
+.rbook-page { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; position: relative; padding: 46px 12px 16px 26px;
+  border-radius: 4px 12px 0 0; color: #233A31; background-color: #FFFDF6;
+  background-image: linear-gradient(90deg, transparent 17px, #F2A9A0 17px, #F2A9A0 19px, transparent 19px), repeating-linear-gradient(180deg, transparent 0 33px, #DCE8EF 33px 35px);
+  background-attachment: local; box-shadow: inset 10px 0 0 #E5D9C4, 0 -2px 0 rgba(0, 0, 0, .15); }
+.rbook-page .muted { color: #5E7069; }
+.rbook-page .search { background-color: transparent; border: 0; border-bottom: 3px solid #233A31; border-radius: 0; color: #233A31; margin-bottom: 8px; box-shadow: none; }
+.rbook-page .chips { gap: 6px; flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; padding: 2px 2px 6px; margin: 0 -4px; }
+.rbook-page .chips::-webkit-scrollbar { display: none; }
+.rbook-page .chip { background: transparent; color: #233A31; border: 2px solid #233A31; border-radius: 50% 44% 50% 40% / 60% 50% 60% 50%; box-shadow: none; min-height: 38px; flex: none; white-space: nowrap; font-size: .88rem; padding: 4px 12px; }
+.rbook-page .chip[aria-pressed="true"], .rbook-page .chip.on { background: #FFF6A8; }
+.rbook-page select { background-color: #FFFDF6; color: #233A31; border-color: #D9C8AE; }
+.rbook-page #recipeList { display: block; margin: 4px 0 0; }
+.rbook-page #recipeCount { margin: 2px 0 0; font-size: .8rem; }
+.rbook-page .recipe { margin: 0; padding: 10px 2px; border: 0; border-bottom: 2px dashed #CFE0EA; border-radius: 0; background: transparent; box-shadow: none; color: #233A31; }
+.rbook-page .recipe::before, .rbook-page .recipe::after { display: none; }
+.rbook-page .recipe .r-head strong { color: #233A31; }
+.rbook-page .r-emoji { width: 46px; height: 46px; }
+.rbook-page .banner { color: #233A31; }
+.recipe-scene .hint-slot:empty { display: none; }
+
+/* ---------- Plan: the wall calendar, tear-off day pages, and the table ---------- */
+.plan-scene { background-color: var(--k-wall); background-image: linear-gradient(var(--k-grout) 2px, transparent 2px), linear-gradient(90deg, var(--k-grout) 2px, transparent 2px);
+  background-size: 44px 44px; padding-top: 18px; }
+.cal { position: relative; background: #FFFDF6; color: #233A31; border-radius: 8px; box-shadow: 0 8px 0 rgba(0, 0, 0, .3); overflow: visible; }
+.cal::before { content: ""; position: absolute; left: 50%; top: -14px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #8A6A4A; box-shadow: 0 2px 0 rgba(0, 0, 0, .25); }
+.cal-top { position: relative; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 12px 12px 8px; border-radius: 8px 8px 0 0; background: #E5482F; color: #FFFFFF; }
+.cal-top::before { content: ""; position: absolute; left: 20px; right: 20px; top: -6px; height: 12px; background: repeating-linear-gradient(90deg, #3B2F2A 0 6px, transparent 6px 30px); }
+.cal-month { font-family: var(--hand); font-weight: 700; font-size: 1.5rem; line-height: 1; }
+.cal-count { font-weight: 900; font-size: .8rem; color: #FFE3DC; }
+.cal-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); padding: 4px; border-bottom: 3px solid #E5D9C4; }
+.cal-day { min-height: 0; height: 70px; padding: 3px 0; border: 0; border-right: 2px solid #E5D9C4; border-radius: 0; background: transparent; box-shadow: none; color: #233A31;
+  display: flex; flex-direction: column; align-items: center; gap: 0; cursor: pointer; }
+.cal-day:last-child { border-right: 0; }
+.cal-day.today { border-radius: 10px; box-shadow: inset 0 0 0 3px #E5482F; }
+.cal-day:active { transform: none; background: #F6EDDA; }
+.cd-name { font-weight: 900; font-size: .68rem; color: #8B6A4A; }
+.cd-num { font-weight: 900; font-size: .9rem; line-height: 1.1; }
+.cd-art { width: 30px; height: 30px; margin-top: 1px; }
+.cd-plus { font-family: var(--hand); font-size: 1.3rem; line-height: 30px; color: #B9AF9F; }
+.cal-go { display: flex; align-items: center; justify-content: center; gap: 8px; width: calc(100% - 20px); margin: 10px; min-height: 50px; font-size: 1.1rem; }
+/* The days, as pages you scroll through */
+.plan-pages { flex: 1 1 auto !important; min-height: 0; overflow-y: auto; overscroll-behavior: contain; margin: 14px 0 0; padding: 0 2px 10px; }
+.pday { margin: 0 0 10px; padding: 6px 12px 8px; background: #FFFDF6; color: #233A31; border-radius: 3px; box-shadow: 0 3px 0 rgba(0, 0, 0, .2); }
+.pday .day-head { margin: 0 0 4px; }
+.pday .day-head h3 { color: #6B3FA0; font-family: var(--hand); font-size: 1.15rem; }
+.pday .muted { color: #5E7069; }
+.pday .chip { min-height: 36px; padding: 2px 12px; background: transparent; color: #233A31; border: 2px solid #233A31; }
+.pday .list { margin: 0; }
+.pday .recipe { margin: 0 0 6px; padding: 6px 8px 6px 10px; background: #F6EDDA; background-image: none; border: 0; border-radius: 8px; box-shadow: none; color: #233A31; }
+.pday .recipe::before, .pday .recipe::after { display: none; }
+/* Today's page is a chalkboard */
+.pday.today { background: #22382B; color: #F1EEE4; border: 7px solid #8A5A33; border-radius: 8px; }
+.pday.today .day-head h3 { color: #FFC94D; }
+.pday.today .muted { color: #C8D8CC; }
+.pday.today .chip { color: #F1EEE4; border-color: #C8D8CC; }
+.pday.today .recipe { background: rgba(255, 255, 255, .08); color: #F1EEE4; }
+.pday.today .recipe .r-head strong { color: #F1EEE4; }
+.pday.flash { animation: pday-flash 1s ease-out; }
+@keyframes pday-flash { from { box-shadow: 0 0 0 4px #FFC94D; } }
+.plan-pages .day-head:not(.pday .day-head), .plan-pages > h3.day-head { color: #F6EBD9; }
+/* The table: the week placemat and the shopping list notepad */
+.plan-table { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 -12px; padding: 8px 12px 10px; background: var(--k-wood); border-top: 5px solid #A0693B; }
+.placemat { flex: 1.3; min-height: 52px; border: 0; border-radius: 12px; color: #3A2818; font-weight: 900; font-size: .98rem; display: flex; align-items: center; justify-content: center; gap: 6px;
+  background: #F6D58E; background-image: repeating-linear-gradient(90deg, transparent 0 9px, rgba(160, 105, 59, .25) 9px 11px), repeating-linear-gradient(0deg, transparent 0 9px, rgba(160, 105, 59, .18) 9px 11px);
+  box-shadow: 0 4px 0 #A9824F; transform: rotate(-1deg); }
+.notepad-btn { flex: 1; min-height: 52px; border: 0; border-radius: 3px; color: #233A31; font-family: var(--hand); font-weight: 700; font-size: 1.02rem; display: flex; align-items: center; justify-content: center; gap: 6px;
+  background: #FFFDF6; border-top: 10px solid #E5482F; box-shadow: 0 4px 0 rgba(0, 0, 0, .25); transform: rotate(1.5deg); }
+.notepad-btn:disabled { opacity: .7; }
+.placemat .ic, .notepad-btn .ic { width: 22px; height: 22px; margin: 0; }
+.plan-more { display: flex; gap: 6px; flex-basis: 100%; overflow-x: auto; scrollbar-width: none; }
+.plan-more .chip { flex: none; min-height: 38px; background: #FFFDF6; color: #233A31; }
+.plan-scene .hint-slot:empty { display: none; }
+
+/* ---------- Shopping: a notepad on the fridge door ---------- */
+.shop-scene { background: #E9E3D8; background-image: linear-gradient(90deg, rgba(0, 0, 0, .05), transparent 30%, transparent 70%, rgba(0, 0, 0, .07));
+  box-shadow: inset 0 0 0 4px #D6CEC0; border-radius: 18px 18px 0 0; padding-top: 12px; color: #233A31; }
+@media (prefers-color-scheme: dark) { .shop-scene { background-color: #D9D1C3; } }
+.shop-scene .hint-slot:empty { display: none; }
+/* Which list, + New, Share and More: a tab, a torn scrap, and two magnets */
+.pad-tools { display: flex; align-items: flex-end; gap: 8px; margin: 0 0 -2px; padding: 0 6px; }
+.pad-tools select { flex: 1; min-width: 0; min-height: 44px; border: 2px solid #233A31; border-bottom: 0; border-radius: 8px 8px 0 0; background-color: #FFF6A8; color: #233A31;
+  font-family: var(--hand); font-weight: 700; font-size: 1.1rem; box-shadow: none; }
+.pad-new { flex: none; min-height: 44px; padding: 4px 12px; border: 0; border-radius: 3px; background: #FFFDF6; color: #233A31; font-family: var(--hand); font-weight: 700; font-size: 1.05rem;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, .2); transform: rotate(4deg) translateY(-6px);
+  clip-path: polygon(0 5px, 10% 0, 20% 5px, 30% 0, 40% 5px, 50% 0, 60% 5px, 70% 0, 80% 5px, 90% 0, 100% 5px, 100% 100%, 0 100%); }
+.pad-magnet.icon-square { flex: none; width: 46px; min-width: 46px; height: 46px; min-height: 46px; padding: 0; border: 0; border-radius: 50%; color: #FFFFFF; background: #2E8FC7;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, .25); transform: translateY(-6px); }
+.pad-magnet + .pad-magnet { background: #E5482F; }
+.pad-magnet .btn-label { display: none; }
+.pad-magnet .ic { width: 22px; height: 22px; stroke: #FFFFFF; }
+/* The notepad: ruled paper with a red top, which scrolls */
+.notepad { flex: 1 1 auto !important; min-height: 0; overflow-y: auto; overscroll-behavior: contain; position: relative; padding: 20px 12px 12px 14px; border-radius: 2px;
+  background-color: #FFFDF6; background-image: linear-gradient(#E5482F, #E5482F), repeating-linear-gradient(180deg, transparent 0 33px, #DCE8EF 33px 35px);
+  background-size: 100% 12px, 100% 100%; background-repeat: no-repeat, repeat; background-attachment: local; box-shadow: 0 6px 0 rgba(0, 0, 0, .2); color: #233A31; }
+.notepad .muted { color: #5E7069; }
+.notepad #shopAddForm { gap: 8px; margin: 0 0 6px; }
+.notepad #shopAddInput { background-color: transparent; border: 0; border-bottom: 3px solid #233A31; border-radius: 0; color: #233A31; box-shadow: none; font-family: var(--hand); font-size: 1.1rem; }
+.notepad .shop-item { background: transparent; border: 0; border-bottom: 2px dashed #CFE0EA; border-radius: 0; box-shadow: none; padding: 6px 2px; min-height: 48px; color: #233A31; }
+.notepad .shop-item::before, .notepad .shop-item::after { display: none; }
+.notepad .shop-name { font-family: var(--hand); font-size: 1.1rem; color: #233A31; }
+.notepad .aisle-head { color: #B5321C; font-size: 1.05rem; margin: 10px 2px 0; }
+.notepad .row-btn { color: #5E7069; background: transparent; border: 0; box-shadow: none; }
+.notepad .low-card { background: #FFF6A8; box-shadow: 0 3px 0 rgba(0, 0, 0, .15); }
+.notepad .empty, .notepad .empty p { color: #233A31; }
+.empty-cart { display: block; margin: 6px auto 0; }
+/* I bought these: under the pad, always in reach */
+.shop-scene .bought-bar { position: static; display: flex; gap: 8px; margin: 10px 0 10px; }
+.shop-scene #shopActions.hidden { display: none; }
+.shop-scene .bought-bar #moveToFood { min-height: 52px; box-shadow: 0 4px 0 #1C5A2C; }
+.shop-scene .bought-bar #clearChecked { background: #FFFDF6; color: #233A31; }
+.shop-scene > .notepad:last-of-type { margin-bottom: 10px; }
+.notepad .bubble { background: #FFFDF6; color: #233A31; border-color: #D9C8AE; }
+.notepad .bubble::before { background: #FFFDF6; border-color: #D9C8AE; }
+.notepad .bubble p { color: #233A31; }
+.notepad .bubble .read-aloud { background: #F1E8D8; color: #233A31; border-color: #D9C8AE; }
+/* The list is written right on the notepad, not on a second sheet */
+.notepad #shopItems:not(:empty) { background: transparent !important; background-image: none !important; border: 0; box-shadow: none; padding: 0; margin: 0; }
+.notepad #shopItems:not(:empty)::before { display: none; }
+.notepad #shopItems .shop-name, .notepad #shopItems .shop-name .muted { color: #233A31; }
+.notepad #shopItems .shop-name .muted { color: #5E7069; font-family: Nunito, sans-serif; font-size: .78rem; }
+.notepad .shop-item input[type=checkbox] { background-color: #FFFDF6; border-color: #233A31; }
+.shop-scene .bought-bar button { font-size: .95rem; }
+.shop-scene .bought-bar #clearChecked { flex: 1; min-height: 52px; }
+/* Paper stays paper in dark mode: light tags and buttons on the cookbook, the day pages, and the notepad */
+.pday:not(.today) .tag:not(.urgent):not(.ok):not(.miss):not(.diet), .rbook-page .tag:not(.urgent):not(.ok):not(.miss):not(.diet) { background: #F1E8D8; color: #233A31; border-color: #D9C8AE; }
+.pday .row-btn { background: transparent; color: #5E7069; border: 0; box-shadow: none; }
+.pday.today .row-btn { color: #C8D8CC; }
+.rbook-page .recipe .r-head strong { font-size: 1.12rem; }

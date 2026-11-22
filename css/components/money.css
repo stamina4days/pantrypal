@@ -1,9 +1,9 @@
 /* Money at risk: dollars saved on recipes, Today's risk line, the planner's rescue report, and Benji's kitchen check. */
 .tag.saves { background: #DCEFD9; color: #1F4D2A; font-weight: 900; }
 @media (prefers-color-scheme: dark) { .tag.saves { background: #2E4A35; color: #E4F4E4; } }
-.today-risk { display: flex; align-items: center; gap: 6px; margin: -2px 4px 6px; font-size: .9rem; font-weight: 800; color: #8A3A22; }
-.today-risk .ic { width: 20px; height: 20px; margin: 0; flex: none; }
-@media (prefers-color-scheme: dark) { .today-risk { color: #FFB4A3; } }
+.today-risk { display: flex; align-items: center; gap: 6px; margin: 8px 14px -6px; align-self: flex-start; max-width: calc(100% - 28px); padding: 3px 10px; border-radius: 999px;
+  background: #FFFDF6; color: #8A3A22; box-shadow: 0 2px 0 rgba(0,0,0,.2); font-size: .8rem; font-weight: 900; flex: none; }
+.today-risk .ic { width: 16px; height: 16px; margin: 0; flex: none; }
 /* Planner rescue report */
 .rescue-card { border: 2px solid #8CC28F; background: #F1F8EE; }
 .rescue-card h3 { margin: 0 0 4px; font-size: 1.15rem; }

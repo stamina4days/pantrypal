@@ -1,6 +1,8 @@
 /* Colors, fonts, and sizes. Base values; css/themes/kitchen.css sets the family kitchen table look. */
 :root {
   color-scheme: light dark;   /* we draw our own dark mode; stops phones from darkening the colors a second time */
+  /* The room a tab's scene has: the visible screen minus the header and the tabs (helpers.js measures them) */
+  --scene-h: calc(100dvh - var(--topbar-h, 96px) - var(--tabbar-h, 76px) - 6px);
   --sky: #DFF1FA;
   --sky-deep: #BFE3F4;
   --paper: #FFFDF6;
