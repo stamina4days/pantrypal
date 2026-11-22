@@ -2,7 +2,7 @@
 /* ---------- display settings ---------- */
 html.text-large { font-size: 112.5%; }
 html.text-xl { font-size: 125%; }
-html.text-large .tabbar button, html.text-xl .tabbar button { font-size: .78rem; }
+html.text-large .tabbar button, html.text-xl .tabbar button { font-size: min(.78rem, 3.4vw); }
 html.text-xl .top-actions .btn-label { font-size: .62rem; }
 html.text-xl #pageTitle { font-size: clamp(1.4rem, 7vw, 2rem); }
 /* The text size picker */

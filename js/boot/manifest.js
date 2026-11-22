@@ -38,6 +38,7 @@ const PP_PAGES = [
   "screens/settings/share-kitchen.html",
   "screens/sheets/remove.html",
   "screens/sheets/list-pick.html",
+  "screens/sheets/music.html",
   "screens/search/search.html",
   "screens/play/play.html",
   "screens/settings/hats.html"

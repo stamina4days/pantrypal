@@ -1,6 +1,25 @@
 "use strict";
 /* Starts Pantry Pal: loads every page and every recipe file, then hands off to the app. */
 
+/* If a style file failed to load (a network hiccup, or the site was mid-update), the page falls apart:
+   the tabs turn into plain wrapped buttons, for one. Spot any style file that came back empty and load it again. */
+function healStyles(tries = 0) {
+  const bad = [...document.querySelectorAll('link[rel="stylesheet"]')].filter(l => {
+    if (!(l.getAttribute("href") || "").startsWith("css/") || !l.sheet || l.dataset.healing) return false;
+    try { return l.sheet.cssRules.length === 0; } catch (e) { return false; }
+  });
+  bad.forEach(l => {
+    const n = l.cloneNode();
+    n.href = l.getAttribute("href").split("?")[0] + "?r=" + Date.now();
+    l.dataset.healing = "1";
+    n.addEventListener("load", () => { try { if (n.sheet && n.sheet.cssRules.length) l.remove(); } catch (e) { l.remove(); } delete l.dataset.healing; });
+    n.addEventListener("error", () => { n.remove(); delete l.dataset.healing; });
+    l.after(n);
+  });
+  if (tries < 4) setTimeout(() => healStyles(tries + 1), tries ? 4000 : 1500);
+}
+healStyles();
+
 async function fetchText(path) {
   const res = await fetch(path);
   if (!res.ok) throw new Error(res.status + " " + (res.statusText || "error") + " for " + path);

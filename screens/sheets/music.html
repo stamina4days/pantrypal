@@ -1,0 +1,13 @@
+<!-- The music menu: what's playing, volume, and every song, with the locked ones and how to get them -->
+<dialog id="musicDialog" data-accent="today" class="sheet music-sheet" aria-labelledby="musicTitle">
+  <div class="dialog-body">
+    <div class="mu-head">
+      <h2 id="musicTitle" data-t>Music</h2>
+      <button type="button" id="musicClose" class="mu-x" data-t-aria="Close" aria-label="Close"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/close.svg#i"/></svg></button>
+    </div>
+    <div class="mu-now" id="musicNow" aria-live="polite"></div>
+    <label class="mu-vol"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/speaker.svg#i"/></svg><span class="sr-only" data-t>Volume</span><input type="range" id="musicVol" min="0" max="100" step="5"></label>
+    <p class="mu-ios muted small hidden" id="musicIos" data-t>On an iPhone, use the phone's volume buttons, and turn off silent mode to hear music.</p>
+    <div id="musicList" class="mu-list"></div>
+  </div>
+</dialog>

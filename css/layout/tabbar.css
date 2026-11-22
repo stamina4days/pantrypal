@@ -1,13 +1,15 @@
 /* Bottom tabs. */
 /* ---------- bottom tabs: crate labels ---------- */
 .tabbar {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; gap: 4px;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px;
   background: var(--paper); border-top: 3px solid var(--edge); padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
 }
 .tabbar button {
-  flex: 1; border: 0; box-shadow: none; border-radius: 14px; background: none; padding: 4px 0 6px; min-height: 58px;
-  display: flex; flex-direction: column; align-items: center; gap: 1px; font-size: .72rem; font-weight: 800; color: var(--muted);
+  min-width: 0; border: 0; box-shadow: none; border-radius: 14px; background: none; padding: 4px 0 6px; min-height: 58px;
+  display: flex; flex-direction: column; align-items: center; gap: 1px; font-size: min(.72rem, 3.4vw); font-weight: 800; color: var(--muted);
 }
+/* Labels stay on one line, even with the phone's text made bigger */
+.tabbar button > span:last-child { max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tabbar button:active { transform: none; }
 .tabbar .ico { font-size: 1.45rem; line-height: 1.2; }
 .tabbar button.active { color: var(--ink); }

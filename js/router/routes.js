@@ -36,6 +36,7 @@ const ROUTES = {
   diagDialog: "phone-check",
   searchPage: "search",
   playPage: "play",
+  musicDialog: "music",
   sortPage: "play/fridge-sort",
   wordPage: "play/food-word",
   hatsPage: "benji/hats"
@@ -90,6 +91,7 @@ const DEEP_LINKS = [
   [/^benji\/hats$/, () => openHats()],
   [/^tour$/, () => { setTimeout(startTour, 300); }],
   [/^play$/, () => openPlay()],
+  [/^music$/, () => openMusic()],
   [/^play\/fridge-sort$/, () => openSort()],
   [/^play\/food-word$/, () => openWord()]
 ];
