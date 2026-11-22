@@ -103,7 +103,7 @@ body #addBtn.fab { display: none; }
 #tab-pantry .fridge-scene .fr-sub { color: #5E7069; font-size: .82rem; }
 /* How long it has: a little price tag */
 #tab-pantry .fridge-scene .row-face .fr-when { padding: 2px 8px; border: 2px solid #233A31; border-radius: 4px 10px 10px 4px; background: #FFFDF6; color: #233A31; font-size: .8rem; }
-#tab-pantry .fridge-scene .row-face .fr-when.urgent { background: #E5482F; color: #FFFFFF; }
+#tab-pantry .fridge-scene .row-face .fr-when.urgent { background: #C43820; color: #FFFFFF; }
 #tab-pantry .fridge-scene .row-face .fr-when.expired { background: #7B3F8C; color: #FFFFFF; }
 #tab-pantry .fridge-scene .row-face .fr-when.soon { background: #FFD23F; color: #4A3200; }
 /* Bare shelves */
@@ -114,7 +114,7 @@ body #addBtn.fab { display: none; }
 /* The floor: the grocery bag */
 .fz-floor { position: static; margin: 10px -12px 0; padding: 8px 14px 10px; }
 .fz-view.link-btn { margin: 0; flex: none; max-width: 38%; font-size: .85rem; line-height: 1.15; color: #A9D9B5; text-align: center; }
-@media (prefers-color-scheme: light) { .fz-view.link-btn { color: #22703A; } }
+@media (prefers-color-scheme: light) { .fz-view.link-btn { color: #1C5E30; } }
 #tab-pantry .fridge-scene .hint-slot:empty { display: none; }
 #tab-pantry .fridge-scene .food-group { background: transparent; box-shadow: none 0 2px 0 #BFD9E6; padding-top: 0; border-radius: 0; }
 #tab-pantry .fridge-scene .food-group { box-shadow: 0 2px 0 #BFD9E6; }

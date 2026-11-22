@@ -91,7 +91,7 @@ body .top-actions .icon-btn { width: 44px; height: 44px; min-width: 44px; min-he
 .k-note { display: block; max-width: calc(100% - 22px); min-height: 44px; padding: 6px 8px; border: 0; border-radius: 3px; background: var(--k-note); color: #3A2A10;
   font-family: var(--hand); font-weight: 700; font-size: 1rem; line-height: 1.1; text-align: left; transform: rotate(-4deg); box-shadow: 0 3px 0 rgba(0, 0, 0, .15); cursor: pointer; }
 .k-note:active { transform: rotate(-4deg) translateY(2px); box-shadow: 0 1px 0 rgba(0, 0, 0, .15); }
-.k-cook { background: var(--tomato); color: #2A140D; }
+.k-cook { background: #C43820; color: #FFFFFF; }
 .k-magnets { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 6px; }
 .k-magnets li:nth-child(1) { transform: rotate(-7deg); }
 .k-magnets li:nth-child(2) { transform: rotate(6deg) translateY(6px); }
@@ -100,7 +100,7 @@ body .top-actions .icon-btn { width: 44px; height: 44px; min-width: 44px; min-he
 .k-mag-art, .k-magnet img, .k-magnet .food-emoji { width: 42px; height: 42px; flex: none; font-size: 30px; line-height: 42px; text-align: center; filter: drop-shadow(0 3px 2px rgba(0, 0, 0, .25)); }
 .k-magnet .k-when { margin-top: -6px; position: relative; }
 .k-when { font-weight: 900; font-size: .75rem; padding: 2px 7px; border-radius: 999px; background: #CFE6F2; color: #10384D; white-space: nowrap; }
-.k-when.urgent { background: #E5482F; color: #FFFFFF; }
+.k-when.urgent { background: #C43820; color: #FFFFFF; }
 .k-when.soon { background: #FFD23F; color: #4A3200; }
 .k-when.expired { background: #7B3F8C; color: #FFFFFF; }
 @media (prefers-reduced-motion: no-preference) {
