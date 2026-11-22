@@ -3,5 +3,5 @@
 const STORE_ITEMS = [
   { id: "hats-fun", name: "Fun hat pack", price: "$1.99",
     desc: "Four silly hats for Benji to wear: a cowboy hat, a pirate hat, a viking helmet, and a frog hat.",
-    hats: ["cowboy", "pirate", "viking", "frog"], buyUrl: "" }
+    hats: ["cowboy", "pirate", "viking", "frog"], buyUrl: "https://square.link/u/nvIdItlL" }
 ];

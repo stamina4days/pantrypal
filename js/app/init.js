@@ -108,6 +108,13 @@ function init() {
   $("#emailRecipe").addEventListener("click", emailSuggestion);
 
   // Plan
+  // A calendar square: an empty day adds a meal; a planned day turns to that day's page
+  $("#planWeek").addEventListener("click", e => {
+    const b = e.target.closest("[data-cal-day]"); if (!b) return;
+    const d = b.dataset.calDay, page = $(`#planBody .pday[data-day="${d}"]`);
+    if (!b.classList.contains("has")) { const add = page && page.querySelector("[data-plan-day]"); if (add) add.click(); return; }
+    if (page) { page.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); page.classList.remove("flash"); void page.offsetWidth; page.classList.add("flash"); }
+  });
   $("#planBody").addEventListener("click", e => {
     const un = e.target.closest("[data-unplan]");
     if (un) { e.stopPropagation(); plan = plan.filter(m => m.id !== un.dataset.unplan && m.fromId !== un.dataset.unplan); savePlan(); renderPlan(); return; }

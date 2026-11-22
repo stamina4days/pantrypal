@@ -67,6 +67,7 @@ const Splash = (() => {
     return new Promise(done => {
       const benji = (mood, pose) => palSVG(mood, 132, { pose });
       const showName = again => {
+        s.classList.remove("shopfront");
         stage.innerHTML = `<div class="sm-benji">${benji("happy", "wave")}</div>
           <h1 class="splash-name" id="smTitle">Pantry Pal</h1>
           <form class="sm-card" id="smNameForm">
@@ -100,9 +101,15 @@ const Splash = (() => {
         const name = (settings.userName || "").trim();
         const hello = !settings.onboarded ? t("Ready when you are!")
           : name ? t("Welcome back, {name}!", { name }) : t("Welcome back!");
-        stage.innerHTML = `<div class="sm-benji">${benji("happy", "wave")}</div>
-          <h1 class="splash-name" id="smTitle">Pantry Pal</h1>
-          <p class="sm-hello">${esc(hello)}</p>
+        // Benji's shop front: a glowing sign, Benji in the window behind crates of produce, and the menu as hanging signs
+        const crate = foods => `<span class="sf-crate" aria-hidden="true">${foods.map(f => `<img src="img/food/${f}.svg" alt="">`).join("")}</span>`;
+        s.classList.add("shopfront");
+        stage.innerHTML = `<div class="sf-sign"><h1 class="splash-name" id="smTitle">Pantry Pal</h1></div>
+          <div class="sf-window">
+            <p class="sm-hello">${esc(hello)}</p>
+            <div class="sm-benji">${benji("happy", "wave")}</div>
+          </div>
+          <div class="sf-counter">${crate(["apple", "carrot"])}${crate(["banana", "bread"])}</div>
           <div class="sm-menu">
             <button type="button" class="primary sm-go" data-sm="start">${esc(t("Start"))}</button>
             <button type="button" data-sm="hats"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/hat.svg#i"/></svg> ${esc(t("Benji's hats"))}</button>
