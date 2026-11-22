@@ -11,6 +11,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
 ## New in version 11.10
+- **Everything in the shop is for sale (11.10.1).** Every item now has its Square checkout link. Bigger tips grow a bigger golden sprout: $1 a golden sprout, $3 a leafy one, and $5 a golden sprout in full bloom with a star flower, and the tip jar shows all three.
 - **A bigger Benji's shop.** New optional extras, each unlocked with a code made for your phone's shop ID, the same way as the Fun hat pack. Everything that saves food and money stays free.
 - **Kitchen theme pack ($2.99).** Four new looks for every tab: a diner with a neon EAT sign and a checkered floor, a log cabin with a window and a plaid rug, a beach shack with a life ring and a sandy floor, and a space station with a porthole full of stars. The cloth across the top and the tab shelf change too. Pick one in Settings under Display.
 - **Three new hat packs ($1.99 each).** Holiday: an elf hat, reindeer antlers, a witch hat, and bunny ears. Food: a taco, sushi, a pizza slice, and a cupcake. Jobs: a firefighter helmet, a hard hat, a space helmet, and a pilot cap.
