@@ -41,7 +41,14 @@
 
     <h3 data-t>Display</h3>
     <label class="check"><input type="checkbox" id="viewSimple"> <span data-t>Keep it simple (fewer buttons)</span></label>
-    <label class="check"><input type="checkbox" id="largeText"> <span data-t>Larger text</span></label>
+    <div class="text-size-row">
+      <span class="ts-label" id="textSizeLabel" data-t>Text size</span>
+      <div class="text-size-pick" id="textSize" role="group" aria-labelledby="textSizeLabel">
+        <button type="button" data-size="normal" aria-pressed="true"><span class="ts-aa ts-1" aria-hidden="true">Aa</span><span data-t>Regular</span></button>
+        <button type="button" data-size="large" aria-pressed="false"><span class="ts-aa ts-2" aria-hidden="true">Aa</span><span data-t>Large</span></button>
+        <button type="button" data-size="xl" aria-pressed="false"><span class="ts-aa ts-3" aria-hidden="true">Aa</span><span data-t>Extra large</span></button>
+      </div>
+    </div>
     <label class="check"><input type="checkbox" id="highContrast"> <span data-t>High contrast</span></label>
     <label class="check"><input type="checkbox" id="soundsToggle"> <span data-t>Sounds and buzzes</span></label>
     <label class="check"><input type="checkbox" id="outfitsToggle"> <span data-t>Pal dresses up for the seasons</span></label>

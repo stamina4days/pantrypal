@@ -163,7 +163,7 @@ function init() {
     $("#assumeBasics").checked = settings.assumeBasics;
     $("#useSubs").checked = settings.useSubs;
     $("#remindersToggle").checked = settings.reminders;
-    $("#largeText").checked = settings.largeText;
+    setPressed("#textSize", $(`#textSize [data-size="${textSizeNow()}"]`));
     $("#highContrast").checked = settings.highContrast;
     $("#langSelect").value = LANG;
     $("#settingsDialog").showModal();
@@ -172,7 +172,7 @@ function init() {
   $("#langSelect").addEventListener("change", e => { settings.lang = e.target.value; saveSettings(); applyLang(); });
   $("#assumeBasics").addEventListener("change", e => { settings.assumeBasics = e.target.checked; saveSettings(); renderAll(); });
   $("#useSubs").addEventListener("change", e => { settings.useSubs = e.target.checked; saveSettings(); renderAll(); });
-  $("#largeText").addEventListener("change", e => { settings.largeText = e.target.checked; saveSettings(); applyDisplay(); });
+  segment("#textSize", "size", v => setTextSize(v));
   $("#highContrast").addEventListener("change", e => { settings.highContrast = e.target.checked; saveSettings(); applyDisplay(); });
   $("#remindersToggle").addEventListener("change", e => setReminders(e.target.checked));
   $("#calendarAll").addEventListener("click", () => calendarReminders(items));

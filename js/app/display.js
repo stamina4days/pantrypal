@@ -23,8 +23,15 @@ function applyLang() {
   syncForReminders();
   applyDisplay();
 }
+/* Text size: Regular, Large, or Extra large. The whole app grows with it. */
+function textSizeNow() { return settings.textSize || (settings.largeText ? "large" : "normal"); }
+function setTextSize(v) {
+  settings.textSize = v; settings.largeText = v !== "normal"; saveSettings(); applyDisplay();
+}
 function applyDisplay() {
-  document.body.classList.toggle("large-text", !!settings.largeText);
+  const ts = textSizeNow();
+  ["large", "xl"].forEach(s => document.documentElement.classList.toggle("text-" + s, ts === s));
+  document.body.classList.toggle("large-text", ts !== "normal");
   document.body.classList.toggle("high-contrast", !!settings.highContrast);
   document.body.classList.toggle("simple", settings.view !== "full");
   const vt = document.getElementById("viewToggle");

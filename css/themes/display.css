@@ -1,8 +1,18 @@
 /* Large text and high contrast. */
 /* ---------- display settings ---------- */
-body.large-text { font-size: 19px; }
-body.large-text .small { font-size: .94rem; }
-body.large-text .tabbar button { font-size: .8rem; }
+html.text-large { font-size: 112.5%; }
+html.text-xl { font-size: 125%; }
+html.text-large .tabbar button, html.text-xl .tabbar button { font-size: .78rem; }
+html.text-xl .top-actions .btn-label { font-size: .62rem; }
+html.text-xl #pageTitle { font-size: clamp(1.4rem, 7vw, 2rem); }
+/* The text size picker */
+.text-size-row { display: grid; gap: 8px; padding: 10px 0; border-bottom: 2px dashed var(--line); }
+.ts-label { font-weight: 700; }
+.text-size-pick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.text-size-pick button { display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 76px; padding: 6px 4px; font-size: .85rem; }
+.text-size-pick button[aria-pressed="true"] { background: var(--leaf); border-color: var(--leaf-deep); color: var(--on-color, #fff); }
+.ts-aa { font-family: var(--hand); font-weight: 700; line-height: 1; }
+.ts-1 { font-size: 20px; } .ts-2 { font-size: 26px; } .ts-3 { font-size: 32px; }
 body.high-contrast {
   --sky: #FFFFFF; --sky-deep: #E6E6E6; --paper: #FFFFFF; --ink: #000000; --muted: #222222; --line: #000000;
   --tomato: #B3200C; --lemon: #FFD000; --leaf: #0A6B2A; --leaf-deep: #064A1C; --plum: #5A1F6B; --sea: #0B5E99; --chalk: #000000;
