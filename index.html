@@ -10,7 +10,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.7";
+  var BUILD = "11.8";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -79,6 +79,7 @@
 <link rel="stylesheet" href="css/screens/search.css">
 <link rel="stylesheet" href="css/screens/play.css">
 <link rel="stylesheet" href="css/components/tour.css">
+<link rel="stylesheet" href="css/components/money.css">
 <link rel="stylesheet" href="css/screens/hats.css">
 <link rel="stylesheet" href="css/themes/kitchen.css">
 <link rel="stylesheet" href="css/themes/display.css">
@@ -171,6 +172,7 @@
 <script src="data/food/stickers.js" defer></script>
 <script src="data/food/opened.js" defer></script>
 <script src="data/badges.js" defer></script>
+<script src="data/store.js" defer></script>
 <script src="data/collections.js" defer></script>
 <script src="data/specials.js" defer></script>
 <script src="data/play.js" defer></script>
@@ -285,6 +287,7 @@
 <script src="js/screens/play/food-word.js" defer></script>
 <script src="js/screens/play/play.js" defer></script>
 <script src="js/screens/hats/hats.js" defer></script>
+<script src="js/features/store/store.js" defer></script>
 <script src="js/app/display.js" defer></script>
 <script src="js/app/tabs.js" defer></script>
 <script src="js/app/wire-kitchen.js" defer></script>
@@ -293,6 +296,7 @@
 <script src="js/app/init.js" defer></script>
 <script src="js/router/routes.js" defer></script>
 <script src="js/router/router.js" defer></script>
+<script src="js/features/money/money.js" defer></script>
 <script src="js/boot/manifest.js" defer></script>
 <script src="js/boot/splash.js" defer></script>
 <script src="js/boot/loader.js" defer></script>
