@@ -89,6 +89,19 @@ const Splash = (() => {
             </div>
             <div class="sf-counter">${crate(["apple", "carrot", "tomato"])}${crate(["banana", "bread", "lemon"])}</div>
           </div>`;
+      /* "Play music while you cook?" asked once, so sound never starts by surprise. The tap on Yes starts the music. */
+      const hasRadio = typeof Radio !== "undefined" && Radio.answer;
+      const needMusic = () => hasRadio && !Radio.asked();
+      const musicQ = (cls = "") => `<div class="sf-music ${cls}" role="group" aria-labelledby="smMusicQ">
+          <p class="sf-music-q" id="smMusicQ"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/music.svg#i"/></svg> <span>${esc(t("Play music while you cook?"))}</span></p>
+          <div class="sf-music-btns"><button type="button" class="sf-mbtn sf-yes" data-music="yes">${esc(t("Yes, play music"))}</button><button type="button" class="sf-mbtn" data-music="no">${esc(t("No thanks"))}</button></div>
+        </div>`;
+      const wireMusic = (box, after) => box.querySelectorAll("[data-music]").forEach(b => b.addEventListener("click", () => {
+        const yes = b.dataset.music === "yes";
+        Radio.answer(yes);
+        if (typeof sfx === "function") sfx("pop");
+        if (after) after(yes);
+      }));
       /* First time screens: the shop front, with a paper notice taped up under the counter */
       const notice = (hello, inner, mood, pose) => {
         s.classList.add("sf-first");
@@ -142,6 +155,21 @@ const Splash = (() => {
         });
         focusFirst("#smTermsLink");
       };
+      /* Leaving the first time screens: say hello, ask about music once, then open the app */
+      const goIn = hello => {
+        const gw = stage.querySelector(".sf-go-wrap"); if (gw) gw.remove();
+        const paper = stage.querySelector(".sf-paper");
+        stage.querySelector(".sm-benji").innerHTML = benji("cheer", "cheer");
+        if (!needMusic()) {
+          if (hasRadio) Radio.autoStart();
+          paper.innerHTML = `<p class="sm-say sf-paper-text">${esc(hello)}</p>`;
+          setTimeout(() => done("start"), 1300);
+          return;
+        }
+        paper.innerHTML = `<p class="sm-say sf-paper-text">${esc(hello)}</p>${musicQ("on-paper")}`;
+        wireMusic(paper, () => setTimeout(() => done("start"), 350));
+        if (!coarse) setTimeout(() => { const y = paper.querySelector(".sf-yes"); if (y) y.focus(); }, 60);
+      };
       const showName = again => {
         notice(again ? t("Sure! What should I call you?") : t("Hi! I'm Benji!"), `<form class="sf-form" id="smNameForm"><div class="sf-paper">
             <h2 class="sf-paper-title">${esc(again ? t("Your name") : t("Nice to meet you"))}</h2>
@@ -165,14 +193,10 @@ const Splash = (() => {
           if (typeof renderKitchenName === "function") renderKitchenName();
           if (typeof sfx === "function") sfx("cheer");
           if (again) return showMenu();
-          if (typeof Radio !== "undefined" && Radio.autoStart) Radio.autoStart();
-          const gw = stage.querySelector(".sf-go-wrap"); if (gw) gw.remove();
-          stage.querySelector(".sf-paper").innerHTML = `<p class="sm-say sf-paper-text">${esc(v ? t("Nice to meet you, {name}! Let's save some money.", { name: v }) : t("No problem. Let's save some money!"))}</p>`;
-          stage.querySelector(".sm-benji").innerHTML = benji("cheer", "cheer");
-          setTimeout(() => done("start"), 1300);
+          goIn(v ? t("Nice to meet you, {name}! Let's save some money.", { name: v }) : t("No problem. Let's save some money!"));
         });
         const skip = stage.querySelector("#smNoName");
-        if (skip) skip.addEventListener("click", () => { settings.named = true; saveSettings(); if (typeof Radio !== "undefined" && Radio.autoStart) Radio.autoStart(); done("start"); });
+        if (skip) skip.addEventListener("click", () => { settings.named = true; saveSettings(); goIn(t("No problem. Let's save some money!")); });
         setTimeout(() => stage.querySelector("#smName").focus(), 60);
       };
       const showMenu = () => {
@@ -194,6 +218,17 @@ const Splash = (() => {
         stage.querySelectorAll("[data-sm]").forEach(b => b.addEventListener("click", () => {
           const a = b.dataset.sm;
           if (a === "name") return showName(true);
+          if (needMusic()) {
+            // Never answered: the signs make way for a paper notice that asks once, then we go where they tapped
+            if (typeof sfx === "function") sfx("pop");
+            const menu = stage.querySelector(".sm-menu"), rn = stage.querySelector(".sm-rename");
+            if (rn) rn.remove();
+            menu.outerHTML = `<div class="sf-paper sf-ask">${musicQ()}<p class="sf-music-note">${esc(t("You can change this any time with the music button at the top."))}</p></div>`;
+            const ask = stage.querySelector(".sf-ask");
+            wireMusic(ask, () => setTimeout(() => done(a), 300));
+            if (!coarse) setTimeout(() => { const y = ask.querySelector(".sf-yes"); if (y) y.focus(); }, 60);
+            return;
+          }
           if (typeof Radio !== "undefined" && Radio.autoStart) Radio.autoStart();   // music starts with this tap
           if (typeof sfx === "function") sfx("pop");
           done(a);

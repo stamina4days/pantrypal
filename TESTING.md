@@ -12,7 +12,7 @@ Thanks for testing Pantry Pal! Work through the sections below on your phone. Yo
 - [ ] Install it: Android Chrome menu > **Install app** (or Add to Home screen). iPhone Safari > Share > **Add to Home Screen**.
 - [ ] The home screen icon shows Benji, the green dollar sign, not a blank square or a letter.
 - [ ] Open it from the home screen. It opens full screen, without the browser address bar.
-- [ ] Settings > **Check what this phone supports**. Take a screenshot of the list and include it with your feedback.
+- [ ] Settings > **What works on this phone**. Take a screenshot of the list and include it with your feedback.
 
 ## First visit
 - [ ] While loading, Benji stands on a crate of produce and a progress bar fills up.
@@ -23,7 +23,9 @@ Thanks for testing Pantry Pal! Work through the sections below on your phone. Yo
 - [ ] Tick "Don't show this when I open the app" in the tour, reopen the app, and check the tour stays away. You can turn it back on in Settings.
 
 ## Music
-- [ ] Music starts when you tap **Start** on the start menu. The music button at the top shows moving bars while a song plays.
+- [ ] The first time, after you enter your name, Benji asks **Play music while you cook?** No music plays before you answer.
+- [ ] Tap **Yes, play music**: music starts, and the music button at the top shows moving bars. (Or tap **No thanks**: it stays quiet, and the music button can turn it on later.)
+- [ ] Close and reopen the app. Benji doesn't ask again, and music follows your answer when you tap Start.
 - [ ] Tap the music button. The music menu shows what's playing, a Play or Off button, a volume slider, and every song.
 - [ ] Turn music off and on with the Off and Play button.
 - [ ] Move the volume slider. The music gets quieter and louder. (On an iPhone the slider may do nothing: use the phone's volume buttons instead.)
@@ -104,8 +106,9 @@ Thanks for testing Pantry Pal! Work through the sections below on your phone. Yo
 - [ ] Turn airplane mode off again.
 
 ## Backup
-- [ ] Everything you add is saved only on this phone. Settings > **Export backup**. A file downloads.
-- [ ] Open the site in a different browser (or a private tab), Settings > **Import backup**, and pick the file. Your food, plan, lists, and purchases come back.
+- [ ] Everything you add is saved only on this phone. After you've added about 10 foods (or used the app for a week), Benji reminds you on My Food to save a copy. Tap **Save a copy** in his reminder: a file downloads and the reminder goes away.
+- [ ] Settings > Keep a copy > **Save a copy** also downloads a file.
+- [ ] Open the site in a different browser (or a private tab), Settings > **Bring back a copy**, and pick the file. Your food, plan, lists, and purchases come back.
 
 ## Display
 - [ ] Settings > Display > **Text size**: try Large and Extra large. Everything still fits, and the tabs stay in one row.
