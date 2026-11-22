@@ -10,9 +10,10 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.2";
+  var BUILD = "11.3";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
+    try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
     var had = localStorage.getItem("pantrypal.build");
     if (had === BUILD) return;
     localStorage.setItem("pantrypal.build", BUILD);
@@ -216,6 +217,7 @@
 <script src="js/planner/planner.js" defer></script>
 <script src="js/planner/prep-session.js" defer></script>
 <script src="js/features/shopping/lists.js" defer></script>
+<script src="js/features/shopping/running-low.js" defer></script>
 <script src="js/features/removing/remove.js" defer></script>
 <script src="js/features/receipts/parse.js" defer></script>
 <script src="js/features/timers/step-minutes.js" defer></script>

@@ -33,7 +33,7 @@ function renderShopping() {
   } else html += open.map(rowHtml).join("");
   if (done.length) html += `<li class="aisle-head">${esc(t("In the cart"))}</li>` + done.map(rowHtml).join("");
   $("#shopItems").innerHTML = html;
-  $("#shopSuggest").innerHTML = restockHtml(list);
+  $("#shopSuggest").innerHTML = runningLowHtml(list);
   const est = listEstimate(list);
   $("#shopEstimate").textContent = open.length ? t("Estimated total: about {total}", { total: fmtMoney(est.total) }) + (est.unknown ? " " + tn(est.unknown, "(1 item without a price)", "({n} items without a price)") : "") : "";
   const nDone = list.items.filter(x => x.done).length;

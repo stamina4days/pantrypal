@@ -46,6 +46,7 @@ function pagesInit() {
   $("#outfitsToggle").addEventListener("change", e => { settings.palOutfits = e.target.checked; saveSettings(); renderAll(); });
   todayInit();
   searchInit();
+  runningLowInit();
   swipeInit();
   palLifeInit();
   talkInit();
