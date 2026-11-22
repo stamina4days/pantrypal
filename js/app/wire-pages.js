@@ -49,6 +49,7 @@ function pagesInit() {
   playInit();
   tourInit();
   hatsInit();
+  storeInit();
   swipeInit();
   palLifeInit();
   talkInit();
@@ -61,6 +62,8 @@ function pagesInit() {
   $("#viewToggle").addEventListener("click", () => setView(settings.view === "full" ? "simple" : "full"));
   $("#viewSimple").addEventListener("change", e => setView(e.target.checked ? "simple" : "full"));
   $("#aboutBtn").addEventListener("click", () => { $("#settingsDialog").close(); openAbout(); });
+  $("#termsBtn").addEventListener("click", () => { $("#settingsDialog").close(); openTerms(); });
+  $("#abTerms").addEventListener("click", () => { $("#aboutPage").close(); openTerms(); });
 
   // Stats tab redraws its extras whenever you switch to it.
   segment("#statsRange", "range", () => renderStatsExtras());

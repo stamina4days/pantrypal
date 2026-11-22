@@ -12,6 +12,12 @@ Check each box, and write down anything that looks wrong (what you tapped, what 
 - [ ] First visit: Benji asks your name on the start screen, then setup, then the tour.
 - [ ] Tick "Don't show this when I open the app" in the tour, reopen the app, and check the tour stays away. Turn it back on in Settings.
 - [ ] Win a hat in Fridge Sort and see it on the hats page.
+- [ ] Today looks like a kitchen. Tap a fridge magnet, the fridge note, the chalkboard, the hat on the peg, the jar, and the game console: each opens the right page. Add food stays on screen.
+- [ ] Settings > Benji's shop shows the Fun hat pack. Tap the unlock link from a test code: the four hats unlock and Benji can wear them.
+- [ ] Settings > Terms and food safety opens the terms. A food's page shows the "This date is an estimate" line, and its link opens the terms too.
+- [ ] With some food added, Today shows how much food money could go to waste, and recipes say "Saves about $X".
+- [ ] Plan my week shows "Rescues about $X of food" and a Freeze button for anything still at risk.
+- [ ] In Fridge Sort, answer "About half" on one of your foods and check its amount on My Food.
 
 ## Opening screen and pages
 - [ ] The opening screen shows Pal and a progress bar that fills as recipes load.

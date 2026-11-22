@@ -20,7 +20,7 @@ function renderHats() {
     const open = hatUnlocked(hat), on = choice === hat.id;
     const b = hat.unlock ? badges.find(x => x.id === hat.unlock) : null;
     const how = open ? (on ? t("Wearing it") : t("Tap to wear"))
-      : b ? t("{badge} badge: {a} of {b}", { badge: t(b.name), a: Math.min(b.have, b.goal), b: b.goal }) : "";
+      : hat.shop ? t("In Benji's shop") : b ? t("{badge} badge: {a} of {b}", { badge: t(b.name), a: Math.min(b.have, b.goal), b: b.goal }) : "";
     return `<li><button type="button" class="hat-card ${on ? "on" : ""} ${open ? "" : "locked"}" data-hat="${hat.id}" ${open ? `aria-pressed="${on}"` : `aria-disabled="true"`}>
       <span class="hat-pic">${palSVG("happy", 78, { hat: hat.id, pose: "rest", sprout: 1 })}${open ? "" : `<span class="hat-lock"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg></span>`}</span>
       <strong>${esc(t(hat.name))}</strong><span class="small">${esc(how)}</span>
@@ -28,7 +28,8 @@ function renderHats() {
     </button></li>`;
   };
   $("#htSeason").innerHTML = BENJI_HATS.filter(x => x.season).map(card).join("");
-  $("#htEarn").innerHTML = BENJI_HATS.filter(x => !x.season && !x.game).map(card).join("");
+  $("#htEarn").innerHTML = BENJI_HATS.filter(x => !x.season && !x.game && !x.shop).map(card).join("");
+  $("#htShop").innerHTML = BENJI_HATS.filter(x => x.shop).map(card).join("");
   $("#htGame").innerHTML = BENJI_HATS.filter(x => x.game).map(card).join("");
 }
 
@@ -37,6 +38,7 @@ function hatsInit() {
     if (e.target.closest("[data-go-play]")) { $("#hatsPage").close(); openPlay(); return; }
     const b = e.target.closest("[data-hat]"); if (!b) return;
     const id = b.dataset.hat, hat = benjiHat(id);
+    if (hat && hat.shop && !hatUnlocked(hat)) { $("#hatsPage").close(); openShop(); return; }
     if (hat && !hatUnlocked(hat)) {
       const badge = BADGES.find(x => x.id === hat.unlock);
       toast(hat.game ? t("Win it in the Play corner: {how}", { how: t(badge.desc) }) : t("Earn the \"{badge}\" badge to unlock this hat.", { badge: t(badge.name) })); sfx("tick");
@@ -53,7 +55,7 @@ function hatsInit() {
 
 /* For Benji's hat chatter: how many hats he has, and the next one to win (games first if asked). */
 function hatProgress(gamesOnly) {
-  const list = BENJI_HATS.filter(h => !h.season && (!gamesOnly || h.game));
+  const list = BENJI_HATS.filter(h => !h.season && !h.shop && (!gamesOnly || h.game));
   const have = list.filter(hatUnlocked);
   const badges = typeof badgeList === "function" ? badgeList() : [];
   const next = list.filter(h => !hatUnlocked(h)).map(h => ({ h, b: badges.find(x => x.id === h.unlock) }))
