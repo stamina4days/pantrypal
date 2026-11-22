@@ -35,6 +35,7 @@ const OFFLINE_FILES = [
  "css/screens/play.css",
  "css/screens/prep.css",
  "css/screens/recipe.css",
+ "css/screens/scenes.css",
  "css/screens/search.css",
  "css/screens/shopping.css",
  "css/screens/splash.css",
