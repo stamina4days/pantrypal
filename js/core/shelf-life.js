@@ -8,7 +8,7 @@ function shelfDirect(n) {
   }
   return best;
 }
-/* Works for English names, synonyms, and Spanish names. */
+/* Works for English names and synonyms. */
 function shelfLookup(name) {
   for (const k of chain(canon(name))) { const hit = shelfDirect(k); if (hit) return hit; }
   return shelfDirect(norm(name));

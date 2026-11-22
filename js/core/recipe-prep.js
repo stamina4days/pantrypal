@@ -20,14 +20,14 @@ function prepareRecipe(r) {
     g.basic = ch.some(k => BASIC_SET.has(k));
     g.flags = Object.keys(ALLERGEN_SETS).filter(cat => ALLERGEN_SETS[cat].some(k => ch.includes(k)));
   }
-  if (!r.mine && !r.es && typeof CLASSICS_ES !== "undefined") r.es = CLASSICS_ES[r.name];
+  delete r.es; delete r.waitEs; delete r.airfryEs;   // older recipe files still carry Spanish text; the app is English only
   r.serves = r.serves || SERVES[r.name] || 4;
   const pg = PROTEIN_GROUPS.find(([, keys]) => r.ingredients.some(g => !g.opt && keys.some(k => chain(g.key).includes(norm(k)))));
   r.protein = pg ? pg[0] : "veg";
   r.labels = CARD_LABELS.filter(id => strictlyFits(r, id));
   if (r.labels.includes("vegan")) r.labels = r.labels.filter(l => l !== "vegetarian");
-  r.search = [r.name, r.es ? r.es.name : "", r.type, t(r.type),
-    ...r.ingredients.map(g => g.name + " " + (ING_ES[g.name.toLowerCase()] || ""))].join(" ")
+  r.search = [r.name, r.type, t(r.type),
+    ...r.ingredients.map(g => g.name)].join(" ")
     .normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 }
 
@@ -38,9 +38,6 @@ function buildMatcher() {
     PHRASES.set(norm(child), norm(child)); addPhrase(parent); PARENT.set(norm(child), norm(parent));
   }
   for (const [alias, target] of Object.entries(ALIASES)) PHRASES.set(norm(alias), norm(target));
-  for (const [es, target] of Object.entries(ES_ALIASES)) {
-    PHRASES.set(norm(es), target ? (PHRASES.get(norm(target)) || norm(target)) : "");
-  }
   for (const ig of IGNORE) PHRASES.set(norm(ig), "");
   SUBS.forEach(s => [s.need, ...s.use].forEach(addPhrase));
   for (const [cat, list] of Object.entries(ALLERGENS)) ALLERGEN_SETS[cat] = list.map(norm);

@@ -14,8 +14,8 @@ function sumAmts(list) {
   }
   return [...[...groups.values()].map(g => {
     let rest = g.rest;
-    if (g.q > 1 && /^\s*(cup|clove|can|slice|head|bunch|handful|fillet|stalk|leaf|taza|lata|rebanada|cabeza)\b/i.test(rest) && !/s\b/i.test(rest)) rest = rest.replace(/^(\s*\w+)/, m => (/(ch|sh)$/i.test(m) ? m + "es" : m + "s"));
+    if (g.q > 1 && /^\s*(cup|clove|can|slice|head|bunch|handful|fillet|stalk|leaf)\b/i.test(rest) && !/s\b/i.test(rest)) rest = rest.replace(/^(\s*\w+)/, m => (/(ch|sh)$/i.test(m) ? m + "es" : m + "s"));
     return fmtFrac(g.q) + rest;
   }), ...other];
 }
-const localAmt = a => LANG === "es" ? amtParts(a)[0] : a;
+const localAmt = a => a;

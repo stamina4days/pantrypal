@@ -12,7 +12,7 @@ function daysLeft(exp) {
   const t0 = new Date(); t0.setHours(0, 0, 0, 0);
   return Math.round((parseDay(exp) - t0) / 86400000);
 }
-const locale = () => LANG === "es" ? "es-US" : "en-US";
+const locale = () => "en-US";
 function prettyDate(s) { return s ? parseDay(s).toLocaleDateString(locale(), { month: "short", day: "numeric" }) : ""; }
 function dayName(s) {
   const d = daysLeft(s);

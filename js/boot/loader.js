@@ -108,10 +108,7 @@ function healAndReload() {
 
 async function boot() {
   if (window.PP_UPDATING) return;   // the page is about to reload with fresh files
-  // English only for now. The Spanish files are still here; set SPANISH_READY to true to bring the language switch back.
-  if (!SPANISH_READY) settings.lang = "en";
-  LANG = settings.lang === "es" ? "es" : "en";
-  document.body.classList.toggle("english-only", !SPANISH_READY);
+  settings.lang = "en";   // English only for now
   document.documentElement.lang = LANG;
   Splash.start();
   try {
@@ -124,15 +121,17 @@ async function boot() {
   try {
     Router.prepare();
     init();
-    Router.start();
   } catch (e) {
     console.error(e);
     if (!healAndReload()) Splash.fail(e);
     return;
   }
   try { sessionStorage.removeItem("pantrypal.healed"); } catch (e) {}
+  const landing = location.hash;   // a shared link or bookmark skips the tour
+  const choice = await Splash.menu();
   await Splash.finish();
-  if (typeof afterSplash === "function") afterSplash();
+  try { Router.start(); } catch (e) { console.error(e); }
+  if (typeof afterSplash === "function") afterSplash(choice, landing);
   setTimeout(() => checkRecipeEdits().catch(() => {}), 4000);
   if (missingRecipes.length) toast(t("{n} recipes didn't load. Some files may not have uploaded to GitHub.", { n: missingRecipes.length }));
 }

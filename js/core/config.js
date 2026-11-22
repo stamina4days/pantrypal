@@ -1,5 +1,4 @@
 "use strict";
-const SPANISH_READY = false;   // the Español button and Spanish setup choice stay hidden until this is true
 /* App settings that rarely change. */
 const KEYS = {
   items: "pantrypal.items.v1", settings: "pantrypal.settings.v1", history: "pantrypal.history.v1",

@@ -18,7 +18,7 @@ let cookedLog = load(KEYS.cooked, []);
 let myRecipes = load(KEYS.mine, []);
 let settings = Object.assign({
   assumeBasics: true, useSubs: true, lastLoc: "Fridge", diets: [], reminders: false, activeList: null,
-  favorites: [], staples: [], lang: (navigator.language || "").toLowerCase().startsWith("es") ? "es" : "en",
+  favorites: [], staples: [], lang: "en",
   largeText: false, highContrast: false, onboarded: false, household: null, ratings: {}, usage: {},
   missingBasics: [], groupAisles: true, checkins: true, lastCheckin: null, prepProgress: {}, readAloud: false,
   prices: {}, hints: {}, kidFilter: false

@@ -1,5 +1,6 @@
 "use strict";
-/* The opening screen: Benji stocks the shelves while the recipes load. */
+/* The opening screen: Benji stocks the shelves while the recipes load, then it turns into a start menu,
+   like a game. The first time, Benji asks what to call you. */
 const Splash = (() => {
   const LINES = [
     "Washing the lettuce...",
@@ -51,6 +52,82 @@ const Splash = (() => {
       try { localStorage.setItem("pantrypal.fast", "1"); } catch (e) {}
     }, wait));
   }
+  /* The start menu. Resolves with what you picked: "start", "hats", "play", or "tour". */
+  function menu() {
+    const s = el(); if (!s) return Promise.resolve("start");
+    clearInterval(lineTimer);
+    document.documentElement.classList.remove("fast");
+    s.classList.add("menu");
+    s.setAttribute("role", "dialog");
+    s.setAttribute("aria-modal", "true");
+    s.setAttribute("aria-labelledby", "smTitle");
+    s.removeAttribute("aria-live");
+    const stage = s.querySelector(".splash-stage");
+    const needName = !settings.named && !(settings.userName || "").trim();
+    return new Promise(done => {
+      const benji = (mood, pose) => palSVG(mood, 132, { pose });
+      const showName = again => {
+        stage.innerHTML = `<div class="sm-benji">${benji("happy", "wave")}</div>
+          <h1 class="splash-name" id="smTitle">Pantry Pal</h1>
+          <form class="sm-card" id="smNameForm">
+            <p class="sm-say">${esc(again ? t("Sure! What should I call you?")
+              : t("Hi! I'm Benji. I help you save money by saving food. What should I call you?"))}</p>
+            <label class="sr-only" for="smName">${esc(t("Your first name"))}</label>
+            <input id="smName" autocomplete="given-name" maxlength="30" placeholder="${esc(t("Your first name"))}" value="${esc(settings.userName || "")}">
+            <button type="submit" class="primary sm-go">${esc(t("Nice to meet you!"))}</button>
+            ${again ? "" : `<button type="button" class="text-btn" id="smNoName">${esc(t("Skip for now"))}</button>`}
+          </form>`;
+        const f = stage.querySelector("#smNameForm");
+        f.addEventListener("submit", e => {
+          e.preventDefault();
+          const v = stage.querySelector("#smName").value.trim();
+          settings.named = true;
+          if (v) settings.userName = v;
+          saveSettings();
+          if (typeof renderKitchenName === "function") renderKitchenName();
+          if (typeof sfx === "function") sfx("cheer");
+          if (again) return showMenu();
+          stage.querySelector(".sm-card").innerHTML = `<p class="sm-say">${esc(v ? t("Nice to meet you, {name}! Let's save some money.", { name: v }) : t("No problem. Let's save some money!"))}</p>`;
+          stage.querySelector(".sm-benji").innerHTML = benji("cheer", "cheer");
+          setTimeout(() => done("start"), 1300);
+        });
+        const skip = stage.querySelector("#smNoName");
+        if (skip) skip.addEventListener("click", () => { settings.named = true; saveSettings(); done("start"); });
+        setTimeout(() => stage.querySelector("#smName").focus(), 60);
+      };
+      const showMenu = () => {
+        const name = (settings.userName || "").trim();
+        const hello = !settings.onboarded ? t("Ready when you are!")
+          : name ? t("Welcome back, {name}!", { name }) : t("Welcome back!");
+        stage.innerHTML = `<div class="sm-benji">${benji("happy", "wave")}</div>
+          <h1 class="splash-name" id="smTitle">Pantry Pal</h1>
+          <p class="sm-hello">${esc(hello)}</p>
+          <div class="sm-menu">
+            <button type="button" class="primary sm-go" data-sm="start">${esc(t("Start"))}</button>
+            <button type="button" data-sm="hats"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/hat.svg#i"/></svg> ${esc(t("Benji's hats"))}</button>
+            <button type="button" data-sm="play"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/game.svg#i"/></svg> ${esc(t("Play a game"))}</button>
+            <button type="button" data-sm="tour"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> ${esc(t("Take the tour"))}</button>
+          </div>
+          <button type="button" class="text-btn sm-rename" data-sm="name">${esc(name ? t("Not {name}? Change your name", { name }) : t("Tell Benji your name"))}</button>`;
+        stage.querySelectorAll("[data-sm]").forEach(b => b.addEventListener("click", () => {
+          const a = b.dataset.sm;
+          if (a === "name") return showName(true);
+          if (typeof sfx === "function") sfx("pop");
+          done(a);
+        }));
+        setTimeout(() => { const g = stage.querySelector(".sm-go"); if (g) g.focus(); }, 60);
+      };
+      // Keep keyboard focus on the start screen
+      s.addEventListener("keydown", e => {
+        if (e.key !== "Tab") return;
+        const f = [...s.querySelectorAll("button, input")];
+        const i = f.indexOf(document.activeElement);
+        if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+      });
+      needName ? showName(false) : showMenu();
+    });
+  }
   function fail(err) {
     clearInterval(lineTimer);
     const s = el(); if (!s) return;
@@ -68,5 +145,5 @@ const Splash = (() => {
     if (c) c.innerHTML = `<button class="primary" onclick="location.reload()">${esc(t("Try again"))}</button>`;
     console.error(err);
   }
-  return { start, progress, finish, fail };
+  return { start, progress, menu, finish, fail };
 })();
