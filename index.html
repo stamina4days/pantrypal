@@ -23,7 +23,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.9.3";
+  var BUILD = "11.10";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -96,6 +96,7 @@
 <link rel="stylesheet" href="css/screens/hats.css">
 <link rel="stylesheet" href="css/themes/kitchen.css">
 <link rel="stylesheet" href="css/screens/scenes.css">
+<link rel="stylesheet" href="css/themes/kitchen-themes.css">
 <link rel="stylesheet" href="css/themes/display.css">
 <link rel="stylesheet" href="css/themes/print.css">
 </head>
@@ -302,6 +303,7 @@
 <script src="js/screens/play/play.js" defer></script>
 <script src="js/screens/hats/hats.js" defer></script>
 <script src="js/features/store/store.js" defer></script>
+<script src="js/features/themes/themes.js" defer></script>
 <script src="js/app/display.js" defer></script>
 <script src="js/app/tabs.js" defer></script>
 <script src="js/app/wire-kitchen.js" defer></script>
