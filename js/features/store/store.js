@@ -92,17 +92,42 @@ function openShop() {
   if (!$("#shopPage").open) $("#shopPage").showModal();
 }
 
+/* Each shop item is a little poster: an awning across the top, the price on a gold coin, and a show of what's inside. */
+const TIP_TIERS = [
+  { n: 1, title: "Thank you", gets: "Benji's sprout turns gold, and you earn the Supporter badge.", coins: 1 },
+  { n: 2, title: "Big thanks", gets: "A leafier golden sprout for Benji, and the Supporter badge.", coins: 2 },
+  { n: 3, title: "You're a star", gets: "Benji's golden sprout in full bloom, and the Supporter badge.", coins: 4 }
+];
 function renderShop() {
   renderShopId();
   const box = $("#storeItems"); if (!box) return;
-  const cell = (art, name) => `<span class="store-hat">${art}<span class="small">${esc(t(name))}</span></span>`;
-  const preview = it => {
-    if (it.kind === "hats") return (it.hats || []).map(id => cell(palSVG("happy", 64, { hat: id, pose: "rest", sprout: 1, wear: false }), (benjiHat(id) || {}).name || "")).join("");
-    if (it.kind === "outfits") return BENJI_OUTFITS.map(o => cell(palSVG("happy", 64, { pose: "rest", sprout: 1, outfit: false, wear: o.id }), o.name)).join("");
-    if (it.kind === "themes") return KITCHEN_THEMES.filter(x => x.shop).map(th => cell(`<span class="theme-swatch" style="--a:${th.swatch[0]};--b:${th.swatch[1]};--c:${th.swatch[2]}"></span>`, th.name)).join("");
-    if (it.kind === "radio") return RADIO_STATIONS.filter(x => x.shop).map(st => cell(`<span class="radio-dot" aria-hidden="true">${st.icon}</span>`, st.name)).join("");
+  const snap = (art, name, cls = "") => `<figure class="sp-snap ${cls}">${art}<figcaption>${esc(t(name))}</figcaption></figure>`;
+  const benjiIn = (opts, size = 76) => palSVG("happy", size, { pose: "wave", sprout: 1, ...opts });
+  // A real mini kitchen in each theme, drawn with the theme's own colors and wall piece
+  const themeImg = id => `<span class="tp-frame" aria-hidden="true"><span class="tp-mini theme-${id}"><span class="tp-fridge"></span><span class="tp-decor">${id === "diner" ? "EAT" : ""}</span>
+    <span class="tp-benji">${palSVG("happy", 92, { pose: "wave", sprout: 1 })}</span><span class="tp-console"><i></i><b></b><span>${esc(t("Play"))}</span></span>
+    <span class="tp-counter"></span><span class="tp-floor"></span></span></span>`;
+  const radioBtn = st => `<button type="button" class="sp-station" data-radio-sample="${st.id}" aria-pressed="false">
+      <span class="sp-disc" aria-hidden="true">${st.icon}<span class="sp-eq"><i></i><i></i><i></i><i></i></span></span>
+      <span class="sp-st-name">${esc(t(st.name))}</span>
+      <span class="sp-st-hint" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sound.svg#i"/></svg> ${esc(t("Sample"))}</span>
+      <span class="sr-only sr-state">${esc(t("Tap to hear a sample"))}</span></button>`;
+  const shopThemes = KITCHEN_THEMES.filter(x => x.shop);
+  const show = it => {
+    if (it.kind === "hats") return `<div class="sp-grid sp-4">${(it.hats || []).map((id, i) => snap(benjiIn({ hat: id, wear: false }), (benjiHat(id) || {}).name || "", "r" + i)).join("")}</div>`;
+    if (it.kind === "outfits") return `<div class="sp-grid sp-4">${BENJI_OUTFITS.map((o, i) => snap(benjiIn({ outfit: false, wear: o.id }), o.name, "r" + i)).join("")}</div>`;
+    if (it.kind === "themes") return `<div class="sp-grid sp-2">${shopThemes.map((th, i) => snap(themeImg(th.id), th.name, "sp-photo r" + i)).join("")}</div>`;
+    if (it.kind === "radio") return `<div class="sp-radio">${RADIO_STATIONS.filter(x => x.shop).map(radioBtn).join("")}</div>
+      <p class="sp-note">${esc(t("Tap a station to hear a 10 second sample."))}</p>`;
+    if (it.kind === "bundle") return `<div class="sp-grid sp-2">
+      ${snap(`<span class="sp-collage">${shopThemes.map(th => themeImg(th.id)).join("")}</span>`, "4 kitchen themes", "sp-photo r0")}
+      ${snap(`<span class="sp-trio">${["cowboy", "elf", "pizza"].map(h => benjiIn({ hat: h, wear: false }, 52)).join("")}</span>`, "16 hats in 4 packs", "r1")}
+      ${snap(`<span class="sp-trio">${["apron", "glasses"].map(w => benjiIn({ outfit: false, wear: w }, 56)).join("")}</span>`, "4 outfits", "r2")}
+      ${snap(`<span class="sp-disc sp-disc-big" aria-hidden="true">${(RADIO_STATIONS.find(x => x.id === "campfire") || {}).icon || ""}</span>`, "4 radio stations", "r3")}
+    </div>`;
     return "";
   };
+  const coin = (price, cls = "") => `<span class="sp-coin ${cls}">${esc(price)}</span>`;
   const buy = (url, label) => url
     ? `<a class="button primary wide store-buy" href="${esc(url)}" target="_blank" rel="noopener" data-store-buy>${esc(label)}</a>`
     : `<button type="button" class="wide" disabled>${esc(t("Coming soon"))}</button>`;
@@ -111,27 +136,42 @@ function renderShop() {
     : it.kind === "outfits" ? "Yours! Dress Benji on the hats page." : it.kind === "bundle" ? "Yours! Everything in the shop is unlocked." : "Yours! Find them in Benji's hats."))}</p>`;
   box.innerHTML = STORE_ITEMS.map(it => {
     if (it.kind === "tip") {
-      const tiers = it.tiers.map(tr => tr.buyUrl ? `<a class="button store-buy store-tip" href="${esc(tr.buyUrl)}" target="_blank" rel="noopener" data-store-buy>${esc(tr.price)}</a>`
-        : `<button type="button" class="store-tip" disabled>${esc(tr.price)}</button>`).join("");
-      return `<li class="card store-item">
-        <div class="store-head"><h3>${esc(t(it.name))}</h3><span class="store-price">${esc(t(it.price))}</span></div>
-        <p>${esc(t(it.desc))}</p>
-        <div class="store-tips">${tiers}</div>
-        ${it.tiers.every(tr => !tr.buyUrl) ? `<p class="muted small">${esc(t("Coming soon"))}</p>` : ""}
-        <div class="store-tip-reward">${[1, 2, 3].map(n => `<span class="store-tip-stage">${palSVG("cheer", 56, { pose: "cheer", sprout: n, outfit: false, wear: false, golden: true })}<span class="small">${["$1", "$3", "$5"][n - 1]}</span></span>`).join("")}</div>
+      const tiers = it.tiers.map((tr, i) => {
+        const tt = TIP_TIERS[i] || TIP_TIERS[0];
+        const coins = Array.from({ length: tt.coins }, (_, k) => `<i class="c${k}"></i>`).join("");
+        const art = `<span class="sp-tier-art" aria-hidden="true"><span class="sp-coins">${coins}</span>${palSVG("cheer", 70 + i * 12, { pose: "cheer", sprout: tt.n, outfit: false, wear: false, golden: true })}</span>`;
+        const inner = `${art}<span class="sp-tier-text"><strong>${esc(t(tt.title))}</strong><span>${esc(t(tt.gets))}</span></span>${coin(tr.price, "sp-coin-sm")}`;
+        return tr.buyUrl ? `<a class="sp-tier sp-tier-${tt.n} store-tip" href="${esc(tr.buyUrl)}" target="_blank" rel="noopener" data-store-buy aria-label="${esc(t("Tip {price}: {title}", { price: tr.price, title: t(tt.title) }))}">${inner}</a>`
+          : `<span class="sp-tier sp-tier-${tt.n} store-tip is-off">${inner}</span>`;
+      }).join("");
+      return `<li class="store-item sp-poster sp-tipjar">
+        <span class="sp-awning" aria-hidden="true"></span>
+        <div class="sp-head"><h3>${esc(t(it.name))}</h3>${coin(t("You pick"), "sp-coin-wide")}</div>
+        <p class="sp-desc">${esc(t("Just want to say thanks? Any tip helps keep Pantry Pal free. The bigger the tip, the bigger Benji's golden sprout grows."))}</p>
+        <div class="sp-tiers">${tiers}</div>
         ${isSupporter() ? `<p class="store-owned"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> ${esc(t("Thank you! Your golden sprout and Supporter badge are unlocked."))}</p>` : ""}
       </li>`;
     }
     const own = ownsItem(it.id);
-    const pv = preview(it);
-    return `<li class="card store-item ${it.kind === "bundle" ? "store-bundle" : ""}">
-      <div class="store-head"><h3>${esc(t(it.name))}</h3><span class="store-price">${esc(own ? t("Owned") : it.price)}</span></div>
-      <p>${esc(t(it.desc))}</p>
-      ${it.kind === "bundle" && !own ? `<p class="small store-was"><s>${esc(it.was)}</s> <b>${esc(it.price)}</b>. ${esc(t("Already own a pack? Email us your shop ID and we'll take its price off."))}</p>` : ""}
-      ${pv ? `<div class="store-hats">${pv}</div>` : ""}
+    return `<li class="store-item sp-poster ${it.kind === "bundle" ? "sp-bundle" : ""}">
+      <span class="sp-awning" aria-hidden="true"></span>
+      ${it.kind === "bundle" && !own ? `<span class="sp-ribbon">${esc(t("Best deal"))}</span>` : ""}
+      <div class="sp-head"><h3>${esc(t(it.name))}</h3>${own ? coin(t("Owned"), "sp-coin-wide sp-owned") : coin(it.price)}</div>
+      <p class="sp-desc">${esc(t(it.desc))}</p>
+      ${show(it)}
+      ${it.kind === "bundle" && !own ? `<p class="sp-was"><s>${esc(it.was)}</s> <b>${esc(it.price)}</b>. ${esc(t("Already own a pack? Email us your shop ID and we'll take its price off."))}</p>` : ""}
       ${own ? owned(it) : buy(it.buyUrl, t("Buy for {price}", { price: it.price }))}
     </li>`;
   }).join("");
+  if (typeof Radio !== "undefined") Radio.render();
+  fitMiniKitchens();
+}
+/* Scale each mini kitchen to fit its picture frame */
+let miniObserver = null;
+function fitMiniKitchens() {
+  const fit = () => document.querySelectorAll("#storeItems .tp-frame").forEach(f => { if (f.clientWidth) f.style.setProperty("--tp-s", (f.clientWidth / 240).toFixed(4)); });
+  fit();
+  if (!miniObserver && typeof ResizeObserver === "function" && $("#storeItems")) { miniObserver = new ResizeObserver(fit); miniObserver.observe($("#storeItems")); }
 }
 
 /* Copy the shop ID so it can be pasted into the Square checkout. */
@@ -149,7 +189,14 @@ function storeInit() {
   $("#shopPage").addEventListener("click", e => {
     if (e.target.closest("[data-store-buy]")) { copyShopId(true); toast(t("Your shop ID {id} is copied. Paste it into the shop ID box at checkout.", { id: shopIdText() })); }
     if (e.target.closest("#storeIdCopy")) copyShopId(false);
+    const sample = e.target.closest("[data-radio-sample]");
+    if (sample && typeof Radio !== "undefined") {
+      if (Radio.playing() === sample.dataset.radioSample) Radio.stop();
+      else if (!Radio.preview(sample.dataset.radioSample, 10000)) toast(t("This phone can't play the radio."));
+    }
   });
+  // Leaving the shop stops a sample that's still playing
+  $("#shopPage").addEventListener("close", () => { if (typeof Radio !== "undefined" && Radio.previewing()) Radio.stop(); });
   $("#shopPage").addEventListener("submit", e => {
     if (!e.target.closest("#storeRedeem")) return;
     e.preventDefault();

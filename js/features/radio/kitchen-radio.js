@@ -20,7 +20,7 @@ const RADIO_STATIONS = [
 const stationOpen = s => !s.shop || (typeof ownsItem === "function" && ownsItem(s.shop));
 
 const Radio = (() => {
-  let ctx = null, master = null, station = null, nodes = [], timers = [], wasPlaying = false;
+  let ctx = null, master = null, station = null, nodes = [], timers = [], wasPlaying = false, previewing = null, previewTimer = null;
 
   const vol = () => (settings.radioVol == null ? 50 : settings.radioVol) / 100 * 0.6;
   function audio() {
@@ -174,7 +174,22 @@ const Radio = (() => {
     MAKERS[id]();
     render();
   }
+  /* A short sample of any station, even one still in the shop. It stops on its own. */
+  function preview(id, ms = 10000) {
+    if (!RADIO_STATIONS.find(s => s.id === id) || !audio() || !MAKERS[id]) return false;
+    clearTimeout(previewTimer);
+    stopNodes();
+    station = id; previewing = id;
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    master.gain.setValueAtTime(0, ctx.currentTime);
+    master.gain.linearRampToValueAtTime(vol(), ctx.currentTime + 0.6);
+    MAKERS[id]();
+    render();
+    previewTimer = setTimeout(() => { if (previewing === id) stop(); }, ms);
+    return true;
+  }
   function stop() {
+    clearTimeout(previewTimer); previewing = null;
     if (!ctx || !station) { station = null; render(); return; }
     station = null;
     master.gain.cancelScheduledValues(ctx.currentTime);
@@ -194,10 +209,17 @@ const Radio = (() => {
       return `<button type="button" class="station ${station === s.id ? "on" : ""} ${open ? "" : "locked"}" ${open ? `aria-pressed="${station === s.id}"` : `aria-disabled="true"`} data-station="${s.id}">
       <strong>${open ? "" : `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg> `}${esc(t(s.name))}</strong><span>${esc(!open ? t("In Benji's shop") : station === s.id ? t("Playing. Tap to stop.") : t(s.desc))}</span></button>`;
     }).join("");
+    // The sample buttons in Benji's shop show which station is playing
+    document.querySelectorAll("[data-radio-sample]").forEach(b => {
+      const on = station === b.dataset.radioSample;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", String(on));
+      const l = b.querySelector(".sr-state"); if (l) l.textContent = on ? t("Playing. Tap to stop.") : t("Tap to hear a sample");
+    });
     const pill = document.getElementById("radioPill");
     if (pill) {
-      pill.classList.toggle("hidden", !station);
-      document.body.classList.toggle("radio-on", !!station);
+      pill.classList.toggle("hidden", !station || !!previewing);
+      document.body.classList.toggle("radio-on", !!station && !previewing);
       const st = RADIO_STATIONS.find(s => s.id === station);
       if (st) { pill.querySelector(".rp-name").textContent = t(st.short); pill.querySelector(".rp-open").setAttribute("aria-label", t("{name} is playing. Open the radio.", { name: t(st.name) })); }
     }
@@ -224,5 +246,5 @@ const Radio = (() => {
     });
     render();
   }
-  return { init, play, stop, render, playing: () => station };
+  return { init, play, stop, preview, render, playing: () => station, previewing: () => previewing };
 })();
