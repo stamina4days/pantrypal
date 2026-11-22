@@ -10,6 +10,13 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.4
+- **Play corner:** a yellow Play button on Today opens little games that help your kitchen, plus the kitchen radio. A red dot means today's word puzzle is waiting.
+- **Fridge Sort:** ten quick cards asking where foods keep best, each with a tip. A few cards are your real food ("Is your milk still in the fridge?"), so playing also keeps My Food accurate.
+- **Daily food word:** guess the day's 5-letter food in 6 tries, then unlock a recipe that uses it. Keeps a streak and you can share your result.
+- **Kitchen radio:** Lo-fi kitchen, Simmering pot, or Rain on the window, made right on the phone (no downloads). A little player shows above the page title while it plays. On an iPhone, silent mode mutes it.
+- **Number on the app icon:** how many foods need eating today, where the phone supports it. Turn it off in Settings under Reminders.
+
 ## New in version 11.3.1
 - **Smarter put-away:** bananas, avocados, tomatoes, peaches, mangoes, and pineapple go on the Counter, and onions and bread go in the Pantry, everywhere food gets added (Add food, receipts, the notepad, and "I bought these").
 - **Receipts read pack sizes:** "12CT," "DOZEN," "6PK," "GAL," "1/2 GAL," and weights like "3LB" become the amount, and "2 @ 0.50" on its own line counts for the item under it.
