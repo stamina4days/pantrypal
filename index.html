@@ -10,7 +10,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.4";
+  var BUILD = "11.5";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -78,6 +78,8 @@
 <link rel="stylesheet" href="css/screens/stats-extras.css">
 <link rel="stylesheet" href="css/screens/search.css">
 <link rel="stylesheet" href="css/screens/play.css">
+<link rel="stylesheet" href="css/components/tour.css">
+<link rel="stylesheet" href="css/screens/hats.css">
 <link rel="stylesheet" href="css/themes/kitchen.css">
 <link rel="stylesheet" href="css/themes/display.css">
 <link rel="stylesheet" href="css/themes/print.css">
@@ -87,10 +89,10 @@
 <div id="splash" class="splash" role="status" aria-live="polite">
   <div class="splash-awning" aria-hidden="true"></div>
   <div class="splash-stage">
-    <img class="splash-pal" src="img/pal/happy.svg" width="132" height="154" alt="">
+    <img class="splash-pal benji-art" src="img/pal/happy.svg" width="132" height="177" alt="">
     <img class="splash-crate" src="img/illustrations/market-crate.svg" width="200" height="136" alt="">
     <p class="splash-name">Pantry Pal</p>
-    <p class="splash-tag">Your fridge buddy is waking up</p>
+    <p class="splash-tag">Benji is waking up</p>
     <div class="splash-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="splash-fill"></span></div>
     <p class="splash-count">&nbsp;</p>
     <p class="splash-line">&nbsp;</p>
@@ -253,6 +255,7 @@
 <script src="js/features/swipe/swipe-rows.js" defer></script>
 <script src="js/features/radio/kitchen-radio.js" defer></script>
 <script src="js/features/badge/app-badge.js" defer></script>
+<script src="js/features/tour/tour.js" defer></script>
 <script src="js/screens/food/food.js" defer></script>
 <script src="js/screens/item/item.js" defer></script>
 <script src="js/screens/quick/quick.js" defer></script>
@@ -291,6 +294,7 @@
 <script src="js/screens/play/fridge-sort.js" defer></script>
 <script src="js/screens/play/food-word.js" defer></script>
 <script src="js/screens/play/play.js" defer></script>
+<script src="js/screens/hats/hats.js" defer></script>
 <script src="js/app/display.js" defer></script>
 <script src="js/app/tabs.js" defer></script>
 <script src="js/app/wire-kitchen.js" defer></script>

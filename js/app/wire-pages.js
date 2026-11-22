@@ -14,6 +14,7 @@ function renderPageExtras() {
   if ($("#collectionPage").open) renderCollection();
   if ($("#weekPage").open) renderWeek();
   if ($("#badgesPage").open) renderBadges();
+  if ($("#hatsPage").open) renderHats();
 }
 
 function pagesInit() {
@@ -40,14 +41,14 @@ function pagesInit() {
 
   $("#settingsBtn").addEventListener("click", () => {
     $("#soundsToggle").checked = settings.sounds !== false;
-    $("#outfitsToggle").checked = settings.palOutfits !== false;
   });
   $("#soundsToggle").addEventListener("change", e => { settings.sounds = e.target.checked; saveSettings(); if (e.target.checked) sfx("ding"); });
-  $("#outfitsToggle").addEventListener("change", e => { settings.palOutfits = e.target.checked; saveSettings(); renderAll(); });
   todayInit();
   searchInit();
   runningLowInit();
   playInit();
+  tourInit();
+  hatsInit();
   swipeInit();
   palLifeInit();
   talkInit();

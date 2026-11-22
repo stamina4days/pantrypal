@@ -18,6 +18,7 @@ function renderBadges() {
       <img src="img/badges/${b.done ? b.id : "locked"}.svg" width="76" height="76" alt="">
       <strong>${esc(t(b.name))}</strong>
       <span class="small">${esc(t(b.desc))}</span>
+      ${hatForBadge(b.id) ? `<span class="hat-reward small">${esc(b.done ? t("Unlocked: {hat}", { hat: t(hatForBadge(b.id).name) }) : t("Unlocks: {hat}", { hat: t(hatForBadge(b.id).name) }))}</span>` : ""}
       ${b.done ? `<span class="earned-tag">${esc(t("Earned!"))}</span>`
         : `<span class="mini-meter" role="img" aria-label="${esc(t("{a} of {b}", { a: b.have, b: b.goal }))}"><span style="width:${pct}%"></span></span><span class="small muted">${esc(t("{a} of {b}", { a: b.have, b: b.goal }))}</span>`}
     </li>`;
