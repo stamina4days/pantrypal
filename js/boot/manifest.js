@@ -36,5 +36,6 @@ const PP_PAGES = [
   "screens/settings/share-kitchen.html",
   "screens/sheets/remove.html",
   "screens/sheets/list-pick.html",
-  "screens/search/search.html"
+  "screens/search/search.html",
+  "screens/play/play.html"
 ];

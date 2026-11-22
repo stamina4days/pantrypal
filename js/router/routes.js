@@ -32,7 +32,10 @@ const ROUTES = {
   shareKitchenPage: "share-kitchen",
   helpDialog: "help",
   diagDialog: "phone-check",
-  searchPage: "search"
+  searchPage: "search",
+  playPage: "play",
+  sortPage: "play/fridge-sort",
+  wordPage: "play/food-word"
 };
 
 const recipeId = r => r ? (r.mine ? "mine-" + r.id : (r.id || recipeSlug(r.name))) : "";
@@ -77,5 +80,8 @@ const DEEP_LINKS = [
   [/^about$/, () => openAbout()],
   [/^home-screen$/, () => openHomeScreen()],
   [/^share-kitchen$/, () => openShareKitchen()],
-  [/^search$/, () => openSearch()]
+  [/^search$/, () => openSearch()],
+  [/^play$/, () => openPlay()],
+  [/^play\/fridge-sort$/, () => openSort()],
+  [/^play\/food-word$/, () => openWord()]
 ];
