@@ -80,3 +80,79 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
 .splash.menu { overflow-y: auto; justify-content: safe center; }
 
 .sm-fine { margin: 2px 0 0; font-size: .82rem; font-weight: 700; line-height: 1.4; color: var(--muted); }
+
+/* ---------- Start screen: Benji's shop front ---------- */
+.splash.shopfront {
+  --sf-wall: #EFDCC2; --sf-brick: #E2C9A8; --sf-window: #FFF6E2; --sf-glow: rgba(255, 201, 77, .35); --sf-rope: #8A6A4A;
+  justify-content: flex-start; padding: 0 16px 12px; color: #F6EBD9;
+  background-color: var(--sf-wall);
+  background-image: linear-gradient(var(--sf-brick) 2px, transparent 2px), linear-gradient(90deg, var(--sf-brick) 2px, transparent 2px);
+  background-size: 60px 30px;
+}
+@media (prefers-color-scheme: dark) {
+  .splash.shopfront { --sf-wall: #231C1F; --sf-brick: #2E2427; --sf-window: #3B2E2A; --sf-glow: rgba(255, 201, 77, .2); --sf-rope: #C9B9A2; }
+}
+.shopfront .splash-awning { height: 58px; border: 0; background: repeating-linear-gradient(90deg, #E5482F 0 39px, #FFF3DC 39px 78px); box-shadow: 0 5px 0 rgba(0, 0, 0, .25); }
+.shopfront .splash-awning::after { content: ""; position: absolute; left: 0; right: 0; top: 58px; height: 18px;
+  background: radial-gradient(circle at 19.5px 0, #E5482F 18.5px, transparent 19.5px) 0 0 / 78px 18px repeat-x,
+              radial-gradient(circle at 58.5px 0, #FFF3DC 18.5px, transparent 19.5px) 0 0 / 78px 18px repeat-x; }
+.shopfront .splash-stage { width: min(380px, 100%); margin-top: 84px; }
+.sf-sign { padding: 6px 22px; background: #2A1C14; border: 5px solid #C98F5A; border-radius: 12px; box-shadow: 0 6px 0 rgba(0, 0, 0, .35); }
+.shopfront .splash-name { margin: 0; font-size: 2.4rem; color: #FFC94D; text-shadow: 0 0 14px rgba(255, 201, 77, .45); }
+.sf-window { position: relative; width: 100%; margin-top: 12px; height: 150px; box-sizing: border-box; background: var(--sf-window);
+  border: 8px solid #6E4524; border-bottom: 0; border-radius: 6px 6px 0 0; box-shadow: inset 0 0 40px var(--sf-glow); }
+.shopfront .sm-benji { position: absolute; left: 50%; bottom: -26px; margin: 0; transform: translateX(-50%); z-index: 1; }
+.shopfront .sm-benji .pal { width: 104px; height: 139px; display: block; }
+.shopfront .sm-hello { position: absolute; left: 8px; top: 10px; z-index: 3; width: 34%; margin: 0; padding: 6px 8px; box-sizing: border-box;
+  background: #22382B; border: 5px solid #8A5A33; border-radius: 6px; transform: rotate(-4deg);
+  font-family: var(--hand); font-size: 1rem; font-weight: 700; line-height: 1.1; color: #F1EEE4; text-align: left; animation: none; }
+.sf-counter { position: relative; z-index: 2; width: calc(100% + 8px); height: 44px; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 10px;
+  box-sizing: border-box; background: #C98F5A; border-radius: 8px 8px 4px 4px; box-shadow: 0 8px 0 #6E4524; }
+.sf-crate { position: relative; display: flex; justify-content: center; width: 86px; height: 30px; margin-bottom: 30px; background: #8A5A33; border: 3px solid #5A3F2A; border-radius: 4px; }
+.sf-crate img { width: 36px; height: 36px; margin: -22px -2px 0; }
+.sf-crate img:first-child { transform: rotate(-10deg); }
+.sf-crate img:last-child { transform: rotate(10deg); }
+/* The menu: wooden signs hanging on ropes */
+.shopfront .sm-menu { gap: 22px; margin-top: 30px; align-items: center; }
+.shopfront .sm-menu button { position: relative; width: 74%; min-height: 50px; border: 0; border-radius: 10px; color: #FFF3DC; font-size: 1.1rem; font-weight: 900;
+  background: #A0693B; background-image: repeating-linear-gradient(90deg, transparent 0 60px, rgba(0, 0, 0, .08) 60px 62px);
+  box-shadow: inset 0 0 0 3px #6E4524, 0 6px 0 #3A2818; }
+.shopfront .sm-menu button::before, .shopfront .sm-menu button::after { content: ""; position: absolute; top: -22px; width: 3px; height: 22px; background: var(--sf-rope); }
+.shopfront .sm-menu button::before { left: 20%; }
+.shopfront .sm-menu button::after { right: 20%; }
+.shopfront .sm-menu button:nth-child(2) { transform: rotate(-2deg); }
+.shopfront .sm-menu button:nth-child(3) { transform: rotate(2deg); width: 70%; }
+.shopfront .sm-menu button:nth-child(4) { transform: rotate(-1.5deg); width: 66%; }
+.shopfront .sm-menu button:active { translate: 0 3px; }
+.shopfront .sm-menu .sm-go { width: 100%; min-height: 62px; font-size: 1.6rem; color: #FFFFFF; background-color: #2A7F3F; box-shadow: inset 0 0 0 4px #1C5A2C, 0 7px 0 #123D1E; }
+.shopfront .sm-menu .sm-go::before, .shopfront .sm-menu .sm-go::after { top: -30px; height: 30px; }
+.shopfront .sm-menu .ic { width: 22px; height: 22px; }
+.shopfront .sm-rename { margin-top: 10px; min-height: 40px; padding: 4px 12px; border: 0; background: none; box-shadow: none; font-family: var(--hand); font-size: 1.05rem; color: #8A5A33; text-decoration: underline; }
+@media (prefers-color-scheme: dark) { .shopfront .sm-rename { color: #C9B9A2; } }
+@media (prefers-reduced-motion: no-preference) {
+  .shopfront .sm-menu button { animation: sf-swing 5s ease-in-out infinite; transform-origin: 50% -22px; }
+  .shopfront .sm-menu button:nth-child(2n) { animation-delay: -2.5s; }
+  @keyframes sf-swing { 0%, 100% { rotate: -1.5deg; } 50% { rotate: 1.5deg; } }
+  .shopfront .sm-menu { animation: none; }
+}
+/* Short screens: tighten the shop */
+@media (max-height: 780px) {
+  .shopfront .splash-awning { height: 44px; }
+  .shopfront .splash-awning::after { top: 44px; }
+  .shopfront .splash-stage { margin-top: 66px; }
+  .shopfront .splash-name { font-size: 2rem; }
+  .sf-window { height: 124px; }
+  .shopfront .sm-benji .pal { width: 88px; height: 118px; }
+  .shopfront .sm-menu { gap: 18px; margin-top: 24px; }
+  .shopfront .sm-menu button { min-height: 46px; font-size: 1.02rem; }
+  .shopfront .sm-menu .sm-go { min-height: 54px; font-size: 1.4rem; }
+}
+@media (max-height: 640px) {
+  .shopfront .splash-name { font-size: 1.7rem; }
+  .sf-window { height: 104px; }
+  .shopfront .sm-benji .pal { width: 74px; height: 99px; }
+  .shopfront .sm-menu { gap: 14px; margin-top: 18px; }
+  .shopfront .sm-menu button { min-height: 42px; }
+  .shopfront .sm-menu .sm-go { min-height: 48px; }
+  .shopfront .sm-menu button::before, .shopfront .sm-menu button::after { top: -14px; height: 14px; }
+}
