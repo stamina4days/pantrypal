@@ -29,3 +29,6 @@
   .tour-card { animation: tour-in .25s ease-out; }
   @keyframes tour-in { from { opacity: 0; } }
 }
+/* "Don't show this when I open the app" and where to find the tour later */
+.tour-hide { margin: 10px 0 0; font-weight: 700; font-size: .92rem; min-height: 40px; }
+.tour-where { margin: 0; color: var(--muted); font-weight: 700; }

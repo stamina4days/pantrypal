@@ -27,3 +27,5 @@
 .pal-big { flex-direction: column; align-items: center; text-align: center; }
 .pal-big .bubble { border-radius: 20px; }
 .pal-big .bubble::before { left: 50%; top: -9px; bottom: auto; transform: translateX(-50%) rotate(135deg); }
+/* Benji's "see my hats" button when he brings them up */
+.pal-hat-btn { display: block; margin-top: 8px; min-height: 40px; padding: 6px 12px; font-size: .92rem; }

@@ -48,7 +48,6 @@ body.simple.few-items .food-search { display: none; }
 .view-card.on span { color: #EAF7EC; }
 body.simple .item .row-btn { display: none; }
 /* English only for now */
-body.english-only #langBtn, body.english-only .lang-pick { display: none !important; }
 /* Talk to add */
 .say-it { width: 100%; min-height: 60px; font-size: 1.08rem; margin: 6px 0 8px; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .say-it .ic { width: 26px; height: 26px; }

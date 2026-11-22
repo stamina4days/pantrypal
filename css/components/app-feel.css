@@ -47,8 +47,6 @@ button.danger-fill { background: #C93A23; color: #fff; border-color: #9E2C19; bo
   @keyframes ask-fade { from { opacity: 0; } }
 }
 
-/* Spanish is off for now: hide its setting too */
-body.english-only .lang-setting { display: none !important; }
 dialog.ask-sheet form.ask-form { padding: 0; display: grid; gap: 14px; }
 dialog.ask-sheet form.ask-form::before { display: none; }
 dialog.ask-sheet .ask-label { margin: 0; }

@@ -10,6 +10,14 @@
 .today-play.has-new::after { content: ""; position: absolute; top: -5px; right: -5px; width: 14px; height: 14px; border-radius: 50%;
   background: var(--tomato-text-bg, #A8341F); border: 2px solid var(--paper); }
 @media (prefers-color-scheme: dark) { .today-play { border-color: #B8902F; box-shadow: 0 3px 0 #8C6A1E; } }
+.today-hats { width: 66px; background: #DCEFD9; color: #24502F; border-color: #8CC28F; box-shadow: 0 3px 0 #8CC28F; }
+.today-hats .ic { --icf: #F4C542; }
+@media (prefers-color-scheme: dark) { .today-hats { background: #2E4A35; color: #E4F4E4; border-color: #4E7A56; box-shadow: 0 3px 0 #33553A; } }
+.today-pair .today-play { width: 66px; }
+.today-pair .today-jar { gap: 8px; padding: 8px 10px; }
+@media (max-width: 380px) { .today-pair .today-jar .go { display: none; } }
+/* Benji's hat chatter in the Play corner */
+.play-pal { margin: 4px 0 14px; }
 
 /* Play page */
 .play-hero .hero-art { max-width: 96px; }
