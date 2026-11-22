@@ -1,0 +1,93 @@
+/* Kitchen themes from the theme pack in Benji's shop (js/features/themes/themes.js puts theme-<id> on <body>).
+   Each theme sets the kitchen colors, a wall and floor pattern, the cloth across the top, the tab shelf,
+   one signature piece on Today's wall, and the colors of the Recipes counter and the Shopping fridge door. */
+body[class*="theme-"] .kitchen, body[class*="theme-"] #tab-pantry .fridge-scene, body[class*="theme-"] .plan-scene {
+  background-image: var(--k-wall-img); background-size: var(--k-wall-size, auto); }
+body[class*="theme-"] .k-floor { background: var(--k-floor); background-image: var(--k-floor-img, none); background-size: var(--k-floor-size, auto); }
+body[class*="theme-"] .fz-floor { background: var(--k-floor); background-image: var(--k-floor-img, none); background-size: var(--k-floor-size, auto); }
+
+/* Diner: mint walls with a chrome stripe, red counter, black and white checkered floor */
+body.theme-diner .tab { --k-wall: #BFE6DC; --k-wood: #C9D2D8; --k-wood-dark: #8C979F; --k-cabinet: #D93B30; --k-cabinet-line: #B52E25;
+  --k-fridge: #EAF6F1; --k-fridge-shade: #CFE5DC; --k-handle: #9AA6AE; --k-floor: #FFFFFF; --k-note: #FFE27A;
+  --k-wall-img: linear-gradient(transparent 62%, #E9EEF1 62%, #E9EEF1 64%, #D93B30 64%, #D93B30 67%, #E9EEF1 67%, #E9EEF1 69%, transparent 69%), repeating-linear-gradient(90deg, transparent 0 60px, rgba(0,0,0,.05) 60px 62px);
+  --k-floor-img: conic-gradient(#2A2A2A 25%, #FFFFFF 0 50%, #2A2A2A 0 75%, #FFFFFF 0); --k-floor-size: 28px 28px; }
+@media (prefers-color-scheme: dark) { body.theme-diner .tab { --k-wall: #1F3D38; --k-fridge: #DCEDE6; --k-floor: #EDEDED;
+  --k-wall-img: linear-gradient(transparent 62%, #6D7A82 62%, #6D7A82 64%, #B52E25 64%, #B52E25 67%, #6D7A82 67%, #6D7A82 69%, transparent 69%), repeating-linear-gradient(90deg, transparent 0 60px, rgba(255,255,255,.04) 60px 62px); } }
+body.theme-diner .k-shelf { background: #C9D2D8; }
+
+/* Log cabin: stacked logs, dark wood counter, plaid rug */
+body.theme-cabin .tab { --k-wall: #A8723F; --k-wood: #6E4524; --k-wood-dark: #4A2E18; --k-cabinet: #5A3A20; --k-cabinet-line: #774E2C;
+  --k-fridge: #F4EBDC; --k-fridge-shade: #DCCDB4; --k-floor: #8E2F25; --k-note: #FFF1B8;
+  --k-wall-img: repeating-linear-gradient(180deg, #B07A45 0 34px, #8C5A2E 34px 38px, #A8723F 38px 40px), radial-gradient(circle at 30% 50%, rgba(0,0,0,.08) 0 3px, transparent 4px);
+  --k-floor-img: repeating-linear-gradient(90deg, rgba(0,0,0,.35) 0 6px, transparent 6px 24px), repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 6px, transparent 6px 24px), repeating-linear-gradient(90deg, rgba(255,214,120,.25) 0 2px, transparent 2px 24px); }
+@media (prefers-color-scheme: dark) { body.theme-cabin .tab { --k-wall: #5E3D21; --k-fridge: #E6DCC8; --k-floor: #5E1F18;
+  --k-wall-img: repeating-linear-gradient(180deg, #6A4526 0 34px, #4A2E18 34px 38px, #5E3D21 38px 40px); } }
+body.theme-cabin .kitchen { color: #FFF3DC; } body.theme-cabin .k-console-label { color: #FFF3DC; }
+@media (prefers-color-scheme: light) { body.theme-cabin .kitchen .k-console-label { color: #FFF3DC; text-shadow: 0 2px 0 rgba(0,0,0,.4); } }
+
+/* Beach shack: painted turquoise planks, driftwood counter, sandy floor */
+body.theme-beach .tab { --k-wall: #4FC3C9; --k-wood: #D8C6A6; --k-wood-dark: #A8916C; --k-cabinet: #F2A65A; --k-cabinet-line: #DB8C3E;
+  --k-fridge: #FFF0E6; --k-fridge-shade: #F6D5C3; --k-floor: #EED9A8; --k-note: #FFF6A8;
+  --k-wall-img: repeating-linear-gradient(90deg, #56C8CE 0 46px, #3BA9AF 46px 49px);
+  --k-floor-img: radial-gradient(circle, rgba(160,120,60,.35) 1.5px, transparent 2px); --k-floor-size: 12px 12px; }
+@media (prefers-color-scheme: dark) { body.theme-beach .tab { --k-wall: #1E5A5E; --k-fridge: #F2E2D8; --k-floor: #8C7A55;
+  --k-wall-img: repeating-linear-gradient(90deg, #22666B 0 46px, #174A4E 46px 49px); } }
+
+/* Space station: steel panels with rivets and a starry window band, metal counter, grate floor */
+body.theme-space .tab { --k-wall: #3C4858; --k-wood: #9AA7B6; --k-wood-dark: #5F6B7A; --k-cabinet: #2B3441; --k-cabinet-line: #44505F;
+  --k-fridge: #E1E8EF; --k-fridge-shade: #C2CDD8; --k-handle: #7D8996; --k-floor: #222A34; --k-note: #C8F1FF;
+  --k-wall-img: radial-gradient(circle at 8px 8px, #7D8996 2px, transparent 2.5px), linear-gradient(#2E3846 2px, transparent 2px), linear-gradient(90deg, #2E3846 2px, transparent 2px);
+  --k-wall-size: 64px 64px, 64px 64px, 64px 64px;
+  --k-floor-img: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 3px, transparent 3px 9px); }
+@media (prefers-color-scheme: dark) { body.theme-space .tab { --k-wall: #232B36; --k-floor: #151A21; } }
+body.theme-space .kitchen, body.theme-space .k-console-label { color: #EAF2FA; }
+
+/* Header cloth and tab shelf follow the theme */
+body.theme-diner { --wood: linear-gradient(#E3E8EC, #B9C3CA); --wood-edge: #8C979F; --wood-ink: #1F2A30; }
+body.theme-diner .awning { background: repeating-linear-gradient(90deg, #D93B30 0 22px, #FFFFFF 22px 44px); }
+body.theme-cabin { --wood: repeating-linear-gradient(90deg, rgba(0,0,0,.15) 0 2px, transparent 2px 60px), linear-gradient(#5A3A20, #45291A); --wood-edge: #2E1B0F; --wood-ink: #FFF3DC; }
+body.theme-cabin .awning { background-color: #8E2F25; background-image: repeating-linear-gradient(90deg, rgba(0,0,0,.4) 0 7px, transparent 7px 22px), repeating-linear-gradient(0deg, rgba(0,0,0,.4) 0 7px, transparent 7px 22px); }
+body.theme-beach { --wood: repeating-linear-gradient(90deg, rgba(0,0,0,.06) 0 2px, transparent 2px 48px), linear-gradient(#E6D6B8, #CDB892); --wood-edge: #A8916C; --wood-ink: #2A2216; }
+body.theme-beach .awning { background: repeating-linear-gradient(90deg, #2FA7AE 0 22px, #FFF8EC 22px 44px); }
+body.theme-space { --wood: linear-gradient(#5F6B7A, #3C4858); --wood-edge: #222A34; --wood-ink: #EAF2FA; }
+body.theme-space .awning { background: repeating-linear-gradient(135deg, #F4C542 0 12px, #2B3441 12px 24px); }
+body[class*="theme-"] .tabbar button.active .ico { background: #FFFDF6; color: #C43820; }
+
+/* One signature piece on the wall, beside Benji */
+body[class*="theme-"] .k-room::after { content: ""; position: absolute; right: 18px; top: 46%; width: 54px; height: 54px; pointer-events: none; z-index: 0; background-repeat: no-repeat; background-size: contain; }
+body.theme-diner .k-room::after { width: 70px; height: 34px; border-radius: 10px; border: 3px solid #FF5A8A; box-shadow: 0 0 10px #FF5A8A, inset 0 0 8px #FF5A8A; background: #1F2A30;
+  content: "EAT"; color: #FFE27A; font: 900 18px/28px Nunito, sans-serif; text-align: center; letter-spacing: 3px; text-shadow: 0 0 6px #FFC94D; }
+body.theme-cabin .k-room::after { border: 6px solid #4A2E18; border-radius: 4px; background:
+  linear-gradient(90deg, transparent 46%, #4A2E18 46% 54%, transparent 54%), linear-gradient(transparent 46%, #4A2E18 46% 54%, transparent 54%),
+  linear-gradient(170deg, transparent 55%, #2F6B3A 55%), linear-gradient(#BFE3F4, #E8F5FB); }
+body.theme-beach .k-room::after { box-sizing: border-box; border-radius: 50%; border: 13px solid; border-color: #E5482F #FFFFFF; background: none; box-shadow: 0 3px 0 rgba(0,0,0,.25), inset 0 0 0 2px rgba(0,0,0,.15); }
+body.theme-space .k-room::after { border-radius: 50%; border: 6px solid #9AA7B6; box-shadow: 0 0 0 3px #2B3441;
+  background: radial-gradient(1.5px 1.5px at 25% 30%, #fff, transparent), radial-gradient(1px 1px at 60% 70%, #fff, transparent), radial-gradient(2px 2px at 70% 30%, #FFE9A8, transparent),
+  radial-gradient(circle at 35% 70%, #7CC6F2 0 7px, transparent 8px), #0D1220; }
+
+/* Words on a patterned floor sit on a little card */
+body[class*="theme-"] .fz-view.link-btn { background: #FFFDF6; color: #1C5E30; border-radius: 8px; padding: 3px 8px; }
+
+/* Recipes counter and the Shopping fridge door */
+body.theme-diner .recipe-scene { --wood: #C9D2D8; --wood-line: #B3BDC4; } body.theme-diner .shop-scene { background-color: #EAF6F1; }
+body.theme-cabin .recipe-scene { --wood: #6E4524; --wood-line: #5A3A20; } body.theme-cabin .shop-scene { background-color: #F4EBDC; }
+body.theme-beach .recipe-scene { --wood: #D8C6A6; --wood-line: #C4B08C; } body.theme-beach .shop-scene { background-color: #FFF0E6; }
+body.theme-space .recipe-scene { --wood: #8693A3; --wood-line: #6F7C8C; } body.theme-space .shop-scene { background-color: #E1E8EF; }
+@media (prefers-color-scheme: dark) {
+  body.theme-diner .recipe-scene { --wood: #6D7A82; --wood-line: #5C6870; }
+  body.theme-cabin .recipe-scene { --wood: #4A2E18; --wood-line: #3A2412; }
+  body.theme-beach .recipe-scene { --wood: #8C7A55; --wood-line: #7A6948; }
+  body.theme-space .recipe-scene { --wood: #3C4858; --wood-line: #2E3846; }
+}
+/* Words that sit right on a dark wall stay light */
+body.theme-cabin .plan-scene, body.theme-space .plan-scene { color: #F6EBD9; }
+
+/* The theme picker in Settings */
+.theme-row { margin: 12px 0; }
+.theme-pick { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; margin-top: 6px; }
+.theme-pick button { display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 0; padding: 8px 4px; font-size: .85rem; font-weight: 800; }
+.theme-pick button.on { box-shadow: 0 0 0 3px var(--leaf); border-color: var(--leaf-deep); }
+.theme-pick button.locked { border-style: dashed; }
+.theme-swatch { position: relative; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 12px; border: 3px solid #233A31;
+  background: linear-gradient(var(--a) 0 55%, var(--b) 55% 78%, var(--c) 78%); }
+.theme-swatch .ic { width: 22px; height: 22px; margin: 0; padding: 3px; border-radius: 50%; background: #FFFDF6; color: #233A31; }

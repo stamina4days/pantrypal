@@ -43,3 +43,17 @@
 .store-id-code { font-weight: 900; font-size: 1.35rem; letter-spacing: .06em; user-select: all; -webkit-user-select: all; }
 .store-id-row button { min-height: 44px; padding: 4px 14px; display: inline-flex; align-items: center; gap: 6px; }
 .store-id-row .ic { width: 20px; height: 20px; margin: 0; }
+
+/* Shop previews: theme swatches, radio stations, the bundle, and the tip jar (11.10) */
+.store-hat .theme-swatch { width: 56px; height: 56px; }
+.radio-dot { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #22382B; color: #FFC94D; border: 3px solid #233A31;
+  font: 900 1.4rem/1 Nunito, sans-serif; }
+@media (prefers-color-scheme: dark) { .radio-dot { background: #F6EBD9; color: #22382B; border-color: #F6EBD9; } }
+.store-bundle { box-shadow: 0 0 0 4px #FFC94D; }
+.store-was { margin: 6px 0 10px; }
+.store-was b { color: #B5321C; }
+@media (prefers-color-scheme: dark) { .store-was b { color: #FF9C84; } }
+.store-tips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 10px 0; }
+.store-tips .store-tip { min-height: 48px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.store-tip-reward { display: flex; align-items: center; gap: 10px; }
+.store-tip-reward .pal { flex: none; }

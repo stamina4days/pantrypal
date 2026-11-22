@@ -25,5 +25,7 @@ const BADGES = [
   { id: "sort-perfect", name: "Perfect sort", desc: "Get all 3 stars in a round of Fridge Sort.", game: true, test: s => [s.sortPerfect, 1] },
   { id: "word-3", name: "Word whiz", desc: "Solve the daily food word 3 times.", game: true, test: s => [s.wordWins, 3] },
   { id: "word-streak-5", name: "Word streak", desc: "Solve the daily food word 5 days in a row.", game: true, test: s => [s.wordStreak, 5] },
-  { id: "sort-checks-25", name: "Kitchen detective", desc: "Check 25 of your real foods in Fridge Sort.", game: true, test: s => [s.sortChecks, 25] }
+  { id: "sort-checks-25", name: "Kitchen detective", desc: "Check 25 of your real foods in Fridge Sort.", game: true, test: s => [s.sortChecks, 25] },
+  // A thank-you for leaving a tip in Benji's shop. It only shows once you have it.
+  { id: "supporter", name: "Supporter", desc: "Left a tip in Benji's shop. Thank you!", shop: true, test: () => [typeof isSupporter === "function" && isSupporter() ? 1 : 0, 1] }
 ];
