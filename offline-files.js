@@ -446,6 +446,7 @@ const OFFLINE_FILES = [
  "screens/settings/shop.html",
  "screens/settings/terms.html",
  "screens/sheets/list-pick.html",
+ "screens/sheets/music.html",
  "screens/sheets/remove.html",
  "screens/stats/badges.html",
  "screens/stats/tips.html",

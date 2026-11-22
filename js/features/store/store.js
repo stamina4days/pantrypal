@@ -110,7 +110,7 @@ function renderShop() {
   const radioBtn = st => `<button type="button" class="sp-station" data-radio-sample="${st.id}" aria-pressed="false">
       <span class="sp-disc" aria-hidden="true">${st.icon}<span class="sp-eq"><i></i><i></i><i></i><i></i></span></span>
       <span class="sp-st-name">${esc(t(st.name))}</span>
-      <span class="sp-st-hint" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sound.svg#i"/></svg> ${esc(t("Sample"))}</span>
+      <span class="sp-st-hint" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/speaker.svg#i"/></svg> ${esc(t("Sample"))}</span>
       <span class="sr-only sr-state">${esc(t("Tap to hear a sample"))}</span></button>`;
   const shopThemes = KITCHEN_THEMES.filter(x => x.shop);
   const songBtn = id => `<button type="button" class="sp-song" data-radio-sample="${id}" aria-pressed="false"><span class="sp-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><svg class="ic" aria-hidden="true"><use href="img/icons/ui/music.svg#i"/></svg> <span>${esc(t("Hear its song"))}</span><span class="sr-only sr-state">${esc(t("Tap to hear a sample"))}</span></button>`;
@@ -134,7 +134,7 @@ function renderShop() {
     ? `<a class="button primary wide store-buy" href="${esc(url)}" target="_blank" rel="noopener" data-store-buy>${esc(label)}</a>`
     : `<button type="button" class="wide" disabled>${esc(t("Coming soon"))}</button>`;
   const owned = it => `<p class="store-owned"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> ${esc(t(
-    it.kind === "themes" ? "Yours! Pick one in Settings." : it.kind === "radio" ? "Yours! Find them on the kitchen radio."
+    it.kind === "themes" ? "Yours! Pick one in Settings." : it.kind === "radio" ? "Yours! Find them in the music menu."
     : it.kind === "outfits" ? "Yours! Dress Benji on the hats page." : it.kind === "bundle" ? "Yours! Everything in the shop is unlocked." : "Yours! Find them in Benji's hats."))}</p>`;
   box.innerHTML = STORE_ITEMS.map(it => {
     if (it.kind === "tip") {
