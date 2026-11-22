@@ -333,6 +333,7 @@ const OFFLINE_FILES = [
  "js/features/removing/remove.js",
  "js/features/share/kitchen-link.js",
  "js/features/shopping/lists.js",
+ "js/features/shopping/running-low.js",
  "js/features/swipe/swipe-rows.js",
  "js/features/timers/step-minutes.js",
  "js/features/timers/timers.js",

@@ -10,6 +10,11 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.3
+- **Text size:** Settings (and setup) has Regular, Large, and Extra large. The whole app grows with it, not just some words.
+- **Running low:** the shopping list suggests foods you're almost out of, usually run out of about now, just finished, or always keep on hand. Tap Add, Add all, or the X to hide one for a week.
+- **Cook these:** when food is close to its date, Today shows a Cook these button. It lists recipes that use up the most of that food, soonest first, and says which of your foods each one uses.
+
 ## New in version 11.2
 - **Search everything:** the Search button at the top of every tab opens one box that finds your food, recipes (by name or ingredient), shopping list items, storage tips, and things the app can do, like "plan my week" or "backup." Tap any result to go straight there.
 - **Nothing found?** Add what you typed to My Food or the shopping list in one tap.
