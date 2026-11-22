@@ -18,12 +18,12 @@ const HS_STEPS = {
   iphone: [
     ["img/install/iphone-share.svg", "Open Pantry Pal in Safari, then tap the Share button at the bottom of the screen. It's a square with an arrow pointing up."],
     ["img/install/iphone-add.svg", "Scroll down a little and tap \"Add to Home Screen.\""],
-    ["img/install/done.svg", "Tap \"Add\" in the top corner. Pal's icon shows up on your home screen."]
+    ["img/install/done.svg", "Tap \"Add\" in the top corner. Benji's icon shows up on your home screen."]
   ],
   android: [
     ["img/install/android-menu.svg", "In Chrome, tap the three dots in the top corner."],
     ["img/install/android-add.svg", "Tap \"Add to Home screen\" or \"Install app.\""],
-    ["img/install/done.svg", "Tap \"Install\" or \"Add.\" Pal's icon shows up on your home screen."]
+    ["img/install/done.svg", "Tap \"Install\" or \"Add.\" Benji's icon shows up on your home screen."]
   ]
 };
 function openHomeScreen() {

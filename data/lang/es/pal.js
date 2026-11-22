@@ -1,8 +1,8 @@
-/* Spanish: Pal's lines. */
-/* Pal's lines, plus casual Spanish to match */
+/* Spanish: Benji's lines. */
+/* Benji's lines, plus casual Spanish to match */
 Object.assign(I18N_ES, {
   "I'm empty and kind of hungry. Tap + to add food, or show me what's in your kitchen!": "Estoy vacío y con un poco de hambre. Toca + para agregar comida, o enséñame qué hay en tu cocina.",
-  "Show Pal my kitchen": "Enseñarle mi cocina a Pal",
+  "Show Benji my kitchen": "Enseñarle mi cocina a Benji",
   "Uh oh, 1 thing is past its date. Want to clear it out?": "Ay, 1 cosa ya pasó su fecha. ¿La sacamos?",
   "Uh oh, {n} things are past their date. Want to clear them out?": "Ay, {n} cosas ya pasaron su fecha. ¿Las sacamos?",
   "Clear them out": "Sacarlas", "Save the {name}": "Salvar {name}",
@@ -36,7 +36,7 @@ Object.assign(I18N_ES, {
   "It was a mistake, just remove it": "Uy, lo agregué por error", "This feeds your Waste Less stats.": "Sin juzgar. Esto solo ayuda a tus estadísticas.",
   "Logged {name} as tossed.": "Se tiró {name}. ¡Pasa!", "Used up {name}.": "Se acabó {name}. ¡Bien!",
   "Quick check: still have these?": "¡Revisión rápida! ¿Todavía tienes esto?", "Still have": "Sí", "Add item": "Agregar comida", "Edit item": "Editar comida",
-  "Suggest a date": "Adivina la fecha por mí", "none": "de todo", "Welcome to Pantry Pal": "¡Hola, soy Pal!",
+  "Suggest a date": "Adivina la fecha por mí", "none": "de todo", "Welcome to Pantry Pal": "¡Hola, soy Benji!",
   "It plans meals around the food you already have, so less goes to waste. Setup takes about a minute, and you can change any of it later.": "Soy tu compa del refri. Cuéntame un poco de tu cocina y planeo comidas con lo que tienes, para que se desperdicie menos. Toma como un minuto.",
   "Set up your pantry?": "¿Me enseñas lo que tienes?", "Start pantry audit": "¡Vamos!", "Pantry audit": "¿Qué hay en tu cocina?",
   "Tap everything you have right now. Amounts and dates are rough guesses you can fix later.": "Toca todo lo que tienes. Yo adivino cantidades y fechas, y luego las puedes corregir.",

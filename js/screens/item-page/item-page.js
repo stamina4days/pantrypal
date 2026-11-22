@@ -83,7 +83,7 @@ function renderItemPage() {
 
   $("#ipShelf").innerHTML = shelfRowHtml(i);
   const tip = tipFor(i.name, i.location);
-  $("#ipTip").innerHTML = tip ? `<div class="tip pal-tip"><strong>${esc(t("Pal's tip"))}</strong><p>${esc(tip.text)}</p><a href="#/tips" class="small">${esc(t("More storage tips"))}</a></div>` : "";
+  $("#ipTip").innerHTML = tip ? `<div class="tip pal-tip"><strong>${esc(t("Benji's tip"))}</strong><p>${esc(tip.text)}</p><a href="#/tips" class="small">${esc(t("More storage tips"))}</a></div>` : "";
   $("#ipRemix").innerHTML = i.leftover ? remixHtml(i) : "";
 
   const facts = [

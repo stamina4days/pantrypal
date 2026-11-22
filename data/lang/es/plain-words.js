@@ -22,7 +22,7 @@ Object.assign(I18N_ES, {
   "Your food stays yours": "Tu cocina es tuya",
   "Couldn't save. Your browser storage may be full or blocked.": "No pude guardar eso. Puede que tu teléfono no tenga espacio.",
   "Your recipes are saved on this device and show up in Saved, For You, and Browse.": "Tus recetas se quedan en este teléfono y aparecen junto con las demás.",
-  "Voice commands aren't supported in this browser. Try Chrome on Android.": "Hablar con Pal todavía no funciona en este teléfono.",
+  "Voice commands aren't supported in this browser. Try Chrome on Android.": "Hablar con Benji todavía no funciona en este teléfono.",
   "Couldn't look up {code} (are you offline?). Type a name and it'll be remembered next time.": "No pude buscar ese. Escribe el nombre y lo recordaré la próxima vez.",
   "Check your connection and try again. Once it loads one time, it works offline.": "Revisa tu internet e inténtalo otra vez. Cuando abra una vez, funciona sin internet."
 });
