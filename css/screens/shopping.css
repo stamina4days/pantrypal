@@ -9,5 +9,5 @@
 .aisle-head { list-style: none; font-family: var(--hand); font-size: 1.35rem; color: var(--accent); margin: 8px 2px -4px; }
 /* "I bought these" sits above the tabs while anything is checked off */
 .bought-bar { position: sticky; bottom: calc(84px + env(safe-area-inset-bottom)); z-index: 4; margin-top: 12px; }
-.bought-bar #moveToFood { flex: 2; min-height: 58px; font-size: 1.08rem; box-shadow: 0 4px 0 var(--ink), 0 8px 20px rgba(35, 58, 49, .25); }
+.bought-bar #moveToFood { flex: 2; min-height: 58px; font-size: 1.08rem; box-shadow: 0 4px 0 var(--press), 0 8px 20px rgba(35, 58, 49, .25); }
 @media (prefers-reduced-motion: no-preference) { .bought-bar:not(.hidden) { animation: pop-in .3s cubic-bezier(.3, 1.5, .5, 1); } }

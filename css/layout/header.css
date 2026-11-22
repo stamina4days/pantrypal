@@ -23,7 +23,7 @@
 #pageTitle { margin: 0; font-size: 2.3rem; color: var(--accent); }
 .top-actions { display: flex; gap: 6px; align-items: center; }
 .icon-btn {
-  min-width: 42px; min-height: 42px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper);
+  min-width: 42px; min-height: 42px; border-radius: 50%; border: 2px solid var(--edge); background: var(--paper);
   font-weight: 800; font-size: 1.05rem; display: grid; place-items: center; padding: 0; cursor: pointer;
 }
 .icon-btn.lang { border-radius: 14px; font-size: .85rem; padding: 0 8px; }

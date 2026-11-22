@@ -8,5 +8,5 @@
 .cb-axis { stroke: var(--ink); stroke-width: 2; }
 .cb-label { font-size: 10px; fill: var(--muted); font-weight: 700; font-family: var(--body); }
 .legend { display: flex; align-items: center; gap: 6px; margin: 4px 0 0; font-weight: 700; }
-.legend .key { width: 14px; height: 14px; border-radius: 4px; border: 2px solid var(--ink); display: inline-block; }
+.legend .key { width: 14px; height: 14px; border-radius: 4px; border: 2px solid var(--edge); display: inline-block; }
 .legend .key.used { background: var(--leaf); } .legend .key.tossed { background: var(--tomato); margin-left: 10px; }

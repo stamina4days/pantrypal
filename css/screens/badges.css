@@ -2,14 +2,14 @@
 .badge-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 0; margin: 12px 0 0; list-style: none; }
 .badge-card {
   display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; padding: 12px 8px;
-  background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow);
+  background: var(--paper); border: 2px solid var(--edge); border-radius: var(--radius); box-shadow: var(--shadow);
 }
 .badge-card.locked { border-style: dashed; box-shadow: none; }
 .badge-card.locked img { opacity: .75; }
 .badge-card.earned img { transform: rotate(-8deg); filter: drop-shadow(0 3px 0 rgba(35, 58, 49, .2)); }
 .badge-card strong { font-family: var(--hand); font-size: 1.25rem; line-height: 1.05; }
 .earned-tag { background: var(--leaf); color: #fff; border-radius: 99px; padding: 1px 10px; font-weight: 900; font-size: .78rem; }
-.mini-meter { display: block; width: 80%; height: 10px; border: 2px solid var(--ink); border-radius: 99px; overflow: hidden; background: var(--sky); }
+.mini-meter { display: block; width: 80%; height: 10px; border: 2px solid var(--edge); border-radius: 99px; overflow: hidden; background: var(--sky); }
 .mini-meter span { display: block; height: 100%; background: var(--lemon); }
 .badge-stack { display: flex; }
 .badge-stack img + img { margin-left: -14px; }
