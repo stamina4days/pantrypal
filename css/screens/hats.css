@@ -36,3 +36,10 @@
 .store-steps { margin: 6px 0 8px; padding-left: 22px; line-height: 1.5; }
 .store-steps li + li { margin-top: 4px; }
 #storeCode { width: 100%; box-sizing: border-box; font-family: ui-monospace, monospace; font-size: .85rem; margin: 6px 0 10px; }
+
+/* The shop ID card */
+.store-id h3 { margin: 0 0 4px; }
+.store-id-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 4px; }
+.store-id-code { font-weight: 900; font-size: 1.35rem; letter-spacing: .06em; user-select: all; -webkit-user-select: all; }
+.store-id-row button { min-height: 44px; padding: 4px 14px; display: inline-flex; align-items: center; gap: 6px; }
+.store-id-row .ic { width: 20px; height: 20px; margin: 0; }
