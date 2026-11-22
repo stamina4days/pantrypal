@@ -1,12 +1,18 @@
-<!-- RECIPES -->
+<!-- RECIPES: a wooden recipe box of collection cards on the counter, and an open cookbook with ribbon bookmarks -->
 <section id="tab-recipes" class="tab" aria-labelledby="tabbtn-recipes">
+ <div class="recipe-scene scene">
   <div class="hint-slot" data-hint="recipes"></div>
+  <div class="rbox">
+    <div id="collectionStrip" class="collection-strip" role="list" data-t-aria="Recipe collections" aria-label="Recipe collections"></div>
+    <span class="rbox-front" aria-hidden="true"><span data-t>Recipe box</span></span>
+  </div>
+  <div class="rbook">
   <div class="seg" id="recipeMode" role="group">
     <button data-mode="foryou" class="on" aria-pressed="true" data-t>For you</button>
-    <button data-mode="browse" aria-pressed="false" data-t>Browse all</button>
+    <button data-mode="browse" aria-pressed="false" data-t>All</button>
     <button data-mode="saved" aria-pressed="false" data-t>Saved</button>
   </div>
-  <div id="collectionStrip" class="collection-strip" role="list" data-t-aria="Recipe collections" aria-label="Recipe collections"></div>
+  <div class="rbook-page">
   <div id="planBanner" class="banner hidden"></div>
   <div id="focusBanner" class="banner hidden"></div>
   <input id="recipeSearch" class="search" type="search" data-t-ph="Search recipes or ingredients..." placeholder="Search recipes or ingredients..." data-t-aria="Search recipes" aria-label="Search recipes">
@@ -46,4 +52,7 @@
   <p id="recipeCount" class="muted small" aria-live="polite"></p>
   <ul id="recipeList" class="list"></ul>
   <button id="moreRecipes" class="wide hidden" data-t>Show more</button>
+  </div>
+  </div>
+ </div>
 </section>

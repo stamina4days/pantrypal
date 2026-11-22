@@ -13,7 +13,9 @@ function renderShopping() {
     $("#shopItems").innerHTML = "";
     $("#shopActions").classList.add("hidden");
     $("#shopEstimate").textContent = ""; $("#shopSuggest").innerHTML = "";
-    empty.innerHTML = palBubble("wink", t("No lists yet. Tap + New to start one, or add stuff straight from any recipe."), [], "pal-big");
+    // No lists: Benji waits by an empty cart
+    empty.innerHTML = palBubble("wink", t("No lists yet. Tap + New to start one, or add stuff straight from any recipe."), [], "pal-big")
+      + `<svg class="empty-cart" viewBox="0 0 110 70" width="110" height="70" aria-hidden="true"><path d="M2 6h14l10 36h60l12-28H22" fill="#DFF1FA" stroke="#3B2F2A" stroke-width="4" stroke-linejoin="round"/><path d="M34 22v18M50 22v18M66 22v18" stroke="#3B2F2A" stroke-width="2.5"/><circle cx="36" cy="58" r="7" fill="#E5482F" stroke="#3B2F2A" stroke-width="3"/><circle cx="76" cy="58" r="7" fill="#E5482F" stroke="#3B2F2A" stroke-width="3"/></svg>`;
     empty.classList.remove("hidden");
     return;
   }

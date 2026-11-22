@@ -26,10 +26,26 @@ function renderPlan() {
   let html = "";
   const earlier = plan.filter(m => m.date < today && !m.fromId);
   if (earlier.length) html += `<h3 class="day-head">${esc(t("Earlier (not marked as made)"))}</h3><ul class="list">${sorted(earlier).map(mealHtml).join("")}</ul>`;
+  // The wall calendar: this week as seven squares, each with its first meal as a sticker, today circled
+  let week = "", planned = 0;
+  for (let i = 0; i < 7; i++) {
+    const d = addDaysFrom(today, i), meals = sorted(plan.filter(m => m.date === d)), dt = parseDay(d);
+    const r = meals.length ? recipeByName(meals[0].recipe) : null;
+    if (meals.length) planned++;
+    week += `<button type="button" class="cal-day${i === 0 ? " today" : ""}${meals.length ? " has" : ""}" data-cal-day="${d}" aria-label="${esc(dayName(d) + ", " + (meals.length ? meals.map(m => rName(recipeByName(m.recipe) || { name: m.recipe })).join(", ") : t("Nothing planned")))}">
+      <span class="cd-name">${esc(dt.toLocaleDateString(locale(), { weekday: "short" }))}</span><span class="cd-num">${dt.getDate()}</span>${r ? recipeArt(r, "cd-art") : `<span class="cd-plus" aria-hidden="true">+</span>`}</button>`;
+  }
+  const wk = $("#planWeek");
+  if (wk) {
+    wk.innerHTML = week;
+    $("#calMonth").textContent = parseDay(today).toLocaleDateString(locale(), { month: "long" });
+    $("#calCount").textContent = t("{a} of 7 days planned", { a: planned });
+  }
+  // Each day on its own tear-off page
   for (let i = 0; i < 7; i++) {
     const d = addDaysFrom(today, i), meals = sorted(plan.filter(m => m.date === d));
-    html += `<div class="day-head"><h3>${esc(dayName(d))}</h3><button class="chip" data-plan-day="${d}">+ ${esc(t("Add"))}</button></div>`;
-    html += meals.length ? `<ul class="list">${meals.map(mealHtml).join("")}</ul>` : `<p class="muted small">${esc(t("Nothing planned"))}</p>`;
+    html += `<section class="pday${i === 0 ? " today" : ""}" data-day="${d}"><div class="day-head"><h3>${esc(dayName(d))}</h3><button class="chip" data-plan-day="${d}">+ ${esc(t("Add"))}</button></div>`;
+    html += (meals.length ? `<ul class="list">${meals.map(mealHtml).join("")}</ul>` : `<p class="muted small">${esc(t("Nothing planned"))}</p>`) + `</section>`;
   }
   const later = plan.filter(m => m.date > addDaysFrom(today, 6));
   if (later.length) html += `<h3 class="day-head">${esc(t("Later"))}</h3><ul class="list">${sorted(later).map(m => mealHtml(m).replace("</strong>", ` <span class="muted small">${esc(dayName(m.date))}</span></strong>`)).join("")}</ul>`;

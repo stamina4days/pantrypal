@@ -1,14 +1,21 @@
-<!-- PLAN -->
+<!-- PLAN: a wall calendar on a nail with this week's meals as stickers, the days' meals on tear-off pages, and a table with the week placemat -->
 <section id="tab-plan" class="tab" aria-labelledby="tabbtn-plan">
+ <div class="plan-scene scene">
   <div class="hint-slot" data-hint="plan"></div>
-  <button id="autoPlanBtn" class="primary wide big-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> <span data-t>Plan my week</span></button>
-  <button id="weekBtn" class="wide week-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/week.svg#i"/></svg> <span data-t>Week at a glance</span></button>
-  <div class="grid2">
-    <button id="planShopBtn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/cart.svg#i"/></svg> <span data-t>Shopping list</span></button>
-    <button id="prepBtn" class="full-only"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/knife.svg#i"/></svg> <span data-t>Prep day</span></button>
-    <button id="planPrintBtn" class="full-only"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/printer.svg#i"/></svg> <span data-t>Print</span></button>
-    <button id="planCalBtn" class="full-only"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/calendar.svg#i"/></svg> <span data-t>Add to calendar</span></button>
+  <div class="cal">
+    <div class="cal-top"><span id="calMonth" class="cal-month"></span><span id="calCount" class="cal-count"></span></div>
+    <div id="planWeek" class="cal-week" role="group" data-t-aria="This week" aria-label="This week"></div>
+    <button id="autoPlanBtn" class="primary cal-go"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> <span data-t>Plan my week</span></button>
   </div>
-  <p class="muted small full-only" data-t>Food a planned meal needs is set aside, so For You won't suggest using it twice.</p>
-  <div id="planBody"></div>
+  <div id="planBody" class="plan-pages"></div>
+  <div class="plan-table">
+    <button id="weekBtn" class="placemat"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/week.svg#i"/></svg> <span data-t>Week at a glance</span></button>
+    <button id="planShopBtn" class="notepad-btn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/cart.svg#i"/></svg> <span data-t>Shopping list</span></button>
+    <div class="plan-more full-only">
+      <button id="prepBtn" class="chip"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/knife.svg#i"/></svg> <span data-t>Prep day</span></button>
+      <button id="planPrintBtn" class="chip"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/printer.svg#i"/></svg> <span data-t>Print</span></button>
+      <button id="planCalBtn" class="chip"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/calendar.svg#i"/></svg> <span data-t>Add to calendar</span></button>
+    </div>
+  </div>
+ </div>
 </section>

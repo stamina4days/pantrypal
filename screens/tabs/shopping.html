@@ -1,22 +1,26 @@
-<!-- SHOPPING -->
+<!-- SHOPPING: a notepad held to the fridge door by a magnet. Other lists and the tools are magnets and scraps around it. -->
 <section id="tab-shopping" class="tab" aria-labelledby="tabbtn-shopping">
+ <div class="shop-scene scene">
   <div class="hint-slot" data-hint="shopping"></div>
-  <div class="toolbar">
+  <div class="toolbar pad-tools">
     <select id="listSelect" data-t-aria="Shopping list" aria-label="Shopping list"></select>
-    <button id="newListBtn" data-t>+ New</button>
-    <button id="shareListBtn" class="icon-square" data-t-aria="Share this list" aria-label="Share this list"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/share.svg#i"/></svg><span class="btn-label" data-t>Share</span></button>
-    <button id="listMenuBtn" class="icon-square" data-t-aria="Rename or delete list" aria-label="Rename or delete list"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/dots.svg#i"/></svg><span class="btn-label" data-t>More</span></button>
+    <button id="newListBtn" class="pad-new" data-t>+ New</button>
+    <button id="shareListBtn" class="icon-square pad-magnet" data-t-aria="Share this list" aria-label="Share this list"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/share.svg#i"/></svg><span class="btn-label" data-t>Share</span></button>
+    <button id="listMenuBtn" class="icon-square pad-magnet" data-t-aria="Rename or delete list" aria-label="Rename or delete list"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/dots.svg#i"/></svg><span class="btn-label" data-t>More</span></button>
   </div>
-  <form id="shopAddForm" class="toolbar">
-    <input id="shopAddInput" class="search" data-t-ph="Add an item..." placeholder="Add an item..." autocomplete="off" data-t-aria="Add an item" aria-label="Add an item">
-    <button type="submit" class="primary" data-t>Add</button>
-  </form>
-  <p id="shopEstimate" class="muted small full-only"></p>
-  <div id="shopSuggest"></div>
-  <ul id="shopItems" class="list"></ul>
+  <div class="notepad">
+    <form id="shopAddForm" class="toolbar">
+      <input id="shopAddInput" class="search" data-t-ph="Add an item..." placeholder="Add an item..." autocomplete="off" data-t-aria="Add an item" aria-label="Add an item">
+      <button type="submit" class="primary" data-t>Add</button>
+    </form>
+    <p id="shopEstimate" class="muted small full-only"></p>
+    <div id="shopSuggest"></div>
+    <ul id="shopItems" class="list"></ul>
+    <div id="emptyShop" class="empty hidden"></div>
+  </div>
   <div id="shopActions" class="row hidden bought-bar">
     <button id="moveToFood" class="primary"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/basket.svg#i"/></svg> <span id="moveToFoodLabel">I bought these</span></button>
     <button id="clearChecked" data-t>Remove checked</button>
   </div>
-  <div id="emptyShop" class="empty hidden"></div>
+ </div>
 </section>
