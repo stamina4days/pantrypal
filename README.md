@@ -10,11 +10,22 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.9
+- **Every tab is its own room, and fits on the screen.** Each tab now fills exactly the space between the header and the tabs, so a normal phone never has to scroll the page. Long lists scroll inside their spot instead. The header is smaller on every tab, with round Search, Help, and Settings buttons.
+- **Start screen: Benji's shop front.** A striped awning, a glowing Pantry Pal sign, and Benji in the shop window behind crates of produce, with a chalkboard that welcomes you back. Start and the other choices are wooden signs hanging on ropes.
+- **My Food: the open fridge.** Fridge, Freezer, Pantry, and Counter are little appliance buttons. Your food sits inside a lit fridge with glass shelves, each with a price tag that says how long it has. Add food is the grocery bag. When it's empty, Benji peeks in.
+- **Recipes: a recipe box and a cookbook.** Collections are index cards standing in a wooden recipe box. For you, All, and Saved are ribbon bookmarks on a lined cookbook page.
+- **Plan: a wall calendar.** This week hangs on a nail, each day with its meal as a sticker and today circled. Tap an empty day to add a meal, or a planned day to turn to its page. Today's page is a chalkboard, and Week at a glance and the shopping list sit on the table.
+- **Shopping: a notepad on the fridge door.** The list is written on a ruled pad. Pick another list from the tab, tear off a new one with + New, and share or rename with the two magnets. "I bought these" sits right under the pad.
+- **Today fits too.** The kitchen shrinks to fit shorter screens, and the money-at-risk line is a small tag at the top of the kitchen.
+- **Tips are sticky notes.** The first-time tips are small taped notes instead of big boxes.
+- **Buying the Fun hat pack is turned on** through Square.
+
 ## New in version 11.8
 - **Colors fixed on phones with automatic dark mode (11.8.1).** Some phones darken websites on their own, which turned the fridge, the sticky note, the game console, and the Add food bag murky. Pantry Pal now tells the phone it has its own dark mode, so its colors show as designed.
 - **Today is Benji's kitchen.** The home screen is now a little kitchen instead of a stack of boxes. The foods to eat first are magnets on the fridge, each with how long it has. Tonight's recipe is on a chalkboard, the jar of food you saved sits on a shelf and fills up, Benji's hat hangs on a peg (tap it for his hat closet), and a game console on the counter opens Play. Benji stands on the counter and sways, and Add food is a grocery bag on the floor that stays in view on small phones. The header on Today is smaller to make room. Light and dark kitchens both.
 - **Money smarts for everyone, free.** Money at risk, recipes ranked by money saved, the week plan that rescues the most money, and the smarter Fridge Sort (all described under 11.7) are now part of the free app.
-- **Benji's shop.** Settings, Search, or `#/shop` opens a shop for optional extras. The first is the Fun hat pack ($1.99): a cowboy hat, a pirate hat, a viking helmet, and a frog hat, which also show on the hats page under "From Benji's shop." Buy opens a Square checkout; the buyer then gets an unlock code or link (`#/redeem/<code>`). Codes are signed, so the app can check them on the phone and nobody can make one up, and they're saved in backups. Everything that saves food and money stays free. To turn on buying, paste the item's Square payment link into `buyUrl` in `data/store.js`.
+- **Benji's shop.** Settings, Search, or `#/shop` opens a shop for optional extras. The first is the Fun hat pack ($1.99): a cowboy hat, a pirate hat, a viking helmet, and a frog hat, which also show on the hats page under "From Benji's shop." Buy opens a Square checkout; the buyer then gets an unlock code or link (`#/redeem/<code>`). Codes are signed, so the app can check them on the phone and nobody can make one up, and they're saved in backups. Everything that saves food and money stays free. Buying goes through the Square payment link in `buyUrl` in `data/store.js`.
 - **Terms and food safety.** A new page in Settings, About, and Search (or `#/terms`) explains that every date is an estimate and to check food before eating it, plus notes on allergies, estimates, your data, and no guarantees. The start screen mentions it the first time, and each food's page has a short reminder under its freshness bar.
 
 ## New in version 11.7
@@ -85,7 +96,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 
 ## Made for every age
 - **Simple view by default:** one big "Add food" button, large rows, and Benji. "Show me everything" at the bottom of My Food (or in Settings) brings back filters and extras. Setup asks which you prefer.
-- **A word under every icon,** everyday words instead of computer words ("Save a copy," not "Export backup"), and dates like "Eat by Thursday" or "bought Saturday."
+- **A word under every tab,** everyday words instead of computer words ("Save a copy," not "Export backup"), and dates like "Eat by Thursday" or "bought Saturday."
 - **Easy to read:** bigger text, Undo stays up for 12 seconds, and a speaker button on Benji's bubble reads it aloud.
 - **A warm kitchen look:** paper grain, a wooden shelf, masking tape labels, recipe index cards, a notepad shopping list with a magnet, and lamplight colors at night.
 - **Your kitchen:** Benji uses your name and the header says whose kitchen it is. Add your own notes to any recipe on a sticky note, and mark whose favorite it is.
