@@ -11,6 +11,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
 ## New in version 11.11
+- **A warmer welcome (11.11.1).** The first screens now show Benji in his lit shop window. The terms are a paper notice taped under the counter with two numbered steps, read the terms and tick the box, and the "Let's get started" sign unlocks once both are done. The name screen uses the same notice.
 - **A new start screen.** Benji's shop front got a full makeover: a marquee sign with light bulbs, a lit shop window with a hanging lamp and stocked shelves, Benji behind the counter saying hello, crates of produce, and wooden signs on ropes. Benji's shop now has its own sign there too.
 - **Benji's shop on Today.** A shop flyer is stuck to the fridge door, so the shop is one tap away.
 - **Agree to the terms first.** The first time you open Pantry Pal, you open the terms, tick the box, and then continue. People who already use the app see it once too.
