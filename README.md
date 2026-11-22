@@ -1,6 +1,6 @@
 # Pantry Pal
 
-A kitchen app that plans and preps meals around the food you already have. Works offline, in English and Spanish, with no account or server. It also works without a pantry: anyone can browse recipes, plan meals, and use cook mode.
+A kitchen app that plans and preps meals around the food you already have. Works offline, in English, with no account or server. It also works without a pantry: anyone can browse recipes, plan meals, and use cook mode.
 
 ## The look
 A farmers market style: a striped awning across the top, price-tag food cards, fruit-sticker expiration dates, and a color for each tab. Benji, the money-saving dollar sign, reacts to what's in your fridge and talks to you in a casual, friendly voice. Dark mode follows your phone's setting.
@@ -9,6 +9,13 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Opening screen.** Benji hops on a crate of produce while the app unpacks every page and recipe, with a progress bar.
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
+
+## New in version 11.6
+- **Start screen.** Once the app loads, Benji greets you on a game-style start menu: Start, Benji's hats, Play a game, or Take the tour. The first time, he asks what to call you.
+- **The tour on every visit.** It runs each time you open the app, until you tick "Don't show this when I open the app". You can turn it back on in Settings, and it's always in Help, Settings, and on the start screen. Shared links and bookmarks skip it.
+- **Hats are easier to find.** A Hats button sits next to Play on Today, Benji's hats is near the top of Settings and on the start screen, and Benji brings up his hats every few taps and every few visits.
+- **Hats you win in games.** Four new badges in the Play corner each win Benji a hat: Sweatband (play 5 rounds of Fridge Sort), Propeller cap (a perfect Fridge Sort round), Graduation cap (solve the daily food word 3 times), and Wizard hat (solve it 5 days in a row). Benji talks them up in the Play corner.
+- **English only.** Spanish is gone for now: the language button, the setting, the setup choice, Benji's Spanish lines, and the Spanish text files. More languages will come in a future update. Older recipe files still carry their Spanish text, but the app ignores it.
 
 ## New in version 11.5
 - **Meet Benji:** the mascot is now Benji, a green dollar sign with white gloves and a sprout on top, because every food you save is money saved. The app is still Pantry Pal.
@@ -60,7 +67,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Home screen guide:** pictures for iPhone and Android, plus a one-tap button where the phone allows it (Settings, or Benji asks after a couple of days).
 - **Share your kitchen:** Settings, then "Share your kitchen" sends a link that copies your food, lists, plan, and recipes onto another phone. No accounts, no server.
 - **Readability:** every word passes the standard contrast check in day and evening colors, and keyboard focus shows a clear ring.
-- **English only for now.** The Spanish files are still in the project; set `SPANISH_READY` to `true` in `js/core/config.js` to bring the language switch back.
+- **English only for now.** More languages are planned for a future update.
 
 ## Made for every age
 - **Simple view by default:** one big "Add food" button, large rows, and Benji. "Show me everything" at the bottom of My Food (or in Settings) brings back filters and extras. Setup asks which you prefer.
@@ -76,7 +83,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Benji is alive.** Benji blinks, bounces and says something when you tap it, dances when you rescue food, greets you differently by time of day, and wears a hat for the season (pick a different hat, or none, in Benji's hats).
 - **Moments you can feel.** A RESCUED stamp thunks down when you save food, a price tag tears in half when something's tossed, and little sounds and buzzes go with them (Settings > Sounds and buzzes).
 - **Today's special** on My Food: a chalkboard with one recipe, either rescuing something that's about to go bad or the day's theme (Taco Tuesday, Soup Sunday, and so on).
-- **Benji's lines** live in `data/pal/voice-en.js` and `data/pal/voice-es.js`. Edit them to change what Benji says.
+- **Benji's lines** live in `data/pal/voice-en.js`. Edit them to change what Benji says.
 - **Custom controls:** dropdowns, search boxes, checkboxes, and Settings switches drawn to match the market look.
 
 ## New pages
@@ -84,7 +91,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Shelf pages:** the Fridge, Freezer, Pantry, and Counter tiles on My Food each open a page for that shelf, with "All still good" to mark everything checked.
 - **Collections:** the cards across the top of Recipes. Use it up, Make it now, Ready in 20, Meal prep, Freezer friendly, Kid-friendly, Budget bites, High protein, Lighter meals, Set it and forget it, Breakfast, Something sweet, and six cuisines.
 - **Week at a glance:** a placemat for each day with breakfast, lunch, and dinner, plus cost, calories, and how much food the plan rescues.
-- **Badges:** 18 stickers to earn, like First rescue, Prep pro, Zero waste week, and Money saver. Benji celebrates new ones.
+- **Badges:** 23 stickers to earn, like First rescue, Prep pro, Zero waste week, and Money saver. Benji celebrates new ones.
 - **Make food last:** storage tips for 42 foods, with the ones you have listed first.
 - **Waste Less** now shows money saved and a chart of the last 8 weeks.
 - **About Pantry Pal** in Settings.
@@ -100,7 +107,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - One combined plan for cooking several meals at once: preheat once, cook rice once, chop everything together, oven dishes first, then how to pack and store each one (and what to freeze).
 - Built-in timers. "Done" takes the food used out of My Food and puts the cooked meals in the fridge.
 
-**Cook mode:** big text, one step at a time, tap-to-start timers, screen stays on, read aloud, and voice commands ("next", "back", "repeat", "timer", "ingredients"; also in Spanish).
+**Cook mode:** big text, one step at a time, tap-to-start timers, screen stays on, read aloud, and voice commands ("next", "back", "repeat", "timer", "ingredients").
 
 **Smarter pantry**
 - Real quantities: it knows 2 lbs of chicken covers a recipe that needs 1 lb, and tells you when you're low.
@@ -143,8 +150,8 @@ data/
     dinner-asian/ (72)  dinner-american/ (49)  dinner-italian/ (26)
     dinner-mexican/ (21)  dinner-indian/ (21)  dinner-mediterranean/ (11)
   food/               shelf life, nutrition, prices, aisles, storage tips, and more
-  lang/es/, lang/en/  Spanish text and Benji's casual English
-  pal/                Benji's lines in English and Spanish
+  lang/en/            Benji's casual English and plain-word versions
+  pal/                Benji's lines
   badges.js, collections.js, specials.js
 img/
   pal/ places/ badges/ illustrations/ icons/ (icons/ui/ has the hand-drawn icons)
@@ -160,7 +167,7 @@ tools/list-files.py   rebuilds offline-files.js after you add or rename files
 
 ## Adding a recipe
 1. Copy any file from the folder it belongs in (like `data/recipes/breakfast/`) and rename it, like `my-new-dish.json`.
-2. Change the name, time, servings, ingredients (`"amount|ingredient"`, add `|o` at the end for optional), steps, and the Spanish `es` name and steps.
+2. Change the name, time, servings, ingredients (`"amount|ingredient"`, add `|o` at the end for optional), and steps.
 3. Add it to `data/recipes/index.json` with its folder, like `"breakfast/my-new-dish.json"`. A new category is just a new folder.
 That's it. To open fast, the app reads `data/recipes.json`, which holds every recipe in one file, and downloads only the recipe files it doesn't find there, so new recipes show up right away. Edits to an existing recipe file are picked up by a quiet check once a day. To have them show up immediately, ask me to rebuild `data/recipes.json`.
 
@@ -174,6 +181,5 @@ Set your address near the top of `js/core/config.js`: `const SUGGEST_EMAIL = ["y
 - **Receipt and date reading** need internet the first time and can misread text, so there's always a review step.
 - **Voice commands** work best in Chrome on Android. iPhone support is limited.
 - **Background notifications** only work in Chrome on Android with the app on the home screen. Calendar reminders and in-app timers work everywhere, but a timer may not sound if your phone locks the browser.
-- **Spanish** was machine translated and needs review by a fluent speaker.
 - **Diet and allergy labels** are a helper, not a guarantee. Always check package labels.
 - **Data stays on each device.** Use Settings > Export backup to move it or keep it safe.
