@@ -94,6 +94,7 @@ const OFFLINE_FILES = [
  "img/badges/rescue-10.svg",
  "img/badges/saver.svg",
  "img/badges/sort-5.svg",
+ "img/badges/sort-checks-25.svg",
  "img/badges/sort-perfect.svg",
  "img/badges/streak-7.svg",
  "img/badges/word-3.svg",
