@@ -19,5 +19,10 @@ const BADGES = [
   { id: "my-recipe", name: "Recipe writer", desc: "Add a recipe of your own.", test: s => [s.mine, 1] },
   { id: "saver", name: "Money saver", desc: "Save about $50 of food from the trash.", test: s => [Math.floor(s.saved), 50] },
   { id: "little-helper", name: "Little helper", desc: "Cook a recipe with a kid's help.", test: s => [s.helper, 1] },
-  { id: "night-owl", name: "Midnight snack", desc: "Cook something after 10 pm.", test: s => [s.lateCook, 1] }
+  { id: "night-owl", name: "Midnight snack", desc: "Cook something after 10 pm.", test: s => [s.lateCook, 1] },
+  // Games in the Play corner. Each one wins Benji a hat.
+  { id: "sort-5", name: "Warmed up", desc: "Play 5 rounds of Fridge Sort.", game: true, test: s => [s.sortPlays, 5] },
+  { id: "sort-perfect", name: "Perfect sort", desc: "Get all 3 stars in a round of Fridge Sort.", game: true, test: s => [s.sortPerfect, 1] },
+  { id: "word-3", name: "Word whiz", desc: "Solve the daily food word 3 times.", game: true, test: s => [s.wordWins, 3] },
+  { id: "word-streak-5", name: "Word streak", desc: "Solve the daily food word 5 days in a row.", game: true, test: s => [s.wordStreak, 5] }
 ];

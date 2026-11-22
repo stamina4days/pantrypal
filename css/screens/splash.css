@@ -49,3 +49,32 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
 .splash-meter { display: none; }
 .splash:not(.failed) .splash-count { display: none; }
 .splash-line { font-size: 1.05rem; }
+/* Start screen: once everything is loaded, the opening screen becomes a menu, like a game's */
+.splash.menu .splash-stage { width: min(360px, 100%); gap: 0; }
+.splash.menu .sm-benji { filter: drop-shadow(0 4px 0 rgba(35, 58, 49, .18)); margin-top: 18px; }
+.splash.menu .splash-name { font-size: 3.4rem; margin: 2px 0 4px; }
+.sm-hello { margin: 0 0 16px; font-weight: 900; font-size: 1.2rem; }
+.sm-menu { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.sm-menu button { width: 100%; min-height: 52px; font-size: 1.05rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.sm-menu .ic { width: 24px; height: 24px; margin: 0; }
+.sm-menu .sm-go { min-height: 64px; font-size: 1.45rem; font-weight: 900; letter-spacing: .02em; }
+.sm-rename { margin-top: 10px; }
+.sm-card { width: 100%; background: var(--paper); border: 2px solid var(--edge); border-radius: 20px; padding: 16px; box-shadow: 0 4px 0 var(--press); display: flex; flex-direction: column; gap: 10px; text-align: left; position: relative; }
+.sm-card::before { content: ""; position: absolute; top: -11px; left: 50%; margin-left: -10px; width: 18px; height: 18px; background: var(--paper);
+  border-left: 2px solid var(--edge); border-top: 2px solid var(--edge); transform: rotate(45deg); }
+.sm-say { margin: 0; font-weight: 800; font-size: 1.08rem; line-height: 1.4; }
+.sm-card input { min-height: 52px; font-size: 1.15rem; }
+.sm-card .sm-go { min-height: 56px; font-size: 1.15rem; font-weight: 900; }
+.sm-card .text-btn { align-self: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .splash.menu .sm-benji { animation: pal-hop 1.6s ease-in-out infinite; transform-origin: bottom center; }
+  .splash.menu .sm-menu, .splash.menu .sm-card, .splash.menu .sm-hello { animation: sm-in .35s ease-out both; }
+  @keyframes sm-in { from { opacity: 0; transform: translateY(10px); } }
+}
+@media (max-height: 640px) {
+  .splash.menu .sm-benji .pal { width: 96px; height: 129px; }
+  .splash.menu .splash-name { font-size: 2.6rem; }
+  .sm-menu button { min-height: 46px; }
+  .sm-menu .sm-go { min-height: 54px; }
+}
+.splash.menu { overflow-y: auto; justify-content: safe center; }
