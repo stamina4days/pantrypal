@@ -27,7 +27,7 @@ const SEARCH_ACTIONS = [
   { name: "People, diet, cooking time, and equipment", icon: "house", words: "setup household people family kids cooking time equipment budget goal name", run: () => openOnboarding("edit") },
   { name: "Share your kitchen", icon: "share", words: "share kitchen family partner another phone sync link", run: () => openShareKitchen() },
   { name: "Put Benji on your home screen", icon: "phone", words: "install home screen app icon", run: () => openHomeScreen() },
-  { name: "Benji's hats", icon: "sparkle", words: "hat hats benji outfit dress costume turkey crown closet", run: () => openHats() },
+  { name: "Benji's hats", icon: "hat", words: "hat hats benji outfit dress costume turkey crown closet wizard propeller graduation sweatband game prize", run: () => openHats() },
   { name: "Take the tour", icon: "sparkle", words: "tour tutorial guide walkthrough intro start how what is this", run: () => startTour() },
   { name: "How to use Pantry Pal", icon: "help", words: "help how to use guide instructions", run: () => openHelp() },
   { name: "Check what this phone supports", icon: "phone", words: "phone check diagnostics camera voice notifications", run: () => runDiagnostics() },
@@ -99,9 +99,9 @@ function renderSearch() {
   }));
 
   // Storage tips
-  const tipRows = STORAGE_TIPS.map(tp => ({ tp, s: searchScore(words, tp[0], LANG === "es" ? tp[3] : tp[2]) })).filter(x => x.s >= 4)
+  const tipRows = STORAGE_TIPS.map(tp => ({ tp, s: searchScore(words, tp[0], tp[2]) })).filter(x => x.s >= 4)
     .sort((a, b) => b.s - a.s).slice(0, 2).map(({ tp }) => `<li><button class="sr-row sr-tip" type="button" data-sr-tip="${esc(tp[0])}">${foodArt(tp[0], null, "sr-art")}
-      <span class="grow"><strong>${esc(tp[0].charAt(0).toUpperCase() + tp[0].slice(1))}</strong><span>${esc(LANG === "es" ? tp[3] : tp[2])}</span></span></button></li>`);
+      <span class="grow"><strong>${esc(tp[0].charAt(0).toUpperCase() + tp[0].slice(1))}</strong><span>${esc(tp[2])}</span></span></button></li>`);
 
   // Things you can do
   const actRows = SEARCH_ACTIONS.map((a, k) => ({ a, k, s: searchScore(words, t(a.name), a.words) })).filter(x => x.s)
