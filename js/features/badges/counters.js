@@ -57,7 +57,11 @@ function badgeStats() {
     mine: myRecipes.length,
     saved: inTime.reduce((sum, e) => sum + (e.v || 0), 0),
     lateCook: c.lateCook || 0,
-    helper: c.helper || 0
+    helper: c.helper || 0,
+    sortPlays: (settings.play || {}).sortPlays || 0,
+    sortPerfect: (settings.play || {}).sortPerfect || 0,
+    wordWins: (settings.play || {}).wordWins || 0,
+    wordStreak: Math.max((settings.play || {}).wordStreakBest || 0, (settings.play || {}).wordStreak || 0)
   };
 }
 
@@ -80,7 +84,10 @@ function checkNewBadges() {
     saveSettings();
     const b = BADGES.find(x => x.id === fresh[0]);
     const hat = typeof hatForBadge === "function" ? hatForBadge(b.id) : null;
-    toast(hat ? t("New badge: {name}! Benji unlocked the {hat}.", { name: t(b.name), hat: t(hat.name).toLowerCase() }) : t("New badge: {name}!", { name: t(b.name) }));
+    const hats = fresh.map(id => typeof hatForBadge === "function" ? hatForBadge(id) : null).filter(Boolean);
+    toast(fresh.length > 1
+      ? (hats.length ? tn(hats.length, "{a} new badges! Benji unlocked a new hat.", "{a} new badges! Benji unlocked {n} new hats.", { a: fresh.length }) : t("{a} new badges!", { a: fresh.length }))
+      : hat ? t("New badge: {name}! Benji unlocked the {hat}.", { name: t(b.name), hat: t(hat.name).toLowerCase() }) : t("New badge: {name}!", { name: t(b.name) }));
     confetti(); sfx("cheer"); buzz([10, 50, 10, 50, 20]);
   }
 }

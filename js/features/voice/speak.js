@@ -7,7 +7,7 @@ function speak(text) {
     if (!("speechSynthesis" in window)) return;
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = LANG === "es" ? "es-US" : "en-US";
+    u.lang = "en-US";
     speechSynthesis.speak(u);
   } catch (e) {}
 }

@@ -1,6 +1,7 @@
 "use strict";
 /* A short guided tour of Today: what Pantry Pal is for and where things are. Benji points at each part of
-   the screen in turn. Runs once after first-time setup, and anytime from Help, Settings, or Search. */
+   the screen in turn. Runs after first-time setup and every time the app opens, until you tick
+   "Don't show this when I open the app". Also anytime from the start screen, Help, Settings, or Search. */
 
 const TOUR_STEPS = [
   { mood: "wave", title: "Hi, I'm Benji!",
@@ -16,9 +17,11 @@ const TOUR_STEPS = [
   { target: "#todayJar", pose: "point", title: "Watch your savings grow",
     text: "Every food you finish in time goes in your jar. My sprout grows as the money you save adds up." },
   { target: "#todayPlayBtn", pose: "point", title: "Got a minute?",
-    text: "Play quick games here. Some of them also check what's still in your kitchen." },
+    text: "Play quick games here. Some of them also check what's still in your kitchen, and winning them gets me new hats." },
+  { target: "#todayHatsBtn", pose: "point", title: "Dress me up",
+    text: "This is my hat closet. Earn badges and win games to unlock new hats, then pick the one I wear." },
   { mood: "cheer", title: "You're all set!",
-    text: "Tap me anytime to say hi. You can take this tour again from Help." }
+    text: "Tap me anytime to say hi. Now let's go save some money!" }
 ];
 let tour = null;
 
@@ -68,7 +71,9 @@ function renderTour() {
       ${last ? "" : `<button type="button" class="text-btn" data-tour="skip">${esc(t("Skip"))}</button>`}
       ${first || last ? "" : `<button type="button" data-tour="back">${esc(t("Back"))}</button>`}
       <button type="button" class="primary" data-tour="next">${esc(last ? t("Let's go") : first ? t("Show me around") : t("Next"))}</button>
-    </div>`;
+    </div>
+    <label class="check tour-hide"><input type="checkbox" data-tour-hide ${settings.hideTour ? "checked" : ""}> <span>${esc(t("Don't show this when I open the app"))}</span></label>
+    <p class="tour-where small">${esc(t("You can always find the tour in Help, in Settings, or on the start screen."))}</p>`;
   if (el) {
     const r = el.getBoundingClientRect(), pad = 6;
     Object.assign(hole.style, { display: "block", left: (r.left - pad) + "px", top: (r.top - pad) + "px", width: (r.width + pad * 2) + "px", height: (r.height + pad * 2) + "px" });
@@ -102,6 +107,11 @@ function endTour() {
 }
 
 function tourInit() {
+  document.addEventListener("change", e => {
+    if (!e.target.matches("[data-tour-hide], #tourAutoToggle")) return;
+    settings.hideTour = e.target.matches("#tourAutoToggle") ? !e.target.checked : e.target.checked;
+    saveSettings();
+  });
   document.addEventListener("click", e => {
     const b = e.target.closest("[data-tour]");
     if (b && tour) {
@@ -135,7 +145,7 @@ function tourInit() {
     startTour();
   }, 450);
   $("#onboardDialog").addEventListener("close", () => {
-    if (ob && ob.mode === "first" && !settings.toured) { pending = true; maybeStart(); }
+    if (ob && ob.mode === "first" && !settings.hideTour) { pending = true; maybeStart(); }
   });
   $("#auditDialog").addEventListener("close", maybeStart);
 }

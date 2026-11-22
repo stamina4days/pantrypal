@@ -2,6 +2,7 @@
 /* Pal's buttons. */
 function buddyInit() {
   document.addEventListener("click", e => {
+    if (e.target.closest("[data-go-hats]") && !e.target.closest("#badgesPage")) { $$("dialog[open]").forEach(d => d.close()); openHats(); return; }
     const b = e.target.closest("[data-pal]");
     if (!b) return;
     const a = b.dataset.pal;
