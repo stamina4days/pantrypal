@@ -4,7 +4,7 @@ dialog.cook { width: 100vw; height: 100vh; max-height: 100vh; max-width: 100vw; 
 dialog.cook .muted { color: #C9D6CE; }
 dialog.cook button { background: #F6F2E6; color: #233A31; border-color: #F6F2E6; box-shadow: 0 3px 0 rgba(0, 0, 0, .35); }
 dialog.cook button.primary { background: var(--lemon); border-color: var(--lemon); }
-dialog.cook .link-btn { background: none; color: var(--lemon); box-shadow: none; }
+dialog.cook .link-btn { background: none; color: #F7DD95; box-shadow: none; }
 dialog.cook .chip.on, dialog.cook .row-btn.on { background: var(--lemon); }
 dialog.cook .hint { color: #233A31; }
 .cook-wrap { display: flex; flex-direction: column; min-height: 100%; padding: calc(16px + env(safe-area-inset-top)) 20px calc(16px + env(safe-area-inset-bottom)); }
@@ -19,3 +19,5 @@ body.large-text .cook-step { font-size: 1.95rem; }
 /* Little helper steps */
 .helper-mark { display: inline-flex; align-items: center; gap: 10px; margin: 12px auto 0; padding: 8px 14px 8px 8px; background: #FFE9EF; color: #5A2233; border: 2.5px solid #233A31; border-radius: 999px; font-size: 1rem; }
 .helper-mark img { transform: rotate(-10deg); }
+
+dialog.cook #cookProgress { color: #E3ECE6; }

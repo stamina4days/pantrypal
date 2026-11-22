@@ -27,8 +27,8 @@
 .recipe-scene .rbook { flex: 1 1 auto; min-height: 0; position: relative; display: flex; flex-direction: column; margin-top: 12px; }
 .recipe-scene .seg { position: absolute; z-index: 3; top: -10px; right: 8px; display: flex; gap: 5px; margin: 0; padding: 0; background: none; border: 0; }
 .recipe-scene .seg button { flex: none; width: 76px; min-height: 0; height: 50px; padding: 0 0 12px; border: 0; border-radius: 0; color: #FFFFFF; font-weight: 900; font-size: .85rem;
-  display: flex; align-items: flex-end; justify-content: center; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 10px), 0 100%); background: #2E8FC7; box-shadow: none; }
-.recipe-scene .seg button[data-mode="foryou"] { background: #E5482F; }
+  display: flex; align-items: flex-end; justify-content: center; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 10px), 0 100%); background: #1F7AAD; box-shadow: none; }
+.recipe-scene .seg button[data-mode="foryou"] { background: #C43820; }
 .recipe-scene .seg button[data-mode="saved"] { background: #8A5AB8; }
 .recipe-scene .seg button.on { height: 62px; }
 .rbook-page { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; position: relative; padding: 46px 12px 16px 26px;
@@ -56,10 +56,10 @@
   background-size: 44px 44px; padding-top: 18px; }
 .cal { position: relative; background: #FFFDF6; color: #233A31; border-radius: 8px; box-shadow: 0 8px 0 rgba(0, 0, 0, .3); overflow: visible; }
 .cal::before { content: ""; position: absolute; left: 50%; top: -14px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #8A6A4A; box-shadow: 0 2px 0 rgba(0, 0, 0, .25); }
-.cal-top { position: relative; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 12px 12px 8px; border-radius: 8px 8px 0 0; background: #E5482F; color: #FFFFFF; }
+.cal-top { position: relative; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 12px 12px 8px; border-radius: 8px 8px 0 0; background: #C43820; color: #FFFFFF; }
 .cal-top::before { content: ""; position: absolute; left: 20px; right: 20px; top: -6px; height: 12px; background: repeating-linear-gradient(90deg, #3B2F2A 0 6px, transparent 6px 30px); }
 .cal-month { font-family: var(--hand); font-weight: 700; font-size: 1.5rem; line-height: 1; }
-.cal-count { font-weight: 900; font-size: .8rem; color: #FFE3DC; }
+.cal-count { font-weight: 900; font-size: .8rem; color: #FFFFFF; }
 .cal-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); padding: 4px; border-bottom: 3px solid #E5D9C4; }
 .cal-day { min-height: 0; height: 70px; padding: 3px 0; border: 0; border-right: 2px solid #E5D9C4; border-radius: 0; background: transparent; box-shadow: none; color: #233A31;
   display: flex; flex-direction: column; align-items: center; gap: 0; cursor: pointer; }
@@ -69,7 +69,7 @@
 .cd-name { font-weight: 900; font-size: .68rem; color: #8B6A4A; }
 .cd-num { font-weight: 900; font-size: .9rem; line-height: 1.1; }
 .cd-art { width: 30px; height: 30px; margin-top: 1px; }
-.cd-plus { font-family: var(--hand); font-size: 1.3rem; line-height: 30px; color: #B9AF9F; }
+.cd-plus { font-family: var(--hand); font-size: 1.3rem; line-height: 30px; color: #7A7060; }
 .cal-go { display: flex; align-items: center; justify-content: center; gap: 8px; width: calc(100% - 20px); margin: 10px; min-height: 50px; font-size: 1.1rem; }
 /* The days, as pages you scroll through */
 .plan-pages { flex: 1 1 auto !important; min-height: 0; overflow-y: auto; overscroll-behavior: contain; margin: 14px 0 0; padding: 0 2px 10px; }
@@ -232,3 +232,7 @@
 .notepad .bubble p { font-size: .88rem; }
 .empty-cart { width: 80px; height: 51px; }
 .shop-scene .bought-bar #moveToFood, .shop-scene .bought-bar #clearChecked { min-height: 44px; font-size: .85rem; }
+
+/* Readable on paper in dark mode too (11.9.3) */
+.rbook-page .tag.miss, .pday .tag.miss { color: #6E5E4A; border-color: #9C8B72; }
+.rbook-page button.wide { background: #F1E8D8; color: #233A31; border-color: #B8A486; }
