@@ -70,10 +70,10 @@ async function lookupBarcode(code) {
   if (saved) { fill(saved.name, saved.unit, saved.location); note.textContent = t("Found in your saved barcodes."); return; }
   note.textContent = t("Barcode {code}: looking it up...", { code });
   try {
-    const res = await fetch(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(code)}.json?fields=product_name,product_name_es,brands,quantity`);
+    const res = await fetch(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(code)}.json?fields=product_name,brands,quantity`);
     const data = await res.json();
     const p = data && data.product;
-    const pname = p && ((LANG === "es" && p.product_name_es) || p.product_name);
+    const pname = p && p.product_name;
     if (data.status === 1 && pname) {
       fill(pname, "", null);
       note.textContent = t("Found: {what}. Edit the name if you like.", { what: [p.brands, pname, p.quantity].filter(Boolean).join(", ") });

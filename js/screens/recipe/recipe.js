@@ -25,7 +25,7 @@ function renderRecipeDetail() {
   $("#favBtn").setAttribute("aria-pressed", fav);
   $("#favBtn").setAttribute("aria-label", fav ? t("Remove from favorites") : t("Add to favorites"));
   const labels = r.labels.map(l => t(DIETS[l].label)).join(", ");
-  $("#recipeMeta").innerHTML = [t(r.type), t(r.cuisine), t("about {n} minutes", { n: r.time }) + (r.wait ? " " + (LANG === "es" ? r.waitEs : r.wait) : ""), labels,
+  $("#recipeMeta").innerHTML = [t(r.type), t(r.cuisine), t("about {n} minutes", { n: r.time }) + (r.wait ? " " + r.wait : ""), labels,
     r.prep ? t("keeps {n} days", { n: r.keeps }) : "", r.freezes ? t("freezes well") : "", r.kid ? t("Kid-friendly") : ""].filter(Boolean).map(x => `<span>${esc(x)}</span>`).join("");
   renderRating();
   $("#recipeNutr").innerHTML = nutritionHtml(r);
@@ -40,16 +40,15 @@ function renderRecipeDetail() {
     if (h && !h.enough) return `<li class="short">${label} <span class="muted small">(${esc(t("you have some {name}, but not enough", { name: h.item.name }))})</span>${swap}</li>`;
     if (h) return `<li class="have">${label} <span class="muted small">(${esc(h.item.name)}, ${esc(shortLeft(h.d))})</span>${swap}</li>`;
     if (g.basic && settings.assumeBasics) return `<li class="basic">${label}${swap}</li>`;
-    if (s) return `<li class="subbed">${label}<span class="swap">${esc(t("Substitute:"))} ${esc(LANG === "es" ? s.sub.es : s.sub.note)}${s.item ? " (" + esc(s.item.name) + ")" : ""}</span>${swap}</li>`;
+    if (s) return `<li class="subbed">${label}<span class="swap">${esc(t("Substitute:"))} ${esc(s.sub.note)}${s.item ? " (" + esc(s.item.name) + ")" : ""}</span>${swap}</li>`;
     if (g.opt) return `<li class="optional">${label} <span class="small">(${esc(t("optional"))})</span>${swap}</li>`;
     return `<li class="missing">${label}${swap}</li>`;
   }).join("");
   const scaleNote = Math.abs(f - 1) > 1e-9 ? `<p class="muted small">${esc(t("Amounts are adjusted. Cooking times may change a little for bigger or smaller batches."))}</p>` : "";
-  const esNote = LANG === "es" && !r.mine ? `<p class="muted small">${esc(t("Automatic translation."))}</p>` : "";
-  const airNote = r.airfry && profile().equipment.includes("airfryer") ? `<p class="tip small">${esc(LANG === "es" ? r.airfryEs : r.airfry)}</p>` : "";
+  const airNote = r.airfry && profile().equipment.includes("airfryer") ? `<p class="tip small">${esc(r.airfry)}</p>` : "";
   $("#recipeBody").innerHTML = `
     <h3>${esc(t("Ingredients"))}</h3><ul class="ings">${ingHtml}</ul>${scaleNote}
-    <h3>${esc(t("Steps"))}</h3><ol class="steps">${rSteps(r).map(s => `<li>${esc(s)}</li>`).join("")}</ol>${airNote}${esNote}`;
+    <h3>${esc(t("Steps"))}</h3><ol class="steps">${rSteps(r).map(s => `<li>${esc(s)}</li>`).join("")}</ol>${airNote}`;
   const meal = openMealId ? plan.find(m => m.id === openMealId) : null;
   const eatOnly = meal && (meal.prepped || meal.fromId);
   $("#cookedBtn").classList.toggle("hidden", !!eatOnly);

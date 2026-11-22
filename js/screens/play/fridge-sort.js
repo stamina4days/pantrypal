@@ -86,7 +86,9 @@ function sortFinish() {
   st.sortBest = Math.max(st.sortBest || 0, r.score);
   st.sortPlays = (st.sortPlays || 0) + 1;
   st.sortChecks = (st.sortChecks || 0) + r.checks;
+  if (r.right >= r.quizN) st.sortPerfect = (st.sortPerfect || 0) + 1;
   saveSettings();
+  checkNewBadges();
   sfx(r.right >= Math.ceil(r.quizN * 0.7) ? "cheer" : "ding");
   if (r.changed) renderAll();
   renderPlay();

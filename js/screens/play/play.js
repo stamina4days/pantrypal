@@ -5,8 +5,17 @@ function openPlay() {
   Radio.render();
   if (!$("#playPage").open) $("#playPage").showModal();
 }
+function playPalHtml() {
+  const g = hatProgress(true);
+  const msg = g.next
+    ? t("Win games and I win hats! {how} and I get the {hat}.", { how: t(g.next.b.desc).replace(/\.$/, ""), hat: t(g.next.h.name).toLowerCase() })
+    : t("You've won all {n} of my game hats. I'm the best-dressed dollar in town!", { n: g.total });
+  return palBubble(g.next ? "wink" : "proud", msg, [{ attrs: 'data-go-hats', label: tn(g.have, "1 of {b} game hats won", "{n} of {b} game hats won", { b: g.total }) }]);
+}
 function renderPlay() {
   const st = playStats();
+  const pp = $("#plyPal");
+  if (pp && typeof hatProgress === "function") pp.innerHTML = playPalHtml();
   const best = $("#plySortBest");
   if (best) best.textContent = st.sortBest ? t("Best: {n} points", { n: st.sortBest }) : t("New!");
   const w = $("#plyWordState");
