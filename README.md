@@ -10,6 +10,9 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.12
+- **Benji's shop got its posters.** Every item is a poster like its Square picture: a striped awning, the price on a gold coin, and polaroids of what's inside. The theme pack shows each kitchen drawn with the theme's real colors and wall piece: the diner, log cabin, beach shack, and space station. Tap any station in the radio pack to hear a 10 second sample. The tip jar shows three tiers, Thank you, Big thanks, and You're a star, each more golden than the last, and the bundle has a Best deal ribbon.
+
 ## New in version 11.11
 - **A warmer welcome (11.11.1).** The first screens now show Benji in his lit shop window. The terms are a paper notice taped under the counter with two numbered steps, read the terms and tick the box, and the "Let's get started" sign unlocks once both are done. The name screen uses the same notice.
 - **A new start screen.** Benji's shop front got a full makeover: a marquee sign with light bulbs, a lit shop window with a hanging lamp and stocked shelves, Benji behind the counter saying hello, crates of produce, and wooden signs on ropes. Benji's shop now has its own sign there too.
