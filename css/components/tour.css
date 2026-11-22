@@ -1,0 +1,31 @@
+/* Guided tour: a spotlight on one part of Today, and Benji explaining it. */
+.tour { position: fixed; inset: 0; z-index: 1800; }
+.tour::before { content: ""; position: absolute; inset: 0; }
+.tour-hole {
+  position: fixed; border-radius: 14px; pointer-events: none;
+  box-shadow: 0 0 0 4px var(--lemon, #F4D27A), 0 0 0 9999px rgba(30, 24, 19, .72);
+}
+.tour.tour-dim::before { background: rgba(30, 24, 19, .72); }
+.tour-card {
+  position: fixed; left: 12px; right: 12px; max-width: 460px; margin: 0 auto;
+  background: var(--paper); color: var(--ink); border: 2px solid var(--edge); border-radius: 18px;
+  padding: 12px 14px 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+}
+.tour-card.tour-center { top: 50%; transform: translateY(-50%); }
+.tour-top { display: flex; gap: 8px; align-items: flex-start; }
+.tour-top .pal { flex: none; margin: -14px -4px -6px -10px; }
+.tour-words h2 { margin: 2px 0 4px; font-family: var(--hand); font-weight: 700; font-size: 1.55rem; line-height: 1.1; }
+.tour-words p { margin: 0; font-weight: 700; line-height: 1.4; }
+.tour-foot { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.tour-foot button { min-height: 48px; padding: 8px 16px; }
+.tour-foot .primary { margin-left: auto; }
+.tour-foot .text-btn { padding: 8px 6px; }
+.tour-dots { display: flex; gap: 5px; margin-right: auto; }
+.tour-dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line, #E2CDB4); }
+.tour-dots i.on { background: var(--leaf-deep, #2F6F3E); width: 18px; border-radius: 4px; }
+.tour-foot .tour-dots + .text-btn { margin-left: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .tour-hole { transition: left .3s ease, top .3s ease, width .3s ease, height .3s ease; }
+  .tour-card { animation: tour-in .25s ease-out; }
+  @keyframes tour-in { from { opacity: 0; } }
+}
