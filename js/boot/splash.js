@@ -165,13 +165,14 @@ const Splash = (() => {
           if (typeof renderKitchenName === "function") renderKitchenName();
           if (typeof sfx === "function") sfx("cheer");
           if (again) return showMenu();
+          if (typeof Radio !== "undefined" && Radio.autoStart) Radio.autoStart();
           const gw = stage.querySelector(".sf-go-wrap"); if (gw) gw.remove();
           stage.querySelector(".sf-paper").innerHTML = `<p class="sm-say sf-paper-text">${esc(v ? t("Nice to meet you, {name}! Let's save some money.", { name: v }) : t("No problem. Let's save some money!"))}</p>`;
           stage.querySelector(".sm-benji").innerHTML = benji("cheer", "cheer");
           setTimeout(() => done("start"), 1300);
         });
         const skip = stage.querySelector("#smNoName");
-        if (skip) skip.addEventListener("click", () => { settings.named = true; saveSettings(); done("start"); });
+        if (skip) skip.addEventListener("click", () => { settings.named = true; saveSettings(); if (typeof Radio !== "undefined" && Radio.autoStart) Radio.autoStart(); done("start"); });
         setTimeout(() => stage.querySelector("#smName").focus(), 60);
       };
       const showMenu = () => {
@@ -193,6 +194,7 @@ const Splash = (() => {
         stage.querySelectorAll("[data-sm]").forEach(b => b.addEventListener("click", () => {
           const a = b.dataset.sm;
           if (a === "name") return showName(true);
+          if (typeof Radio !== "undefined" && Radio.autoStart) Radio.autoStart();   // music starts with this tap
           if (typeof sfx === "function") sfx("pop");
           done(a);
         }));

@@ -113,12 +113,14 @@ function renderShop() {
       <span class="sp-st-hint" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sound.svg#i"/></svg> ${esc(t("Sample"))}</span>
       <span class="sr-only sr-state">${esc(t("Tap to hear a sample"))}</span></button>`;
   const shopThemes = KITCHEN_THEMES.filter(x => x.shop);
+  const songBtn = id => `<button type="button" class="sp-song" data-radio-sample="${id}" aria-pressed="false"><span class="sp-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><svg class="ic" aria-hidden="true"><use href="img/icons/ui/music.svg#i"/></svg> <span>${esc(t("Hear its song"))}</span><span class="sr-only sr-state">${esc(t("Tap to hear a sample"))}</span></button>`;
   const show = it => {
     if (it.kind === "hats") return `<div class="sp-grid sp-4">${(it.hats || []).map((id, i) => snap(benjiIn({ hat: id, wear: false }), (benjiHat(id) || {}).name || "", "r" + i)).join("")}</div>`;
     if (it.kind === "outfits") return `<div class="sp-grid sp-4">${BENJI_OUTFITS.map((o, i) => snap(benjiIn({ outfit: false, wear: o.id }), o.name, "r" + i)).join("")}</div>`;
-    if (it.kind === "themes") return `<div class="sp-grid sp-2">${shopThemes.map((th, i) => snap(themeImg(th.id), th.name, "sp-photo r" + i)).join("")}</div>`;
+    if (it.kind === "themes") return `<div class="sp-grid sp-2">${shopThemes.map((th, i) => snap(themeImg(th.id) + songBtn("theme:" + th.id), th.name, "sp-photo r" + i)).join("")}</div>
+      <p class="sp-note">${esc(t("Every theme has its own song. Tap Hear its song for a 10 second sample."))}</p>`;
     if (it.kind === "radio") return `<div class="sp-radio">${RADIO_STATIONS.filter(x => x.shop).map(radioBtn).join("")}</div>
-      <p class="sp-note">${esc(t("Tap a station to hear a 10 second sample."))}</p>`;
+      <p class="sp-note">${esc(t("Tap a station to hear a 10 second sample from the middle of its song."))}</p>`;
     if (it.kind === "bundle") return `<div class="sp-grid sp-2">
       ${snap(`<span class="sp-collage">${shopThemes.map(th => themeImg(th.id)).join("")}</span>`, "4 kitchen themes", "sp-photo r0")}
       ${snap(`<span class="sp-trio">${["cowboy", "elf", "pizza"].map(h => benjiIn({ hat: h, wear: false }, 52)).join("")}</span>`, "16 hats in 4 packs", "r1")}
@@ -191,12 +193,12 @@ function storeInit() {
     if (e.target.closest("#storeIdCopy")) copyShopId(false);
     const sample = e.target.closest("[data-radio-sample]");
     if (sample && typeof Radio !== "undefined") {
-      if (Radio.playing() === sample.dataset.radioSample) Radio.stop();
-      else if (!Radio.preview(sample.dataset.radioSample, 10000)) toast(t("This phone can't play the radio."));
+      if (Radio.previewing() === sample.dataset.radioSample) Radio.endPreview();
+      else if (!Radio.preview(sample.dataset.radioSample, 10000)) toast(t("This phone can't play music."));
     }
   });
   // Leaving the shop stops a sample that's still playing
-  $("#shopPage").addEventListener("close", () => { if (typeof Radio !== "undefined" && Radio.previewing()) Radio.stop(); });
+  $("#shopPage").addEventListener("close", () => { if (typeof Radio !== "undefined" && Radio.previewing()) Radio.endPreview(); });
   $("#shopPage").addEventListener("submit", e => {
     if (!e.target.closest("#storeRedeem")) return;
     e.preventDefault();
