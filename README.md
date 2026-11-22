@@ -10,6 +10,9 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.7
+- **A fifth game hat:** the Detective cap, for checking 25 of your real foods in Fridge Sort.
+
 ## New in version 11.6
 - **Start screen.** Once the app loads, Benji greets you on a game-style start menu: Start, Benji's hats, Play a game, or Take the tour. The first time, he asks what to call you.
 - **The tour on every visit.** It runs each time you open the app, until you tick "Don't show this when I open the app". You can turn it back on in Settings, and it's always in Help, Settings, and on the start screen. Shared links and bookmarks skip it.
@@ -91,7 +94,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Shelf pages:** the Fridge, Freezer, Pantry, and Counter tiles on My Food each open a page for that shelf, with "All still good" to mark everything checked.
 - **Collections:** the cards across the top of Recipes. Use it up, Make it now, Ready in 20, Meal prep, Freezer friendly, Kid-friendly, Budget bites, High protein, Lighter meals, Set it and forget it, Breakfast, Something sweet, and six cuisines.
 - **Week at a glance:** a placemat for each day with breakfast, lunch, and dinner, plus cost, calories, and how much food the plan rescues.
-- **Badges:** 23 stickers to earn, like First rescue, Prep pro, Zero waste week, and Money saver. Benji celebrates new ones.
+- **Badges:** 24 stickers to earn, like First rescue, Prep pro, Zero waste week, and Money saver. Benji celebrates new ones.
 - **Make food last:** storage tips for 42 foods, with the ones you have listed first.
 - **Waste Less** now shows money saved and a chart of the last 8 weeks.
 - **About Pantry Pal** in Settings.
