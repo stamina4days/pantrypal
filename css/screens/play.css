@@ -48,8 +48,7 @@
 .radio-vol { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--ink); }
 .radio-vol input { flex: 1; accent-color: var(--leaf); min-height: 44px; }
 
-/* While music plays, a little player takes the place of the kitchen name above the page title */
-body.radio-on .brand-name { display: none; }
+/* The old music pill (replaced by the music button in 11.13) */
 .radio-pill { display: inline-flex; align-self: flex-start; align-items: center; max-width: 100%; margin-bottom: 2px;
   background: #3B2F2A; color: #FBF3E4; border-radius: 999px; padding: 0 2px; }
 .radio-pill button { border: 0; box-shadow: none; background: none; color: inherit; min-height: 36px; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: .82rem; border-radius: 999px; }
@@ -131,3 +130,18 @@ body.radio-on .brand-name { display: none; }
 @media (max-width: 359px) { .word-row { grid-template-columns: repeat(5, 48px); } .word-tile { width: 48px; height: 48px; } }
 .station.locked { border-style: dashed; }
 .station strong .ic { width: 16px; height: 16px; margin: 0 2px -2px 0; }
+
+/* The music button in the header: a note when off, a little equalizer when a song is playing */
+.music-btn { position: relative; }
+.music-btn .music-eq { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; gap: 3px; }
+.music-btn .music-eq i { width: 4px; height: 8px; border-radius: 2px; background: currentColor; }
+.music-btn.on { background: #2A7F3F; color: #FFFFFF; border-color: #1C5A2C; }
+.music-btn.on .ic { visibility: hidden; }
+.music-btn.on .music-eq { display: flex; }
+@media (prefers-reduced-motion: no-preference) {
+  .music-btn.on .music-eq i { animation: musicEq .8s ease-in-out infinite alternate; }
+  .music-btn.on .music-eq i:nth-child(2) { animation-delay: -.3s; }
+  .music-btn.on .music-eq i:nth-child(3) { animation-delay: -.55s; }
+  @keyframes musicEq { to { height: 20px; } }
+}
+.radio-pill { display: none !important; }

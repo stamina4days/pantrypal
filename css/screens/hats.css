@@ -156,3 +156,14 @@
   .sp-tier-art .pal { max-width: 84px; }
   .sp-st-name { font-size: .88rem; }
 }
+/* Hear a theme's song from its picture */
+.sp-song { position: relative; display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; min-height: 34px; margin-top: 2px; padding: 2px 8px;
+  border-radius: 999px; background: #22382B; color: #FFC94D; border: 0; box-shadow: 0 2px 0 #0E1E15; font-weight: 900; font-size: .78rem; }
+.sp-song .ic { width: 16px; height: 16px; margin: 0; }
+.sp-song .sp-eq { position: static; display: none; padding: 0; gap: 2px; align-items: center; }
+.sp-song .sp-eq i { width: 3px; height: 6px; }
+.sp-song.on { background: #C99A1F; color: #233A31; }
+.sp-song.on .ic { display: none; }
+.sp-song.on .sp-eq { display: flex; }
+.sp-song.on .sp-eq i { background: #233A31; }
+@media (prefers-reduced-motion: no-preference) { .sp-song.on .sp-eq i { animation: spEq .7s ease-in-out infinite alternate; } .sp-song.on .sp-eq i:nth-child(2) { animation-delay: -.25s; } .sp-song.on .sp-eq i:nth-child(3) { animation-delay: -.5s; } }
