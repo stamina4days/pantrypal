@@ -31,7 +31,8 @@ const ROUTES = {
   homeScreenPage: "home-screen",
   shareKitchenPage: "share-kitchen",
   helpDialog: "help",
-  diagDialog: "phone-check"
+  diagDialog: "phone-check",
+  searchPage: "search"
 };
 
 const recipeId = r => r ? (r.mine ? "mine-" + r.id : (r.id || recipeSlug(r.name))) : "";
@@ -75,5 +76,6 @@ const DEEP_LINKS = [
   [/^tips$/, () => openTips()],
   [/^about$/, () => openAbout()],
   [/^home-screen$/, () => openHomeScreen()],
-  [/^share-kitchen$/, () => openShareKitchen()]
+  [/^share-kitchen$/, () => openShareKitchen()],
+  [/^search$/, () => openSearch()]
 ];

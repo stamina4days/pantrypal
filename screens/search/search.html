@@ -1,0 +1,12 @@
+<!-- Search everything: your food, recipes, shopping lists, storage tips, and things the app can do -->
+<dialog id="searchPage" class="screen page" data-accent="today" aria-labelledby="srTitle">
+  <div class="page-body">
+    <h2 id="srTitle" class="sr-only" data-t>Search</h2>
+    <div class="search-box">
+      <svg class="ic" aria-hidden="true"><use href="img/icons/ui/search.svg#i"/></svg>
+      <input id="srInput" type="search" enterkeyhint="search" autocomplete="off" data-t-ph="Search food, recipes, lists..." placeholder="Search food, recipes, lists..." data-t-aria="Search everything" aria-label="Search everything">
+      <button id="srClear" class="sr-clear hidden" type="button" data-t-aria="Clear search" aria-label="Clear search"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/close.svg#i"/></svg></button>
+    </div>
+    <div id="srResults" class="sr-results" aria-live="polite"></div>
+  </div>
+</dialog>
