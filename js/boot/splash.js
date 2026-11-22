@@ -75,7 +75,8 @@ const Splash = (() => {
             <label class="sr-only" for="smName">${esc(t("Your first name"))}</label>
             <input id="smName" autocomplete="given-name" maxlength="30" placeholder="${esc(t("Your first name"))}" value="${esc(settings.userName || "")}">
             <button type="submit" class="primary sm-go">${esc(t("Nice to meet you!"))}</button>
-            ${again ? "" : `<button type="button" class="text-btn" id="smNoName">${esc(t("Skip for now"))}</button>`}
+            ${again ? "" : `<button type="button" class="text-btn" id="smNoName">${esc(t("Skip for now"))}</button>
+            <p class="sm-fine">${esc(t("By using Pantry Pal, you agree to its terms. Food dates are estimates, so always check food before you eat it. Read the full terms anytime in Settings."))}</p>`}
           </form>`;
         const f = stage.querySelector("#smNameForm");
         f.addEventListener("submit", e => {
