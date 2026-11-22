@@ -22,7 +22,7 @@ Object.assign(I18N_EN, {
   "Your food stays yours": "Your kitchen stays yours",
   "Couldn't save. Your browser storage may be full or blocked.": "I couldn't save that. Your phone may be out of room.",
   "Your recipes are saved on this device and show up in Saved, For You, and Browse.": "Your recipes stay on this phone and show up with all the others.",
-  "Voice commands aren't supported in this browser. Try Chrome on Android.": "Talking to Pal doesn't work on this phone yet.",
+  "Voice commands aren't supported in this browser. Try Chrome on Android.": "Talking to Benji doesn't work on this phone yet.",
   "Couldn't look up {code} (are you offline?). Type a name and it'll be remembered next time.": "I couldn't look that one up. Type the name and I'll remember it next time.",
   "Check your connection and try again. Once it loads one time, it works offline.": "Check your internet and try again. Once it opens one time, it works without internet."
 });

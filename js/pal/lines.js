@@ -1,6 +1,6 @@
 "use strict";
-/* What Pal says. */
-/* ---------- what Pal says on My Food ---------- */
+/* What Benji says. */
+/* ---------- what Benji says on My Food ---------- */
 function palFoodHtml() {
   const live = items.filter(i => !i.leftover);
   const dl = i => daysLeft(i.expires);
@@ -9,7 +9,7 @@ function palFoodHtml() {
   const soon = items.filter(i => { const d = dl(i); return d !== null && d >= 0 && d <= 3; });
   const savedWeek = history.filter(h => h.outcome === "used" && h.date >= addDaysFrom(todayStr(), -7)).length;
   if (!items.length) return palBubble("hungry", t("I'm empty and kind of hungry. Tap + to add food, or show me what's in your kitchen!"),
-    [{ attrs: 'data-pal="audit" class="primary"', label: t("Show Pal my kitchen") }]);
+    [{ attrs: 'data-pal="audit" class="primary"', label: t("Show Benji my kitchen") }]);
   if (expired.length) return palBubble("worried", tn(expired.length, "Uh oh, 1 thing is past its date. Want to clear it out?", "Uh oh, {n} things are past their date. Want to clear them out?"),
     [{ attrs: 'data-toss="1" class="primary"', label: t("Clear them out") }].concat(urgent.length ? [{ attrs: `data-pal="use" data-id="${urgent[0].id}"`, label: t("Save the {name}", { name: urgent[0].name }) }] : []));
   if (urgent.length) {

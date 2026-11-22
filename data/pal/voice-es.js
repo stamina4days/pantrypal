@@ -1,4 +1,4 @@
-/* La voz de Pal en español. Cada lista es un grupo de frases que Pal elige al azar.
+/* La voz de Benji en español. Cada lista es un grupo de frases que Benji elige al azar.
    {name} se cambia por el nombre de un alimento. */
 const PAL_VOICE_ES = {
   tap: [

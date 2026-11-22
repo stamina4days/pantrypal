@@ -1,5 +1,5 @@
 "use strict";
-/* The opening screen: Pal stocks the shelves while the recipes load. */
+/* The opening screen: Benji stocks the shelves while the recipes load. */
 const Splash = (() => {
   const LINES = [
     "Washing the lettuce...",
@@ -17,7 +17,7 @@ const Splash = (() => {
     started = Date.now();
     s.setAttribute("lang", LANG);
     const tagline = s.querySelector(".splash-tag");
-    if (tagline) tagline.textContent = t("Your fridge buddy is waking up");
+    if (tagline) tagline.textContent = t("Benji is waking up");
     setLine();
     lineTimer = setInterval(setLine, 900);
   }

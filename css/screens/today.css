@@ -4,7 +4,7 @@
 body[data-tab="today"] { --accent: var(--leaf); }
 .today-pal .pal-row { margin: 0; }
 .today-pal .bubble p { font-size: 1rem; }
-.today-pal .pal-tap .pal { width: 46px; height: 62px; }
+.today-pal .pal-tap .pal { width: 64px; height: 86px; margin: -8px -6px -4px -8px; }
 .today-pal .bubble { padding-top: 8px; padding-bottom: 8px; }
 .today-pal .bubble-actions { margin-top: 6px; }
 .today-card { background: var(--paper); background-image: var(--grain); border-radius: 22px; padding: 12px 12px 4px; box-shadow: var(--shadow); }

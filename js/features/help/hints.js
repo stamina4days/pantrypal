@@ -10,6 +10,7 @@ function renderHints() {
 }
 function openHelp() {
   $("#helpBody").innerHTML = HELP.map(([title, paras]) => `<h3>${esc(t(title))}</h3>${paras.map(p => `<p>${esc(t(p))}</p>`).join("")}`).join("")
+    + `<p><button class="wide" type="button" data-start-tour><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> ${esc(t("Take the tour"))}</button></p>`
     + `<p><button class="link-btn" id="resetHints">${esc(t("Show the tips again"))}</button></p>`;
   $("#helpDialog").showModal();
 }

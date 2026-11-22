@@ -1,7 +1,7 @@
 {
   "name": "Pantry Pal",
   "short_name": "Pantry Pal",
-  "description": "Your fridge buddy. Track your food, cook what expires first, and plan your week.",
+  "description": "Save money by saving food. Track your food, cook what expires first, and plan your week.",
   "start_url": "./#/food",
   "scope": "./",
   "display": "standalone",

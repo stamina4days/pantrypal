@@ -1,5 +1,5 @@
-/* English: Pal's casual wording. */
-/* Pal's friendly voice. English keys stay the same in the code; these swap in casual wording. */
+/* English: Benji's casual wording. */
+/* Benji's friendly voice. English keys stay the same in the code; these swap in casual wording. */
 const I18N_EN = {
   "Search your food...": "Find food...",
   "Browse all": "All recipes",
@@ -36,8 +36,8 @@ const I18N_EN = {
   "Edit item": "Edit food",
   "Suggest a date": "Guess the date for me",
   "none": "anything goes",
-  "Welcome to Pantry Pal": "Hi, I'm Pal!",
-  "It plans meals around the food you already have, so less goes to waste. Setup takes about a minute, and you can change any of it later.": "I'm your fridge buddy. Tell me a little about your kitchen and I'll plan meals around what you've got, so less food goes to waste. Takes about a minute.",
+  "Welcome to Pantry Pal": "Hi, I'm Benji!",
+  "It plans meals around the food you already have, so less goes to waste. Setup takes about a minute, and you can change any of it later.": "I'm Benji, your money-saving buddy. Tell me a little about your kitchen and I'll plan meals around what you've got, so less food goes to waste. Takes about a minute.",
   "Set up your pantry?": "Want to show me what you've got?",
   "A quick pantry audit lets Pantry Pal plan around what you already have. Tap what's in your kitchen, which takes about two minutes.": "Tap what's in your kitchen and I'll plan around it. It takes about two minutes.",
   "Start pantry audit": "Let's do it",
