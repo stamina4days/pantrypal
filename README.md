@@ -10,6 +10,9 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.13
+- **Real music.** Pantry Pal now plays real songs. The Pantry Pal song starts when you tap Start, and the music button at the top turns it on and off. Each kitchen theme has its own song, like "Bubblegum Love" in the diner. The radio pack stations are real songs too, including "All I Move Is Caffeine" at the Coffee Shop. Shop samples play from the middle of each song. Songs need a connection and aren't saved for offline use.
+
 ## New in version 11.12
 - **Theme pictures in Settings (11.12.1).** The kitchen theme picker in Settings now shows the same mini kitchens as Benji's shop, including the classic kitchen, instead of the old color swatches.
 - **Benji's shop got its posters.** Every item is a poster like its Square picture: a striped awning, the price on a gold coin, and polaroids of what's inside. The theme pack shows each kitchen drawn with the theme's real colors and wall piece: the diner, log cabin, beach shack, and space station. Tap any station in the radio pack to hear a 10 second sample. The tip jar shows three tiers, Thank you, Big thanks, and You're a star, each more golden than the last, and the bundle has a Best deal ribbon.

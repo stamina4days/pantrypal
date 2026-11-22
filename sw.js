@@ -4,7 +4,7 @@
      right away and refreshes in the background, so the app opens fast with no signal.
    Bump CACHE when you publish a big change to clear out old copies. */
 importScripts("offline-files.js");   // defines OFFLINE_FILES
-const CACHE = "pantrypal-v11v";
+const CACHE = "pantrypal-v11w";
 const DATA_CACHE = "pantrypal-data";
 
 self.addEventListener("install", e => {
@@ -34,6 +34,7 @@ self.addEventListener("fetch", e => {
     return;
   }
   if (url.origin !== location.origin) return;
+  if (url.pathname.includes("/audio/")) return;   // songs stream straight from the site
   if (isPage(url)) {
     e.respondWith(fetch(e.request)
       .then(res => { const copy = res.clone(); caches.open(CACHE).then(c => c.put(e.request, copy)); return res; })
