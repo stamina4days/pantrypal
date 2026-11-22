@@ -11,6 +11,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
 ## New in version 11.14
+- **Ready for testers (11.14.1).** A Send feedback button in Settings and on the Help page (and in Search) opens an email to us with the app version, phone, and screen size filled in. Benji's shop now says up top that unlock codes arrive by email within 24 hours. The songs are half the size, with even volume. TESTING.md is rewritten as a checklist for testers.
 - **The music menu.** The music button at the top now opens a menu: what's playing with a Play or Off button, a volume slider, and every song. Pick any song you own, or "Your kitchen's song" to let the music follow your kitchen theme. Locked songs show a lock, play a 10 second sample when tapped, and say which shop item unlocks them, with a button to Benji's shop. The Play page's radio card and Search ("music") open it too, and so does `#/music`.
 - **The tabs stay in one row.** If a style file fails to load, for example on a weak connection while the site is updating, the app now notices and loads it again, so the tabs no longer break into two rows with a gap above them. The tab labels also stay on one line when your phone's text size is turned up.
 
