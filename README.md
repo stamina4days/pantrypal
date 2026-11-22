@@ -11,6 +11,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
 ## New in version 11.9
+- **Smaller pieces in every room (11.9.1).** The tips, recipe cards, calendar, fridge shelves, and notepad are all more compact, so more of your food, recipes, and days fit on the screen at once. The recipe ribbons now sit above the cookbook page instead of over the first recipe, and the pantry audit button on an empty fridge is easy to read.
 - **Every tab is its own room, and fits on the screen.** Each tab now fills exactly the space between the header and the tabs, so a normal phone never has to scroll the page. Long lists scroll inside their spot instead. The header is smaller on every tab, with round Search, Help, and Settings buttons.
 - **Start screen: Benji's shop front.** A striped awning, a glowing Pantry Pal sign, and Benji in the shop window behind crates of produce, with a chalkboard that welcomes you back. Start and the other choices are wooden signs hanging on ropes.
 - **My Food: the open fridge.** Fridge, Freezer, Pantry, and Counter are little appliance buttons. Your food sits inside a lit fridge with glass shelves, each with a price tag that says how long it has. Add food is the grocery bag. When it's empty, Benji peeks in.
