@@ -21,8 +21,13 @@ const hatRibs = color => `<path d="M58 -8 V14 M80 -11 V14 M102 -8 V14" stroke="$
    shop: the shop item (data/store.js) that includes it. */
 const BENJI_HATS = [
   { id: "fall", name: "Fall beanie", season: true, lift: 18, art: () => hatDome("#F28C28") + hatRibs("#C4651A") + hatBand("#FFD23F") },
-  { id: "fall-pumpkin", name: "Pumpkin hat", season: true, lift: 16,
-    art: () => `<path d="M40 22 C34 -18 126 -18 120 22 Z" fill="#F28C28" ${HAT_INK}/><path d="M62 -10 C56 2 56 14 60 22 M98 -10 C104 2 104 14 100 22 M80 -13 V22" fill="none" stroke="#C4651A" stroke-width="3" stroke-linecap="round"/>` },
+  { id: "fall-pumpkin", name: "Jack-o'-lantern hat", season: true, lift: 0, noSprout: true,
+    // A carved pumpkin worn as a hat, glowing through its eyes and grin, with its own stem and vine on top
+    art: () => `<path d="M30 24 C18 -6 34 -38 62 -38 C70 -42 90 -42 98 -38 C126 -38 142 -6 130 24 C112 30 48 30 30 24 Z" fill="#F28C28" ${HAT_INK}/>`
+      + `<path d="M58 -36 C44 -20 42 4 48 26 M102 -36 C116 -20 118 4 112 26 M80 -40 V-30" fill="none" stroke="#C4651A" stroke-width="3" stroke-linecap="round"/>`
+      + `<path d="M50 -8 L64 -28 L72 -6 Z M110 -8 L96 -28 L88 -6 Z M76 -2 L80 -10 L84 -2 Z" fill="#FFD23F" stroke="#7A3A0E" stroke-width="2.5" stroke-linejoin="round"/>`
+      + `<path d="M44 2 C58 24 102 24 116 2 L108 4 L104 12 L96 6 L90 14 L84 7 L76 7 L70 14 L64 6 L56 12 L52 4 Z" fill="#FFD23F" stroke="#7A3A0E" stroke-width="2.5" stroke-linejoin="round"/>`
+      + `<path d="M76 -40 C74 -50 78 -56 86 -58 L88 -52 C84 -50 82 -46 84 -40 Z" fill="#5C7A2E" ${HAT_INK}/><path d="M86 -50 C96 -58 106 -52 102 -44 C100 -40 94 -42 96 -46" fill="none" stroke="#3F8650" stroke-width="3" stroke-linecap="round"/>` },
   { id: "winter", name: "Winter beanie", season: true, lift: 18, art: () => hatDome("#2E8FC7") + hatRibs("#1F6E9C") + hatBand("#F6EBD9") },
   { id: "winter-holiday", name: "Holiday hat", season: true, lift: 18,
     art: () => `<path d="M38 20 C40 -14 76 -24 104 -10 C122 -2 138 6 146 24 C132 14 122 12 118 20 Z" fill="#E5482F" ${HAT_INK}/>` + hatBand("#FFFDF6") + `<circle cx="146" cy="28" r="9" fill="#FFFDF6" ${HAT_INK}/>` },
@@ -93,7 +98,56 @@ const BENJI_HATS = [
   { id: "frog", name: "Frog hat", shop: "hats-fun", lift: 26,
     art: () => hatDome("#7CC36A") + `<circle cx="56" cy="-14" r="13" fill="#FFFFFF" ${HAT_INK}/><circle cx="104" cy="-14" r="13" fill="#FFFFFF" ${HAT_INK}/>`
       + `<circle cx="58" cy="-12" r="5.5" fill="#2E2724"/><circle cx="102" cy="-12" r="5.5" fill="#2E2724"/><path d="M62 8 C72 16 88 16 98 8" fill="none" stroke="#2F6B24" stroke-width="3.5" stroke-linecap="round"/>`
-      + `<circle cx="50" cy="10" r="4" fill="#F4A6A0"/><circle cx="110" cy="10" r="4" fill="#F4A6A0"/>` + hatBand("#4FA046") }
+      + `<circle cx="50" cy="10" r="4" fill="#F4A6A0"/><circle cx="110" cy="10" r="4" fill="#F4A6A0"/>` + hatBand("#4FA046") },
+  // From Benji's shop: the Holiday hat pack
+  { id: "elf", name: "Elf hat", shop: "hats-holiday", lift: 0, noSprout: true, art: () =>
+    `<path d="M40 20 C46 -10 70 -34 100 -40 C112 -42 124 -36 130 -26 C120 -30 110 -28 104 -20 C114 -6 118 6 120 20 Z" fill="#3E9B4F" ${HAT_INK}/>`
+    + `<path d="M36 26 L46 10 L56 26 L66 10 L76 26 L86 10 L96 26 L106 10 L116 26 L124 14" fill="#E5482F" ${HAT_INK}/>`
+    + `<circle cx="132" cy="-24" r="8" fill="#F4C542" ${HAT_INK}/><path d="M128 -22 H136" stroke="var(--pal-ink)" stroke-width="2"/>` },
+  { id: "antlers", name: "Reindeer antlers", shop: "hats-holiday", lift: 0, art: () => {
+    const a = (s) => `<g transform="translate(80 0) scale(${s} 1)"><path d="M-30 18 C-34 0 -40 -14 -52 -30 M-40 -12 C-50 -14 -58 -10 -64 -2 M-46 -22 C-46 -34 -40 -42 -32 -46" fill="none" stroke="var(--pal-ink)" stroke-width="11" stroke-linecap="round"/><path d="M-30 18 C-34 0 -40 -14 -52 -30 M-40 -12 C-50 -14 -58 -10 -64 -2 M-46 -22 C-46 -34 -40 -42 -32 -46" fill="none" stroke="#9C6A3C" stroke-width="5" stroke-linecap="round"/></g>`;
+    return a(1) + a(-1) + `<path d="M38 26 C44 4 116 4 122 26" fill="none" stroke="var(--pal-ink)" stroke-width="9" stroke-linecap="round"/><path d="M38 26 C44 4 116 4 122 26" fill="none" stroke="#E5482F" stroke-width="4" stroke-linecap="round"/>`; } },
+  { id: "witch", name: "Witch hat", shop: "hats-holiday", lift: 0, noSprout: true, art: () =>
+    `<path d="M48 18 C58 -8 64 -36 78 -56 C88 -60 98 -54 108 -62 C102 -48 98 -38 100 -26 C104 -6 108 8 112 18 Z" fill="#3A2E4A" ${HAT_INK}/>`
+    + `<ellipse cx="80" cy="20" rx="64" ry="10" fill="#3A2E4A" ${HAT_INK}/><path d="M50 8 C66 13 94 13 110 8 L111 15 C94 20 66 20 49 15 Z" fill="#8A5AB8" ${HAT_INK}/>`
+    + `<rect x="73" y="7" width="14" height="12" rx="2" fill="none" stroke="#F4C542" stroke-width="3"/>` },
+  { id: "bunny", name: "Bunny ears", shop: "hats-holiday", lift: 0, art: () =>
+    `<path d="M58 22 C46 -10 44 -44 56 -52 C70 -50 72 -14 70 18 Z" fill="#FFFFFF" ${HAT_INK}/><path d="M60 8 C54 -14 54 -36 58 -42 C64 -36 64 -14 64 6 Z" fill="#F7B6C8"/>`
+    + `<path d="M102 22 C114 -10 120 -40 110 -50 C96 -50 90 -14 90 18 Z" fill="#FFFFFF" ${HAT_INK}/><path d="M100 8 C106 -14 110 -34 106 -40 C100 -34 96 -14 96 6 Z" fill="#F7B6C8"/>`
+    + `<path d="M38 26 C44 4 116 4 122 26" fill="none" stroke="var(--pal-ink)" stroke-width="9" stroke-linecap="round"/><path d="M38 26 C44 4 116 4 122 26" fill="none" stroke="#F7B6C8" stroke-width="4" stroke-linecap="round"/>` },
+  // The Food hat pack
+  { id: "taco", name: "Taco hat", shop: "hats-food", lift: 24, art: () =>
+    `<path d="M34 22 C34 -22 126 -22 126 22" fill="#7CC36A" ${HAT_INK}/><circle cx="58" cy="-6" r="7" fill="#E5482F" ${HAT_INK}/><circle cx="96" cy="-10" r="7" fill="#E5482F" ${HAT_INK}/><path d="M66 -12 l6 -6 6 6 M84 -14 l5 -5 5 5" fill="none" stroke="#F4C542" stroke-width="4" stroke-linecap="round"/>`
+    + `<path d="M30 24 C30 -10 130 -10 130 24 C120 18 40 18 30 24 Z" fill="#F2C14E" ${HAT_INK}/><path d="M48 6 l2 3 M72 0 l2 3 M98 2 l2 3 M114 10 l2 3" stroke="#C98A1E" stroke-width="3" stroke-linecap="round"/>` },
+  { id: "sushi", name: "Sushi hat", shop: "hats-food", lift: 26, art: () =>
+    `<rect x="40" y="-6" width="80" height="30" rx="12" fill="#FFFDF6" ${HAT_INK}/><path d="M50 4 h4 M66 12 h4 M90 2 h4 M104 14 h4" stroke="#D9CFC0" stroke-width="3" stroke-linecap="round"/>`
+    + `<path d="M34 -4 C40 -20 120 -24 128 -6 C120 -2 44 2 34 -4 Z" fill="#F28C5A" ${HAT_INK}/><path d="M52 -12 C60 -8 66 -8 72 -14 M82 -14 C90 -10 96 -10 104 -16" fill="none" stroke="#FFFDF6" stroke-width="3" stroke-linecap="round"/>`
+    + `<rect x="74" y="-4" width="12" height="28" rx="2" fill="#3B4F40" stroke="var(--pal-ink)" stroke-width="3"/>` },
+  { id: "pizza", name: "Pizza slice hat", shop: "hats-food", lift: 0, noSprout: true, art: () =>
+    `<path d="M40 16 L80 -58 L120 16 Z" fill="#F4C542" ${HAT_INK}/><path d="M48 12 L80 -48 L112 12" fill="none" stroke="#E5482F" stroke-width="5" stroke-linejoin="round" opacity=".6"/>`
+    + `<circle cx="80" cy="-24" r="7" fill="#C8463A" ${HAT_INK}/><circle cx="66" cy="2" r="7" fill="#C8463A" ${HAT_INK}/><circle cx="96" cy="-2" r="6" fill="#C8463A" ${HAT_INK}/>`
+    + `<rect x="34" y="10" width="92" height="16" rx="8" fill="#D9934A" ${HAT_INK}/>` },
+  { id: "cupcake", name: "Cupcake hat", shop: "hats-food", lift: 30, art: () =>
+    `<path d="M44 26 L50 0 H110 L116 26 Z" fill="#7FC4E8" ${HAT_INK}/><path d="M60 2 L58 24 M72 2 L71 24 M88 2 L89 24 M100 2 L102 24" stroke="#4E9CC4" stroke-width="2.5"/>`
+    + `<path d="M40 2 C34 -10 46 -18 56 -14 C56 -30 76 -34 82 -24 C90 -36 112 -30 108 -14 C120 -16 126 -4 120 2 Z" fill="#F7B6C8" ${HAT_INK}/>`
+    + `<circle cx="64" cy="-12" r="2" fill="#F4C542"/><circle cx="92" cy="-8" r="2" fill="#7CC36A"/><circle cx="78" cy="-4" r="2" fill="#2E8FC7"/><circle cx="82" cy="-38" r="7" fill="#E5482F" ${HAT_INK}/><path d="M82 -45 C84 -52 90 -54 94 -54" fill="none" stroke="var(--pal-ink)" stroke-width="3" stroke-linecap="round"/>` },
+  // The Job hat pack
+  { id: "firefighter", name: "Firefighter helmet", shop: "hats-jobs", lift: 22, art: () =>
+    `<path d="M24 22 C30 14 40 14 44 18 C44 -20 116 -20 116 18 C120 14 132 14 140 24 C120 30 40 30 24 22 Z" fill="#D93B30" ${HAT_INK}/>`
+    + `<path d="M80 -14 V16" stroke="#B52E25" stroke-width="6"/><path d="M66 -4 H94 V14 C94 18 66 18 66 14 Z" fill="#F4C542" ${HAT_INK}/><text x="80" y="11" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="900" font-size="11" fill="#2E2724">FF</text>` },
+  { id: "hardhat", name: "Hard hat", shop: "hats-jobs", lift: 34, art: () =>
+    `<path d="M22 24 C22 18 34 16 44 18 H116 C132 16 146 18 150 24 C150 28 22 30 22 24 Z" fill="#FFD23F" ${HAT_INK}/>`
+    + `<path d="M42 20 C40 -6 54 -26 80 -28 C106 -26 120 -6 118 20 Z" fill="#FFD23F" ${HAT_INK}/>`
+    + `<path d="M70 -26 C68 -10 68 6 70 20 H90 C92 6 92 -10 90 -26 C84 -29 76 -29 70 -26 Z" fill="#F2B705" ${HAT_INK}/>`
+    + `<path d="M46 8 H66 M94 8 H114" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/><path d="M46 8 H66 M94 8 H114" stroke="#E5482F" stroke-width="2" stroke-dasharray="4 4"/>` },
+  { id: "astronaut", name: "Space helmet", shop: "hats-jobs", lift: 34, art: () =>
+    `<path d="M32 26 C26 -36 134 -36 128 26 Z" fill="#F2F5F8" ${HAT_INK}/>`
+    + `<path d="M46 8 C46 -18 114 -18 114 8 C98 16 62 16 46 8 Z" fill="#F4C542" ${HAT_INK}/><path d="M56 -4 C62 -10 72 -12 80 -11" fill="none" stroke="#FFF3C4" stroke-width="4" stroke-linecap="round"/>`
+    + `<circle cx="30" cy="12" r="9" fill="#AEB8C0" ${HAT_INK}/><circle cx="130" cy="12" r="9" fill="#AEB8C0" ${HAT_INK}/><rect x="30" y="20" width="100" height="10" rx="5" fill="#AEB8C0" ${HAT_INK}/>`
+    + `<circle cx="80" cy="25" r="3" fill="#2E8FC7"/>` },
+  { id: "pilot", name: "Pilot cap", shop: "hats-jobs", lift: 20, art: () =>
+    `<path d="M36 16 C30 -8 130 -8 124 16 Z" fill="#23365A" ${HAT_INK}/><path d="M42 12 H118 V22 H42 Z" fill="#1A2740" ${HAT_INK}/><path d="M44 22 C60 32 100 32 116 22 Z" fill="#111A2C" ${HAT_INK}/>`
+    + `<path d="M62 2 C70 6 74 4 80 0 C86 4 90 6 98 2" fill="none" stroke="#F4C542" stroke-width="3.5" stroke-linecap="round"/><circle cx="80" cy="1" r="3.5" fill="#F4C542"/><path d="M46 14 H114" stroke="#F4C542" stroke-width="2"/>` }
 ];
 const benjiHat = id => BENJI_HATS.find(h => h.id === id);
 
@@ -116,5 +170,36 @@ function palOutfit(forceId) {
   if (choice === "none") return { art: "", lift: 0 };
   let h = choice === "season" ? benjiHat(palSeason()) : benjiHat(choice);
   if (!forceId && h && !h.season && !hatUnlocked(h)) h = benjiHat(palSeason());
-  return h ? { art: h.art(), lift: h.lift } : { art: "", lift: 0 };
+  return h ? { art: h.art(), lift: h.lift, noSprout: !!h.noSprout } : { art: "", lift: 0 };
+}
+
+/* Benji's outfits, from the outfit pack in Benji's shop. Worn with any hat. layer "face" draws on top of his face. */
+const BENJI_OUTFITS = [
+  { id: "glasses", name: "Round glasses", layer: "face", art: () =>
+    `<circle cx="70" cy="86" r="11.5" fill="rgba(191,227,244,.35)" stroke="var(--pal-ink)" stroke-width="3.2"/><circle cx="93" cy="84" r="11.5" fill="rgba(191,227,244,.35)" stroke="var(--pal-ink)" stroke-width="3.2"/>`
+    + `<path d="M81 85 Q82 82 83 84 M58.5 86 L50 82 M104.5 83 L114 78" fill="none" stroke="var(--pal-ink)" stroke-width="3" stroke-linecap="round"/>` },
+  { id: "bowtie", name: "Bow tie", art: () =>
+    `<path d="M84 110 L66 100 L64 120 Z" fill="#E5482F" stroke="var(--pal-ink)" stroke-width="3" stroke-linejoin="round"/><path d="M84 110 L102 100 L104 120 Z" fill="#E5482F" stroke="var(--pal-ink)" stroke-width="3" stroke-linejoin="round"/>`
+    + `<rect x="78" y="104" width="12" height="12" rx="3" fill="#C43820" stroke="var(--pal-ink)" stroke-width="3"/><circle cx="72" cy="110" r="1.6" fill="#FFFDF6"/><circle cx="96" cy="110" r="1.6" fill="#FFFDF6"/>` },
+  { id: "scarf", name: "Cozy scarf", art: () =>
+    `<path d="M70 100 C86 112 112 116 130 110 L132 124 C112 130 84 126 66 114 Z" fill="#2E8FC7" stroke="var(--pal-ink)" stroke-width="3" stroke-linejoin="round"/>`
+    + `<path d="M78 108 L80 120 M94 113 L95 125 M110 116 L110 128" stroke="#FFFDF6" stroke-width="3"/>`
+    + `<path d="M112 122 L106 152 L120 154 L124 124 Z" fill="#2E8FC7" stroke="var(--pal-ink)" stroke-width="3" stroke-linejoin="round"/><path d="M106 152 l2 6 M112 153 l1 6 M118 154 l1 6" stroke="var(--pal-ink)" stroke-width="2.5" stroke-linecap="round"/>` },
+  { id: "apron", name: "Kitchen apron", art: () => {
+    const ink = 'stroke="var(--pal-ink)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"';
+    return `<path d="M62 104 L48 56 M102 104 L116 58" fill="none" stroke="var(--pal-ink)" stroke-width="7" stroke-linecap="round"/><path d="M62 104 L48 56 M102 104 L116 58" fill="none" stroke="#C43820" stroke-width="3" stroke-linecap="round"/>`
+    + `<path d="M60 102 H104 L106 124 C118 126 128 130 130 134 L124 180 C104 188 58 188 38 180 L32 134 C34 130 46 126 58 124 Z" fill="#E5482F" ${ink}/>`
+    + `<path d="M34 134 C56 140 108 140 128 134" fill="none" stroke="#FFFDF6" stroke-width="4"/>`
+    + `<path d="M32 136 C20 132 14 140 18 146 C22 150 28 144 32 140 M32 140 C24 146 22 156 26 158" fill="none" stroke="var(--pal-ink)" stroke-width="5" stroke-linecap="round"/><path d="M32 136 C20 132 14 140 18 146 C22 150 28 144 32 140 M32 140 C24 146 22 156 26 158" fill="none" stroke="#FFFDF6" stroke-width="2" stroke-linecap="round"/>`
+    + `<rect x="66" y="148" width="30" height="20" rx="4" fill="#FFFDF6" ${ink}/><path d="M66 154 H96" stroke="#E5482F" stroke-width="2"/>`
+    + `<path d="M82 108 C78 104 72 110 82 118 C92 110 86 104 82 108 Z" fill="#FFFDF6"/>`; } }
+];
+BENJI_OUTFITS.forEach(o => { o.shop = "outfits"; });
+const benjiOutfitItem = id => BENJI_OUTFITS.find(o => o.id === id);
+const outfitUnlocked = o => !!o && typeof ownsItem === "function" && ownsItem(o.shop);
+/* The outfit Benji has on, if any and if it's his. */
+function benjiOutfitNow(forceId) {
+  const id = forceId || (typeof settings !== "undefined" && settings.benjiOutfit) || "";
+  const o = benjiOutfitItem(id);
+  return o && (forceId || outfitUnlocked(o)) ? o : null;
 }
