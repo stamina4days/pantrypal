@@ -5,7 +5,7 @@ dialog.screen[data-accent="settings"] .page-hero h2 { color: var(--ink); }
 .hero-meta { margin: 0; color: var(--muted); font-weight: 700; }
 .hero-sticker {
   display: grid; place-items: center; width: 108px; height: 108px; font-size: 3.6rem;
-  border-radius: 50%; background: var(--paper); border: 3px solid var(--ink);
+  border-radius: 50%; background: var(--paper); border: 3px solid var(--edge);
   box-shadow: 0 5px 0 var(--ink), 0 0 0 9px var(--scr, var(--leaf)) inset;
   transform: rotate(-6deg);
 }
@@ -16,8 +16,8 @@ dialog.screen[data-accent="settings"] .page-hero h2 { color: var(--ink); }
 
 .stat-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 10px 0 14px; }
 .stat-chip {
-  background: var(--paper); border: 2px solid var(--ink); border-radius: 14px; padding: 6px 12px;
-  font-weight: 700; font-size: .92rem; box-shadow: 0 2px 0 var(--ink);
+  background: var(--paper); border: 2px solid var(--edge); border-radius: 14px; padding: 6px 12px;
+  font-weight: 700; font-size: .92rem; box-shadow: 0 2px 0 var(--press);
 }
 .stat-chip strong { font-family: var(--hand); font-size: 1.35rem; margin-right: 2px; }
 .stat-chip.soon { background: #FFF2B8; }
@@ -31,7 +31,7 @@ dialog.screen[data-accent="settings"] .page-hero h2 { color: var(--ink); }
 .action-grid > button:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .action-grid button { min-height: 52px; }
 
-.facts { display: grid; gap: 0; margin: 0; background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius); overflow: hidden; }
+.facts { display: grid; gap: 0; margin: 0; background: var(--paper); border: 2px solid var(--edge); border-radius: var(--radius); overflow: hidden; }
 .facts > div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; border-top: 2px dashed var(--line); }
 .facts > div:first-child { border-top: 0; }
 .facts dt { color: var(--muted); font-weight: 700; }
@@ -41,7 +41,7 @@ dialog.screen[data-accent="settings"] .page-hero h2 { color: var(--ink); }
 .mini-list > li { list-style: none; margin-bottom: 8px; }
 .recipe-mini, .food-mini, .link-card {
   display: flex; align-items: center; gap: 12px; padding: 12px 14px; text-decoration: none; color: inherit;
-  background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow);
+  background: var(--paper); border: 2px solid var(--edge); border-radius: var(--radius); box-shadow: var(--shadow);
 }
 .recipe-mini:active, .food-mini:active, .link-card:active { transform: translateY(2px); }
 .recipe-mini strong, .food-mini strong, .link-card strong { display: block; }

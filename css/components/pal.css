@@ -7,12 +7,12 @@
   @keyframes palbob { 0% { transform: translateY(6px) scale(.96); } 60% { transform: translateY(-3px) scale(1.02); } 100% { transform: none; } }
 }
 .bubble {
-  position: relative; flex: 1; background: var(--paper); border: 2px solid var(--ink); border-radius: 20px 20px 20px 6px;
+  position: relative; flex: 1; background: var(--paper); border: 2px solid var(--edge); border-radius: 20px 20px 20px 6px;
   padding: 10px 14px; box-shadow: var(--shadow);
 }
 .bubble::before {
   content: ""; position: absolute; left: -11px; bottom: 10px; width: 14px; height: 14px; background: var(--paper);
-  border-left: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: skewY(35deg) rotate(10deg);
+  border-left: 2px solid var(--edge); border-bottom: 2px solid var(--edge); transform: skewY(35deg) rotate(10deg);
 }
 .bubble p { margin: 0; font-weight: 700; }
 .bubble-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }

@@ -3,12 +3,12 @@
 .list { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
 .list > li { min-width: 0; }
 .item, .recipe, .shop-item {
-  position: relative; background: var(--paper); border: 2px solid var(--ink); border-radius: 14px 18px 18px 14px; box-shadow: var(--shadow);
+  position: relative; background: var(--paper); border: 2px solid var(--edge); border-radius: 14px 18px 18px 14px; box-shadow: var(--shadow);
   padding: 12px 12px 12px 30px; cursor: pointer;
 }
 .item::before, .shop-item::before {
   content: ""; position: absolute; left: 10px; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%;
-  background: var(--sky); border: 2px solid var(--ink);
+  background: var(--sky); border: 2px solid var(--edge);
 }
 .item { display: flex; align-items: center; gap: 10px; }
 .food-emoji { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-size: 1.45rem; background: var(--sky); }

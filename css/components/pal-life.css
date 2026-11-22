@@ -28,12 +28,12 @@
 @keyframes stamp-fade { to { opacity: 0; transform: rotate(-12deg) scale(1.05); } }
 .tear { position: relative; width: 220px; height: 78px; }
 .tear-half {
-  position: absolute; top: 0; width: 110px; height: 78px; background: var(--paper); border: 3px solid var(--ink);
+  position: absolute; top: 0; width: 110px; height: 78px; background: var(--paper); border: 3px solid var(--edge);
   display: flex; align-items: center; overflow: hidden; font-weight: 900; white-space: nowrap;
 }
 .tear-half.l { left: 0; border-right: 0; border-radius: 16px 0 0 16px; clip-path: polygon(0 0, 100% 0, 92% 20%, 100% 40%, 90% 60%, 100% 80%, 94% 100%, 0 100%); animation: tear-l .9s .15s ease-in forwards; }
 .tear-half.r { right: 0; border-left: 0; border-radius: 0 16px 16px 0; clip-path: polygon(8% 0, 100% 0, 100% 100%, 6% 100%, 0 80%, 10% 60%, 0 40%, 8% 20%); animation: tear-r .9s .15s ease-in forwards; }
-.tear-hole { width: 12px; height: 12px; border-radius: 50%; border: 2.5px solid var(--ink); margin: 0 10px 0 14px; flex: none; }
+.tear-hole { width: 12px; height: 12px; border-radius: 50%; border: 2.5px solid var(--edge); margin: 0 10px 0 14px; flex: none; }
 .tear-half.r .tear-hole { display: none; }
 .tear-name { font-size: 1.15rem; }
 .tear-half.l .tear-name { width: 160px; }
@@ -60,7 +60,7 @@ img.cb-art { width: 64px; height: 64px; flex: none; transform: rotate(-6deg); }
 .moment-box { display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .moment-say {
   margin: 0; max-width: 260px; text-align: center; font-weight: 800; background: var(--paper); color: var(--ink);
-  border: 2.5px solid var(--ink); border-radius: 18px; padding: 8px 14px; box-shadow: 0 3px 0 var(--ink);
+  border: 2.5px solid var(--edge); border-radius: 18px; padding: 8px 14px; box-shadow: 0 3px 0 var(--press);
   animation: say-in .3s .35s cubic-bezier(.3, 1.5, .5, 1) both, stamp-fade .4s 1.6s ease-in forwards;
 }
 @keyframes say-in { from { opacity: 0; transform: translateY(10px) scale(.9); } to { opacity: 1; transform: none; } }
@@ -69,6 +69,6 @@ img.cb-art { width: 64px; height: 64px; flex: none; transform: rotate(-6deg); }
 .bubble { position: relative; }
 .read-aloud {
   float: right; margin: -4px -6px 4px 8px; width: 40px; height: 40px; min-height: 40px; padding: 0; border-radius: 50%;
-  display: grid; place-items: center; box-shadow: 0 2px 0 var(--ink); --icf: var(--sky-deep);
+  display: grid; place-items: center; box-shadow: 0 2px 0 var(--press); --icf: var(--sky-deep);
 }
 .read-aloud .ic { width: 22px; height: 22px; margin: 0; }
