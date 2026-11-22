@@ -10,6 +10,17 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.10
+- **A bigger Benji's shop.** New optional extras, each unlocked with a code made for your phone's shop ID, the same way as the Fun hat pack. Everything that saves food and money stays free.
+- **Kitchen theme pack ($2.99).** Four new looks for every tab: a diner with a neon EAT sign and a checkered floor, a log cabin with a window and a plaid rug, a beach shack with a life ring and a sandy floor, and a space station with a porthole full of stars. The cloth across the top and the tab shelf change too. Pick one in Settings under Display.
+- **Three new hat packs ($1.99 each).** Holiday: an elf hat, reindeer antlers, a witch hat, and bunny ears. Food: a taco, sushi, a pizza slice, and a cupcake. Jobs: a firefighter helmet, a hard hat, a space helmet, and a pilot cap.
+- **Benji's outfit pack ($1.99).** Round glasses, a bow tie, a cozy scarf, and a kitchen apron, worn with any hat. Pick one on the hats page.
+- **Kitchen radio pack ($1.99).** Four new stations made on the phone: Coffee shop, Campfire, Ocean waves, and Holiday tunes.
+- **Tip jar ($1, $3, or $5).** Any tip turns Benji's sprout gold (you can switch it back on the hats page) and earns the Supporter badge.
+- **Everything bundle ($9.99).** Every item above except tips, for less than buying them one at a time.
+- **The jack-o'-lantern hat.** Benji's free October hat is now a carved jack-o'-lantern with a glowing face.
+- New items say "Coming soon" until their Square links are added in `data/store.js` (tips have one link per amount). The private code maker lists every product.
+
 ## New in version 11.9
 - **Easier to read, and nicer to share (11.9.3).** The red date tags, the calendar top, the Cook these note, the recipe ribbons, and the cook mode step count all have stronger contrast. On the cookbook page in dark mode, the "Grab" tags and the Show more button were nearly invisible and are now clear. Sharing the Pantry Pal link in a text or social app now shows a picture of Benji with a short description. Purchase help goes to the support email, signaftersix@gmail.com, which is in the shop and the Terms, and the Terms explain what Square shares for a purchase.
 - **Shop codes work on one phone (11.9.2).** Benji's shop shows each phone its own shop ID, like PP-7K3Q-M9WX, and Buy copies it for you. Paste it at checkout, and the unlock code you get back only works on that phone, so it can't be shared. Your purchases and shop ID are saved in your backup, so restoring it on a new phone keeps your hats.
