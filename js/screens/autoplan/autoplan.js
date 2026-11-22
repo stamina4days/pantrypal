@@ -30,7 +30,7 @@ function runAndShow(extraForced) {
   st.proposal = runPlanner({ ...st.opts, forced, exclude: st.exclude });
   renderProposal();
 }
-function renderProposal() {
+function renderProposal(stay) {
   const st = plannerState, pr = st.proposal;
   if (!pr.meals.length) {
     $("#plannerResult").innerHTML = `<p class="error">${esc(t("No recipes fit all your settings. Try a longer cooking time, fewer dislikes, or more equipment."))}</p>`;
@@ -41,7 +41,7 @@ function renderProposal() {
     ${esc(tn(s.toBuy, "1 thing to buy.", "{n} things to buy."))} ${esc(t("About {cost} in groceries.", { cost: fmtMoney(s.spent) }))}</p>
     ${s.budget && s.spent > s.budget ? `<p class="small error">${esc(t("That's about {over} over your {budget} budget. Try again, or add more of what you have.", { over: fmtMoney(s.spent - s.budget), budget: fmtMoney(s.budget) }))}</p>` : ""}
     ${s.avgCal ? `<p class="small">${esc(t("Dinners average {cal} calories and {p} g protein per serving.", { cal: Math.round(s.avgCal), p: Math.round(s.avgProtein) }))}</p>` : ""}
-    ${s.atRisk.length ? `<p class="small">${esc(t("Not used and expiring soon: {list}. Consider freezing them.", { list: s.atRisk.slice(0, 5).join(", ") }))}</p>` : ""}</div>`;
+    ${!ppHooks.planReport && s.atRisk.length ? `<p class="small">${esc(t("Not used and expiring soon: {list}. Consider freezing them.", { list: s.atRisk.slice(0, 5).join(", ") }))}</p>` : ""}</div>${hook("planReport", s)}`;
   const order = { breakfast: 0, lunch: 1, dinner: 2 };
   for (let i = 0; i < pr.days; i++) {
     const D = addDaysFrom(pr.start, i);
@@ -53,14 +53,14 @@ function renderProposal() {
       const note = m.fromId ? (m.slot === "lunch" ? t("leftovers") : t("already made")) : (m.cookOn !== m.date ? t("cook {day}", { day: dayRef(m.cookOn) }) : tn(m.servings, "1 serving", "{n} servings"));
       h += `<li class="recipe meal"><div class="r-head"><strong><span class="slot">${esc(slot)}</span> ${esc(rName(r))}</strong>
         ${m.fromId ? "" : `<span class="row-actions"><button class="row-btn ${locked ? "on" : ""}" data-lock="${k}" aria-pressed="${locked}" aria-label="${esc(t("Keep this one"))}">${locked ? `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg>` : `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/unlock.svg#i"/></svg>`}</button><button class="row-btn" data-swap="${k}" aria-label="${esc(t("Swap for something else"))}"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/swap.svg#i"/></svg></button></span>`}</div>
-        <div class="r-tags"><span class="tag">${esc(note)}</span><span class="tag">${esc(t("{n} min", { n: r.time }))}</span></div></li>`;
+        <div class="r-tags"><span class="tag">${esc(note)}</span><span class="tag">${esc(t("{n} min", { n: r.time }))}</span>${hook("mealTags", m)}</div></li>`;
     }
     h += `</ul>`;
   }
   $("#plannerResult").innerHTML = h;
   $("#plannerActions").innerHTML = `<button id="poAgain">${esc(t("Try again"))}</button><span class="spacer"></span>
     <button id="poSave">${esc(t("Save plan"))}</button><button id="poSaveShop" class="primary">${esc(t("Save and shop"))}</button>`;
-  $("#plannerResult").scrollIntoView({ behavior: "smooth" });
+  if (!stay) $("#plannerResult").scrollIntoView({ behavior: "smooth" });
 }
 function swapSlot(k) {
   const st = plannerState, pr = st.proposal;

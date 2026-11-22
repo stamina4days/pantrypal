@@ -60,6 +60,7 @@ function renderRecipes() {
       calories: (a, b) => nutritionOf(a.recipe).cal - nutritionOf(b.recipe).cal,
       cost: (a, b) => costOf(a.recipe) - costOf(b.recipe)
     };
+    if (ppHooks.recipeSorters) Object.assign(sorters, ppHooks.recipeSorters(byName));
     res.sort(sorters[$("#sortSelect").value] || byName);
   }
   recipeResults = res;
@@ -72,6 +73,7 @@ function renderRecipes() {
   $("#recipeList").innerHTML = shown.map((x, idx) => {
     const r = x.recipe;
     let tags = familyTagHtml(r);
+    tags += hook("recipeTags", x, recipeMode);
     if (recipeMode === "foryou") {
       const seen = new Set();
       tags += x.have.filter(h => !h.g.basic && h.d !== null && h.d <= 3 && !seen.has(h.item.id) && seen.add(h.item.id))

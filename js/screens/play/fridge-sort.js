@@ -39,15 +39,16 @@ function renderSort() {
   if (r.i >= r.cards.length) { stage.innerHTML = sortEndHtml(); return; }
   const c = r.cards[r.i], a = r.answer;
   if (c.real) {
-    const it = c.item;
+    const it = c.item, extra = hook("realAnswers", it);
     stage.innerHTML = `<div class="sort-card real">
       <span class="sort-tag">${esc(t("From your kitchen"))}</span>
       ${foodArt(it.name, it, "sort-art")}
       <h3>${esc(t("Is your {name} still in the {place}?", { name: it.name, place: locLabel(it.location).toLowerCase() }))}</h3>
-      ${a ? `<p class="sort-why">${esc(a === "keep" ? t("Thanks! Benji checked it off.") : a === "used" ? t("Nice, that counts as used.") : t("Got it. It's off your list."))}</p>
+      ${a ? `<p class="sort-why">${esc(hook("realAnswerText", a) || (a === "keep" ? t("Thanks! Benji checked it off.") : a === "used" ? t("Nice, that counts as used.") : t("Got it. It's off your list.")))}</p>
         <button class="primary sort-next" type="button" data-sort-next>${esc(t("Next card"))}</button>`
-      : `<div class="sort-answers three">
-        <button type="button" data-real="keep"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg>${esc(t("Still have it"))}</button>
+      : `<div class="sort-answers ${extra ? "five" : "three"}">
+        <button type="button" data-real="keep"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg>${esc(extra ? t("All there") : t("Still have it"))}</button>
+        ${extra}
         <button type="button" data-real="used"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/plate.svg#i"/></svg>${esc(t("Used it up"))}</button>
         <button type="button" data-real="wasted"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/trash.svg#i"/></svg>${esc(t("Tossed it"))}</button></div>`}
     </div>`;
@@ -76,6 +77,7 @@ function sortEndHtml() {
     <p class="sort-stars" aria-label="${esc(tn(stars, "1 star out of 3", "{n} stars out of 3"))}">${[0, 1, 2].map(k => `<svg class="ic ${k < stars ? "lit" : ""}" aria-hidden="true"><use href="img/icons/ui/star.svg#i"/></svg>`).join("")}</p>
     <p class="sort-result">${esc(t("{a} of {b} right", { a: r.right, b: r.quizN }))}</p>
     ${r.checks ? `<p class="sort-checks">${esc(tn(r.checks, "You checked 1 food in your kitchen, so your list is up to date.", "You checked {n} foods in your kitchen, so your list is up to date."))}</p>` : ""}
+    ${hook("sortEnd", r)}
     <p class="muted">${esc(t("Best score: {n} points", { n: best }))}</p>
     <div class="row"><button type="button" data-sort-done>${esc(t("Done"))}</button><button class="primary" type="button" data-sort-again>${esc(t("Play again"))}</button></div>
   </div>`;
@@ -106,6 +108,7 @@ function sortInit() {
     if (b.dataset.real && !r.answer) {
       r.answer = b.dataset.real; r.checks++; r.score += 10; r.changed = true;
       if (r.answer === "keep") { c.item.verified = todayStr(); saveItems(); sfx("pop"); }
+      else if (ppHooks.realAnswer && ppHooks.realAnswer(r.answer, c.item)) { saveItems(); sfx("pop"); }
       else { removeItem(c.item, r.answer); saveItems(); }
       renderSort(); $("#sortStage .sort-next").focus(); return;
     }
