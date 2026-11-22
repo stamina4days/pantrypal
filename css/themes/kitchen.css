@@ -118,7 +118,7 @@ input.search[type="search"] { background-image: url("data:image/svg+xml,%3Csvg x
 @media (prefers-color-scheme: dark) { #addBtn.fab, .fab { box-shadow: 0 4px 0 #3F7448, 0 10px 20px rgba(0, 0, 0, .4); } }
 
 /* ---------- Today ---------- */
-#tab-today.active { gap: 14px; }
+#tab-today.active { gap: 10px; }
 .today-row { border-top: 1px dashed var(--dash); }
 .today-row .when { background: var(--sky-deep); }
 .today-row .when.urgent, .today-row .when.today { background: var(--tomato-text-bg); color: var(--on-color); }
