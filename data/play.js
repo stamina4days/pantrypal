@@ -1,0 +1,53 @@
+/* Cards for Fridge Sort: [food, best place, why]. Places: Fridge, Shelf (counter or pantry), Freezer. */
+const SORT_CARDS = [
+  ["Milk", "Fridge", "Keep it on a shelf inside, not in the door. The door is the warmest spot."],
+  ["Eggs", "Fridge", "Store-bought eggs in the US are washed, so they need the fridge."],
+  ["Bananas", "Shelf", "Cold turns banana peels black. They're happiest on the counter."],
+  ["Tomatoes", "Shelf", "Tomatoes taste best out of the fridge until they're very ripe."],
+  ["Potatoes", "Shelf", "A cool, dark cupboard. The fridge makes them taste sweet and gritty."],
+  ["Onions", "Shelf", "Whole onions like a dry, airy spot, away from the potatoes."],
+  ["Garlic", "Shelf", "Keep whole bulbs somewhere dry with a little air around them."],
+  ["Bread", "Shelf", "The fridge dries bread out faster. Freeze what you won't eat in a few days."],
+  ["Ice cream", "Freezer", "Push it to the back. The front of the freezer warms up every time you open it."],
+  ["Frozen peas", "Freezer", "They stay sweet for months. Great for a quick side or soup."],
+  ["Chicken thighs", "Fridge", "Bottom shelf, so nothing drips on other food. Cook or freeze within 2 days."],
+  ["Ground beef", "Fridge", "Use it in a day or two, or freeze it flat in a bag so it thaws fast."],
+  ["Butter", "Fridge", "A little on the counter is fine for a few days. The rest keeps in the fridge."],
+  ["Cheddar cheese", "Fridge", "Wrap it in wax paper, then a bag, so it can breathe without drying out."],
+  ["Yogurt", "Fridge", "Keep the lid on tight. Clean spoons help it last longer."],
+  ["Lettuce", "Fridge", "In the crisper drawer, wrapped in a paper towel to soak up extra water."],
+  ["Spinach", "Fridge", "A paper towel in the bag keeps it from getting slimy."],
+  ["Carrots", "Fridge", "Cut the green tops off. They pull water out of the carrots."],
+  ["Apples", "Fridge", "Apples last weeks longer in the fridge than on the counter."],
+  ["Avocados", "Shelf", "Ripen them on the counter, then move them to the fridge to buy a few days."],
+  ["Peaches", "Shelf", "Let them ripen on the counter. Into the fridge once they're soft."],
+  ["Honey", "Shelf", "Honey never needs the fridge. The cold makes it crystallize."],
+  ["Peanut butter", "Shelf", "Regular peanut butter is fine in the cupboard. Natural kinds like the fridge."],
+  ["Rice", "Shelf", "A sealed container in the pantry keeps it good for a year or more."],
+  ["Pasta", "Shelf", "Dry pasta keeps for a long time in a closed box or jar."],
+  ["Canned beans", "Shelf", "Unopened cans are good in the pantry for years."],
+  ["Opened ketchup", "Fridge", "Once it's open, the fridge keeps the flavor fresh for months."],
+  ["Opened mayonnaise", "Fridge", "Always the fridge once it's open."],
+  ["Fresh basil", "Shelf", "Basil wilts in the cold. Keep it in a glass of water, like flowers."],
+  ["Leftovers", "Fridge", "Eat them within 3 to 4 days, or freeze them."],
+  ["Salmon", "Fridge", "Coldest part of the fridge, and cook it within a day or two."],
+  ["Strawberries", "Fridge", "Don't wash them until you eat them. Water makes them mold faster."],
+  ["Coffee beans", "Shelf", "An airtight jar in the cupboard. The fridge adds moisture."],
+  ["Cooked rice", "Fridge", "Cool it quickly and get it in the fridge within an hour or two."],
+  ["Frozen pizza", "Freezer", "Keep it flat and frozen until it's time to bake."],
+  ["Popsicles", "Freezer", "A treat that waits patiently."],
+  ["Brown bananas for smoothies", "Freezer", "Peel them first, then freeze in a bag. Perfect for smoothies and banana bread."],
+  ["Extra bread", "Freezer", "Freeze slices and toast them straight from frozen."],
+  ["Lemons", "Fridge", "A few days on the counter is fine, but they last weeks in the fridge."],
+  ["Cucumbers", "Fridge", "In the crisper drawer, away from bananas and tomatoes."]
+];
+
+/* Daily food words: five letters each, with the word to look for in recipes. Every word has a recipe to unlock. */
+const FOOD_WORDS = [
+  ["APPLE", "apple"], ["BACON", "bacon"], ["BASIL", "basil"], ["BEANS", "bean"], ["BERRY", "berr"], ["BREAD", "bread"],
+  ["CHILI", "chili"], ["CREAM", "cream"], ["CURRY", "curry"], ["FLOUR", "flour"], ["HONEY", "honey"], ["LEMON", "lemon"],
+  ["LIMES", "lime"], ["MANGO", "mango"], ["MAPLE", "maple"], ["OLIVE", "olive"], ["ONION", "onion"], ["PASTA", "pasta"],
+  ["PEACH", "peach"], ["PESTO", "pesto"], ["PRAWN", "shrimp"], ["SALAD", "salad"], ["SALSA", "salsa"], ["SAUCE", "sauce"],
+  ["STEAK", "steak"], ["SUGAR", "sugar"], ["SYRUP", "syrup"], ["TACOS", "taco"], ["TOAST", "toast"], ["BROTH", "broth"],
+  ["CUMIN", "cumin"]
+];

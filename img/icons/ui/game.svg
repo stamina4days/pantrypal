@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Game</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 10h14c3.6 0 6 3.2 6.6 7.4.6 4.2-.6 7.6-3.2 7.6-2.2 0-3.4-2.6-5-4H10.6c-1.6 1.4-2.8 4-5 4-2.6 0-3.8-3.4-3.2-7.6C3 13.2 5.4 10 9 10z" fill="var(--icf, #FFD23F)"/><path d="M9 15v5M6.5 17.5h5"/><circle cx="21" cy="16" r="1" fill="currentColor"/><circle cx="24" cy="19" r="1" fill="currentColor"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

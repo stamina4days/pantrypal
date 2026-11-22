@@ -1,0 +1,51 @@
+<!-- Play corner: little games that help, and the kitchen radio -->
+<dialog id="playPage" class="screen page" data-accent="today" aria-labelledby="plyTitle">
+  <div class="page-body">
+    <div class="page-hero play-hero">
+      <img class="hero-art" src="img/pal/wink.svg" width="96" height="112" alt="">
+      <h2 id="plyTitle" data-t>Play</h2>
+      <p class="hero-meta" data-t>Little games that help your kitchen, and a radio to cook to.</p>
+    </div>
+    <div class="play-tiles">
+      <button id="plySortBtn" class="play-tile tile-sort" type="button">
+        <span class="pt-ic"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/fridge.svg#i"/></svg></span>
+        <span class="grow"><strong data-t>Fridge Sort</strong><span data-t>Where does it keep best? Some cards are your real food.</span><em id="plySortBest"></em></span>
+      </button>
+      <button id="plyWordBtn" class="play-tile tile-word" type="button">
+        <span class="pt-ic"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/grid.svg#i"/></svg></span>
+        <span class="grow"><strong data-t>Daily food word</strong><span data-t>Guess today's 5-letter food. Solve it to unlock a recipe.</span><em id="plyWordState"></em></span>
+      </button>
+    </div>
+    <section class="radio-card" aria-labelledby="radioTitle">
+      <div class="radio-head">
+        <span class="pt-ic"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/music.svg#i"/></svg></span>
+        <h3 id="radioTitle" data-t>Kitchen radio</h3>
+      </div>
+      <p class="muted small" data-t>Made right here on your phone. On an iPhone, turn off silent mode to hear it.</p>
+      <div class="radio-stations" id="radioStations" role="group" data-t-aria="Stations" aria-label="Stations"></div>
+      <label class="radio-vol"><span data-t>Volume</span><input type="range" id="radioVol" min="0" max="100" step="5"></label>
+    </section>
+  </div>
+</dialog>
+
+<!-- Fridge Sort -->
+<dialog id="sortPage" class="screen page" data-accent="today" aria-labelledby="srtTitle">
+  <div class="page-body sort-body">
+    <h2 id="srtTitle" class="sr-only" data-t>Fridge Sort</h2>
+    <div class="sort-top"><span id="sortCount"></span><span id="sortScore"></span></div>
+    <div class="sort-dots" id="sortDots" aria-hidden="true"></div>
+    <div id="sortStage" class="sort-stage" aria-live="polite"></div>
+  </div>
+</dialog>
+
+<!-- Daily food word -->
+<dialog id="wordPage" class="screen page" data-accent="today" aria-labelledby="wrdTitle">
+  <div class="page-body word-body">
+    <h2 id="wrdTitle" data-t>Daily food word</h2>
+    <p class="muted small" id="wordHelp" data-t>Guess the 5-letter food in 6 tries. Green is the right spot, yellow is in the word but somewhere else.</p>
+    <div id="wordGrid" class="word-grid" role="grid" data-t-aria="Your guesses" aria-label="Your guesses"></div>
+    <p id="wordMsg" class="word-msg" aria-live="polite"></p>
+    <div id="wordEnd"></div>
+    <div id="wordKeys" class="word-keys"></div>
+  </div>
+</dialog>

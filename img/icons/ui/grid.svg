@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Word puzzle</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="7" height="7" rx="1.5" fill="var(--icf, #FFD23F)"/><rect x="12.5" y="5" width="7" height="7" rx="1.5"/><rect x="21" y="5" width="7" height="7" rx="1.5"/><rect x="4" y="13.5" width="7" height="7" rx="1.5"/><rect x="12.5" y="13.5" width="7" height="7" rx="1.5" fill="var(--icf, #FFD23F)"/><rect x="21" y="13.5" width="7" height="7" rx="1.5"/><path d="M4 25h24"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>
