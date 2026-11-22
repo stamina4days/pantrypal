@@ -24,5 +24,6 @@ const BADGES = [
   { id: "sort-5", name: "Warmed up", desc: "Play 5 rounds of Fridge Sort.", game: true, test: s => [s.sortPlays, 5] },
   { id: "sort-perfect", name: "Perfect sort", desc: "Get all 3 stars in a round of Fridge Sort.", game: true, test: s => [s.sortPerfect, 1] },
   { id: "word-3", name: "Word whiz", desc: "Solve the daily food word 3 times.", game: true, test: s => [s.wordWins, 3] },
-  { id: "word-streak-5", name: "Word streak", desc: "Solve the daily food word 5 days in a row.", game: true, test: s => [s.wordStreak, 5] }
+  { id: "word-streak-5", name: "Word streak", desc: "Solve the daily food word 5 days in a row.", game: true, test: s => [s.wordStreak, 5] },
+  { id: "sort-checks-25", name: "Kitchen detective", desc: "Check 25 of your real foods in Fridge Sort.", game: true, test: s => [s.sortChecks, 25] }
 ];

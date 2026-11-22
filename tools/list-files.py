@@ -4,7 +4,7 @@ Run it from the project folder after adding or renaming files:  python3 tools/li
 (Recipe files don't need it. The service worker reads data/recipes/index.json on its own.)"""
 import os, json
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-skip_dirs = {"tools", ".git", "data/recipes"}
+skip_dirs = {"tools", ".git", "data/recipes", "docs"}
 keep = (".html", ".css", ".js", ".json", ".svg", ".png")
 files = ["./"]
 for dp, dns, fns in os.walk(root):

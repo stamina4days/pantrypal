@@ -27,9 +27,10 @@ function renderSpecial() {
   if (!s) { box.innerHTML = ""; return; }
   const r = s.x.recipe;
   const need = items.length ? (s.x.missing.length ? tn(s.x.missing.length, "need 1 thing", "need {n} things") : t("you have everything")) : "";
+  const extra = hook("specialMeta", s);
   box.innerHTML = `<a class="chalkboard" href="#/recipe/${esc(recipeId(r))}">
     <span class="cb-title">${esc(s.title)}</span>
     <span class="cb-row">${recipeArt(r, "cb-art")}<span class="cb-text"><span class="cb-theme">${esc(s.theme)}</span>
       <strong class="cb-name">${esc(rName(r))}</strong><span class="cb-why">${esc(s.why)}</span>
-      <span class="cb-meta">${esc([t("{n} min", { n: r.time }), need].filter(Boolean).join(", "))}</span></span></span></a>`;
+      <span class="cb-meta">${esc([t("{n} min", { n: r.time }), extra, need].filter(Boolean).join(", "))}</span></span></span></a>`;
 }

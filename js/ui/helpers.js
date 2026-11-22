@@ -5,6 +5,9 @@ const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const tn = (n, one, many, v) => t(n === 1 ? one : many, Object.assign({ n }, v || {}));
+/* Add-ons can plug into a few spots on the page. With none loaded, each spot adds nothing. */
+const ppHooks = {};
+const hook = (name, ...args) => (ppHooks[name] ? ppHooks[name](...args) : "") || "";
 
 let toastTimer = null;
 function toast(msg, undoSnap) {
