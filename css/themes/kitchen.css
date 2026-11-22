@@ -187,3 +187,12 @@ dialog.ask-sheet::backdrop { background: rgba(59, 47, 42, .45); }
 
 /* Little labels sit on a slightly deeper cream so they still read as labels */
 .tag, .meta-chips span, .nbox { background-color: var(--sky-deep); }
+
+/* Tips: a small yellow sticky note taped on, not a big box */
+.hint-slot .hint { display: block; position: relative; width: fit-content; max-width: min(300px, 86%); min-height: 0; margin: 2px 0 10px auto; padding: 8px 12px 4px;
+  border: 0; border-radius: 2px; background: #FFF6A8; color: #3A2A10; font-size: .8rem; font-weight: 700; line-height: 1.25;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, .22); transform: rotate(1.5deg); }
+.hint-slot .hint::before { top: -8px; left: 50%; right: auto; width: 48px; height: 16px; margin-left: -24px; border: 0; border-radius: 0; box-shadow: none;
+  background: rgba(255, 253, 246, .65); }
+.hint-slot .hint .ic { width: 16px; height: 16px; vertical-align: -3px; }
+.hint-slot .hint .link-btn { display: inline-block; margin: 2px 0 0; min-height: 36px; padding: 0; color: #22703A; font-size: .85rem; }

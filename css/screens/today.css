@@ -1,35 +1,37 @@
 /* Today: Benji's kitchen. A wall with the chalkboard, a hat peg and the jar on a shelf; the fridge with
    the foods to eat first; Benji on the counter with the game console; Add food on the floor. */
 #tab-today { display: none; }
-#tab-today.active { display: block; padding-bottom: 24px; }
+#tab-today.active { display: block; padding-bottom: 0; }
 body[data-tab="today"] { --accent: var(--leaf); }
 
-/* A smaller header on Today, so the kitchen has room */
-body[data-tab="today"] .bar-row { padding-top: 12px; padding-bottom: 6px; align-items: center; }
-body[data-tab="today"] #pageTitle { font-size: clamp(1.3rem, 5.6vw, 1.7rem); }
-body[data-tab="today"] .top-actions .btn-label { display: none; }
-body[data-tab="today"] .top-actions .icon-btn { width: 44px; height: 44px; min-height: 44px; padding: 0; border-radius: 50%; }
+/* A small header on every tab, so each scene has room */
+body .bar-row { padding-top: 8px; padding-bottom: 4px; align-items: center; }
+body #pageTitle { font-size: clamp(1.3rem, 5.6vw, 1.7rem); }
+body .top-actions .btn-label { display: none; }
+body .top-actions .icon-btn { width: 44px; height: 44px; min-width: 44px; min-height: 44px; padding: 0; border-radius: 50%; }
 
-#tab-today {
+.tab {
   --k-wall: #F1E3CC; --k-grout: #E5D2B3; --k-wood: #C98F5A; --k-wood-dark: #8A5A33; --k-cabinet: #9B6B45; --k-cabinet-line: #B07E55;
   --k-fridge: #FBF8F2; --k-fridge-shade: #E6DFD3; --k-handle: #A79C8B; --k-floor: #E2CDB4; --k-note: #FFF6A8;
 }
 @media (prefers-color-scheme: dark) {
-  #tab-today {
+  .tab {
     --k-wall: #2A231D; --k-grout: #352B23; --k-cabinet: #5A3F2A; --k-cabinet-line: #6E4E35;
     --k-fridge: #E9E3D8; --k-fridge-shade: #D3CABB; --k-handle: #9C9283; --k-floor: #1A1511;
   }
 }
 
-.kitchen { position: relative; margin: 0 -14px; border-radius: 0; overflow: clip; background-color: var(--k-wall);
+/* The kitchen fills the screen between the header and the tabs, with no scrolling on a normal phone */
+.kitchen { position: relative; margin: -6px -14px 0; border-radius: 0; overflow: clip; background-color: var(--k-wall);
+  display: flex; flex-direction: column; min-height: var(--scene-h);
   background-image: linear-gradient(var(--k-grout) 2px, transparent 2px), linear-gradient(90deg, var(--k-grout) 2px, transparent 2px);
   background-size: 44px 44px; color: var(--ink); }
 
 /* ---------- the wall ---------- */
-.k-wall { display: flex; align-items: flex-start; gap: 6px; padding: 18px 14px 0; }
+.k-wall { flex: none; display: flex; align-items: flex-start; gap: 6px; padding: 16px 14px 0; }
 .k-board { flex: 1 1 56%; min-width: 0; }
 #tab-today .k-board .chalkboard {
-  display: block; margin: 0; padding: 8px 10px; border: 8px solid var(--k-wood-dark); border-radius: 8px;
+  display: block; margin: 0; padding: 6px 10px; border: 7px solid var(--k-wood-dark); border-radius: 8px;
   background: #22382B; background-image: none; color: #F1EEE4; transform: rotate(-3deg);
   box-shadow: 0 7px 0 rgba(0, 0, 0, .28); text-decoration: none; position: relative;
 }
@@ -37,10 +39,10 @@ body[data-tab="today"] .top-actions .icon-btn { width: 44px; height: 44px; min-h
 #tab-today .k-board .chalkboard:active { transform: rotate(-3deg) translateY(2px); }
 #tab-today .k-board .cb-title { font-family: var(--hand); font-size: 1.15rem; line-height: 1; color: #FFC94D; margin: 0 0 2px; display: block; }
 #tab-today .k-board .cb-row { display: flex; align-items: center; gap: 8px; }
-#tab-today .k-board img.cb-art { width: 46px; height: 46px; flex: none; }
+#tab-today .k-board img.cb-art { width: 40px; height: 40px; flex: none; }
 #tab-today .k-board .cb-text { display: flex; flex-direction: column; min-width: 0; }
 #tab-today .k-board .cb-theme, #tab-today .k-board .cb-why { display: none; }
-#tab-today .k-board .cb-name { font-family: var(--hand); font-weight: 700; font-size: 1rem; line-height: 1.1; color: #F1EEE4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+#tab-today .k-board .cb-name { font-family: var(--hand); font-weight: 700; font-size: 1rem; line-height: 1.1; color: #F1EEE4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 #tab-today .k-board .cb-meta { font-size: .78rem; font-weight: 800; color: #C8D8CC; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
 
 .k-corner { flex: 0 0 auto; position: relative; display: flex; align-items: flex-end; gap: 8px; padding: 0 2px 12px; }
@@ -49,37 +51,41 @@ body[data-tab="today"] .top-actions .icon-btn { width: 44px; height: 44px; min-h
 .k-hat:active, .k-jar:active { transform: translateY(2px); box-shadow: none; }
 .k-peg { width: 14px; height: 14px; border-radius: 50%; background: var(--k-wood-dark); }
 .k-hat-art { display: block; margin-top: -4px; transform-origin: 50% 0; }
-.k-hat-art svg { display: block; width: 80px; height: 62px; overflow: visible; }
+.k-hat-art svg { display: block; width: 66px; height: 50px; overflow: visible; }
 .k-label { font-weight: 900; font-size: .8rem; background: var(--paper); color: var(--ink); border-radius: 999px; padding: 1px 9px; box-shadow: 0 2px 0 rgba(0, 0, 0, .15); }
-.k-hat { margin-bottom: 14px; }
+.k-hat { margin-bottom: 10px; }
 .k-lid { width: 40px; height: 9px; border-radius: 4px; background: #B9AF9F; margin-bottom: -2px; }
-.k-glass { position: relative; display: block; width: 52px; height: 64px; border-radius: 10px 10px 14px 14px; border: 3px solid #BFE3F4;
+.k-glass { position: relative; display: block; width: 46px; height: 54px; border-radius: 10px 10px 14px 14px; border: 3px solid #BFE3F4;
   background: rgba(223, 241, 250, .25); overflow: hidden; }
 .k-fill { position: absolute; left: 0; right: 0; bottom: 0; background: var(--lemon); transition: height .8s cubic-bezier(.3, 1.4, .5, 1); }
-.k-count { position: absolute; left: 7px; right: 7px; top: 18px; background: var(--paper); color: var(--ink); font-weight: 900; font-size: .85rem;
+.k-count { position: absolute; left: 7px; right: 7px; top: 14px; background: var(--paper); color: var(--ink); font-weight: 900; font-size: .8rem;
   border-radius: 4px; text-align: center; line-height: 1.4; }
 .k-jar .k-label { margin-top: 3px; }
 
 /* ---------- the room: Benji's bubble across the top, then the fridge beside Benji on the counter ---------- */
-.k-room { position: relative; display: grid; grid-template-columns: minmax(0, 38%) minmax(0, 1fr); column-gap: 10px;
+.k-room { flex: 1 1 auto; min-height: 0; position: relative; display: grid; grid-template-columns: minmax(0, 38%) minmax(0, 1fr); column-gap: 10px;
   grid-template-rows: auto auto 1fr auto;
-  grid-template-areas: "check check" "fridge bubble" "fridge benji" "fridge counter"; padding: 14px 0 0 14px; }
+  grid-template-areas: "check check" "fridge bubble" "fridge benji" "fridge counter"; padding: 12px 0 0 14px; }
 .k-benji, .k-benji .pal-row { display: contents; }
 .k-benji .checkin { grid-area: check; margin: 0 14px 10px 0; }
 /* A comic speech bubble: always cream with dark words, in light and dark mode, pointing down at Benji */
-.k-benji .bubble { grid-area: bubble; position: relative; z-index: 2; margin: 0 14px 12px 0; border-radius: 22px; padding: 10px 12px;
+.k-benji .bubble { grid-area: bubble; position: relative; z-index: 2; margin: 0 14px 12px 0; border-radius: 20px; padding: 8px 10px;
   background: #FFFDF6; color: #233A31; border: 0; box-shadow: 0 5px 0 #C9B9A2; }
-.k-benji .bubble p { font-size: .95rem; line-height: 1.3; padding-right: 30px; color: #233A31; }
+.k-benji .bubble p { font-size: .9rem; line-height: 1.25; padding-right: 30px; color: #233A31; }
 .k-benji .bubble::before { left: 34px; bottom: -10px; width: 16px; height: 16px; background: #FFFDF6; border: 0; transform: rotate(45deg); }
 .k-benji .bubble .read-aloud { background: #F1E8D8; color: #233A31; border-color: #D9C8AE; }
-.k-benji .bubble-actions { margin-top: 8px; }
-.k-benji .pal-tap { grid-area: benji; justify-self: start; align-self: end; margin-left: 14px; position: relative; z-index: 1; }
-.k-benji .pal-tap .pal { width: 88px; height: 118px; display: block; }
-.k-fridge { grid-area: fridge; position: relative; max-width: 150px; min-height: 240px; border-radius: 18px 18px 6px 6px; background: var(--k-fridge);
+.k-benji .bubble-actions { margin-top: 6px; }
+.k-benji .bubble-actions button { min-height: 40px; padding: 6px 12px; font-size: .9rem; }
+/* Benji grows into whatever room is left, from small to full size */
+/* He always stands on the counter: pinned to the bottom of his spot, feet on the wood */
+.k-benji .pal-tap { grid-area: benji; justify-self: start; align-self: end; margin: 0 0 -6px 14px; position: relative; z-index: 1;
+  display: flex; align-items: flex-end; height: 100%; min-height: 70px; max-height: 124px; }
+.k-benji .pal-tap .pal { height: 100%; width: auto; max-width: 92px; display: block; }
+.k-fridge { grid-area: fridge; position: relative; max-width: 150px; min-height: 200px; overflow: hidden; border-radius: 18px 18px 6px 6px; background: var(--k-fridge);
   box-shadow: inset -9px 0 0 var(--k-fridge-shade), 0 7px 0 rgba(0, 0, 0, .25); color: #233A31; }
-.k-freezer { display: block; height: 56px; border-bottom: 4px solid var(--k-fridge-shade); position: relative; }
+.k-freezer { display: block; height: 44px; border-bottom: 4px solid var(--k-fridge-shade); position: relative; }
 .k-freezer::after, .k-door::after { content: ""; position: absolute; right: 18px; width: 8px; border-radius: 4px; background: var(--k-handle); }
-.k-freezer::after { top: 12px; height: 32px; }
+.k-freezer::after { top: 9px; height: 26px; }
 .k-door { position: relative; padding: 10px 14px 12px 10px; }
 .k-door::after { top: 12px; height: 56px; }
 .k-note { display: block; max-width: calc(100% - 22px); min-height: 44px; padding: 6px 8px; border: 0; border-radius: 3px; background: var(--k-note); color: #3A2A10;
@@ -103,7 +109,7 @@ body[data-tab="today"] .top-actions .icon-btn { width: 44px; height: 44px; min-h
   @keyframes kSway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
   @keyframes kSwing { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
 }
-.k-counter { grid-area: counter; display: block; min-height: 52px; margin-left: -10px; border-top: 14px solid var(--k-wood); border-radius: 4px 0 0 0; background: var(--k-cabinet);
+.k-counter { grid-area: counter; display: block; min-height: 40px; margin-left: -10px; border-top: 14px solid var(--k-wood); border-radius: 4px 0 0 0; background: var(--k-cabinet);
   background-image: linear-gradient(90deg, transparent 49%, var(--k-cabinet-line) 49%, var(--k-cabinet-line) 51%, transparent 51%); }
 .k-console { grid-area: counter; position: relative; align-self: start; justify-self: end; margin: -50px 14px 0 0; z-index: 3; width: 74px; height: 52px; padding: 0; border: 0; border-radius: 14px;
   background: var(--lemon); box-shadow: 0 5px 0 #C99A1F; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; min-height: 0; }
@@ -120,18 +126,18 @@ body[data-tab="today"] .top-actions .icon-btn { width: 44px; height: 44px; min-h
 }
 
 /* ---------- the floor ---------- */
-.k-floor { position: sticky; bottom: var(--tabbar-h, 76px); z-index: 4; display: flex; align-items: center; gap: 10px; padding: 12px 14px 14px; background: var(--k-floor); }
-.k-bag { flex: 1; min-height: 58px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 6px 6px 16px 16px;
+.k-floor { flex: none; position: sticky; bottom: var(--tabbar-h, 76px); z-index: 4; display: flex; align-items: center; gap: 10px; padding: 8px 14px 10px; background: var(--k-floor); }
+.k-bag { flex: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 6px 6px 16px 16px;
   background: #D9B48C; color: #3A2818; font-weight: 900; font-size: 1.2rem; box-shadow: 0 5px 0 #A9824F; cursor: pointer;
   clip-path: polygon(0 8px, 8% 0, 16% 8px, 24% 0, 32% 8px, 40% 0, 48% 8px, 56% 0, 64% 8px, 72% 0, 80% 8px, 88% 0, 96% 8px, 100% 0, 100% 100%, 0 100%); padding-top: 6px; }
 .k-bag:active { transform: translateY(3px); }
 .k-bag .ic { width: 26px; height: 26px; margin: 0; stroke-width: 3; }
-.k-round { flex: none; width: 54px; height: 54px; min-height: 54px; padding: 0; border-radius: 50%; display: grid; place-items: center; }
+.k-round { flex: none; width: 50px; height: 50px; min-height: 50px; padding: 0; border-radius: 50%; display: grid; place-items: center; }
 .k-round .ic { width: 26px; height: 26px; margin: 0; }
 
 /* Small phones: shrink the room a little */
 @media (max-width: 360px) {
-  .k-benji .pal-tap .pal { width: 78px; height: 105px; }
+  .k-benji .pal-tap { max-height: 106px; }
   .k-benji .bubble p { font-size: .92rem; }
   .k-hat-art svg { width: 66px; height: 52px; }
 }
