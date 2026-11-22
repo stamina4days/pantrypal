@@ -47,6 +47,7 @@ function pagesInit() {
   todayInit();
   searchInit();
   runningLowInit();
+  playInit();
   swipeInit();
   palLifeInit();
   talkInit();

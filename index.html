@@ -10,7 +10,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.3.1";
+  var BUILD = "11.4";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -77,6 +77,7 @@
 <link rel="stylesheet" href="css/screens/tips.css">
 <link rel="stylesheet" href="css/screens/stats-extras.css">
 <link rel="stylesheet" href="css/screens/search.css">
+<link rel="stylesheet" href="css/screens/play.css">
 <link rel="stylesheet" href="css/themes/kitchen.css">
 <link rel="stylesheet" href="css/themes/display.css">
 <link rel="stylesheet" href="css/themes/print.css">
@@ -171,6 +172,7 @@
 <script src="data/badges.js" defer></script>
 <script src="data/collections.js" defer></script>
 <script src="data/specials.js" defer></script>
+<script src="data/play.js" defer></script>
 <script src="data/pal/voice-en.js" defer></script>
 <script src="data/pal/voice-es.js" defer></script>
 <script src="data/lang/es/food-words.js" defer></script>
@@ -249,6 +251,8 @@
 <script src="js/features/voice/talk-to-add.js" defer></script>
 <script src="js/features/share/kitchen-link.js" defer></script>
 <script src="js/features/swipe/swipe-rows.js" defer></script>
+<script src="js/features/radio/kitchen-radio.js" defer></script>
+<script src="js/features/badge/app-badge.js" defer></script>
 <script src="js/screens/food/food.js" defer></script>
 <script src="js/screens/item/item.js" defer></script>
 <script src="js/screens/quick/quick.js" defer></script>
@@ -284,6 +288,9 @@
 <script src="js/screens/home-screen/home-screen.js" defer></script>
 <script src="js/screens/today/today.js" defer></script>
 <script src="js/screens/search/search.js" defer></script>
+<script src="js/screens/play/fridge-sort.js" defer></script>
+<script src="js/screens/play/food-word.js" defer></script>
+<script src="js/screens/play/play.js" defer></script>
 <script src="js/app/display.js" defer></script>
 <script src="js/app/tabs.js" defer></script>
 <script src="js/app/wire-kitchen.js" defer></script>
