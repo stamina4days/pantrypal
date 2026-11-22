@@ -157,5 +157,7 @@ function storeInit() {
     redeemCode(inp.value).then(ok => { if (ok) inp.value = ""; });
   });
   $("#storeBtn").addEventListener("click", () => { $("#settingsDialog").close(); openShop(); });
+  const todayShop = $("#todayShopBtn");   // the shop flyer on the fridge on Today
+  if (todayShop) todayShop.addEventListener("click", () => openShop());
   renderShop();
 }

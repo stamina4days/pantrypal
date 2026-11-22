@@ -10,6 +10,8 @@ const Splash = (() => {
     "Stacking the crates...",
     "Sniffing the milk..."
   ];
+  /* Change this when the terms change, so everyone reads and agrees to them again */
+  const TERMS_VERSION = "2026-11";
   let lineTimer = null, started = 0, lineIdx = 0;
   const el = () => document.getElementById("splash");
 
@@ -64,21 +66,68 @@ const Splash = (() => {
     s.removeAttribute("aria-live");
     const stage = s.querySelector(".splash-stage");
     const needName = !settings.named && !(settings.userName || "").trim();
+    const needTerms = settings.termsAccepted !== TERMS_VERSION;
+    const coarse = window.matchMedia && matchMedia("(pointer: coarse)").matches;
+    const focusFirst = sel => { if (!coarse) setTimeout(() => { const g = stage.querySelector(sel); if (g) g.focus(); }, 60); };
     return new Promise(done => {
       const benji = (mood, pose) => palSVG(mood, 132, { pose });
+      // The shop front behind every start screen: the striped awning, the brick wall, and a sidewalk
+      s.classList.add("shopfront");
+      if (!s.querySelector(".sf-street")) s.insertAdjacentHTML("beforeend", `<div class="sf-street" aria-hidden="true"></div>`);
+      const card = (mood, pose, inner) => {
+        s.classList.add("sf-card-mode");
+        stage.innerHTML = `<div class="sf-sign sf-sign-sm"><h1 class="splash-name" id="smTitle">Pantry Pal</h1></div>
+          <div class="sm-benji">${benji(mood, pose)}</div>${inner}`;
+      };
+      /* The first time (and after the terms change): read the terms, tick the box, then go on */
+      const showTerms = () => {
+        let opened = false;
+        card("happy", "point", `<form class="sm-card sm-terms" id="smTermsForm">
+            <h2 class="sm-card-title">${esc(t("Before we start"))}</h2>
+            <p class="sm-say">${esc(t("Benji guesses how long your food lasts, but he can't see or smell it. Always check the package date and the food itself before you eat it. Please read the terms, then tick the box to go on."))}</p>
+            <button type="button" class="sm-terms-link" id="smTermsLink"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/clipboard.svg#i"/></svg> <span>${esc(t("Read the terms"))}</span></button>
+            <label class="sm-check" id="smCheckRow">
+              <input type="checkbox" id="smAgree" disabled>
+              <span>${esc(t("I've read and agree to the terms"))}</span>
+            </label>
+            <p class="sm-hint" id="smHint" aria-live="polite">${esc(t("Open the terms first, then you can tick the box."))}</p>
+            <button type="submit" class="primary sm-go" id="smAgreeGo" disabled>${esc(t("Continue"))}</button>
+          </form>`);
+        const f = stage.querySelector("#smTermsForm"), box = f.querySelector("#smAgree"), go = f.querySelector("#smAgreeGo"), hint = f.querySelector("#smHint");
+        const update = () => {
+          go.disabled = !(opened && box.checked);
+          hint.textContent = !opened ? t("Open the terms first, then you can tick the box.") : box.checked ? "" : t("Now tick the box to go on.");
+          const link = f.querySelector("#smTermsLink");
+          link.classList.toggle("read", opened);
+          if (opened && !link.querySelector(".sm-done")) link.insertAdjacentHTML("beforeend", `<svg class="ic sm-done" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg>`);
+        };
+        f.querySelector("#smTermsLink").addEventListener("click", () => {
+          const pg = document.getElementById("termsPage");
+          if (!pg || typeof openTerms !== "function") { opened = true; box.disabled = false; update(); return; }
+          pg.addEventListener("close", () => { opened = true; box.disabled = false; update(); box.focus(); }, { once: true });
+          openTerms();
+        });
+        box.addEventListener("change", update);
+        f.addEventListener("submit", e => {
+          e.preventDefault();
+          if (!(opened && box.checked)) return;
+          settings.termsAccepted = TERMS_VERSION;
+          settings.termsAcceptedOn = new Date().toISOString().slice(0, 10);
+          saveSettings();
+          if (typeof sfx === "function") sfx("pop");
+          needName ? showName(false) : showMenu();
+        });
+        focusFirst("#smTermsLink");
+      };
       const showName = again => {
-        s.classList.remove("shopfront");
-        stage.innerHTML = `<div class="sm-benji">${benji("happy", "wave")}</div>
-          <h1 class="splash-name" id="smTitle">Pantry Pal</h1>
-          <form class="sm-card" id="smNameForm">
+        card("happy", "wave", `<form class="sm-card" id="smNameForm">
             <p class="sm-say">${esc(again ? t("Sure! What should I call you?")
               : t("Hi! I'm Benji. I help you save money by saving food. What should I call you?"))}</p>
             <label class="sr-only" for="smName">${esc(t("Your first name"))}</label>
             <input id="smName" autocomplete="given-name" maxlength="30" placeholder="${esc(t("Your first name"))}" value="${esc(settings.userName || "")}">
             <button type="submit" class="primary sm-go">${esc(t("Nice to meet you!"))}</button>
-            ${again ? "" : `<button type="button" class="text-btn" id="smNoName">${esc(t("Skip for now"))}</button>
-            <p class="sm-fine">${esc(t("By using Pantry Pal, you agree to its terms. Food dates are estimates, so always check food before you eat it. Read the full terms anytime in Settings."))}</p>`}
-          </form>`;
+            ${again ? "" : `<button type="button" class="text-btn" id="smNoName">${esc(t("Skip for now"))}</button>`}
+          </form>`);
         const f = stage.querySelector("#smNameForm");
         f.addEventListener("submit", e => {
           e.preventDefault();
@@ -98,23 +147,32 @@ const Splash = (() => {
         setTimeout(() => stage.querySelector("#smName").focus(), 60);
       };
       const showMenu = () => {
+        s.classList.remove("sf-card-mode");
         const name = (settings.userName || "").trim();
         const hello = !settings.onboarded ? t("Ready when you are!")
           : name ? t("Welcome back, {name}!", { name }) : t("Welcome back!");
-        // Benji's shop front: a glowing sign, Benji in the window behind crates of produce, and the menu as hanging signs
-        const crate = foods => `<span class="sf-crate" aria-hidden="true">${foods.map(f => `<img src="img/food/${f}.svg" alt="">`).join("")}</span>`;
-        s.classList.add("shopfront");
+        const food = f => `<img src="img/food/${f}.svg" alt="">`;
+        const crate = foods => `<span class="sf-crate" aria-hidden="true">${foods.map(food).join("")}</span>`;
+        const shelf = (side, foods) => `<span class="sf-shelf sf-shelf-${side}" aria-hidden="true">${foods.map(food).join("")}</span>`;
+        const sign = (id, icon, label) => `<button type="button" class="sf-plank" data-sm="${id}"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/${icon}.svg#i"/></svg> <span>${esc(label)}</span></button>`;
+        // Benji's shop front: a marquee sign, Benji behind the counter in a lit window, and the menu as hanging signs
         stage.innerHTML = `<div class="sf-sign"><h1 class="splash-name" id="smTitle">Pantry Pal</h1></div>
-          <div class="sf-window">
-            <p class="sm-hello">${esc(hello)}</p>
-            <div class="sm-benji">${benji("happy", "wave")}</div>
+          <div class="sf-front">
+            <div class="sf-window">
+              <span class="sf-lamp" aria-hidden="true"></span>
+              ${shelf("l", ["jar", "honey", "flour"])}${shelf("r", ["milk", "cheese", "egg"])}
+              <p class="sm-hello">${esc(hello)}</p>
+              <div class="sm-benji">${benji("happy", "wave")}</div>
+              <span class="sf-glass" aria-hidden="true"></span>
+            </div>
+            <div class="sf-counter">${crate(["apple", "carrot", "tomato"])}${crate(["banana", "bread", "lemon"])}</div>
           </div>
-          <div class="sf-counter">${crate(["apple", "carrot"])}${crate(["banana", "bread"])}</div>
           <div class="sm-menu">
-            <button type="button" class="primary sm-go" data-sm="start">${esc(t("Start"))}</button>
-            <button type="button" data-sm="hats"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/hat.svg#i"/></svg> ${esc(t("Benji's hats"))}</button>
-            <button type="button" data-sm="play"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/game.svg#i"/></svg> ${esc(t("Play a game"))}</button>
-            <button type="button" data-sm="tour"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> ${esc(t("Take the tour"))}</button>
+            <button type="button" class="primary sm-go" data-sm="start"><span>${esc(t("Start"))}</span></button>
+            <div class="sf-planks">
+              ${sign("shop", "basket", t("Benji's shop"))}${sign("hats", "hat", t("Benji's hats"))}
+              ${sign("play", "game", t("Play a game"))}${sign("tour", "sparkle", t("Take the tour"))}
+            </div>
           </div>
           <button type="button" class="text-btn sm-rename" data-sm="name">${esc(name ? t("Not {name}? Change your name", { name }) : t("Tell Benji your name"))}</button>`;
         stage.querySelectorAll("[data-sm]").forEach(b => b.addEventListener("click", () => {
@@ -123,17 +181,18 @@ const Splash = (() => {
           if (typeof sfx === "function") sfx("pop");
           done(a);
         }));
-        setTimeout(() => { const g = stage.querySelector(".sm-go"); if (g) g.focus(); }, 60);
+        focusFirst(".sm-go");
       };
       // Keep keyboard focus on the start screen
       s.addEventListener("keydown", e => {
         if (e.key !== "Tab") return;
-        const f = [...s.querySelectorAll("button, input")];
+        if (document.querySelector("dialog[open]")) return;
+        const f = [...s.querySelectorAll("button:not(:disabled), input:not(:disabled)")];
         const i = f.indexOf(document.activeElement);
         if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
         else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
       });
-      needName ? showName(false) : showMenu();
+      needTerms ? showTerms() : needName ? showName(false) : showMenu();
     });
   }
   function fail(err) {
