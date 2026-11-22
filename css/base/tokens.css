@@ -1,5 +1,6 @@
 /* Colors, fonts, and sizes. Base values; css/themes/kitchen.css sets the family kitchen table look. */
 :root {
+  color-scheme: light dark;   /* we draw our own dark mode; stops phones from darkening the colors a second time */
   --sky: #DFF1FA;
   --sky-deep: #BFE3F4;
   --paper: #FFFDF6;

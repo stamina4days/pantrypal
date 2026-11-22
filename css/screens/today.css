@@ -61,17 +61,21 @@ body[data-tab="today"] .top-actions .icon-btn { width: 44px; height: 44px; min-h
 .k-jar .k-label { margin-top: 3px; }
 
 /* ---------- the room: Benji's bubble across the top, then the fridge beside Benji on the counter ---------- */
-.k-room { position: relative; display: grid; grid-template-columns: minmax(0, 37%) minmax(0, 1fr); column-gap: 10px;
-  grid-template-areas: "check check" "bubble bubble" "fridge benji" "fridge counter"; padding: 14px 0 0 14px; }
+.k-room { position: relative; display: grid; grid-template-columns: minmax(0, 38%) minmax(0, 1fr); column-gap: 10px;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas: "check check" "fridge bubble" "fridge benji" "fridge counter"; padding: 14px 0 0 14px; }
 .k-benji, .k-benji .pal-row { display: contents; }
 .k-benji .checkin { grid-area: check; margin: 0 14px 10px 0; }
-.k-benji .bubble { grid-area: bubble; position: relative; z-index: 2; margin: 0 14px 10px 0; border-radius: 20px; padding: 10px 12px; }
-.k-benji .bubble p { font-size: .98rem; line-height: 1.3; padding-right: 30px; }
-.k-benji .bubble::before { left: calc(37% + 54px); bottom: -9px; transform: rotate(-45deg); }
+/* A comic speech bubble: always cream with dark words, in light and dark mode, pointing down at Benji */
+.k-benji .bubble { grid-area: bubble; position: relative; z-index: 2; margin: 0 14px 12px 0; border-radius: 22px; padding: 10px 12px;
+  background: #FFFDF6; color: #233A31; border: 0; box-shadow: 0 5px 0 #C9B9A2; }
+.k-benji .bubble p { font-size: .95rem; line-height: 1.3; padding-right: 30px; color: #233A31; }
+.k-benji .bubble::before { left: 34px; bottom: -10px; width: 16px; height: 16px; background: #FFFDF6; border: 0; transform: rotate(45deg); }
+.k-benji .bubble .read-aloud { background: #F1E8D8; color: #233A31; border-color: #D9C8AE; }
 .k-benji .bubble-actions { margin-top: 8px; }
 .k-benji .pal-tap { grid-area: benji; justify-self: start; align-self: end; margin-left: 14px; position: relative; z-index: 1; }
 .k-benji .pal-tap .pal { width: 88px; height: 118px; display: block; }
-.k-fridge { grid-area: fridge; position: relative; max-width: 150px; min-height: 200px; border-radius: 18px 18px 6px 6px; background: var(--k-fridge);
+.k-fridge { grid-area: fridge; position: relative; max-width: 150px; min-height: 240px; border-radius: 18px 18px 6px 6px; background: var(--k-fridge);
   box-shadow: inset -9px 0 0 var(--k-fridge-shade), 0 7px 0 rgba(0, 0, 0, .25); color: #233A31; }
 .k-freezer { display: block; height: 56px; border-bottom: 4px solid var(--k-fridge-shade); position: relative; }
 .k-freezer::after, .k-door::after { content: ""; position: absolute; right: 18px; width: 8px; border-radius: 4px; background: var(--k-handle); }
