@@ -33,5 +33,5 @@ const PAL_VOICE_EN = {
   spring: ["Spring is here. Fresh greens are back!", "I put a flower on. Do you like it?"],
   summer: ["It's hot out. Good thing I brought my sun hat.", "Fresh fruit season! Let's eat it while it's ripe."],
   fall: ["Cozy season. Time for soups and stews.", "Sweater weather. Well, hat weather for me."],
-  "fall-pumpkin": ["I dressed up. Do you like my pumpkin hat?", "Spooky season! The scariest thing in here is old milk."]
+  "fall-pumpkin": ["I dressed up. Do you like my jack-o'-lantern hat?", "Spooky season! The scariest thing in here is old milk."]
 };

@@ -21,13 +21,16 @@ const BENJI_S = "M118 50 C112 16 46 14 44 52 C42 88 116 82 116 122 C116 164 44 1
 /* Which arms go with each mood, unless a pose is asked for. */
 const BENJI_POSE = { cheer: "cheer", proud: "cheer", worried: "rest", sleepy: "rest", hungry: "hold" };
 
-/* opts: { pose: "wave" | "rest" | "point" | "cheer" | "hold", sprout: 0 to 3, hat: a hat id to show, outfit: false for no hat } */
+/* opts: { pose: "wave" | "rest" | "point" | "cheer" | "hold", sprout: 0 to 3, hat: a hat id to show, outfit: false for no hat,
+   wear: an outfit id to show (or false for none), golden: true or false to force the golden sprout } */
 function palSVG(mood, size, opts) {
   const o = opts || {};
   const s = size || 64;
   const INK = "var(--pal-ink)";
   const pose = o.pose || BENJI_POSE[mood] || "wave";
   const outfit = o.outfit === false ? { art: "", lift: 0 } : palOutfit(o.hat);
+  const wear = o.wear === false ? null : (typeof benjiOutfitNow === "function" ? benjiOutfitNow(o.wear) : null);
+  const golden = o.golden != null ? o.golden : (typeof benjiGolden === "function" && benjiGolden());
 
   /* White cartoon gloves, drawn with the fingers up and the wrist at 0,0, then turned to follow the arm. */
   const glove = (x, y, deg, kind) => {
@@ -64,7 +67,7 @@ function palSVG(mood, size, opts) {
   }[pose] || "";
 
   const st = o.sprout == null ? benjiSprout() : o.sprout;
-  const leaf = d => `<path d="${d}" fill="var(--pal-leaf)" stroke="${INK}" stroke-width="3"/>`;
+  const leaf = d => `<path d="${d}" fill="${golden ? "#F4C542" : "var(--pal-leaf)"}" stroke="${INK}" stroke-width="3"/>`;
   const sprout = `<g transform="translate(0 ${-outfit.lift})">` + (st <= 0
     ? `<circle cx="80" cy="2" r="5" fill="#C98F55" stroke="${INK}" stroke-width="3"/>`
     : `<path d="M80 ${outfit.lift ? 10 : 6} V${st >= 2 ? -14 : -6}" stroke="#2F7A3D" stroke-width="4" stroke-linecap="round"/>`
@@ -99,13 +102,15 @@ function palSVG(mood, size, opts) {
     <path d="M70 168 L64 188 M90 168 L96 188" stroke="${INK}" stroke-width="5.5" stroke-linecap="round"/><ellipse cx="60" cy="189" rx="10" ry="5" fill="${INK}"/><ellipse cx="100" cy="189" rx="10" ry="5" fill="${INK}"/>
     <line x1="80" y1="6" x2="80" y2="176" stroke="${INK}" stroke-width="22" stroke-linecap="round"/>
     <line x1="80" y1="6" x2="80" y2="176" stroke="var(--pal-shade)" stroke-width="13" stroke-linecap="round"/>
-    ${outfit.lift ? "" : sprout}${back}
+    ${outfit.lift || outfit.noSprout ? "" : sprout}${back}
     <path d="${BENJI_S}" fill="none" stroke="${INK}" stroke-width="40" stroke-linecap="round"/>
     <path d="${BENJI_S}" fill="none" stroke="var(--pal-body)" stroke-width="31" stroke-linecap="round"/>
     <path d="M56 36 C64 28 84 26 98 32" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".5"/>
-    ${outfit.art}${outfit.lift ? sprout : ""}
+    ${outfit.art}${outfit.lift && !outfit.noSprout ? sprout : ""}
+    ${wear && wear.layer !== "face" ? wear.art() : ""}
     ${front}
     ${faces[mood] || faces.happy}
+    ${wear && wear.layer === "face" ? wear.art() : ""}
   </svg>`;
 }
 function palBubble(mood, msg, actions, cls) {
