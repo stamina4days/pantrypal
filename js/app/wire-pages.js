@@ -50,6 +50,7 @@ function pagesInit() {
   tourInit();
   hatsInit();
   storeInit();
+  themesInit();
   swipeInit();
   palLifeInit();
   talkInit();

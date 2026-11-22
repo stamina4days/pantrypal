@@ -22,7 +22,7 @@ function renderHats() {
     const how = open ? (on ? t("Wearing it") : t("Tap to wear"))
       : hat.shop ? t("In Benji's shop") : b ? t("{badge} badge: {a} of {b}", { badge: t(b.name), a: Math.min(b.have, b.goal), b: b.goal }) : "";
     return `<li><button type="button" class="hat-card ${on ? "on" : ""} ${open ? "" : "locked"}" data-hat="${hat.id}" ${open ? `aria-pressed="${on}"` : `aria-disabled="true"`}>
-      <span class="hat-pic">${palSVG("happy", 78, { hat: hat.id, pose: "rest", sprout: 1 })}${open ? "" : `<span class="hat-lock"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg></span>`}</span>
+      <span class="hat-pic">${palSVG("happy", 78, { hat: hat.id, pose: "rest", sprout: 1, wear: false })}${open ? "" : `<span class="hat-lock"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg></span>`}</span>
       <strong>${esc(t(hat.name))}</strong><span class="small">${esc(how)}</span>
       ${!open && b ? `<span class="small muted">${esc(t(b.desc))}</span>` : ""}
     </button></li>`;
@@ -31,11 +31,31 @@ function renderHats() {
   $("#htEarn").innerHTML = BENJI_HATS.filter(x => !x.season && !x.game && !x.shop).map(card).join("");
   $("#htShop").innerHTML = BENJI_HATS.filter(x => x.shop).map(card).join("");
   $("#htGame").innerHTML = BENJI_HATS.filter(x => x.game).map(card).join("");
+  // Outfits: "No outfit" first, then the outfit pack
+  const wearing = benjiOutfitNow();
+  const ocard = o => {
+    const open = !o || outfitUnlocked(o), on = o ? wearing && wearing.id === o.id : !wearing;
+    const how = !open ? t("In Benji's shop") : on ? t("Wearing it") : t("Tap to wear");
+    return `<li><button type="button" class="hat-card ${on ? "on" : ""} ${open ? "" : "locked"}" data-outfit="${o ? o.id : ""}" ${open ? `aria-pressed="${on}"` : `aria-disabled="true"`}>
+      <span class="hat-pic">${palSVG("happy", 78, { pose: "rest", sprout: 1, outfit: false, wear: o ? o.id : false })}${open ? "" : `<span class="hat-lock"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg></span>`}</span>
+      <strong>${esc(t(o ? o.name : "No outfit"))}</strong><span class="small">${esc(how)}</span></button></li>`;
+  };
+  $("#htOutfits").innerHTML = [null, ...BENJI_OUTFITS].map(ocard).join("");
+  // Supporters can switch the golden sprout off and on
+  $("#htGolden").innerHTML = isSupporter() ? `<label class="check"><input type="checkbox" id="htGoldenSwitch" ${settings.goldenSprout !== false ? "checked" : ""}> <span>${esc(t("Golden sprout, a thank-you for your tip"))}</span></label>` : "";
 }
 
 function hatsInit() {
   $("#hatsPage").addEventListener("click", e => {
     if (e.target.closest("[data-go-play]")) { $("#hatsPage").close(); openPlay(); return; }
+    const ob = e.target.closest("[data-outfit]");
+    if (ob) {
+      const o = benjiOutfitItem(ob.dataset.outfit);
+      if (o && !outfitUnlocked(o)) { $("#hatsPage").close(); openShop(); return; }
+      settings.benjiOutfit = o ? o.id : ""; saveSettings();
+      sfx("pop"); buzz(8); renderHats(); renderAll();
+      return;
+    }
     const b = e.target.closest("[data-hat]"); if (!b) return;
     const id = b.dataset.hat, hat = benjiHat(id);
     if (hat && hat.shop && !hatUnlocked(hat)) { $("#hatsPage").close(); openShop(); return; }
@@ -48,6 +68,10 @@ function hatsInit() {
     sfx("pop"); buzz(8);
     renderHats();
     renderAll();
+  });
+  $("#hatsPage").addEventListener("change", e => {
+    if (e.target.id !== "htGoldenSwitch") return;
+    settings.goldenSprout = e.target.checked; saveSettings(); renderHats(); renderAll();
   });
   $("#badgesPage").addEventListener("click", e => { if (e.target.closest("[data-go-hats]")) { $("#badgesPage").close(); openHats(); } });
   $("#hatsBtn").addEventListener("click", () => { $("#settingsDialog").close(); openHats(); });

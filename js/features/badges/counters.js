@@ -71,7 +71,7 @@ function badgeList() {
   return BADGES.map(b => {
     const [have, goal] = b.test(s);
     return { ...b, have: Math.min(have, goal), goal, done: have >= goal };
-  });
+  }).filter(b => !b.shop || b.done);
 }
 
 /* Celebrate any badge you just earned. The first check only records what you already have. */
