@@ -58,3 +58,101 @@
 .store-tip-reward { display: flex; align-items: flex-end; justify-content: space-around; gap: 10px; margin-bottom: 6px; }
 .store-tip-stage { display: flex; flex-direction: column; align-items: center; font-weight: 900; }
 .store-tip-reward .pal { flex: none; }
+
+/* ---------- Benji's shop posters (11.12): each item looks like its shop poster ---------- */
+.sp-poster { position: relative; list-style: none; overflow: hidden; padding: 34px 14px 16px; border-radius: 16px; color: #233A31;
+  background: #FBF3E4; border: 3px solid #233A31; box-shadow: 0 5px 0 #C9B9A2; }
+@media (prefers-color-scheme: dark) { .sp-poster { box-shadow: 0 5px 0 #0E0B08; } }
+.sp-awning { position: absolute; left: 0; right: 0; top: 0; height: 16px; border-bottom: 3px solid #233A31;
+  background: repeating-linear-gradient(90deg, #E5482F 0 22px, #FFFDF6 22px 44px); }
+.sp-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.sp-head h3 { margin: 0; font-family: Nunito, sans-serif; font-weight: 900; font-size: 1.4rem; line-height: 1.1; color: #233A31; letter-spacing: -.01em; }
+.sp-coin { flex: none; display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; box-sizing: border-box;
+  background: #F4C542; border: 3px solid #233A31; box-shadow: 0 4px 0 #C99A1F; color: #233A31; font-weight: 900; font-size: 1.05rem; transform: rotate(8deg); }
+.sp-coin-wide { width: auto; height: 44px; padding: 0 14px; border-radius: 999px; font-size: .95rem; transform: rotate(4deg); }
+.sp-owned { background: #CDEBD3; box-shadow: 0 4px 0 #8FC79C; }
+.sp-desc { margin: 8px 0 12px; font-weight: 700; font-size: .95rem; line-height: 1.4; color: #3A3328; }
+.sp-note { margin: 8px 0 0; font-size: .85rem; font-weight: 700; color: #5C5345; text-align: center; }
+.sp-grid { display: grid; gap: 10px 8px; margin: 4px 0 14px; }
+.sp-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sp-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+/* Polaroid snapshots */
+.sp-snap { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 4px 5px; border-radius: 8px;
+  background: #FFFFFF; border: 2px solid #233A31; box-shadow: 0 3px 0 #D8C9AE; }
+.sp-snap .pal { width: 100%; max-width: 70px; height: auto; display: block; }
+.sp-snap figcaption { font-weight: 900; font-size: .78rem; line-height: 1.15; text-align: center; color: #233A31; }
+.sp-snap.r0 { transform: rotate(-2deg); } .sp-snap.r1 { transform: rotate(1.5deg); } .sp-snap.r2 { transform: rotate(-1deg); } .sp-snap.r3 { transform: rotate(2deg); }
+.sp-photo { padding: 6px 6px 6px; }
+.sp-photo figcaption { font-size: .9rem; }
+.sp-shot { display: block; width: 100%; height: auto; border-radius: 5px; border: 2px solid #233A31; box-sizing: border-box; }
+.sp-collage { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: 100%; border: 2px solid #233A31; border-radius: 5px; overflow: hidden; box-sizing: border-box; }
+.sp-collage .tp-frame { border: 0; border-radius: 0; }
+.sp-trio { display: flex; justify-content: center; align-items: flex-end; min-height: 92px; }
+.sp-trio .pal { width: 48px; max-width: none; margin: 0 -3px; }
+/* Radio stations: tap to hear a sample */
+.sp-radio { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.sp-station { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 10px; align-items: center; text-align: left;
+  min-height: 70px; padding: 8px 10px; border-radius: 14px; background: #FFFFFF; color: #233A31; border: 2px solid #233A31; box-shadow: 0 3px 0 #D8C9AE; cursor: pointer; }
+.sp-station:active { transform: translateY(2px); box-shadow: 0 1px 0 #D8C9AE; }
+.sp-station .sp-disc { grid-row: 1 / 3; }
+.sp-st-name { font-weight: 900; font-size: .95rem; line-height: 1.1; }
+.sp-st-hint { display: flex; align-items: center; gap: 4px; font-weight: 800; font-size: .8rem; color: #1F5F99; }
+.sp-st-hint .ic { width: 16px; height: 16px; margin: 0; }
+.sp-disc { position: relative; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #22382B; color: #FFC94D;
+  box-shadow: inset 0 0 0 4px #2F4A3A, 0 0 0 2px #233A31; }
+.sp-disc svg { width: 26px; height: 26px; }
+.sp-disc-big { width: 84px; height: 84px; margin: 4px 0; }
+.sp-disc-big svg { width: 42px; height: 42px; }
+.sp-eq { position: absolute; inset: 0; display: none; align-items: flex-end; justify-content: center; gap: 3px; padding-bottom: 15px; }
+.sp-eq i { width: 4px; height: 8px; border-radius: 2px; background: #FFC94D; }
+.sp-station.on { background: #FFF3C4; border-color: #C99A1F; box-shadow: 0 3px 0 #C99A1F; }
+.sp-station.on .sp-disc > svg { visibility: hidden; }
+.sp-station.on .sp-eq { display: flex; }
+.sp-station.on .sp-st-hint { color: #8E2412; }
+@media (prefers-reduced-motion: no-preference) {
+  .sp-station.on .sp-eq i { animation: spEq .7s ease-in-out infinite alternate; }
+  .sp-station.on .sp-eq i:nth-child(2) { animation-delay: -.25s; } .sp-station.on .sp-eq i:nth-child(3) { animation-delay: -.5s; } .sp-station.on .sp-eq i:nth-child(4) { animation-delay: -.1s; }
+  .sp-station.on .sp-disc { animation: spSpin 3s linear infinite; }
+  @keyframes spEq { to { height: 22px; } }
+  @keyframes spSpin { to { box-shadow: inset 0 0 0 4px #3D6A4E, 0 0 0 2px #233A31; } }
+}
+/* The bundle: gold border, a sunburst, and a Best deal ribbon */
+.sp-bundle { border-color: #C99A1F; border-width: 4px; box-shadow: 0 5px 0 #8A6A12;
+  background: repeating-conic-gradient(from 0deg at 50% 0%, #FFF0B8 0 8deg, #FBF3E4 8deg 16deg); }
+.sp-ribbon { position: absolute; top: 22px; left: -6px; padding: 3px 12px 3px 14px; background: #E5482F; color: #FFFFFF; font-weight: 900; font-size: .8rem;
+  border-radius: 0 6px 6px 0; box-shadow: 0 2px 0 #8E2412; }
+.sp-bundle .sp-head { margin-top: 18px; }
+.sp-was { margin: 0 0 10px; font-weight: 800; font-size: .9rem; color: #3A3328; }
+.sp-was s { color: #7A7060; }
+.sp-was b { color: #B5321C; font-size: 1.05rem; }
+.sp-poster .store-owned { color: #1C5E30; }
+/* Tip jar: three tiers, each more golden than the last */
+.sp-tiers { display: flex; flex-direction: column; gap: 12px; }
+.sp-tier { position: relative; display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; padding: 10px 12px 10px 8px; border-radius: 16px;
+  text-decoration: none; color: #233A31; background: #FFFFFF; border: 3px solid #233A31; box-shadow: 0 4px 0 #D8C9AE; overflow: hidden; }
+.sp-tier:active { transform: translateY(3px); box-shadow: 0 1px 0 #D8C9AE; }
+.sp-tier.is-off { opacity: .6; }
+.sp-tier-text { display: flex; flex-direction: column; gap: 2px; position: relative; z-index: 1; }
+.sp-tier-text strong { font-weight: 900; font-size: 1.15rem; line-height: 1.1; }
+.sp-tier-text span { font-weight: 700; font-size: .82rem; line-height: 1.3; color: #3A3328; }
+.sp-tier-art { position: relative; z-index: 1; display: flex; justify-content: center; align-items: flex-end; min-height: 96px; padding-top: 4px; }
+.sp-tier-art .pal { position: relative; z-index: 1; height: auto; }
+.sp-coins { position: absolute; inset: 0; }
+.sp-coins i { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: #F4C542; border: 2px solid #233A31; box-shadow: 0 2px 0 #C99A1F; }
+.sp-coins .c0 { right: -4px; top: 6px; } .sp-coins .c1 { left: -2px; top: 26px; width: 18px; height: 18px; } .sp-coins .c2 { right: 0; bottom: 4px; width: 16px; height: 16px; } .sp-coins .c3 { left: 4px; bottom: 0; width: 20px; height: 20px; }
+.sp-coin-sm { position: relative; z-index: 1; width: 54px; height: 54px; font-size: 1.15rem; }
+.sp-tier-2 { background: radial-gradient(120% 140% at 0% 50%, #FFE89A, #FFFFFF 60%); border-color: #C99A1F; box-shadow: 0 4px 0 #C99A1F; }
+.sp-tier-3 { background: repeating-conic-gradient(from 0deg at 12% 55%, #FFE07A 0 9deg, #FFF8DC 9deg 18deg); border: 4px solid #C99A1F; box-shadow: 0 5px 0 #8A6A12, 0 0 0 3px #FFE07A; }
+.sp-tier-3 .sp-tier-text strong { font-size: 1.3rem; }
+.sp-tier-3 .sp-coin-sm { width: 62px; height: 62px; font-size: 1.3rem; }
+.sp-tier-3::after { content: ""; position: absolute; right: 74px; top: 8px; width: 16px; height: 16px; background: #F4C542;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+@media (prefers-reduced-motion: no-preference) {
+  .sp-tier-3::after { animation: spTwinkle 1.6s ease-in-out infinite; }
+  @keyframes spTwinkle { 50% { transform: scale(.4) rotate(45deg); opacity: .4; } }
+}
+@media (max-width: 360px) {
+  .sp-tier { grid-template-columns: 84px 1fr auto; }
+  .sp-tier-art .pal { max-width: 84px; }
+  .sp-st-name { font-size: .88rem; }
+}
