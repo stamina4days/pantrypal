@@ -17,7 +17,8 @@ const hatDome = fill => `<path d="M38 22 C38 -20 122 -20 122 22 Z" fill="${fill}
 const hatBand = fill => `<rect x="34" y="14" width="92" height="13" rx="6.5" fill="${fill}" ${HAT_INK}/>`;
 const hatRibs = color => `<path d="M58 -8 V14 M80 -11 V14 M102 -8 V14" stroke="${color}" stroke-width="3" stroke-linecap="round"/>`;
 
-/* unlock: the badge that earns the hat. season: worn automatically in that season. game: won in the Play corner. */
+/* unlock: the badge that earns the hat. season: worn automatically in that season. game: won in the Play corner.
+   shop: the shop item (data/store.js) that includes it. */
 const BENJI_HATS = [
   { id: "fall", name: "Fall beanie", season: true, lift: 18, art: () => hatDome("#F28C28") + hatRibs("#C4651A") + hatBand("#FFD23F") },
   { id: "fall-pumpkin", name: "Pumpkin hat", season: true, lift: 16,
@@ -76,12 +77,29 @@ const BENJI_HATS = [
   { id: "detective", name: "Detective cap", unlock: "sort-checks-25", game: true, lift: 20,
     art: () => `<path d="M30 24 C34 14 46 14 50 20 Z" fill="#B08A5A" ${HAT_INK}/><path d="M110 20 C114 14 126 14 132 24 Z" fill="#B08A5A" ${HAT_INK}/>`
       + `<path d="M40 22 C40 -18 120 -18 120 22 Z" fill="#C9A26B" ${HAT_INK}/><path d="M60 -10 V20 M80 -13 V20 M100 -10 V20 M44 2 H116 M42 12 H118" stroke="#8C6A3E" stroke-width="2.5" stroke-linecap="round"/>`
-      + `<path d="M80 -14 C72 -24 68 -18 74 -14 M80 -14 C88 -24 92 -18 86 -14" fill="none" stroke="#8C6A3E" stroke-width="3" stroke-linecap="round"/><path d="M40 22 H120" ${HAT_INK}/>` }
+      + `<path d="M80 -14 C72 -24 68 -18 74 -14 M80 -14 C88 -24 92 -18 86 -14" fill="none" stroke="#8C6A3E" stroke-width="3" stroke-linecap="round"/><path d="M40 22 H120" ${HAT_INK}/>` },
+  // From Benji's shop (the Fun hat pack)
+  { id: "cowboy", name: "Cowboy hat", shop: "hats-fun", lift: 26,
+    art: () => `<path d="M12 16 C30 32 130 32 148 16 C140 8 124 12 116 16 L110 -10 C106 -22 90 -16 80 -11 C70 -16 54 -22 50 -10 L44 16 C36 12 20 8 12 16 Z" fill="#B5793F" ${HAT_INK}/>`
+      + `<path d="M46 6 C66 10 94 10 114 6" fill="none" stroke="#6E4524" stroke-width="7"/><path d="M80 -11 C80 -4 80 0 80 4" stroke="#8C5A2E" stroke-width="3" stroke-linecap="round"/>` },
+  { id: "pirate", name: "Pirate hat", shop: "hats-fun", lift: 24,
+    art: () => `<path d="M22 20 C36 -6 58 -24 80 -26 C102 -24 124 -6 138 20 C110 10 50 10 22 20 Z" fill="#2E2724" ${HAT_INK}/>`
+      + `<path d="M30 15 C56 6 104 6 130 15" fill="none" stroke="#F4C542" stroke-width="3.5"/><circle cx="80" cy="-6" r="7" fill="#FFFDF6"/><circle cx="77.5" cy="-7" r="1.6" fill="#2E2724"/><circle cx="82.5" cy="-7" r="1.6" fill="#2E2724"/>`
+      + `<path d="M70 4 L90 10 M90 4 L70 10" stroke="#FFFDF6" stroke-width="3" stroke-linecap="round"/>` },
+  { id: "viking", name: "Viking helmet", shop: "hats-fun", lift: 20,
+    art: () => `<path d="M42 8 C24 2 16 -18 20 -36 C28 -22 40 -14 50 -8 Z" fill="#FFF8EC" ${HAT_INK}/><path d="M118 8 C136 2 144 -18 140 -36 C132 -22 120 -14 110 -8 Z" fill="#FFF8EC" ${HAT_INK}/>`
+      + `<path d="M38 22 C38 -18 122 -18 122 22 Z" fill="#AEB8C0" ${HAT_INK}/><path d="M80 -16 V16" stroke="#8B969E" stroke-width="6"/>` + hatBand("#9C7A4A")
+      + `<circle cx="50" cy="20.5" r="2.5" fill="#F4C542"/><circle cx="80" cy="20.5" r="2.5" fill="#F4C542"/><circle cx="110" cy="20.5" r="2.5" fill="#F4C542"/>` },
+  { id: "frog", name: "Frog hat", shop: "hats-fun", lift: 26,
+    art: () => hatDome("#7CC36A") + `<circle cx="56" cy="-14" r="13" fill="#FFFFFF" ${HAT_INK}/><circle cx="104" cy="-14" r="13" fill="#FFFFFF" ${HAT_INK}/>`
+      + `<circle cx="58" cy="-12" r="5.5" fill="#2E2724"/><circle cx="102" cy="-12" r="5.5" fill="#2E2724"/><path d="M62 8 C72 16 88 16 98 8" fill="none" stroke="#2F6B24" stroke-width="3.5" stroke-linecap="round"/>`
+      + `<circle cx="50" cy="10" r="4" fill="#F4A6A0"/><circle cx="110" cy="10" r="4" fill="#F4A6A0"/>` + hatBand("#4FA046") }
 ];
 const benjiHat = id => BENJI_HATS.find(h => h.id === id);
 
 /* Is this hat Benji's yet? */
 function hatUnlocked(h) {
+  if (h && h.shop) return typeof ownsItem === "function" && ownsItem(h.shop);
   if (!h || !h.unlock) return !!h;
   if (typeof badgeList !== "function") return false;
   try { const b = badgeList().find(x => x.id === h.unlock); return !!(b && b.done); } catch (e) { return false; }
