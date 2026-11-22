@@ -122,3 +122,27 @@ body #addBtn.fab { display: none; }
 #tab-pantry .fridge-scene .fg-head h2 { font-family: var(--hand); font-size: 1.15rem; }
 #tab-pantry .fridge-scene .row-face .fr-when { font-family: Nunito, var(--font, sans-serif); font-weight: 900; font-size: .78rem; max-width: 46%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #tab-pantry .fridge-scene #itemList .swipe-row .row-face { border-top: 0; }
+
+/* Compact pass (11.9.1) */
+#tab-pantry .fridge-scene { padding-top: 8px; }
+#tab-pantry .fridge-scene .shelf-chips { grid-auto-columns: minmax(58px, 1fr); gap: 6px; padding-bottom: 6px; }
+#tab-pantry .fridge-scene .shelf-chips .chip { min-height: 46px; padding: 3px 3px 2px; font-size: .68rem; border-radius: 10px; }
+#tab-pantry .fridge-scene .shelf-chips .chip:first-child { font-size: .85rem; }
+#tab-pantry .loc-art { width: 22px; height: 22px; }
+#tab-pantry .fz-inside { padding: 10px 8px 10px; border-width: 8px; }
+#tab-pantry .fridge-scene .food-search { min-height: 38px; font-size: .9rem; margin-bottom: 6px; }
+#tab-pantry .fridge-scene .row-face { min-height: 46px; padding: 3px 8px; gap: 8px; }
+#tab-pantry .fridge-scene .row-face .food-emoji { width: 32px; height: 32px; }
+#tab-pantry .fridge-scene .fr-main strong { font-size: .9rem; }
+#tab-pantry .fridge-scene .fr-sub { font-size: .74rem; }
+#tab-pantry .fridge-scene .row-face .fr-when { font-size: .7rem; padding: 1px 6px; }
+#tab-pantry .fridge-scene .fg-head h2 { font-size: 1rem; }
+#tab-pantry .fridge-scene .fg-head span { font-size: .72rem; }
+#tab-pantry .fz-door { width: 26px; }
+#tab-pantry .fz-peek { width: 58px; height: 78px; }
+#tab-pantry .fz-empty p { font-size: .88rem; margin: 4px 0; }
+#tab-pantry .fz-empty #emptyAuditBtn { min-height: 40px; font-size: .85rem; background: #FFFDF6; color: #22703A; border: 2px solid #22703A; box-shadow: 0 3px 0 #C9B9A2; }
+#tab-pantry .fz-empty #emptyAuditBtn .ic { width: 18px; height: 18px; }
+#tab-pantry .fz-floor { margin-top: 8px; padding: 6px 14px 8px; }
+#tab-pantry .fz-floor .k-bag { min-height: 46px; font-size: 1.05rem; }
+#tab-pantry .fz-view.link-btn { font-size: .78rem; }
