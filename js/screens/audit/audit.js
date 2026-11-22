@@ -15,7 +15,7 @@ function openAudit() {
   $("#auditDialog").showModal();
 }
 function renderAudit() {
-  const label = it => LANG === "es" ? it[1] : it[0];
+  const label = it => it[0];
   $("#auditBody").innerHTML = AUDIT.map(([sid, title, , list], si) => `
     <h3>${esc(t(title))}</h3>${sid === "basics" ? `<p class="muted small">${esc(t("These start out selected. Turn off anything you're out of."))}</p>` : ""}
     <div class="chips wrap">${list.map((it, ii) => { const id = si + "-" + ii, on = auditSel.has(id); return `<button type="button" class="chip ${on ? "on" : ""}" aria-pressed="${on}" data-ai="${id}">${esc(label(it))}</button>`; }).join("")}</div>`).join("");
@@ -35,9 +35,9 @@ function finishAudit() {
     if (!on) return;
     const key = canon(it[0]);
     if (pool.some(p => p.key && key && related(p.key, key))) return;
-    const name = LANG === "es" ? it[1] : it[0];
+    const name = it[0];
     const est = estimateShelf(it[0], loc);
-    items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: it[2], unit: it[3], location: loc,
+    items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: it[1], unit: it[2], location: loc,
       expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name) });
     added++;
   }));

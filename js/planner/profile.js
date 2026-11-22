@@ -22,7 +22,7 @@ function dislikeKeys() {
 }
 function hasDisliked(r, dk) {
   if (!dk.length) return false;
-  const nm = norm(r.name + " " + (r.es ? r.es.name : ""));
+  const nm = norm(r.name);
   return dk.some(d => (d.key && r.ingredients.some(g => !g.opt && related(d.key, g.key))) || (d.word && nm.includes(" " + d.word + " ")));
 }
 /* Can this person make this recipe at all? (diet, equipment, dislikes, thumbs down) */

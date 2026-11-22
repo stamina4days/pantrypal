@@ -28,16 +28,18 @@ function renderHats() {
     </button></li>`;
   };
   $("#htSeason").innerHTML = BENJI_HATS.filter(x => x.season).map(card).join("");
-  $("#htEarn").innerHTML = BENJI_HATS.filter(x => !x.season).map(card).join("");
+  $("#htEarn").innerHTML = BENJI_HATS.filter(x => !x.season && !x.game).map(card).join("");
+  $("#htGame").innerHTML = BENJI_HATS.filter(x => x.game).map(card).join("");
 }
 
 function hatsInit() {
   $("#hatsPage").addEventListener("click", e => {
+    if (e.target.closest("[data-go-play]")) { $("#hatsPage").close(); openPlay(); return; }
     const b = e.target.closest("[data-hat]"); if (!b) return;
     const id = b.dataset.hat, hat = benjiHat(id);
     if (hat && !hatUnlocked(hat)) {
       const badge = BADGES.find(x => x.id === hat.unlock);
-      toast(t("Earn the \"{badge}\" badge to unlock this hat.", { badge: t(badge.name) })); sfx("tick");
+      toast(hat.game ? t("Win it in the Play corner: {how}", { how: t(badge.desc) }) : t("Earn the \"{badge}\" badge to unlock this hat.", { badge: t(badge.name) })); sfx("tick");
       return;
     }
     settings.benjiHat = id; saveSettings();
@@ -47,6 +49,28 @@ function hatsInit() {
   });
   $("#badgesPage").addEventListener("click", e => { if (e.target.closest("[data-go-hats]")) { $("#badgesPage").close(); openHats(); } });
   $("#hatsBtn").addEventListener("click", () => { $("#settingsDialog").close(); openHats(); });
+}
+
+/* For Benji's hat chatter: how many hats he has, and the next one to win (games first if asked). */
+function hatProgress(gamesOnly) {
+  const list = BENJI_HATS.filter(h => !h.season && (!gamesOnly || h.game));
+  const have = list.filter(hatUnlocked);
+  const badges = typeof badgeList === "function" ? badgeList() : [];
+  const next = list.filter(h => !hatUnlocked(h)).map(h => ({ h, b: badges.find(x => x.id === h.unlock) }))
+    .filter(x => x.b).sort((a, b) => (b.b.have / b.b.goal) - (a.b.have / a.b.goal))[0] || null;
+  return { have: have.length, total: list.length, next };
+}
+/* A line where Benji brings up his hats. */
+function palHatLine() {
+  const p = hatProgress(false), g = hatProgress(true);
+  const opts = [];
+  if (p.next) {
+    opts.push(t("Psst. {how} and I get the {hat}. Just saying.", { how: t(p.next.b.desc).replace(/\.$/, ""), hat: t(p.next.h.name).toLowerCase() }));
+    opts.push(t("I have {a} of {b} hats so far. Want to see them?", { a: p.have, b: p.total }));
+  } else opts.push(t("You've won me every hat! Want to pick one?"));
+  if (g.next) opts.push(t("Games win me hats! {how} for my {hat}.", { how: t(g.next.b.desc).replace(/\.$/, ""), hat: t(g.next.h.name).toLowerCase() }));
+  opts.push(t("Did you know I have a hat closet? Tap below to dress me up."));
+  return opts[Math.floor(Math.random() * opts.length)];
 }
 
 /* Hat a badge unlocks, for the badges page and the "new badge" moment. */

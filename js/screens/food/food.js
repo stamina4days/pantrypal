@@ -56,13 +56,9 @@ function renderPantry() {
 }
 
 function fillDatalists() {
-  const names = LANG === "es"
-    ? new Set([...Object.values(ING_ES), ...items.map(i => i.name)])
-    : new Set([...Object.keys(SHELF_LIFE).filter(k => k.length > 3), ...items.map(i => i.name)]);
+  const names = new Set([...Object.keys(SHELF_LIFE).filter(k => k.length > 3), ...items.map(i => i.name)]);
   $("#nameSuggestions").innerHTML = [...names].sort().map(n => `<option value="${esc(n)}">`).join("");
   $("#locations").innerHTML = allLocations().map(l => `<option value="${esc(locLabel(l))}">`).join("");
-  const units = LANG === "es"
-    ? ["huevos", "lb", "oz", "kg", "tazas", "latas", "bolsas", "cajas", "botellas", "piezas", "rebanadas", "manojos", "galones", "paquetes", "porciones"]
-    : ["eggs", "lbs", "oz", "cups", "cans", "bags", "boxes", "bottles", "pieces", "slices", "bunches", "gallons", "packs", "servings"];
+  const units = ["eggs", "lbs", "oz", "cups", "cans", "bags", "boxes", "bottles", "pieces", "slices", "bunches", "gallons", "packs", "servings"];
   $("#units").innerHTML = units.map(u => `<option value="${u}">`).join("");
 }

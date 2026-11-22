@@ -1,8 +1,7 @@
 "use strict";
-/* Picking what Pal says from data/pal/voice-en.js and voice-es.js. */
+/* Picking what Benji says from data/pal/voice-en.js. */
 function palLines(key) {
-  const es = LANG === "es" && typeof PAL_VOICE_ES !== "undefined" ? PAL_VOICE_ES[key] : null;
-  return es || PAL_VOICE_EN[key] || [];
+  return PAL_VOICE_EN[key] || [];
 }
 function palPick(key, vars) {
   const list = palLines(key);
