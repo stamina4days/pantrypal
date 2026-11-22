@@ -23,7 +23,9 @@ function renderPantry() {
   if (locFilter !== "All" && !locs.includes(locFilter)) locFilter = "All";
   $("#locFilter").innerHTML = ["All", ...locs].map(l => {
     const n = l === "All" ? items.length : items.filter(i => i.location === l).length;
-    return `<button class="chip ${l === locFilter ? "on" : ""}" aria-pressed="${l === locFilter}" data-loc="${esc(l)}">${esc(l === "All" ? t("All") : locLabel(l))} <small>${n}</small></button>`;
+    // Each spot is drawn as its little appliance: the fridge, the freezer, the pantry cupboard, the counter
+    const art = l === "All" ? "" : `<img class="loc-art" src="img/places/${["Fridge", "Freezer", "Pantry", "Counter"].includes(l) ? l.toLowerCase() : "other"}.svg" alt="">`;
+    return `<button class="chip ${l === locFilter ? "on" : ""}" aria-pressed="${l === locFilter}" data-loc="${esc(l)}">${art}<span class="loc-name">${esc(l === "All" ? t("All") : locLabel(l))} <small>${n}</small></span></button>`;
   }).join("");
 
   const q = norm($("#pantrySearch").value).trim();
@@ -51,7 +53,8 @@ function renderPantry() {
   const hint = settings.swipeLearned ? "" : t("Swipe a food for quick actions");
   $("#itemList").innerHTML = group(t("Eat soon"), "soon", soon, hint) + group(soon.length ? t("Good for now") : t("All good"), "later", later, soon.length ? "" : hint);
   if (q && !list.length) $("#itemList").innerHTML = `<li class="muted center small">${esc(t("Nothing called that. Try another word."))}</li>`;
-  $("#emptyPantry").classList.add("hidden");
+  // Bare shelves: Benji peeks in and points at the grocery bag
+  $("#emptyPantry").classList.toggle("hidden", items.length > 0);
   document.body.classList.toggle("few-items", items.length <= 6 && !$("#pantrySearch").value);
 }
 

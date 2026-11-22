@@ -59,3 +59,19 @@ function listJoin(names) {
   if (a.length === 2) return a[0] + " " + t("and") + " " + a[1];
   return a.slice(0, -1).join(", ") + ", " + t("and") + " " + a[a.length - 1];
 }
+
+/* Every tab is drawn as a scene that fills the phone screen between the header and the tabs.
+   Keep --topbar-h and --tabbar-h up to date so the scenes can size themselves (see --scene-h in tokens.css). */
+(function watchChrome() {
+  const set = () => {
+    const top = document.querySelector(".topbar"), bar = document.querySelector(".tabbar"), root = document.documentElement.style;
+    if (top && top.offsetHeight) root.setProperty("--topbar-h", top.offsetHeight + "px");
+    if (bar && bar.offsetHeight) root.setProperty("--tabbar-h", bar.offsetHeight + "px");
+  };
+  const start = () => {
+    set();
+    if ("ResizeObserver" in window) { const ro = new ResizeObserver(set); [".topbar", ".tabbar"].forEach(s => { const el = document.querySelector(s); if (el) ro.observe(el); }); }
+    window.addEventListener("resize", set);
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
+})();
