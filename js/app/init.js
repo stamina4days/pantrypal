@@ -11,7 +11,6 @@ function init() {
   });
 
   $$(".tabbar button").forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
-  $("#langBtn").addEventListener("click", () => { settings.lang = LANG === "es" ? "en" : "es"; saveSettings(); applyLang(); });
 
   // My Food
   $("#alerts").addEventListener("click", e => {
@@ -165,11 +164,10 @@ function init() {
     $("#remindersToggle").checked = settings.reminders;
     setPressed("#textSize", $(`#textSize [data-size="${textSizeNow()}"]`));
     $("#highContrast").checked = settings.highContrast;
-    $("#langSelect").value = LANG;
+    $("#tourAutoToggle").checked = !settings.hideTour;
     $("#settingsDialog").showModal();
   });
   $("#closeSettings").addEventListener("click", () => $("#settingsDialog").close());
-  $("#langSelect").addEventListener("change", e => { settings.lang = e.target.value; saveSettings(); applyLang(); });
   $("#assumeBasics").addEventListener("change", e => { settings.assumeBasics = e.target.checked; saveSettings(); renderAll(); });
   $("#useSubs").addEventListener("change", e => { settings.useSubs = e.target.checked; saveSettings(); renderAll(); });
   segment("#textSize", "size", v => setTextSize(v));
@@ -194,8 +192,6 @@ function init() {
   buddyInit();
   pagesInit();
   applyLang();
-  importSharedList();
-  if (!settings.onboarded && !location.hash.startsWith("#list=")) openOnboarding("first");
   window.addEventListener("hashchange", importSharedList);
 
   if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {

@@ -10,7 +10,6 @@ function kitchenInit() {
     const b = e.target.closest("button"); if (!b) return;
     if (b.dataset.view) { obRead(); ob.data.view = b.dataset.view; renderOnboarding(); }
     if (b.dataset.textsize) { obRead(); setTextSize(b.dataset.textsize); renderOnboarding(); }
-    if (b.dataset.lang) { obRead(); settings.lang = b.dataset.lang; saveSettings(); applyLang(); renderOnboarding(); }
     if (b.dataset.people) { obRead(); ob.data.people = Math.max(1, Math.min(12, ob.data.people + Number(b.dataset.people))); renderOnboarding(); }
     if (b.dataset.cuisine) { obRead(); const c = b.dataset.cuisine; ob.data.cuisines = ob.data.cuisines.includes(c) ? ob.data.cuisines.filter(x => x !== c) : [...ob.data.cuisines, c]; renderOnboarding(); }
     if (b.id === "obAudit") { $("#onboardDialog").close(); openAudit(); }

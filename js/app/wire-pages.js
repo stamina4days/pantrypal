@@ -72,8 +72,22 @@ function onScreenOpen(d) {
 }
 
 /* Runs once the opening screen slides away. */
-function afterSplash() {
+/* Right after the start screen: do what was picked there. New people get setup first, then the tour.
+   Everyone else gets the tour on every visit unless they turned it off. */
+function afterSplash(choice, landing) {
+  settings.visits = (settings.visits || 0) + 1;
+  saveSettings();
+  renderAll();
+  const shared = (landing || "").startsWith("#list=");
+  importSharedList();
   importKitchenLink();
   updateStreak();
   checkNewBadges();
+  if (choice === "hats") return openHats();
+  if (choice === "play") return openPlay();
+  if (choice === "tour") return startTour();
+  if (shared) return;
+  if (!settings.onboarded) return openOnboarding("first");
+  const deep = landing && landing.length > 2 && !/^#\/?(today)?$/.test(landing);
+  if (!settings.hideTour && !deep) setTimeout(startTour, 350);
 }
