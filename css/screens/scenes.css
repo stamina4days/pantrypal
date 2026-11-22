@@ -159,3 +159,76 @@
 .pday .row-btn { background: transparent; color: #5E7069; border: 0; box-shadow: none; }
 .pday.today .row-btn { color: #C8D8CC; }
 .rbook-page .recipe .r-head strong { font-size: 1.12rem; }
+
+/* ---------- Compact pass (11.9.1): smaller pieces so more of each room fits ---------- */
+/* Tips: a small note, not a banner */
+.scene .hint-slot .hint { max-width: min(250px, 72%); padding: 6px 10px 2px; font-size: .74rem; line-height: 1.25; margin: 0 0 8px auto; }
+.scene .hint-slot .hint .ic { width: 13px; height: 13px; }
+.scene .hint-slot .hint .link-btn { min-height: 30px; font-size: .78rem; margin-left: 4px; }
+
+/* Recipes: shorter cards and box, ribbons above the page instead of over the recipes */
+.recipe-scene { padding-top: 8px; }
+.rbox { padding-bottom: 24px; }
+.recipe-scene .collection-strip { padding-top: 6px; }
+.recipe-scene .collection-card { width: 78px; height: 82px; padding: 4px 4px 18px; border-width: 2px; }
+.recipe-scene .collection-card .cc-art { width: 26px; height: 26px; }
+.recipe-scene .cc-name { font-size: .8rem; }
+.rbox-front { height: 34px; border-width: 3px; }
+.rbox-front span { font-size: .88rem; padding: 0 10px; }
+.recipe-scene .rbook { margin-top: 8px; }
+.recipe-scene .seg { position: relative; top: auto; right: auto; align-self: flex-end; margin: 0 8px -12px 0; z-index: 3; }
+.recipe-scene .seg button { width: 64px; height: 36px; padding: 0 0 9px; font-size: .74rem; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 8px), 0 100%); }
+.recipe-scene .seg button.on { height: 44px; }
+.rbook-page { padding: 18px 10px 12px 24px; }
+.rbook-page .search { min-height: 40px; font-size: .9rem; margin-bottom: 4px; }
+.rbook-page .chip { min-height: 32px; font-size: .78rem; padding: 2px 10px; }
+.rbook-page .chip .ic { width: 16px; height: 16px; }
+.rbook-page #recipeCount { font-size: .74rem; }
+.rbook-page .recipe { padding: 6px 2px; }
+.rbook-page .recipe .r-head { align-items: center; }
+.rbook-page .recipe .r-head strong { font-size: .98rem; line-height: 1.1; }
+.rbook-page .r-emoji { width: 34px; height: 34px; }
+.rbook-page .recipe .muted.small { font-size: .72rem; white-space: nowrap; }
+.rbook-page .r-tags { gap: 4px; margin-top: 3px; }
+.rbook-page .r-tags .tag { font-size: .7rem; padding: 2px 8px; }
+
+/* Plan: a shorter calendar and table, so a couple of days' pages show */
+.plan-scene { padding-top: 14px; }
+.cal-top { padding: 9px 10px 6px; }
+.cal-month { font-size: 1.2rem; }
+.cal-count { font-size: .7rem; }
+.cal-day { height: 54px; padding: 2px 0; }
+.cd-name { font-size: .6rem; }
+.cd-num { font-size: .78rem; }
+.cd-art { width: 22px; height: 22px; }
+.cd-plus { font-size: 1rem; line-height: 22px; }
+.cal-go { min-height: 40px; margin: 8px 10px; font-size: .95rem; }
+.cal-go .ic { width: 18px; height: 18px; }
+.plan-pages { margin-top: 10px; }
+.pday { padding: 4px 10px 6px; margin-bottom: 8px; }
+.pday .day-head h3 { font-size: .98rem; }
+.pday .chip { min-height: 30px; font-size: .78rem; padding: 0 10px; }
+.pday .muted { font-size: .78rem; margin: 0; }
+.pday .recipe .r-head strong { font-size: .92rem; }
+.pday .r-tags .tag { font-size: .7rem; padding: 2px 8px; }
+.plan-table { padding: 6px 12px 8px; gap: 8px; }
+.placemat, .notepad-btn { min-height: 42px; font-size: .85rem; }
+.notepad-btn { border-top-width: 7px; font-size: .9rem; }
+.placemat .ic, .notepad-btn .ic { width: 18px; height: 18px; }
+
+/* Shopping: a smaller scrap, magnets, and notepad writing */
+.shop-scene { padding-top: 8px; }
+.pad-tools select, .pad-new { min-height: 38px; font-size: .92rem; }
+.pad-magnet.icon-square { width: 40px; min-width: 40px; height: 40px; min-height: 40px; }
+.pad-magnet .ic { width: 18px; height: 18px; }
+.notepad { padding: 16px 10px 10px 12px; }
+.notepad #shopAddInput { min-height: 38px; font-size: .95rem; }
+.notepad #shopAddForm button { min-height: 38px; padding: 4px 14px; font-size: .9rem; }
+.notepad .shop-item { min-height: 40px; padding: 3px 2px; }
+.notepad .shop-item .food-emoji { width: 28px; height: 28px; }
+.notepad .shop-name { font-size: .95rem; }
+.notepad .aisle-head { font-size: .9rem; margin-top: 6px; }
+.notepad .pal-big .pal { width: 64px; height: 86px; }
+.notepad .bubble p { font-size: .88rem; }
+.empty-cart { width: 80px; height: 51px; }
+.shop-scene .bought-bar #moveToFood, .shop-scene .bought-bar #clearChecked { min-height: 44px; font-size: .85rem; }
