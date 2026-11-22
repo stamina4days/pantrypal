@@ -20,7 +20,8 @@
   --radius: 16px;
   --edge: #AD7D51; --press: #D9B48C;
   --shadow: 0 2px 0 rgba(35, 58, 49, .12), 0 6px 14px rgba(35, 58, 49, .08);
-  --pal-body: #FFFDF6; --pal-ink: #233A31;   /* Pal stays cream in every mode */
+  /* Benji the dollar sign: the same green in every mode */
+  --pal-body: #5FAE6E; --pal-shade: #4C9A5B; --pal-leaf: #7FBF5A; --pal-ink: #3B2F2A; --pal-glove: #FFFFFF; --pal-shadow: #E2CDB4;
 }
 @media (prefers-color-scheme: dark) {
   :root {
