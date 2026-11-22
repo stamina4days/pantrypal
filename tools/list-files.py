@@ -6,6 +6,7 @@ import os, json
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 skip_dirs = {"tools", ".git", "data/recipes", "docs"}
 keep = (".html", ".css", ".js", ".json", ".svg", ".png")
+skip_files = {"img/social-preview.png"}   # only for link previews on other sites, not needed offline
 files = ["./"]
 for dp, dns, fns in os.walk(root):
     rel = os.path.relpath(dp, root)
@@ -14,7 +15,7 @@ for dp, dns, fns in os.walk(root):
         continue
     for f in sorted(fns):
         p = os.path.join(rel, f).replace(os.sep, "/")
-        if f.endswith(keep) and p not in ("sw.js", "offline-files.js"):
+        if f.endswith(keep) and p not in ("sw.js", "offline-files.js") and p not in skip_files:
             files.append(p)
 files.append("data/recipes/index.json")
 files = sorted(set(files), key=lambda p: (p != "./", p))

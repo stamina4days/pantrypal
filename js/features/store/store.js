@@ -50,7 +50,7 @@ async function redeemCode(raw) {
   const res = await checkCode(raw);
   if (!res) { toast(t("That code didn't work. Check that it's copied exactly, or tap the link from your receipt email.")); sfx("tick"); return false; }
   if (res.other) {
-    toast(t("That code was made for a different phone ({other}). This phone's shop ID is {mine}. Send us this ID and we'll make you a code for it.", { other: shopIdText(res.other), mine: shopIdText() }));
+    toast(t("That code was made for a different phone ({other}). This phone's shop ID is {mine}. Email this ID to signaftersix@gmail.com and we'll make you a code for it.", { other: shopIdText(res.other), mine: shopIdText() }));
     sfx("tick"); return false;
   }
   const it = res.item;
