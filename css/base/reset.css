@@ -2,7 +2,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body {
-  font-family: var(--body); font-size: 17px; line-height: 1.45; color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.45; color: var(--ink);
   background: var(--sky);
   background-image: radial-gradient(circle at 20% 0%, rgba(255,255,255,.55), transparent 45%); background-repeat: no-repeat; background-attachment: fixed;
   padding-bottom: calc(84px + env(safe-area-inset-bottom));

@@ -34,7 +34,11 @@ items.forEach(i => {
   }
 });
 
-function saveItems() { store(KEYS.items, items); syncForReminders(); }
+function saveItems() {
+  // Remember the most each food has been, so the shopping list can tell when it's running low.
+  items.forEach(i => { if (i.amount > 0 && !(i.full >= i.amount)) i.full = i.amount; });
+  store(KEYS.items, items); syncForReminders();
+}
 const saveHistory = () => store(KEYS.history, history);
 const saveShopping = () => store(KEYS.shopping, shopping);
 const saveBarcodes = () => store(KEYS.barcodes, barcodes);

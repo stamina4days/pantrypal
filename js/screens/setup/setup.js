@@ -24,7 +24,10 @@ function renderOnboarding() {
       <div class="view-pick">
         <button type="button" data-view="simple" class="view-card ${d.view !== "full" ? "on" : ""}" aria-pressed="${d.view !== "full"}"><strong>${esc(t("Keep it simple"))}</strong><span>${esc(t("Big buttons, just the basics. Great for anyone."))}</span></button>
         <button type="button" data-view="full" class="view-card ${d.view === "full" ? "on" : ""}" aria-pressed="${d.view === "full"}"><strong>${esc(t("Show me everything"))}</strong><span>${esc(t("All the filters and extras."))}</span></button>
-      </div>`;
+      </div>
+      <h3 id="obTextSize">${esc(t("How big should the words be?"))}</h3>
+      <div class="text-size-pick" role="group" aria-labelledby="obTextSize">${[["normal", "Regular", 1], ["large", "Large", 2], ["xl", "Extra large", 3]].map(([v, l, n]) =>
+        `<button type="button" data-textsize="${v}" aria-pressed="${textSizeNow() === v}"><span class="ts-aa ts-${n}" aria-hidden="true">Aa</span><span>${esc(t(l))}</span></button>`).join("")}</div>`;
   } else if (ob.step === 1) {
     h += `<h2>${esc(t("Who are you cooking for?"))}</h2>
       <div class="servings"><span>${esc(t("People"))}</span><button type="button" class="icon-square" data-people="-1" aria-label="${esc(t("Fewer people"))}">-</button>

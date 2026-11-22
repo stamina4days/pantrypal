@@ -11,3 +11,18 @@
 .bought-bar { position: sticky; bottom: calc(84px + env(safe-area-inset-bottom)); z-index: 4; margin-top: 12px; }
 .bought-bar #moveToFood { flex: 2; min-height: 58px; font-size: 1.08rem; box-shadow: 0 4px 0 var(--press), 0 8px 20px rgba(35, 58, 49, .25); }
 @media (prefers-reduced-motion: no-preference) { .bought-bar:not(.hidden) { animation: pop-in .3s cubic-bezier(.3, 1.5, .5, 1); } }
+/* Running low: a taped card above the list */
+.low-card { position: relative; background: var(--paper); border-radius: 8px; box-shadow: var(--shadow); padding: 12px 0 4px; margin: 18px 0 6px; }
+.low-card::before { content: ""; position: absolute; top: -9px; left: 26px; width: 64px; height: 18px; background: var(--tape); transform: rotate(-3deg); pointer-events: none; }
+.low-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 0 12px 4px 16px; }
+.low-head h3 { margin: 0; font-family: var(--hand); font-weight: 700; font-size: 1.35rem; color: var(--tomato-text-bg, var(--tomato)); }
+.low-rows { list-style: none; margin: 0; padding: 0; }
+.low-row { display: flex; align-items: center; gap: 10px; min-height: 60px; padding: 6px 8px 6px 16px; border-top: 1px dashed var(--dash, var(--line)); }
+.low-row .grow { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.low-row strong { font-size: 1.04rem; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.low-row .grow span { font-size: .86rem; font-weight: 600; color: var(--muted); }
+.low-art { flex: none; width: 36px; height: 36px; font-size: 26px; line-height: 36px; text-align: center; object-fit: contain; }
+.low-add { flex: none; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 12px; font-weight: 900; }
+.low-add .ic { width: 18px; height: 18px; margin: 0; }
+.low-skip { flex: none; width: 40px; min-height: 40px; height: 40px; padding: 0; border: 0; box-shadow: none; background: none; color: var(--muted); display: grid; place-items: center; }
+.low-skip .ic { width: 18px; height: 18px; margin: 0; }
