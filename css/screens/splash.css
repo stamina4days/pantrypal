@@ -83,76 +83,182 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
 
 /* ---------- Start screen: Benji's shop front ---------- */
 .splash.shopfront {
-  --sf-wall: #EFDCC2; --sf-brick: #E2C9A8; --sf-window: #FFF6E2; --sf-glow: rgba(255, 201, 77, .35); --sf-rope: #8A6A4A;
-  justify-content: flex-start; padding: 0 16px 12px; color: #F6EBD9;
-  background-color: var(--sf-wall);
-  background-image: linear-gradient(var(--sf-brick) 2px, transparent 2px), linear-gradient(90deg, var(--sf-brick) 2px, transparent 2px);
-  background-size: 60px 30px;
+  --sf-wall: #E3C59E; --sf-brick: #DDBF98; --sf-mortar: #F3E5CF; --sf-room: #FFE9BE; --sf-room-deep: #F3C98A; --sf-rope: #7A5A3C;
+  --sf-wood: #A0693B; --sf-wood-dark: #6E4524; --sf-wood-deep: #3A2818; --sf-street: #BDB3A6; --sf-curb: #9C9183;
+  justify-content: flex-start; padding: 0 14px 52px; color: #F6EBD9; overflow-x: hidden;
+  background-color: var(--sf-mortar);
+  /* Real bricks: each row is offset by half a brick */
+  background-image:
+    linear-gradient(var(--sf-mortar) 3px, transparent 3px),
+    linear-gradient(90deg, var(--sf-mortar) 3px, transparent 3px),
+    linear-gradient(90deg, var(--sf-mortar) 3px, transparent 3px),
+    linear-gradient(var(--sf-wall), var(--sf-wall));
+  background-size: 100% 26px, 64px 52px, 64px 52px, 100% 100%;
+  background-position: 0 0, 0 0, 32px 26px, 0 0;
 }
+.splash.shopfront::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0 26px, rgba(0, 0, 0, .0) 26px 52px), radial-gradient(120% 70% at 50% 35%, transparent 40%, rgba(40, 20, 5, .22)); }
 @media (prefers-color-scheme: dark) {
-  .splash.shopfront { --sf-wall: #231C1F; --sf-brick: #2E2427; --sf-window: #3B2E2A; --sf-glow: rgba(255, 201, 77, .2); --sf-rope: #C9B9A2; }
+  .splash.shopfront { --sf-wall: #3A2A26; --sf-brick: #33241F; --sf-mortar: #241A18; --sf-room: #5A4130; --sf-room-deep: #3A2A20;
+    --sf-rope: #CBB79C; --sf-street: #2E2A27; --sf-curb: #4A4440; }
+  .splash.shopfront::before { background: radial-gradient(120% 70% at 50% 35%, transparent 35%, rgba(0, 0, 0, .45)); }
 }
-.shopfront .splash-awning { height: 58px; border: 0; background: repeating-linear-gradient(90deg, #E5482F 0 39px, #FFF3DC 39px 78px); box-shadow: 0 5px 0 rgba(0, 0, 0, .25); }
-.shopfront .splash-awning::after { content: ""; position: absolute; left: 0; right: 0; top: 58px; height: 18px;
-  background: radial-gradient(circle at 19.5px 0, #E5482F 18.5px, transparent 19.5px) 0 0 / 78px 18px repeat-x,
-              radial-gradient(circle at 58.5px 0, #FFF3DC 18.5px, transparent 19.5px) 0 0 / 78px 18px repeat-x; }
-.shopfront .splash-stage { width: min(380px, 100%); margin-top: 84px; }
-.sf-sign { padding: 6px 22px; background: #2A1C14; border: 5px solid #C98F5A; border-radius: 12px; box-shadow: 0 6px 0 rgba(0, 0, 0, .35); }
-.shopfront .splash-name { margin: 0; font-size: 2.4rem; color: #FFC94D; text-shadow: 0 0 14px rgba(255, 201, 77, .45); }
-.sf-window { position: relative; width: 100%; margin-top: 12px; height: 150px; box-sizing: border-box; background: var(--sf-window);
-  border: 8px solid #6E4524; border-bottom: 0; border-radius: 6px 6px 0 0; box-shadow: inset 0 0 40px var(--sf-glow); }
-.shopfront .sm-benji { position: absolute; left: 50%; bottom: -26px; margin: 0; transform: translateX(-50%); z-index: 1; }
-.shopfront .sm-benji .pal { width: 104px; height: 139px; display: block; }
-.shopfront .sm-hello { position: absolute; left: 8px; top: 10px; z-index: 3; width: 34%; margin: 0; padding: 6px 8px; box-sizing: border-box;
-  background: #22382B; border: 5px solid #8A5A33; border-radius: 6px; transform: rotate(-4deg);
-  font-family: var(--hand); font-size: 1rem; font-weight: 700; line-height: 1.1; color: #F1EEE4; text-align: left; animation: none; }
-.sf-counter { position: relative; z-index: 2; width: calc(100% + 8px); height: 44px; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 10px;
-  box-sizing: border-box; background: #C98F5A; border-radius: 8px 8px 4px 4px; box-shadow: 0 8px 0 #6E4524; }
-.sf-crate { position: relative; display: flex; justify-content: center; width: 86px; height: 30px; margin-bottom: 30px; background: #8A5A33; border: 3px solid #5A3F2A; border-radius: 4px; }
-.sf-crate img { width: 36px; height: 36px; margin: -22px -2px 0; }
-.sf-crate img:first-child { transform: rotate(-10deg); }
-.sf-crate img:last-child { transform: rotate(10deg); }
+.shopfront .splash-awning { height: 54px; border: 0; z-index: 2;
+  background: linear-gradient(rgba(255, 255, 255, .18), transparent 40%, rgba(0, 0, 0, .18)), repeating-linear-gradient(90deg, #E5482F 0 39px, #FFF3DC 39px 78px);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, .2); }
+.shopfront .splash-awning::after { content: ""; position: absolute; left: 0; right: 0; top: 54px; height: 18px; filter: drop-shadow(0 4px 0 rgba(0, 0, 0, .22));
+  background: radial-gradient(circle at 19.5px 0, #D9402A 18.5px, transparent 19.5px) 0 0 / 78px 18px repeat-x,
+              radial-gradient(circle at 58.5px 0, #F2E4C8 18.5px, transparent 19.5px) 0 0 / 78px 18px repeat-x; }
+.shopfront .splash-stage { position: relative; z-index: 1; width: min(380px, 100%); margin-top: 84px; flex: 1 0 auto; justify-content: center; }
+
+/* The marquee sign, hung from the awning on two chains, with a row of bulbs around it */
+.sf-sign { position: relative; padding: 10px 26px 12px; background: #2A1C14; border-radius: 14px;
+  box-shadow: inset 0 0 0 5px #C98F5A, inset 0 0 0 7px #5A3A20, 0 7px 0 rgba(0, 0, 0, .35), 0 0 30px rgba(255, 201, 77, .18); }
+.sf-sign::before { content: ""; position: absolute; inset: 11px; border-radius: 8px; pointer-events: none;
+  background: radial-gradient(circle, #FFE7A0 2.4px, #FFC94D 3px, transparent 3.6px) 0 0 / 16px 16px repeat-x,
+              radial-gradient(circle, #FFE7A0 2.4px, #FFC94D 3px, transparent 3.6px) 0 100% / 16px 16px repeat-x;
+  margin: -8px 0; }
+.sf-sign::after { content: ""; position: absolute; left: 18%; right: 18%; top: -30px; height: 30px;
+  border-left: 3px dotted var(--sf-rope); border-right: 3px dotted var(--sf-rope); }
+.shopfront .splash-name { position: relative; margin: 0; font-size: 2.5rem; color: #FFD55E;
+  text-shadow: 0 0 6px rgba(255, 201, 77, .9), 0 0 18px rgba(255, 170, 40, .55), 0 3px 0 #7A4A10; }
+
+/* The shop window and counter */
+.sf-front { position: relative; width: 100%; margin-top: 14px; }
+.sf-window { position: relative; height: clamp(150px, 27vh, 236px); overflow: hidden; box-sizing: border-box;
+  background: radial-gradient(70% 90% at 50% 8%, #FFF7DE, var(--sf-room) 45%, var(--sf-room-deep));
+  border: 9px solid var(--sf-wood-dark); border-bottom: 0; border-radius: 10px 10px 0 0;
+  box-shadow: inset 0 0 0 2px #4A2E16, inset 0 -30px 40px rgba(60, 30, 10, .18), 0 0 0 3px rgba(0, 0, 0, .15); }
+.sf-window::before { content: ""; position: absolute; left: 0; right: 0; top: 34px; height: 6px; background: var(--sf-wood-dark); box-shadow: 0 2px 0 rgba(0, 0, 0, .2); z-index: 1; }
+.sf-window::after { content: ""; position: absolute; top: 0; height: 34px; left: calc(33.33% - 3px); width: calc(33.33% + 6px);
+  border-left: 6px solid var(--sf-wood-dark); border-right: 6px solid var(--sf-wood-dark); box-sizing: border-box; z-index: 1; }
+.sf-lamp { position: absolute; left: 50%; top: 40px; width: 46px; height: 20px; margin-left: -23px; z-index: 1;
+  background: #2F5D45; border-radius: 24px 24px 4px 4px; box-shadow: 0 6px 0 -2px #FFE7A0; }
+.sf-lamp::before { content: ""; position: absolute; left: 50%; top: -6px; width: 2px; height: 6px; background: #2A1C14; }
+.sf-lamp::after { content: ""; position: absolute; left: 50%; top: 18px; width: 220px; height: 150px; margin-left: -110px; pointer-events: none;
+  background: radial-gradient(50% 60% at 50% 0, rgba(255, 236, 170, .55), transparent 70%); }
+.sf-shelf { position: absolute; top: 72px; width: 30%; height: 7px; display: flex; justify-content: space-around; align-items: flex-end;
+  background: var(--sf-wood); border-radius: 2px; box-shadow: 0 4px 0 rgba(0, 0, 0, .18); }
+.sf-shelf img { width: 28px; height: 28px; margin-bottom: 5px; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .2)); }
+.sf-shelf-l { left: 8px; }
+.sf-shelf-r { right: 8px; }
+.shopfront .sm-benji { position: absolute; left: 50%; bottom: -12px; margin: 0; transform: translateX(-50%); z-index: 2; filter: drop-shadow(0 4px 0 rgba(0, 0, 0, .15)); }
+.shopfront .sm-benji .pal { width: 116px; height: 155px; display: block; }
+/* Benji says hello in a speech bubble */
+.shopfront .sm-hello { position: absolute; left: 6px; bottom: 62px; z-index: 3; max-width: 31%; margin: 0; padding: 6px 9px; box-sizing: border-box;
+  background: #FFFDF6; border-radius: 14px; box-shadow: 0 3px 0 #C9B9A2;
+  font-family: var(--hand); font-size: 1rem; font-weight: 700; line-height: 1.1; color: #233A31; text-align: left; animation: none; }
+.shopfront .sm-hello::after { content: ""; position: absolute; right: -7px; bottom: 12px; width: 12px; height: 12px; background: #FFFDF6; transform: rotate(45deg); border-radius: 2px; }
+/* A soft glare on the glass */
+.sf-glass { position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: linear-gradient(115deg, transparent 0 58%, rgba(255, 255, 255, .22) 58% 64%, transparent 64% 68%, rgba(255, 255, 255, .14) 68% 70%, transparent 70%); }
+.sf-counter { position: relative; z-index: 3; margin: 0 -6px; height: 50px; display: flex; justify-content: space-between; align-items: flex-start; padding: 0 12px;
+  background: linear-gradient(#D9A06A 0 10px, #B57A47 10px 12px, var(--sf-wood) 12px); border-radius: 6px 6px 4px 4px;
+  background-image: linear-gradient(#D9A06A 0 10px, #8A5A33 10px 13px, transparent 13px),
+    repeating-linear-gradient(90deg, var(--sf-wood) 0 46px, #8E5D32 46px 48px);
+  box-shadow: 0 7px 0 var(--sf-wood-deep), 0 12px 14px rgba(0, 0, 0, .25); }
+/* Crates sit on the counter top with produce peeking out */
+.sf-crate { position: relative; display: flex; justify-content: center; width: 92px; height: 26px; margin-top: -24px;
+  background: repeating-linear-gradient(0deg, #9A6537 0 7px, #6E4524 7px 9px); border: 3px solid #5A3A20; border-radius: 3px; box-shadow: 0 3px 0 rgba(0, 0, 0, .25); }
+.sf-crate img { width: 32px; height: 32px; margin: -22px -4px 0; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .2)); }
+.sf-crate img:first-child { transform: rotate(-12deg); }
+.sf-crate img:nth-child(2) { margin-top: -27px; position: relative; z-index: 1; }
+.sf-crate img:last-child { transform: rotate(12deg); }
+
 /* The menu: wooden signs hanging on ropes */
-.shopfront .sm-menu { gap: 22px; margin-top: 30px; align-items: center; }
-.shopfront .sm-menu button { position: relative; width: 74%; min-height: 50px; border: 0; border-radius: 10px; color: #FFF3DC; font-size: 1.1rem; font-weight: 900;
-  background: #A0693B; background-image: repeating-linear-gradient(90deg, transparent 0 60px, rgba(0, 0, 0, .08) 60px 62px);
-  box-shadow: inset 0 0 0 3px #6E4524, 0 6px 0 #3A2818; }
-.shopfront .sm-menu button::before, .shopfront .sm-menu button::after { content: ""; position: absolute; top: -22px; width: 3px; height: 22px; background: var(--sf-rope); }
-.shopfront .sm-menu button::before { left: 20%; }
-.shopfront .sm-menu button::after { right: 20%; }
-.shopfront .sm-menu button:nth-child(2) { transform: rotate(-2deg); }
-.shopfront .sm-menu button:nth-child(3) { transform: rotate(2deg); width: 70%; }
-.shopfront .sm-menu button:nth-child(4) { transform: rotate(-1.5deg); width: 66%; }
-.shopfront .sm-menu button:active { translate: 0 3px; }
-.shopfront .sm-menu .sm-go { width: 100%; min-height: 62px; font-size: 1.6rem; color: #FFFFFF; background-color: #2A7F3F; box-shadow: inset 0 0 0 4px #1C5A2C, 0 7px 0 #123D1E; }
-.shopfront .sm-menu .sm-go::before, .shopfront .sm-menu .sm-go::after { top: -30px; height: 30px; }
-.shopfront .sm-menu .ic { width: 22px; height: 22px; }
-.shopfront .sm-rename { margin-top: 10px; min-height: 40px; padding: 4px 12px; border: 0; background: none; box-shadow: none; font-family: var(--hand); font-size: 1.05rem; color: #8A5A33; text-decoration: underline; }
-@media (prefers-color-scheme: dark) { .shopfront .sm-rename { color: #C9B9A2; } }
+.shopfront .sm-menu { position: relative; gap: 0; margin-top: 34px; align-items: stretch; animation: none; }
+.shopfront .sm-menu button { position: relative; min-height: 50px; border: 0; border-radius: 10px; color: #FFF3DC; font-size: 1.02rem; font-weight: 900;
+  background-color: var(--sf-wood); text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+  background-image: linear-gradient(rgba(255, 255, 255, .12), transparent 45%, rgba(0, 0, 0, .1)), repeating-linear-gradient(90deg, transparent 0 58px, rgba(0, 0, 0, .1) 58px 60px);
+  box-shadow: inset 0 0 0 3px var(--sf-wood-dark), 0 5px 0 var(--sf-wood-deep); }
+.shopfront .sm-menu button:focus-visible { outline: 3px solid #FFD55E; outline-offset: 3px; }
+.shopfront .sm-menu button:active { translate: 0 3px; box-shadow: inset 0 0 0 3px var(--sf-wood-dark), 0 2px 0 var(--sf-wood-deep); }
+.shopfront .sm-menu button::before, .shopfront .sm-menu button::after { content: ""; position: absolute; top: -30px; width: 4px; height: 30px; border-radius: 2px;
+  background: repeating-linear-gradient(0deg, var(--sf-rope) 0 4px, transparent 4px 5px); }
+.shopfront .sm-menu button::before { left: 18%; }
+.shopfront .sm-menu button::after { right: 18%; }
+.shopfront .sm-menu .sm-go { width: 100%; min-height: 62px; font-size: 1.65rem; letter-spacing: .03em; color: #FFFFFF;
+  background-color: #2A7F3F; box-shadow: inset 0 0 0 4px #1C5A2C, 0 6px 0 #123D1E; }
+.shopfront .sm-menu .sm-go::before, .shopfront .sm-menu .sm-go::after { top: -34px; height: 34px; }
+.sf-planks { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 12px; margin-top: 26px; }
+.shopfront .sf-plank { width: 100%; padding: 6px 8px; gap: 6px; }
+.shopfront .sf-plank::before, .shopfront .sf-plank::after { top: -26px; height: 26px; }
+.shopfront .sf-plank:nth-child(1) { background-color: #B5562E; box-shadow: inset 0 0 0 3px #7A3418, 0 5px 0 #3E1A0C; }
+.shopfront .sf-plank:nth-child(2) { rotate: 1.5deg; }
+.shopfront .sf-plank:nth-child(3) { rotate: 1deg; }
+.shopfront .sf-plank:nth-child(4) { rotate: -1.5deg; }
+.shopfront .sm-menu .ic { width: 22px; height: 22px; flex: none; }
+.shopfront .sm-rename { position: relative; z-index: 1; margin-top: 14px; min-height: 40px; padding: 4px 12px; border: 0; background: none; box-shadow: none;
+  font-family: var(--hand); font-size: 1.08rem; color: #6E4524; text-decoration: underline; }
+@media (prefers-color-scheme: dark) { .shopfront .sm-rename { color: #E2D3BC; } }
+/* The sidewalk along the bottom */
+.sf-street { position: absolute; left: 0; right: 0; bottom: 0; height: 38px; z-index: 0;
+  background: repeating-linear-gradient(90deg, var(--sf-street) 0 76px, var(--sf-curb) 76px 79px);
+  box-shadow: inset 0 6px 0 var(--sf-curb); }
 @media (prefers-reduced-motion: no-preference) {
-  .shopfront .sm-menu button { animation: sf-swing 5s ease-in-out infinite; transform-origin: 50% -22px; }
-  .shopfront .sm-menu button:nth-child(2n) { animation-delay: -2.5s; }
-  @keyframes sf-swing { 0%, 100% { rotate: -1.5deg; } 50% { rotate: 1.5deg; } }
-  .shopfront .sm-menu { animation: none; }
+  .shopfront .sm-menu .sm-go, .shopfront .sf-plank { animation: sf-swing 5s ease-in-out infinite; transform-origin: 50% -30px; }
+  .shopfront .sf-plank:nth-child(2n) { animation-delay: -2.5s; }
+  .shopfront .sm-menu .sm-go { animation-duration: 6s; }
+  @keyframes sf-swing { 0%, 100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
+  .shopfront .sf-lamp, .shopfront .sf-lamp::after { animation: sf-lamp 4s ease-in-out infinite; transform-origin: 50% -6px; }
+  @keyframes sf-lamp { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+  .shopfront .splash-name { animation: sf-neon 6s infinite; }
+  @keyframes sf-neon { 0%, 91%, 95%, 100% { opacity: 1; } 93% { opacity: .55; } }
+  .splash.shopfront .sm-benji { animation: none; }
+  .shopfront .sm-benji .pal { animation: pal-hop 1.8s ease-in-out infinite; transform-origin: bottom center; }
 }
+
+/* First time: the terms and the name, on a card in front of the shop */
+.sf-card-mode .splash-stage { margin-top: 82px; }
+.sf-sign-sm { padding: 6px 20px 8px; }
+.sf-sign-sm .splash-name { font-size: 2rem; }
+.sf-card-mode .sm-benji { position: relative; left: auto; bottom: auto; transform: none; margin: 14px 0 6px; }
+.sf-card-mode .sm-benji .pal { width: 100px; height: 134px; }
+.shopfront .sm-card { color: var(--ink); }
+.sm-card-title { margin: 0; font-family: var(--hand); font-size: 1.5rem; line-height: 1.1; color: var(--ink); }
+.sm-terms-link { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; font-size: 1.05rem; font-weight: 900;
+  color: #1F5F99; background: #EAF3FA; border: 2px solid #9CC3E0; border-radius: 12px; text-decoration: underline; text-underline-offset: 3px; box-shadow: 0 3px 0 #9CC3E0; }
+.sm-terms-link .ic { width: 22px; height: 22px; margin: 0; }
+.sm-terms-link.read { color: #1C5E30; background: #E6F3E8; border-color: #8FC79C; box-shadow: 0 3px 0 #8FC79C; }
+.sm-terms-link .sm-done { width: 20px; height: 20px; margin: 0; stroke-width: 3; }
+.sm-check { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 6px 4px; font-weight: 800; font-size: 1.02rem; cursor: pointer; }
+.sm-check input { width: 28px; height: 28px; flex: none; margin: 0; accent-color: #2A7F3F; }
+.sm-check:has(input:disabled) { opacity: .55; cursor: not-allowed; }
+.sm-hint { margin: -4px 0 0; min-height: 1.3em; font-size: .9rem; font-weight: 700; color: var(--muted); }
+.sm-card .sm-go:disabled { opacity: .5; cursor: not-allowed; }
+@media (prefers-color-scheme: dark) {
+  .sm-terms-link { color: #9DD0F5; background: #1D2E3B; border-color: #3E6A8C; box-shadow: 0 3px 0 #3E6A8C; }
+  .sm-terms-link.read { color: #9FDCAD; background: #1E3324; border-color: #3F7A4D; box-shadow: 0 3px 0 #3F7A4D; }
+}
+
 /* Short screens: tighten the shop */
-@media (max-height: 780px) {
+@media (max-height: 800px) {
   .shopfront .splash-awning { height: 44px; }
   .shopfront .splash-awning::after { top: 44px; }
-  .shopfront .splash-stage { margin-top: 66px; }
-  .shopfront .splash-name { font-size: 2rem; }
-  .sf-window { height: 124px; }
-  .shopfront .sm-benji .pal { width: 88px; height: 118px; }
-  .shopfront .sm-menu { gap: 18px; margin-top: 24px; }
-  .shopfront .sm-menu button { min-height: 46px; font-size: 1.02rem; }
-  .shopfront .sm-menu .sm-go { min-height: 54px; font-size: 1.4rem; }
+  .shopfront .splash-stage { margin-top: 70px; }
+  .shopfront .splash-name { font-size: 2.1rem; }
+  .shopfront .sm-benji .pal { width: 98px; height: 131px; }
+  .shopfront .sm-menu { margin-top: 30px; }
+  .shopfront .sm-menu .sm-go { min-height: 54px; font-size: 1.45rem; }
+  .shopfront .sm-menu button { min-height: 46px; }
+  .sf-planks { gap: 22px 10px; margin-top: 22px; }
+  .shopfront .sf-plank::before, .shopfront .sf-plank::after { top: -22px; height: 22px; }
+  .sf-card-mode .sm-benji .pal { width: 80px; height: 107px; }
 }
-@media (max-height: 640px) {
-  .shopfront .splash-name { font-size: 1.7rem; }
-  .sf-window { height: 104px; }
-  .shopfront .sm-benji .pal { width: 74px; height: 99px; }
-  .shopfront .sm-menu { gap: 14px; margin-top: 18px; }
-  .shopfront .sm-menu button { min-height: 42px; }
+@media (max-height: 740px) { .sf-shelf-l { display: none; } }
+@media (max-height: 660px) {
+  .shopfront .splash-name { font-size: 1.8rem; }
+  .sf-window { height: 128px; }
+  .sf-window::before, .sf-window::after { display: none; }
+  .sf-lamp { top: 6px; }
+  .sf-shelf { top: 46px; }
+  .shopfront .sm-hello { bottom: 40px; font-size: .9rem; padding: 4px 7px; }
+  .shopfront .sm-benji .pal { width: 80px; height: 107px; }
   .shopfront .sm-menu .sm-go { min-height: 48px; }
-  .shopfront .sm-menu button::before, .shopfront .sm-menu button::after { top: -14px; height: 14px; }
+  .shopfront .sm-menu button { min-height: 42px; }
+  .shopfront .splash { padding-bottom: 44px; }
+}
+@media (max-width: 350px) {
+  .shopfront .sf-plank { font-size: .92rem; }
+  .shopfront .sm-hello { font-size: .9rem; }
 }
