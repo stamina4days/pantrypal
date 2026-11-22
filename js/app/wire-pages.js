@@ -3,7 +3,7 @@
 
 /* Called by renderAll, so anything open stays current after you change something. */
 function renderPageExtras() {
-  const slot = $("#installSlot"); if (slot) slot.innerHTML = installNudgeHtml();
+  const slot = $("#installSlot"); if (slot) slot.innerHTML = installNudgeHtml() || backupNudgeHtml();
   renderKitchenName();
   renderSpecial();
   renderPlaceTiles();

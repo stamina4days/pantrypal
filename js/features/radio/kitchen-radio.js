@@ -42,6 +42,12 @@ const Radio = (() => {
   let el = null, station = null, previewing = null, previewTimer = null, fadeTimer = null, wasPlaying = false, wasHidden = false;
   const vol = () => (settings.radioVol == null ? 50 : settings.radioVol) / 100;
   const musicOn = () => settings.music !== false;
+  /* The first time, the start screen asks "Play music while you cook?" Music only starts on its own after a yes */
+  const asked = () => settings.musicAsked === true;
+  function answer(yes) {
+    settings.musicAsked = true; settings.music = !!yes; saveSettings();
+    if (yes) autoStart(); else stop();
+  }
   function track(id) {
     if (!id) return null;
     if (id === "main") return MUSIC_MAIN;
@@ -89,19 +95,19 @@ const Radio = (() => {
     const tr = track(id);
     if (!trackOpen(tr)) return;
     clearTimeout(previewTimer); previewing = null; wasPlaying = false;
-    settings.radioStation = id; settings.music = true; saveSettings();
+    settings.radioStation = id; settings.music = true; settings.musicAsked = true; saveSettings();
     station = id; startTrack(tr);
     render();
   }
   /* Go back to your kitchen's own song */
   function useKitchenSong() {
-    settings.radioStation = null; settings.music = true; saveSettings();
+    settings.radioStation = null; settings.music = true; settings.musicAsked = true; saveSettings();
     clearTimeout(previewTimer); previewing = null; wasPlaying = false;
     const id = defaultId(); station = id; startTrack(track(id)); render();
   }
   /* Start the music (the start screen calls this, right inside a tap) */
   function autoStart() {
-    if (!musicOn() || (station && !previewing)) return;
+    if (!asked() || !musicOn() || (station && !previewing)) return;
     const id = currentPick();
     station = id; startTrack(track(id));
     render();
@@ -133,7 +139,7 @@ const Radio = (() => {
   /* Music on or off */
   function toggle() {
     if (station && !previewing) { settings.music = false; saveSettings(); stop(); }
-    else { settings.music = true; saveSettings(); clearTimeout(previewTimer); previewing = null; wasPlaying = false; station = null; autoStart(); }
+    else { settings.music = true; settings.musicAsked = true; saveSettings(); clearTimeout(previewTimer); previewing = null; wasPlaying = false; station = null; autoStart(); }
   }
   /* A new kitchen theme brings its own song, unless you picked one */
   function themeChanged() {
@@ -242,6 +248,6 @@ const Radio = (() => {
     });
     render();
   }
-  return { init, open, play, stop, preview, endPreview, autoStart, toggle, themeChanged, render, playing: () => station, previewing: () => previewing };
+  return { init, open, play, stop, preview, endPreview, autoStart, answer, asked, toggle, themeChanged, render, playing: () => station, previewing: () => previewing };
 })();
 const openMusic = () => Radio.open();

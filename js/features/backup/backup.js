@@ -2,11 +2,38 @@
 /* Backups. */
 /* ---------- backup ---------- */
 function exportBackup() {
+  settings.lastBackup = todayStr(); settings.backupNudgeAt = null; saveSettings();
   download(`pantry-backup-${todayStr()}.json`, JSON.stringify({
     app: "pantrypal", version: 3, exported: new Date().toISOString(),
     items, history, shopping, barcodes, plan, cookedLog, myRecipes, settings
   }, null, 2), "application/json");
+  if (typeof renderPageExtras === "function") renderPageExtras();
 }
+/* Everything is saved only in this browser, so clearing it wipes the kitchen. Benji reminds people to save a backup file:
+   the first time once they've added about 10 foods or used the app for a week, then about once a month.
+   "Not now" waits two weeks. It shares a spot with the home screen nudge on My Food, one at a time. */
+const daysAgo = d => d ? Math.round((Date.now() - new Date(d + "T12:00:00").getTime()) / 86400000) : 0;
+function backupNudgeHtml() {
+  if (!settings.firstSeen) { settings.firstSeen = todayStr(); saveSettings(); }
+  if (!items.length) return "";
+  if (settings.backupNudgeAt && daysAgo(settings.backupNudgeAt) < 0) return "";
+  const due = settings.lastBackup ? daysAgo(settings.lastBackup) >= 30 : (items.length >= 10 || daysAgo(settings.firstSeen) >= 7);
+  if (!due) return "";
+  return palBubble("worried", settings.lastBackup
+      ? t("It's been a while since you saved a copy of your kitchen. Save a fresh one so a cleared browser can't wipe it.")
+      : t("Your kitchen is saved only on this phone. If your browser data gets cleared, it's gone. Save a copy to be safe."),
+    [{ attrs: 'data-bk="save" class="primary"', label: t("Save a copy") }, { attrs: 'data-bk="later"', label: t("Not now") }], "backup-nudge");
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-bk]"); if (!b) return;
+  if (b.dataset.bk === "save") { exportBackup(); toast(t("Saved a copy to your downloads. To bring it back, use Settings > Bring back a copy.")); }
+  else {
+    const d = new Date(); d.setDate(d.getDate() + 14);
+    settings.backupNudgeAt = d.toISOString().slice(0, 10); saveSettings();
+    if (typeof renderPageExtras === "function") renderPageExtras();
+    toast(t("I'll ask again in two weeks. Save a copy is in Settings any time."));
+  }
+});
 function importBackup(file) {
   const reader = new FileReader();
   reader.onload = async () => {
