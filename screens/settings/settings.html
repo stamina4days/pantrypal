@@ -6,6 +6,7 @@
     <h3 data-t>Household and kitchen</h3>
     <div class="stack">
       <button type="button" data-start-tour><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> <span data-t>Take the tour</span></button>
+      <button type="button" id="hatsBtn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/hat.svg#i"/></svg> <span data-t>Benji's hats</span></button>
       <button id="helpSettingsBtn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg> <span data-t>How to use Pantry Pal</span></button>
       <button id="shareKitchenBtn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/house.svg#i"/></svg> <span data-t>Share your kitchen</span></button>
       <button id="homeScreenBtn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/phone.svg#i"/></svg> <span data-t>Put Benji on your home screen</span></button>
@@ -14,15 +15,7 @@
       <button id="householdBtn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/house.svg#i"/></svg> <span data-t>People, diet, cooking time, and equipment</span></button>
       <button id="auditBtn"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> <span data-t>Run a pantry audit</span></button>
     </div>
-
-    <div class="lang-setting">
-    <h3 data-t>Language</h3>
-    <select id="langSelect" data-t-aria="Language" aria-label="Language">
-      <option value="en">English</option>
-      <option value="es">Español</option>
-    </select>
-    <p class="muted small" data-t>The Spanish version was translated automatically and hasn't been checked by a fluent speaker yet.</p>
-    </div>
+    <label class="check"><input type="checkbox" id="tourAutoToggle"> <span data-t>Show the tour when I open the app</span></label>
 
     <h3 data-t>Recipes</h3>
     <label class="check"><input type="checkbox" id="assumeBasics"> <span data-t>Assume I always have basics (salt, pepper, oil, flour, sugar, common spices, soy sauce, vinegar)</span></label>
@@ -53,7 +46,6 @@
     </div>
     <label class="check"><input type="checkbox" id="highContrast"> <span data-t>High contrast</span></label>
     <label class="check"><input type="checkbox" id="soundsToggle"> <span data-t>Sounds and buzzes</span></label>
-    <button type="button" id="hatsBtn" class="wide"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> <span data-t>Benji's hats</span></button>
 
     <h3 data-t>Backup</h3>
     <p class="muted small" data-t>Everything lives only in this browser on this device. Export a backup now and then, and use it to move your data to another phone or browser.</p>

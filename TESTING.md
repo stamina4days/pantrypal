@@ -7,8 +7,11 @@ Check each box, and write down anything that looks wrong (what you tapped, what 
 - [ ] Open the site at its real https address (GitHub Pages), not as a file.
 - [ ] Settings > **Check what this phone supports**. Take a screenshot of the list.
 - [ ] Install it: Android Chrome menu > **Install app** (or Add to Home screen). iPhone Safari > Share > **Add to Home Screen**.
-- [ ] The home screen icon shows the green fridge, not a blank square or a letter.
+- [ ] The home screen icon shows Benji, not a blank square or a letter.
 - [ ] Open it from the home screen. It opens full screen, without the browser address bar.
+- [ ] First visit: Benji asks your name on the start screen, then setup, then the tour.
+- [ ] Tick "Don't show this when I open the app" in the tour, reopen the app, and check the tour stays away. Turn it back on in Settings.
+- [ ] Win a hat in Fridge Sort and see it on the hats page.
 
 ## Opening screen and pages
 - [ ] The opening screen shows Pal and a progress bar that fills as recipes load.
@@ -20,7 +23,6 @@ Check each box, and write down anything that looks wrong (what you tapped, what 
 
 ## First run
 - [ ] Setup appears on first open. Try going Back and Next.
-- [ ] Switch to Español on the first screen, then back to English.
 - [ ] Run the pantry audit. Tap about 10 items, add one item in the "Something else?" box, and finish.
 - [ ] My Food shows the items with dates and amounts.
 
@@ -40,7 +42,6 @@ Check each box, and write down anything that looks wrong (what you tapped, what 
 - [ ] Open a recipe > **Cook mode**. Leave the phone on the counter for 2 minutes. The screen should stay on.
 - [ ] Turn on **Read aloud**, then tap Next. It reads the step.
 - [ ] Turn on **Voice commands**, allow the microphone, and say "next", "back", "repeat", and "timer."
-- [ ] Switch to Español and try "siguiente" and "repite."
 
 ## Shopping and sharing
 - [ ] Shopping list is grouped by store section, with an estimated total.
