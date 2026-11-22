@@ -45,6 +45,7 @@ function pagesInit() {
   $("#soundsToggle").addEventListener("change", e => { settings.sounds = e.target.checked; saveSettings(); if (e.target.checked) sfx("ding"); });
   $("#outfitsToggle").addEventListener("change", e => { settings.palOutfits = e.target.checked; saveSettings(); renderAll(); });
   todayInit();
+  searchInit();
   swipeInit();
   palLifeInit();
   talkInit();
