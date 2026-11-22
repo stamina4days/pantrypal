@@ -17,6 +17,7 @@ function applyKitchenTheme() {
   document.body.className = document.body.className.replace(/\btheme-\S+/g, "").trim();
   if (id) document.body.classList.add("theme-" + id);
   renderThemePick();
+  if (typeof Radio !== "undefined" && Radio.themeChanged) Radio.themeChanged();
 }
 
 /* A mini kitchen in a theme, drawn with that theme's own colors and wall piece (the same one Benji's shop shows) */
