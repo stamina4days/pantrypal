@@ -10,6 +10,11 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.1
+- **Family kitchen table look:** cream paper, a red gingham cloth along the top, cards taped down with butter yellow tape, handwritten headings, and a honey wood shelf for the tabs. Today's special is a recipe card now.
+- **Warm evening colors:** in dark mode the same table sits under lamplight instead of cold blue.
+- **Easier to see:** buttons and boxes have clear wooden edges, and every word still meets the contrast standard.
+
 ## New in version 11
 - **Today:** a new home screen that fits on one phone screen. It shows Pal's note, the three foods to use first, tonight's pick, your saved-food jar, and a big Add food button. Waste Less opens from the jar.
 - **Swipe on My Food:** swipe a food left for "Used it" or "Tossed," or right to freeze it. Foods are grouped into "Eat soon" and "Good for now," with shelf buttons across the top.

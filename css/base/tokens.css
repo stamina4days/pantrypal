@@ -1,4 +1,4 @@
-/* Colors, fonts, and sizes. Farmers market palette. */
+/* Colors, fonts, and sizes. Base values; css/themes/kitchen.css sets the family kitchen table look. */
 :root {
   --sky: #DFF1FA;
   --sky-deep: #BFE3F4;
@@ -15,9 +15,10 @@
   --sea: #2E8FC7;
   --chalk: #2C4A3C;
   --accent: var(--leaf);
-  --hand: "Caveat Brush", "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+  --hand: "Kalam", "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
   --body: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --radius: 16px;
+  --edge: #AD7D51; --press: #D9B48C;
   --shadow: 0 2px 0 rgba(35, 58, 49, .12), 0 6px 14px rgba(35, 58, 49, .08);
   --pal-body: #FFFDF6; --pal-ink: #233A31;   /* Pal stays cream in every mode */
 }
