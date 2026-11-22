@@ -189,7 +189,7 @@ function renderShopId() {
 function storeInit() {
   // Buy: copy the shop ID on the way to checkout
   $("#shopPage").addEventListener("click", e => {
-    if (e.target.closest("[data-store-buy]")) { copyShopId(true); toast(t("Your shop ID {id} is copied. Paste it into the shop ID box at checkout.", { id: shopIdText() })); }
+    if (e.target.closest("[data-store-buy]")) { copyShopId(true); toast(t("Your shop ID {id} is copied. Paste it into the shop ID box at checkout. Your code arrives by email within 24 hours.", { id: shopIdText() })); }
     if (e.target.closest("#storeIdCopy")) copyShopId(false);
     const sample = e.target.closest("[data-radio-sample]");
     if (sample && typeof Radio !== "undefined") {

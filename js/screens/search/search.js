@@ -29,6 +29,7 @@ const SEARCH_ACTIONS = [
   { name: "Put Benji on your home screen", icon: "phone", words: "install home screen app icon", run: () => openHomeScreen() },
   { name: "Benji's hats", icon: "hat", words: "hat hats benji outfit dress costume turkey crown closet wizard propeller graduation sweatband game prize", run: () => openHats() },
   { name: "Take the tour", icon: "sparkle", words: "tour tutorial guide walkthrough intro start how what is this", run: () => startTour() },
+  { name: "Send feedback", icon: "mail", words: "feedback bug problem report idea suggestion contact email broken", run: () => sendFeedback() },
   { name: "How to use Pantry Pal", icon: "help", words: "help how to use guide instructions", run: () => openHelp() },
   { name: "Check what this phone supports", icon: "phone", words: "phone check diagnostics camera voice notifications", run: () => runDiagnostics() },
   { name: "About Pantry Pal", icon: "info", words: "about version", run: () => openAbout() },
