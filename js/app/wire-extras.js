@@ -5,6 +5,7 @@ function extrasInit() {
   document.addEventListener("click", e => {
     const ok = e.target.closest("[data-hint-ok]");
     if (ok) { settings.hints = settings.hints || {}; settings.hints[ok.dataset.hintOk] = true; saveSettings(); renderHints(); }
+    if (e.target.closest("[data-feedback]")) sendFeedback();
     if (e.target.id === "resetHints") { settings.hints = {}; saveSettings(); renderHints(); toast(t("Tips will show again.")); }
   });
   window.addEventListener("afterprint", () => { document.body.classList.remove("printing"); $("#printArea").innerHTML = ""; });
