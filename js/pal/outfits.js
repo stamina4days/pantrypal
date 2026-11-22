@@ -72,7 +72,11 @@ const BENJI_HATS = [
       + `<path d="M80 0 L124 4 V26" fill="none" stroke="#F4C542" stroke-width="3" stroke-linecap="round"/><path d="M119 24 L124 38 L129 24 Z" fill="#F4C542" stroke="#9C7A1C" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80" cy="0" r="3.5" fill="#F4C542"/>` },
   { id: "wizard", name: "Wizard hat", unlock: "word-streak-5", game: true, lift: 18,
     art: () => `<path d="M40 20 C56 -4 70 -40 92 -62 C94 -34 108 -6 120 20 Z" fill="#6B4FB8" ${HAT_INK}/><ellipse cx="80" cy="20" rx="56" ry="9" fill="#6B4FB8" ${HAT_INK}/>`
-      + `<path d="M70 -6 l3 7 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1 z" fill="#F4C542"/><circle cx="96" cy="-24" r="3" fill="#F4C542"/><circle cx="88" cy="6" r="2.5" fill="#F4C542"/><circle cx="62" cy="10" r="2" fill="#F4C542"/>` }
+      + `<path d="M70 -6 l3 7 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1 z" fill="#F4C542"/><circle cx="96" cy="-24" r="3" fill="#F4C542"/><circle cx="88" cy="6" r="2.5" fill="#F4C542"/><circle cx="62" cy="10" r="2" fill="#F4C542"/>` },
+  { id: "detective", name: "Detective cap", unlock: "sort-checks-25", game: true, lift: 20,
+    art: () => `<path d="M30 24 C34 14 46 14 50 20 Z" fill="#B08A5A" ${HAT_INK}/><path d="M110 20 C114 14 126 14 132 24 Z" fill="#B08A5A" ${HAT_INK}/>`
+      + `<path d="M40 22 C40 -18 120 -18 120 22 Z" fill="#C9A26B" ${HAT_INK}/><path d="M60 -10 V20 M80 -13 V20 M100 -10 V20 M44 2 H116 M42 12 H118" stroke="#8C6A3E" stroke-width="2.5" stroke-linecap="round"/>`
+      + `<path d="M80 -14 C72 -24 68 -18 74 -14 M80 -14 C88 -24 92 -18 86 -14" fill="none" stroke="#8C6A3E" stroke-width="3" stroke-linecap="round"/><path d="M40 22 H120" ${HAT_INK}/>` }
 ];
 const benjiHat = id => BENJI_HATS.find(h => h.id === id);
 
