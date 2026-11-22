@@ -10,7 +10,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.5";
+  var BUILD = "11.6";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -107,7 +107,6 @@
   <div class="top-actions">
     <button id="searchBtn" class="icon-btn" data-t-aria="Search" aria-label="Search"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/search.svg#i"/></svg><span class="btn-label" data-t>Search</span></button>
     <button id="helpBtn" class="icon-btn" data-t-aria="Help" aria-label="Help"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg><span class="btn-label" data-t>Help</span></button>
-    <button id="langBtn" class="icon-btn lang" aria-label="Cambiar a español">ES</button>
     <button id="settingsBtn" class="icon-btn" data-t-aria="Settings" aria-label="Settings"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/gear.svg#i"/></svg><span class="btn-label" data-t>Settings</span></button>
   </div>
   </div>
@@ -176,18 +175,9 @@
 <script src="data/specials.js" defer></script>
 <script src="data/play.js" defer></script>
 <script src="data/pal/voice-en.js" defer></script>
-<script src="data/pal/voice-es.js" defer></script>
-<script src="data/lang/es/food-words.js" defer></script>
-<script src="data/lang/es/food-aliases.js" defer></script>
 <script src="js/core/i18n.js" defer></script>
-<script src="data/lang/es/core.js" defer></script>
-<script src="data/lang/es/kitchen.js" defer></script>
-<script src="data/lang/es/extras.js" defer></script>
 <script src="data/lang/en/casual.js" defer></script>
-<script src="data/lang/es/pal.js" defer></script>
-<script src="data/lang/es/pages.js" defer></script>
 <script src="data/lang/en/plain-words.js" defer></script>
-<script src="data/lang/es/plain-words.js" defer></script>
 <script src="js/core/config.js" defer></script>
 <script src="js/core/storage.js" defer></script>
 <script src="js/core/dates.js" defer></script>

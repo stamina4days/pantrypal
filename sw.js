@@ -4,7 +4,7 @@
      right away and refreshes in the background, so the app opens fast with no signal.
    Bump CACHE when you publish a big change to clear out old copies. */
 importScripts("offline-files.js");   // defines OFFLINE_FILES
-const CACHE = "pantrypal-v11h";
+const CACHE = "pantrypal-v11i";
 const DATA_CACHE = "pantrypal-data";
 
 self.addEventListener("install", e => {
@@ -68,10 +68,9 @@ async function checkExpiring() {
   if (!soon.length && !todayItems.length) return;
   await cache.put("notified-" + stamp, new Response("1"));
   const names = list => list.slice(0, 3).map(i => i.name).join(", ") + (list.length > 3 ? ` +${list.length - 3}` : "");
-  const es = data.lang === "es";
   const parts = [];
-  if (soon.length) parts.push((es ? "Vence mañana: " : "Expires tomorrow: ") + names(soon));
-  if (todayItems.length) parts.push((es ? "Vence hoy: " : "Expires today: ") + names(todayItems));
+  if (soon.length) parts.push("Expires tomorrow: " + names(soon));
+  if (todayItems.length) parts.push("Expires today: " + names(todayItems));
   await self.registration.showNotification("Pantry Pal", { body: parts.join(". "), icon: "img/icons/icon-192.png", tag: "expiry" });
 }
 
