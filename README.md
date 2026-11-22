@@ -10,6 +10,11 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.11
+- **A new start screen.** Benji's shop front got a full makeover: a marquee sign with light bulbs, a lit shop window with a hanging lamp and stocked shelves, Benji behind the counter saying hello, crates of produce, and wooden signs on ropes. Benji's shop now has its own sign there too.
+- **Benji's shop on Today.** A shop flyer is stuck to the fridge door, so the shop is one tap away.
+- **Agree to the terms first.** The first time you open Pantry Pal, you open the terms, tick the box, and then continue. People who already use the app see it once too.
+
 ## New in version 11.10
 - **Everything in the shop is for sale (11.10.1).** Every item now has its Square checkout link. Bigger tips grow a bigger golden sprout: $1 a golden sprout, $3 a leafy one, and $5 a golden sprout in full bloom with a star flower, and the tip jar shows all three.
 - **A bigger Benji's shop.** New optional extras, each unlocked with a code made for your phone's shop ID, the same way as the Fun hat pack. Everything that saves food and money stays free.
