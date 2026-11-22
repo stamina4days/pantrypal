@@ -51,7 +51,7 @@ function runPlanner(opts) {
       if (!best) break;
       covered = Math.max(1, Math.round(best.servings / Math.max(1, P.people)));
       const id = uid();
-      meals.push({ id, date: D, slot: "breakfast", recipe: best.r.name, servings: best.servings, cookOn: best.cookOn });
+      meals.push({ id, date: D, slot: "breakfast", recipe: best.r.name, servings: best.servings, cookOn: best.cookOn, ...(best.sc.mealExtra || {}) });
       for (let k = 1; k < covered && i + k < dates.length; k++) meals.push({ id: uid(), date: dates[i + k], slot: "breakfast", recipe: best.r.name, servings: P.people, fromId: id });
       i += covered;
     }
@@ -73,7 +73,7 @@ function runPlanner(opts) {
     if (!best) continue;
     lunchFor = wantLunch && best.r.keeps >= 2;
     const id = uid();
-    meals.push({ id, date: D, slot: "dinner", recipe: best.r.name, servings: best.servings, cookOn: best.cookOn });
+    meals.push({ id, date: D, slot: "dinner", recipe: best.r.name, servings: best.servings, cookOn: best.cookOn, ...(best.sc.mealExtra || {}) });
     if (lunchFor) meals.push({ id: uid(), date: dates[i + 1], slot: "lunch", recipe: best.r.name, servings: serv, fromId: id });
     ctx.lastProtein = best.r.protein || null;
   }
@@ -90,6 +90,7 @@ function runPlanner(opts) {
     used: usedIds.size,
     expiringUsed: [...usedIds].filter(id => { const it = items.find(x => x.id === id); return it && it.expires && it.expires <= end; }).length,
     atRisk: items.filter(i => leftIds.has(i.id)).map(i => i.name),
+    atRiskIds: [...leftIds],
     toBuy: buy.size,
     spent: ctx.spent,
     budget: P.weeklyBudget || 0,

@@ -60,6 +60,7 @@ function badgeStats() {
     helper: c.helper || 0,
     sortPlays: (settings.play || {}).sortPlays || 0,
     sortPerfect: (settings.play || {}).sortPerfect || 0,
+    sortChecks: (settings.play || {}).sortChecks || 0,
     wordWins: (settings.play || {}).wordWins || 0,
     wordStreak: Math.max((settings.play || {}).wordStreakBest || 0, (settings.play || {}).wordStreak || 0)
   };
