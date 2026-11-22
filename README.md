@@ -3,12 +3,20 @@
 A kitchen app that plans and preps meals around the food you already have. Works offline, in English and Spanish, with no account or server. It also works without a pantry: anyone can browse recipes, plan meals, and use cook mode.
 
 ## The look
-A farmers market style: a striped awning across the top, price-tag food cards, fruit-sticker expiration dates, and a color for each tab. Pal, the fridge buddy, reacts to what's in your fridge and talks to you in a casual, friendly voice. Dark mode follows your phone's setting.
+A farmers market style: a striped awning across the top, price-tag food cards, fruit-sticker expiration dates, and a color for each tab. Benji, the money-saving dollar sign, reacts to what's in your fridge and talks to you in a casual, friendly voice. Dark mode follows your phone's setting.
 
 ## How it moves
-- **Opening screen.** Pal hops on a crate of produce while the app unpacks every page and recipe, with a progress bar.
+- **Opening screen.** Benji hops on a crate of produce while the app unpacks every page and recipe, with a progress bar.
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
+
+## New in version 11.5
+- **Meet Benji:** the mascot is now Benji, a green dollar sign with white gloves and a sprout on top, because every food you save is money saved. The app is still Pantry Pal.
+- **The sprout grows as you save:** a seed at first, then a sprout at $10 of food saved, more leaves at $50, and a flower at $100.
+- **More moods and poses:** Benji waves, cheers, points, holds a coin when the fridge is empty, gets sleepy late at night, and looks surprised.
+- **Benji's hats:** Settings, Badges, or Search ("hats") opens Benji's closet. He can change hats with the seasons (knit hats, a holiday hat, a sun hat, a pumpkin hat, and a spring flower), wear any hat you pick, or go without. Badges unlock eight more: a chef's hat (First dish), an upside-down turkey with the drumsticks up like horns (Rescue squad), a party hat (On a roll), a top hat (Money saver), a crown (Zero waste week), a beret (World kitchen), a night cap (Midnight snack), and a ball cap (Little helper).
+- **New app icon** with Benji on it.
+- **Guided tour:** after first-time setup, Benji walks new visitors through what Pantry Pal is for and where everything is on Today. Take it again anytime from Help, Settings, or Search ("tour"), or at `#/tour`.
 
 ## New in version 11.4
 - **Play corner:** a yellow Play button on Today opens little games that help your kitchen, plus the kitchen radio. A red dot means today's word puzzle is waiting.
@@ -38,10 +46,10 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Easier to see:** buttons and boxes have clear wooden edges, and every word still meets the contrast standard.
 
 ## New in version 11
-- **Today:** a new home screen that fits on one phone screen. It shows Pal's note, the three foods to use first, tonight's pick, your saved-food jar, and a big Add food button. Waste Less opens from the jar.
+- **Today:** a new home screen that fits on one phone screen. It shows Benji's note, the three foods to use first, tonight's pick, your saved-food jar, and a big Add food button. Waste Less opens from the jar.
 - **Swipe on My Food:** swipe a food left for "Used it" or "Tossed," or right to freeze it. Foods are grouped into "Eat soon" and "Good for now," with shelf buttons across the top.
-- **A quicker Add food:** a sheet slides up. Type the name or tap a quick pick, tap where it goes, and tap when it goes bad (Pal's guess is already picked). Extra details are tucked away.
-- **No more browser pop-ups:** new lists, renaming, deleting, and shared kitchens all use Pal sheets that slide up from the bottom.
+- **A quicker Add food:** a sheet slides up. Type the name or tap a quick pick, tap where it goes, and tap when it goes bad (Benji's guess is already picked). Extra details are tucked away.
+- **No more browser pop-ups:** new lists, renaming, deleting, and shared kitchens all use Benji sheets that slide up from the bottom.
 - **Feels like an app:** opens instantly after the first visit, with no tap flashes or accidental text selection.
 
 ## New in version 10
@@ -49,34 +57,34 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **I bought these:** check things off your shopping list, then one tap puts them all in My Food with their amounts and dates.
 - **I opened it:** on a food's page. Milk, salsa, sauces, and the like switch to their shorter opened shelf life and move to the fridge.
 - **Faster first load:** recipes come from one file instead of 347.
-- **Home screen guide:** pictures for iPhone and Android, plus a one-tap button where the phone allows it (Settings, or Pal asks after a couple of days).
+- **Home screen guide:** pictures for iPhone and Android, plus a one-tap button where the phone allows it (Settings, or Benji asks after a couple of days).
 - **Share your kitchen:** Settings, then "Share your kitchen" sends a link that copies your food, lists, plan, and recipes onto another phone. No accounts, no server.
 - **Readability:** every word passes the standard contrast check in day and evening colors, and keyboard focus shows a clear ring.
 - **English only for now.** The Spanish files are still in the project; set `SPANISH_READY` to `true` in `js/core/config.js` to bring the language switch back.
 
 ## Made for every age
-- **Simple view by default:** one big "Add food" button, large rows, and Pal. "Show me everything" at the bottom of My Food (or in Settings) brings back filters and extras. Setup asks which you prefer.
+- **Simple view by default:** one big "Add food" button, large rows, and Benji. "Show me everything" at the bottom of My Food (or in Settings) brings back filters and extras. Setup asks which you prefer.
 - **A word under every icon,** everyday words instead of computer words ("Save a copy," not "Export backup"), and dates like "Eat by Thursday" or "bought Saturday."
-- **Easy to read:** bigger text, Undo stays up for 12 seconds, and a speaker button on Pal's bubble reads it aloud.
+- **Easy to read:** bigger text, Undo stays up for 12 seconds, and a speaker button on Benji's bubble reads it aloud.
 - **A warm kitchen look:** paper grain, a wooden shelf, masking tape labels, recipe index cards, a notepad shopping list with a magnet, and lamplight colors at night.
-- **Your kitchen:** Pal uses your name and the header says whose kitchen it is. Add your own notes to any recipe on a sticky note, and mark whose favorite it is.
+- **Your kitchen:** Benji uses your name and the header says whose kitchen it is. Add your own notes to any recipe on a sticky note, and mark whose favorite it is.
 - **Waste Less jar:** fills with stickers of the food you saved.
 - **Little helper:** steps kids can safely do get a hand mark in cook mode, and finishing earns a sticker.
 
-## Pal's personality
+## Benji's personality
 - **Hand-drawn everything.** 55 icons, 68 food stickers, and 28 dish drawings replace the phone's emoji, so the app looks the same on every phone.
-- **Pal is alive.** Pal blinks, bounces and says something when you tap it, dances when you rescue food, greets you differently by time of day, and dresses for the season (a switch in Settings turns outfits off).
+- **Benji is alive.** Benji blinks, bounces and says something when you tap it, dances when you rescue food, greets you differently by time of day, and wears a hat for the season (pick a different hat, or none, in Benji's hats).
 - **Moments you can feel.** A RESCUED stamp thunks down when you save food, a price tag tears in half when something's tossed, and little sounds and buzzes go with them (Settings > Sounds and buzzes).
 - **Today's special** on My Food: a chalkboard with one recipe, either rescuing something that's about to go bad or the day's theme (Taco Tuesday, Soup Sunday, and so on).
-- **Pal's lines** live in `data/pal/voice-en.js` and `data/pal/voice-es.js`. Edit them to change what Pal says.
+- **Benji's lines** live in `data/pal/voice-en.js` and `data/pal/voice-es.js`. Edit them to change what Benji says.
 - **Custom controls:** dropdowns, search boxes, checkboxes, and Settings switches drawn to match the market look.
 
 ## New pages
-- **Food page:** tap anything on My Food. A freshness bar, what Pal thinks, quick buttons (use one, freeze, add to list, used or tossed), the best recipes that use it, how long it keeps in the fridge, pantry, and freezer, a storage tip, and the details.
+- **Food page:** tap anything on My Food. A freshness bar, what Benji thinks, quick buttons (use one, freeze, add to list, used or tossed), the best recipes that use it, how long it keeps in the fridge, pantry, and freezer, a storage tip, and the details.
 - **Shelf pages:** the Fridge, Freezer, Pantry, and Counter tiles on My Food each open a page for that shelf, with "All still good" to mark everything checked.
 - **Collections:** the cards across the top of Recipes. Use it up, Make it now, Ready in 20, Meal prep, Freezer friendly, Kid-friendly, Budget bites, High protein, Lighter meals, Set it and forget it, Breakfast, Something sweet, and six cuisines.
 - **Week at a glance:** a placemat for each day with breakfast, lunch, and dinner, plus cost, calories, and how much food the plan rescues.
-- **Badges:** 18 stickers to earn, like First rescue, Prep pro, Zero waste week, and Money saver. Pal celebrates new ones.
+- **Badges:** 18 stickers to earn, like First rescue, Prep pro, Zero waste week, and Money saver. Benji celebrates new ones.
 - **Make food last:** storage tips for 42 foods, with the ones you have listed first.
 - **Waste Less** now shows money saved and a chart of the last 8 weeks.
 - **About Pantry Pal** in Settings.
@@ -124,7 +132,7 @@ js/
   router/             page addresses, sliding pages, and the back button
   core/               saving, dates, amounts, matching names, diets, scoring, shelf life
   ui/                 small shared pieces (cards, toasts, confetti)
-  pal/                Pal's face, moods, lines, and emoji
+  pal/                Benji's face, moods, lines, and emoji
   planner/            the automatic week planner and prep day builder
   features/           timers, voice, receipts, reminders, backup, badges, budget, and more
   screens/            the code for each page
@@ -135,8 +143,8 @@ data/
     dinner-asian/ (72)  dinner-american/ (49)  dinner-italian/ (26)
     dinner-mexican/ (21)  dinner-indian/ (21)  dinner-mediterranean/ (11)
   food/               shelf life, nutrition, prices, aisles, storage tips, and more
-  lang/es/, lang/en/  Spanish text and Pal's casual English
-  pal/                Pal's lines in English and Spanish
+  lang/es/, lang/en/  Spanish text and Benji's casual English
+  pal/                Benji's lines in English and Spanish
   badges.js, collections.js, specials.js
 img/
   pal/ places/ badges/ illustrations/ icons/ (icons/ui/ has the hand-drawn icons)
