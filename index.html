@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#DFF1FA" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#17242E" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBF3E4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1E1813" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Track your groceries and cook what expires first.">
 <title>Pantry Pal</title>
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.0.1";
+  var BUILD = "11.1";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     var had = localStorage.getItem("pantrypal.build");
@@ -36,7 +36,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Nunito:wght@400;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Nunito:wght@400;600;700;800;900&display=swap">
 <link rel="stylesheet" href="css/base/tokens.css">
 <link rel="stylesheet" href="css/base/reset.css">
 <link rel="stylesheet" href="css/layout/header.css">
@@ -75,6 +75,7 @@
 <link rel="stylesheet" href="css/screens/badges.css">
 <link rel="stylesheet" href="css/screens/tips.css">
 <link rel="stylesheet" href="css/screens/stats-extras.css">
+<link rel="stylesheet" href="css/themes/kitchen.css">
 <link rel="stylesheet" href="css/themes/display.css">
 <link rel="stylesheet" href="css/themes/print.css">
 </head>
