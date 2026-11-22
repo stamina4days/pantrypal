@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Pantry Pal draws its own light and dark colors, so the browser must not repaint them -->
+<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#FBF3E4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1813" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Track your groceries and cook what expires first.">
@@ -10,7 +12,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.8";
+  var BUILD = "11.8.1";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
