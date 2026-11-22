@@ -31,7 +31,9 @@ const SEARCH_ACTIONS = [
   { name: "Take the tour", icon: "sparkle", words: "tour tutorial guide walkthrough intro start how what is this", run: () => startTour() },
   { name: "How to use Pantry Pal", icon: "help", words: "help how to use guide instructions", run: () => openHelp() },
   { name: "Check what this phone supports", icon: "phone", words: "phone check diagnostics camera voice notifications", run: () => runDiagnostics() },
-  { name: "About Pantry Pal", icon: "info", words: "about version", run: () => openAbout() }
+  { name: "About Pantry Pal", icon: "info", words: "about version", run: () => openAbout() },
+  { name: "Benji's shop", icon: "basket", words: "shop store buy purchase hats hat pack redeem code unlock support", run: () => openShop() },
+  { name: "Terms and food safety", icon: "note", words: "terms conditions legal privacy food safety expiration dates disclaimer", run: () => openTerms() }
 ];
 
 let searchTimer = 0;
