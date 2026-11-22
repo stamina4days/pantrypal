@@ -7,12 +7,23 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#FBF3E4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1813" media="(prefers-color-scheme: dark)">
-<meta name="description" content="Track your groceries and cook what expires first.">
+<meta name="description" content="Track your groceries and cook what expires first. Free, works offline, no account needed.">
+<!-- How a shared link looks in texts and social apps -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pantry Pal">
+<meta property="og:title" content="Pantry Pal">
+<meta property="og:description" content="Cook what you have before it goes to waste. Free, works offline, no account needed.">
+<meta property="og:url" content="https://stamina4days.github.io/pantrypal/">
+<meta property="og:image" content="https://stamina4days.github.io/pantrypal/img/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Benji, a cheerful green dollar sign, stands on a crate of produce next to the words Pantry Pal.">
+<meta name="twitter:card" content="summary_large_image">
 <title>Pantry Pal</title>
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.9.2";
+  var BUILD = "11.9.3";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
