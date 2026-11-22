@@ -74,31 +74,54 @@ const Splash = (() => {
       // The shop front behind every start screen: the striped awning, the brick wall, and a sidewalk
       s.classList.add("shopfront");
       if (!s.querySelector(".sf-street")) s.insertAdjacentHTML("beforeend", `<div class="sf-street" aria-hidden="true"></div>`);
-      const card = (mood, pose, inner) => {
-        s.classList.add("sf-card-mode");
-        stage.innerHTML = `<div class="sf-sign sf-sign-sm"><h1 class="splash-name" id="smTitle">Pantry Pal</h1></div>
-          <div class="sm-benji">${benji(mood, pose)}</div>${inner}`;
+      const food = f => `<img src="img/food/${f}.svg" alt="">`;
+      const crate = foods => `<span class="sf-crate" aria-hidden="true">${foods.map(food).join("")}</span>`;
+      const shelf = (side, foods) => `<span class="sf-shelf sf-shelf-${side}" aria-hidden="true">${foods.map(food).join("")}</span>`;
+      /* The marquee sign and the lit window with Benji behind the counter */
+      const front = (hello, mood = "happy", pose = "wave") => `<div class="sf-sign"><h1 class="splash-name" id="smTitle">Pantry Pal</h1></div>
+          <div class="sf-front">
+            <div class="sf-window">
+              <span class="sf-lamp" aria-hidden="true"></span>
+              ${shelf("l", ["jar", "honey", "flour"])}${shelf("r", ["milk", "cheese", "egg"])}
+              <p class="sm-hello">${esc(hello)}</p>
+              <div class="sm-benji">${benji(mood, pose)}</div>
+              <span class="sf-glass" aria-hidden="true"></span>
+            </div>
+            <div class="sf-counter">${crate(["apple", "carrot", "tomato"])}${crate(["banana", "bread", "lemon"])}</div>
+          </div>`;
+      /* First time screens: the shop front, with a paper notice taped up under the counter */
+      const notice = (hello, inner, mood, pose) => {
+        s.classList.add("sf-first");
+        stage.innerHTML = front(hello, mood, pose) + inner;
       };
       /* The first time (and after the terms change): read the terms, tick the box, then go on */
       const showTerms = () => {
         let opened = false;
-        card("happy", "point", `<form class="sm-card sm-terms" id="smTermsForm">
-            <h2 class="sm-card-title">${esc(t("Before we start"))}</h2>
-            <p class="sm-say">${esc(t("Benji guesses how long your food lasts, but he can't see or smell it. Always check the package date and the food itself before you eat it. Please read the terms, then tick the box to go on."))}</p>
-            <button type="button" class="sm-terms-link" id="smTermsLink"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/clipboard.svg#i"/></svg> <span>${esc(t("Read the terms"))}</span></button>
-            <label class="sm-check" id="smCheckRow">
-              <input type="checkbox" id="smAgree" disabled>
-              <span>${esc(t("I've read and agree to the terms"))}</span>
-            </label>
-            <p class="sm-hint" id="smHint" aria-live="polite">${esc(t("Open the terms first, then you can tick the box."))}</p>
-            <button type="submit" class="primary sm-go" id="smAgreeGo" disabled>${esc(t("Continue"))}</button>
-          </form>`);
+        notice(t("Welcome to my shop!"), `<form class="sf-form" id="smTermsForm"><div class="sf-paper">
+            <h2 class="sf-paper-title">${esc(t("Before we open the doors"))}</h2>
+            <p class="sf-paper-text">${esc(t("Benji guesses how long your food lasts, but he can't see or smell it. Always check the package date and the food itself before you eat it. Please read the terms, then tick the box to go on."))}</p>
+            <ol class="sf-steps">
+              <li class="sf-step" id="smStepRead"><span class="sf-num" aria-hidden="true">1</span>
+                <button type="button" class="sm-terms-link" id="smTermsLink"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/clipboard.svg#i"/></svg> <span>${esc(t("Read the terms"))}</span></button></li>
+              <li class="sf-step locked" id="smStepAgree"><span class="sf-num" aria-hidden="true">2</span>
+                <label class="sm-check" id="smCheckRow"><input type="checkbox" id="smAgree" disabled><span>${esc(t("I've read and agree to the terms"))}</span></label></li>
+            </ol>
+            <p class="sr-only" id="smHint" aria-live="polite">${esc(t("Open the terms first, then you can tick the box."))}</p>
+            </div>
+            <div class="sm-menu sf-go-wrap">
+              <button type="submit" class="primary sm-go" id="smAgreeGo" disabled><svg class="ic sf-lock" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg> <span>${esc(t("Let's get started"))}</span></button>
+            </div>
+          </form>`, "happy", "wave");
         const f = stage.querySelector("#smTermsForm"), box = f.querySelector("#smAgree"), go = f.querySelector("#smAgreeGo"), hint = f.querySelector("#smHint");
         const update = () => {
           go.disabled = !(opened && box.checked);
           hint.textContent = !opened ? t("Open the terms first, then you can tick the box.") : box.checked ? "" : t("Now tick the box to go on.");
           const link = f.querySelector("#smTermsLink");
           link.classList.toggle("read", opened);
+          f.querySelector("#smStepRead").classList.toggle("done", opened);
+          f.querySelector("#smStepAgree").classList.toggle("locked", !opened);
+          f.querySelector("#smStepAgree").classList.toggle("done", opened && box.checked);
+          go.querySelector(".sf-lock").style.display = go.disabled ? "" : "none";
           if (opened && !link.querySelector(".sm-done")) link.insertAdjacentHTML("beforeend", `<svg class="ic sm-done" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg>`);
         };
         f.querySelector("#smTermsLink").addEventListener("click", () => {
@@ -120,14 +143,18 @@ const Splash = (() => {
         focusFirst("#smTermsLink");
       };
       const showName = again => {
-        card("happy", "wave", `<form class="sm-card" id="smNameForm">
-            <p class="sm-say">${esc(again ? t("Sure! What should I call you?")
-              : t("Hi! I'm Benji. I help you save money by saving food. What should I call you?"))}</p>
+        notice(again ? t("Sure! What should I call you?") : t("Hi! I'm Benji!"), `<form class="sf-form" id="smNameForm"><div class="sf-paper">
+            <h2 class="sf-paper-title">${esc(again ? t("Your name") : t("Nice to meet you"))}</h2>
+            <p class="sm-say sf-paper-text">${esc(again ? t("Sure! What should I call you?")
+              : t("I help you save money by saving food. What should I call you?"))}</p>
             <label class="sr-only" for="smName">${esc(t("Your first name"))}</label>
             <input id="smName" autocomplete="given-name" maxlength="30" placeholder="${esc(t("Your first name"))}" value="${esc(settings.userName || "")}">
-            <button type="submit" class="primary sm-go">${esc(t("Nice to meet you!"))}</button>
-            ${again ? "" : `<button type="button" class="text-btn" id="smNoName">${esc(t("Skip for now"))}</button>`}
-          </form>`);
+            ${again ? "" : `<button type="button" class="text-btn sf-skip" id="smNoName">${esc(t("Skip for now"))}</button>`}
+            </div>
+            <div class="sm-menu sf-go-wrap">
+              <button type="submit" class="primary sm-go"><span>${esc(t("Nice to meet you!"))}</span></button>
+            </div>
+          </form>`, "happy", "wave");
         const f = stage.querySelector("#smNameForm");
         f.addEventListener("submit", e => {
           e.preventDefault();
@@ -138,7 +165,8 @@ const Splash = (() => {
           if (typeof renderKitchenName === "function") renderKitchenName();
           if (typeof sfx === "function") sfx("cheer");
           if (again) return showMenu();
-          stage.querySelector(".sm-card").innerHTML = `<p class="sm-say">${esc(v ? t("Nice to meet you, {name}! Let's save some money.", { name: v }) : t("No problem. Let's save some money!"))}</p>`;
+          const gw = stage.querySelector(".sf-go-wrap"); if (gw) gw.remove();
+          stage.querySelector(".sf-paper").innerHTML = `<p class="sm-say sf-paper-text">${esc(v ? t("Nice to meet you, {name}! Let's save some money.", { name: v }) : t("No problem. Let's save some money!"))}</p>`;
           stage.querySelector(".sm-benji").innerHTML = benji("cheer", "cheer");
           setTimeout(() => done("start"), 1300);
         });
@@ -147,26 +175,13 @@ const Splash = (() => {
         setTimeout(() => stage.querySelector("#smName").focus(), 60);
       };
       const showMenu = () => {
-        s.classList.remove("sf-card-mode");
+        s.classList.remove("sf-first");
         const name = (settings.userName || "").trim();
         const hello = !settings.onboarded ? t("Ready when you are!")
           : name ? t("Welcome back, {name}!", { name }) : t("Welcome back!");
-        const food = f => `<img src="img/food/${f}.svg" alt="">`;
-        const crate = foods => `<span class="sf-crate" aria-hidden="true">${foods.map(food).join("")}</span>`;
-        const shelf = (side, foods) => `<span class="sf-shelf sf-shelf-${side}" aria-hidden="true">${foods.map(food).join("")}</span>`;
         const sign = (id, icon, label) => `<button type="button" class="sf-plank" data-sm="${id}"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/${icon}.svg#i"/></svg> <span>${esc(label)}</span></button>`;
         // Benji's shop front: a marquee sign, Benji behind the counter in a lit window, and the menu as hanging signs
-        stage.innerHTML = `<div class="sf-sign"><h1 class="splash-name" id="smTitle">Pantry Pal</h1></div>
-          <div class="sf-front">
-            <div class="sf-window">
-              <span class="sf-lamp" aria-hidden="true"></span>
-              ${shelf("l", ["jar", "honey", "flour"])}${shelf("r", ["milk", "cheese", "egg"])}
-              <p class="sm-hello">${esc(hello)}</p>
-              <div class="sm-benji">${benji("happy", "wave")}</div>
-              <span class="sf-glass" aria-hidden="true"></span>
-            </div>
-            <div class="sf-counter">${crate(["apple", "carrot", "tomato"])}${crate(["banana", "bread", "lemon"])}</div>
-          </div>
+        stage.innerHTML = `${front(hello)}
           <div class="sm-menu">
             <button type="button" class="primary sm-go" data-sm="start"><span>${esc(t("Start"))}</span></button>
             <div class="sf-planks">
