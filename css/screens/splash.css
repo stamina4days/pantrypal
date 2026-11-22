@@ -312,3 +312,16 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
   .sf-first .sm-benji .pal { width: 70px; height: 94px; }
   .sf-first .sf-shelf { display: none; }
 }
+
+/* "Play music while you cook?" asked once (11.14.2) */
+.sf-music { position: relative; z-index: 4; text-align: left; }
+.sf-music-q { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-weight: 900; font-size: 1rem; line-height: 1.25; color: #3A2E22; }
+.sf-music-q .ic { flex: none; width: 22px; height: 22px; margin: 0; }
+.sf-music-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.shopfront .sf-mbtn { min-height: 48px; padding: 4px 8px; border-radius: 12px; font-weight: 900; font-size: .95rem; animation: none; transform: none;
+  background: #FFFDF6; color: #3A2E22; border: 2px solid #CDBB9C; box-shadow: 0 3px 0 #CDBB9C; }
+.shopfront .sf-mbtn.sf-yes { background: #2A7F3F; color: #FFFFFF; border-color: #1C5A2C; box-shadow: 0 3px 0 #1C5A2C; }
+.shopfront .sf-mbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 #CDBB9C; }
+.sf-music.on-paper { margin-top: 12px; padding-top: 12px; border-top: 2px dashed #E2D3B8; }
+.sf-ask { margin-top: 22px; }
+.sf-music-note { margin: 10px 0 0; font-weight: 700; font-size: .85rem; line-height: 1.35; color: #5C4A3A; }
