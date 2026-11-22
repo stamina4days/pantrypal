@@ -10,6 +10,11 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.2
+- **Search everything:** the Search button at the top of every tab opens one box that finds your food, recipes (by name or ingredient), shopping list items, storage tips, and things the app can do, like "plan my week" or "backup." Tap any result to go straight there.
+- **Nothing found?** Add what you typed to My Food or the shopping list in one tap.
+- Every page has an address, so `#/search` opens search directly.
+
 ## New in version 11.1
 - **Family kitchen table look:** cream paper, a red gingham cloth along the top, cards taped down with butter yellow tape, handwritten headings, and a honey wood shelf for the tabs. Today's special is a recipe card now.
 - **Warm evening colors:** in dark mode the same table sits under lamplight instead of cold blue.
