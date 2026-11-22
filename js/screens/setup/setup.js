@@ -19,7 +19,7 @@ function renderOnboarding() {
     h += palBubble("wink", t("It plans meals around the food you already have, so less goes to waste. Setup takes about a minute, and you can change any of it later."), [], "pal-big")
       + `<h2 class="center">${esc(t("Welcome to Pantry Pal"))}</h2>
       <div class="row lang-pick"><button data-lang="en" class="${LANG === "en" ? "primary" : ""}">English</button><button data-lang="es" class="${LANG === "es" ? "primary" : ""}">Español</button></div>
-      <label class="plain">${esc(t("What should Pal call you?"))} <input data-ob="userName" value="${esc(d.userName)}" autocomplete="given-name" placeholder="${esc(t("Your first name (optional)"))}"></label>
+      <label class="plain">${esc(t("What should Benji call you?"))} <input data-ob="userName" value="${esc(d.userName)}" autocomplete="given-name" placeholder="${esc(t("Your first name (optional)"))}"></label>
       <h3>${esc(t("How much do you want to see?"))}</h3>
       <div class="view-pick">
         <button type="button" data-view="simple" class="view-card ${d.view !== "full" ? "on" : ""}" aria-pressed="${d.view !== "full"}"><strong>${esc(t("Keep it simple"))}</strong><span>${esc(t("Big buttons, just the basics. Great for anyone."))}</span></button>
