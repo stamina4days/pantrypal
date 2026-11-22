@@ -167,3 +167,13 @@
 .sp-song.on .sp-eq { display: flex; }
 .sp-song.on .sp-eq i { background: #233A31; }
 @media (prefers-reduced-motion: no-preference) { .sp-song.on .sp-eq i { animation: spEq .7s ease-in-out infinite alternate; } .sp-song.on .sp-eq i:nth-child(2) { animation-delay: -.25s; } .sp-song.on .sp-eq i:nth-child(3) { animation-delay: -.5s; } }
+/* When the unlock code arrives */
+.store-when { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; padding: 10px 14px; border-radius: 14px; font-weight: 800; font-size: .95rem; line-height: 1.35;
+  background: #FFF3C4; color: #4A3A10; border: 2px solid #E2C35C; }
+.store-when .ic { flex: none; width: 24px; height: 24px; margin: 0; }
+@media (prefers-color-scheme: dark) { .store-when { background: #3A3018; color: #FBEFC8; border-color: #8A7230; } }
+/* Send feedback, on the help page */
+.feedback-card { margin: 0 0 16px; padding: 12px 14px; border-radius: 14px; background: color-mix(in srgb, var(--leaf) 14%, var(--paper)); border: 2px solid var(--line); }
+.feedback-card p { margin: 0 0 10px; }
+.feedback-btn { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; }
+.feedback-btn .ic { width: 22px; height: 22px; margin: 0; }
