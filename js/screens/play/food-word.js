@@ -88,10 +88,13 @@ function wordKey(k) {
       if (won) {
         st.wordStreak = st.wordLast === addDaysFrom(todayStr(), -1) ? (st.wordStreak || 0) + 1 : 1;
         st.wordLast = todayStr(); st.wordWins = (st.wordWins || 0) + 1;
+        st.wordStreakBest = Math.max(st.wordStreakBest || 0, st.wordStreak);
         sfx("cheer"); buzz([10, 40, 10]);
         if (typeof confetti === "function") try { confetti(); } catch (e) {}
       } else { st.wordStreak = 0; sfx("ding"); }
       renderPlay();
+      saveSettings();
+      checkNewBadges();
     } else sfx("pop");
     saveSettings();
   } else if (/^[A-Z]$/.test(k) && wordInput.length < WORD_LEN) { wordInput += k; sfx("tick"); }

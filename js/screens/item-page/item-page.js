@@ -50,9 +50,9 @@ function shelfRowHtml(i) {
 function tipFor(name, loc) {
   const key = canon(name);
   const hit = key && STORAGE_TIPS.find(([k]) => { const c = canon(k); return c && related(c, key); });
-  if (hit) return { text: LANG === "es" ? hit[3] : hit[2], place: hit[1] };
+  if (hit) return { text: hit[2], place: hit[1] };
   const p = PLACE_TIPS[DEFAULT_LOCATIONS.find(l => l === loc) || "Fridge"];
-  return p ? { text: LANG === "es" ? p[1] : p[0], place: null } : null;
+  return p ? { text: p, place: null } : null;
 }
 
 function renderItemPage() {

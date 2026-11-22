@@ -31,7 +31,7 @@ function renderPlace() {
     expired ? `<span class="stat-chip expired"><strong>${expired}</strong> ${esc(t("past date"))}</span>` : ""
   ].join("");
   const tip = PLACE_TIPS[loc];
-  $("#plTip").innerHTML = tip ? `<div class="tip pal-tip"><strong>${esc(t("Benji's tip"))}</strong><p>${esc(LANG === "es" ? tip[1] : tip[0])}</p></div>` : "";
+  $("#plTip").innerHTML = tip ? `<div class="tip pal-tip"><strong>${esc(t("Benji's tip"))}</strong><p>${esc(tip)}</p></div>` : "";
   $("#plList").innerHTML = here.map(foodMiniHtml).join("");
   $("#plEmpty").classList.toggle("hidden", here.length > 0);
   $("#plCheck").classList.toggle("hidden", !here.length);

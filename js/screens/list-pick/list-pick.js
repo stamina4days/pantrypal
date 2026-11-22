@@ -40,7 +40,7 @@ function shopFromRecipe() {
   const entries = r.ingredients.filter(g => !(g.opt && diets.length && dietCheck(g, diets).blocked)).map(g => {
     const isMissing = x.missing.includes(g), sh = shortMap.get(g);
     let amt = amtDisplay(g.amt, f), note = "";
-    if (sh) { const fr = sh.need ? (sh.need - sh.got) / sh.need : 1; amt = LANG === "es" ? amtParts(shortAmount(g.amt, f, fr))[0] : shortAmount(g.amt, f, fr); note = t("you have some, not enough"); }
+    if (sh) { const fr = sh.need ? (sh.need - sh.got) / sh.need : 1; amt = shortAmount(g.amt, f, fr); note = t("you have some, not enough"); }
     else if (!isMissing) note = haveMap.has(g) ? t("you have it") : subSet.has(g) ? t("substitute available") : g.basic ? t("basic") : t("optional");
     return { name: ingName(g, r), amt, checked: isMissing || !!sh, note, from: [rName(r)] };
   });

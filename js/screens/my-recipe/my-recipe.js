@@ -1,10 +1,10 @@
 "use strict";
 /* Your own recipes. */
 /* ---------- your own recipes and suggestions ---------- */
-const AMT_RE = /^((?:\d+\s+)?\d+(?:[\/.]\d+)?\s*(?:cups?|tazas?|tbsp|tablespoons?|cdas?|tsp|teaspoons?|cdtas?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|cloves?|dientes?|cans?|latas?|slices?|rebanadas?|pinch(?:es)?|pizcas?|handfuls?|bunch(?:es)?|manojos?|stalks?|heads?|sticks?|packages?|large|medium|small)?\.?)\s+(?:de\s+)?(.+)$/i;
+const AMT_RE = /^((?:\d+\s+)?\d+(?:[\/.]\d+)?\s*(?:cups?|tbsp|tablespoons?|tsp|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|cloves?|cans?|slices?|pinch(?:es)?|handfuls?|bunch(?:es)?|stalks?|heads?|sticks?|packages?|large|medium|small)?\.?)\s+(.+)$/i;
 function toIngString(line) {
   let opt = false;
-  line = line.replace(/\s*\((optional|opcional)\)\s*$/i, () => { opt = true; return ""; }).trim();
+  line = line.replace(/\s*\(optional\)\s*$/i, () => { opt = true; return ""; }).trim();
   let amt = "", name = line;
   if (line.includes("|")) { [amt, name] = line.split("|").map(s => s.trim()); }
   else { const m = line.match(AMT_RE); if (m) { amt = m[1].trim(); name = m[2].trim(); } }
@@ -88,7 +88,7 @@ function emailSuggestion() {
   const snippet = JSON.stringify({ id: recipeSlug(d.name), name: d.name, type: d.type, time: d.time, serves: d.serves, ing: d.ing, steps: d.steps }, null, 2);
   const body = [
     "Recipe suggestion for Pantry Pal", "",
-    `Name: ${d.name}`, `Meal: ${d.type}`, `Time: about ${d.time} minutes`, `Serves: ${d.serves}`, by ? `Suggested by: ${by}` : "", `Language: ${LANG}`, "",
+    `Name: ${d.name}`, `Meal: ${d.type}`, `Time: about ${d.time} minutes`, `Serves: ${d.serves}`, by ? `Suggested by: ${by}` : "", "",
     "Ingredients:", ...d.rawIng.map(l => "- " + l), "",
     "Steps:", ...d.steps.map((s, i) => `${i + 1}. ${s}`), "",
     notes ? `Notes: ${notes}` : "", "",
