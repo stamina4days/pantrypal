@@ -29,8 +29,12 @@ function estimateShelf(name, loc) {
   if (idx === 0 && life[1] != null) return { days: life[1], note: t("This one keeps fine outside the fridge.") };
   return null;
 }
+/* Foods that can go in the fridge but usually live out of it. */
+const ROOM_TEMP = { banana: "Counter", avocado: "Counter", tomato: "Counter", peach: "Counter", mango: "Counter",
+  pineapple: "Counter", onion: "Pantry", bread: "Pantry" };
 function guessLoc(name) {
   const key = shelfLookup(name);
+  if (key && ROOM_TEMP[key]) return ROOM_TEMP[key];
   return key && SHELF_LIFE[key][0] != null ? "Fridge" : "Pantry";
 }
 const locLabel = l => DEFAULT_LOCATIONS.includes(l) ? t(l) : l;
