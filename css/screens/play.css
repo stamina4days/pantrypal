@@ -1,0 +1,123 @@
+/* Play corner, Fridge Sort, the daily food word, and the kitchen radio. */
+
+/* Today: the jar and a Play button share one row */
+.today-pair { display: flex; gap: 10px; }
+.today-pair .today-jar { flex: 1; min-width: 0; }
+.today-play { position: relative; flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+  width: 76px; min-height: 54px; padding: 4px; border-radius: 8px; font-weight: 900; font-size: .85rem;
+  background: var(--lemon); color: var(--butter-ink, #5A3E10); border: 2px solid #D9B04E; box-shadow: 0 3px 0 #D9B04E; }
+.today-play .ic { width: 26px; height: 26px; margin: 0; --icf: #FFFCF5; }
+.today-play.has-new::after { content: ""; position: absolute; top: -5px; right: -5px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--tomato-text-bg, #A8341F); border: 2px solid var(--paper); }
+@media (prefers-color-scheme: dark) { .today-play { border-color: #B8902F; box-shadow: 0 3px 0 #8C6A1E; } }
+
+/* Play page */
+.play-hero .hero-art { max-width: 96px; }
+.play-tiles { display: grid; gap: 14px; margin-top: 6px; }
+.play-tile { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px; text-align: left; border-radius: 8px;
+  background: var(--paper); border: 0; box-shadow: var(--shadow); position: relative; }
+.play-tile::before { content: ""; position: absolute; top: -8px; left: 22px; width: 56px; height: 16px; background: var(--tape); transform: rotate(-3deg); }
+.play-tile:nth-child(even)::before { left: auto; right: 24px; transform: rotate(3deg); }
+.play-tile .grow { display: flex; flex-direction: column; gap: 2px; }
+.play-tile strong { font-family: var(--hand); font-weight: 700; font-size: 1.4rem; line-height: 1.1; }
+.play-tile .grow span { font-size: .92rem; font-weight: 600; color: var(--muted); }
+.play-tile em { font-style: normal; font-weight: 900; font-size: .85rem; color: var(--link, var(--leaf-deep)); }
+.pt-ic { flex: none; width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; background: var(--sky-deep); }
+.pt-ic .ic { width: 32px; height: 32px; margin: 0; }
+.tile-sort .pt-ic { background: color-mix(in srgb, var(--leaf) 22%, var(--paper)); }
+.tile-word .pt-ic { background: color-mix(in srgb, var(--lemon) 55%, var(--paper)); }
+
+.radio-card { margin-top: 22px; padding: 14px; border-radius: 8px; background: var(--paper); box-shadow: var(--shadow); }
+.radio-head { display: flex; align-items: center; gap: 12px; }
+.radio-head h3 { margin: 0; font-family: var(--hand); font-weight: 700; font-size: 1.4rem; }
+.radio-head .pt-ic { width: 46px; height: 46px; background: color-mix(in srgb, var(--plum) 18%, var(--paper)); }
+.radio-stations { display: grid; gap: 8px; margin: 10px 0; }
+.station { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; padding: 10px 14px; min-height: 58px; }
+.station strong { font-size: 1.02rem; }
+.station span { font-size: .86rem; font-weight: 600; color: var(--muted); }
+.station.on { background: var(--leaf); border-color: var(--leaf-deep); color: var(--on-color, #fff); }
+.station.on span { color: inherit; opacity: .9; }
+.radio-vol { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--ink); }
+.radio-vol input { flex: 1; accent-color: var(--leaf); min-height: 44px; }
+
+/* While music plays, a little player takes the place of the kitchen name above the page title */
+body.radio-on .brand-name { display: none; }
+.radio-pill { display: inline-flex; align-self: flex-start; align-items: center; max-width: 100%; margin-bottom: 2px;
+  background: #3B2F2A; color: #FBF3E4; border-radius: 999px; padding: 0 2px; }
+.radio-pill button { border: 0; box-shadow: none; background: none; color: inherit; min-height: 36px; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: .82rem; border-radius: 999px; }
+.radio-pill .rp-open { padding: 0 4px 0 10px; min-width: 0; }
+.radio-pill .rp-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.radio-pill .rp-stop { width: 36px; justify-content: center; padding: 0; }
+.radio-pill .ic { width: 20px; height: 20px; margin: 0; --icf: #F4D27A; }
+@media (prefers-color-scheme: dark) { .radio-pill { background: #F6EBD9; color: #2A1B10; } .radio-pill .ic { --icf: #C98F55; } }
+@media (prefers-reduced-motion: no-preference) {
+  .radio-pill:not(.hidden) .rp-open .ic { animation: rp-bob 1.6s ease-in-out infinite; }
+  @keyframes rp-bob { 50% { transform: translateY(-2px) rotate(-6deg); } }
+}
+
+/* Fridge Sort */
+.sort-body { padding-top: 14px; }
+.sort-top { display: flex; justify-content: space-between; font-weight: 800; color: var(--muted); }
+.sort-dots { display: flex; gap: 6px; margin: 8px 0 16px; }
+.sort-dots span { flex: 1; height: 8px; border-radius: 4px; background: var(--line); }
+.sort-dots span.done { background: var(--leaf); }
+.sort-dots span.now { background: var(--lemon); }
+.sort-card { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;
+  padding: 26px 16px 18px; border-radius: 8px; background: var(--paper); box-shadow: var(--shadow); }
+.sort-card::before { content: ""; position: absolute; top: -9px; left: 50%; width: 70px; height: 18px; margin-left: -35px; background: var(--tape); transform: rotate(-2deg); }
+@media (prefers-reduced-motion: no-preference) { .sort-card { animation: card-in .28s cubic-bezier(.2, .9, .3, 1.2); } @keyframes card-in { from { transform: translateY(14px) rotate(-2deg); opacity: 0; } } }
+.sort-card.real { background: color-mix(in srgb, var(--lemon) 22%, var(--paper)); }
+.sort-tag { font-weight: 900; font-size: .85rem; padding: 3px 12px; border-radius: 999px; background: var(--lemon); color: var(--butter-ink, #5A3E10); }
+.sort-art { width: 84px; height: 84px; font-size: 64px; line-height: 84px; object-fit: contain; }
+.sort-card h3 { margin: 0; font-family: var(--hand); font-weight: 700; font-size: 1.8rem; line-height: 1.15; }
+.sort-card.real h3 { font-size: 1.45rem; }
+.sort-q { margin: 0; font-weight: 700; color: var(--muted); }
+.sort-answers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; margin-top: 8px; }
+.sort-answers button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 84px; padding: 6px 4px; font-size: .95rem; font-weight: 900; line-height: 1.15; }
+.sort-answers .ic { width: 30px; height: 30px; margin: 0; }
+.sort-answers button:disabled { opacity: 1; cursor: default; }
+.sort-answers button.is-best { background: var(--leaf); color: var(--on-color, #fff); border-color: var(--leaf-deep); }
+.sort-answers button.is-picked { background: #F6DCD5; color: #3B2F2A; border-color: var(--tomato-text-bg, var(--tomato)); }
+@media (prefers-color-scheme: dark) { .sort-answers button.is-picked { background: #4E2A25; color: #F6EBD9; } }
+.sort-verdict { margin: 6px 0 0; font-family: var(--hand); font-weight: 700; font-size: 1.5rem; }
+.sort-card.right .sort-verdict { color: var(--leaf-deep); }
+.sort-card.wrong .sort-verdict { color: var(--tomato-text-bg, var(--tomato)); }
+@media (prefers-color-scheme: dark) { .sort-card.right .sort-verdict { color: var(--leaf); } }
+.sort-why { margin: 0; font-weight: 600; max-width: 34ch; }
+.sort-next { width: 100%; min-height: 56px; margin-top: 8px; font-size: 1.05rem; }
+.sort-end { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+.sort-stars { display: flex; gap: 6px; margin: 4px 0; }
+.sort-stars .ic { width: 44px; height: 44px; color: var(--edge); --icf: none; }
+.sort-stars .ic.lit { color: #B8862B; --icf: var(--lemon); }
+.sort-result { margin: 0; font-family: var(--hand); font-weight: 700; font-size: 1.7rem; }
+.sort-checks { margin: 0; font-weight: 700; color: var(--leaf-deep); max-width: 32ch; }
+@media (prefers-color-scheme: dark) { .sort-checks { color: var(--leaf); } }
+.sort-end .row { width: 100%; margin-top: 10px; }
+.sort-end .row button { min-height: 56px; }
+
+/* Daily food word */
+.word-body { padding-top: 10px; }
+.word-body h2 { margin-bottom: 4px; }
+.word-grid { display: grid; gap: 6px; justify-content: center; margin: 14px 0 6px; }
+.word-row { display: grid; grid-template-columns: repeat(5, 54px); gap: 6px; }
+.word-tile { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 10px; border: 2px solid var(--line); background: var(--paper);
+  font-size: 1.6rem; font-weight: 900; text-transform: uppercase; color: var(--ink); }
+.word-tile.filled { border-color: var(--edge); }
+.word-tile.m-y { background: var(--leaf); border-color: var(--leaf-deep); color: var(--on-color, #fff); }
+.word-tile.m-m { background: var(--lemon); border-color: #B8862B; border-style: dashed; color: var(--butter-ink, #5A3E10); }
+.word-tile.m-n { background: var(--sky-deep); border-color: var(--line); color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) { .word-row.live .word-tile.filled { animation: tile-pop .12s ease-out; } @keyframes tile-pop { 50% { transform: scale(1.08); } } }
+.word-msg { min-height: 1.4em; margin: 0; text-align: center; font-weight: 800; color: var(--tomato-text-bg, var(--tomato)); }
+.word-keys { display: grid; gap: 6px; margin-top: 6px; }
+.key-row { display: flex; gap: 5px; justify-content: center; }
+.key { flex: 1 1 0; max-width: 40px; min-width: 0; min-height: 52px; padding: 0; border-radius: 10px; font-weight: 900; font-size: 1.05rem; }
+.key.wide { flex: 1.6 1 0; max-width: 64px; font-size: .8rem; }
+.key .ic { width: 22px; height: 22px; margin: 0; }
+.key.m-y { background: var(--leaf); color: var(--on-color, #fff); border-color: var(--leaf-deep); }
+.key.m-m { background: var(--lemon); color: var(--butter-ink, #5A3E10); border-color: #B8862B; }
+.key.m-n { background: var(--sky-deep); color: #5E4A3E; border-color: var(--line); box-shadow: none; }
+@media (prefers-color-scheme: dark) { .key.m-n { color: var(--muted); } }
+.word-end { display: grid; gap: 12px; margin-top: 8px; }
+.word-end .pal-row { margin: 0; }
+.word-streak { margin: 0; text-align: center; font-family: var(--hand); font-weight: 700; font-size: 1.4rem; color: var(--tomato-text-bg, var(--tomato)); }
+@media (max-width: 359px) { .word-row { grid-template-columns: repeat(5, 48px); } .word-tile { width: 48px; height: 48px; } }
