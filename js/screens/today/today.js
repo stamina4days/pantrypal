@@ -1,6 +1,6 @@
 "use strict";
-/* Today: the home screen. Benji's note, the foods to use first, tonight's recipe,
-   the saved-food jar, and one big Add food button. Built to fit one phone screen. */
+/* Today: the home screen, drawn as Benji's kitchen. The fridge holds the foods to eat first, tonight's
+   recipe is on the chalkboard, the jar on the shelf fills as you save food, and Benji stands on the counter. */
 
 function greeting() {
   const h = new Date().getHours();
@@ -33,28 +33,38 @@ function palTodayHtml() {
 
 function renderToday() {
   const box = $("#todayUseFirst"); if (!box) return;
+  // Add food sits on the kitchen floor and stays in view just above the tabs
+  const bar = $(".tabbar");
+  if (bar && bar.offsetHeight) document.documentElement.style.setProperty("--tabbar-h", bar.offsetHeight + "px");
+  // The fridge: the three foods to eat first, as magnets with how long each one has
   const sortKey = i => { const d = daysLeft(i.expires); return d === null ? 99999 : d; };
   const first = items.filter(i => i.expires).slice().sort((a, b) => sortKey(a) - sortKey(b) || a.name.localeCompare(b.name)).slice(0, 3);
-  $("#todayAllFood").textContent = items.length ? tn(items.length, "All 1 food", "All {n} foods") : "";
-  $("#todayAllFood").classList.toggle("hidden", !items.length);
-  box.closest(".today-card").classList.toggle("hidden", !first.length);
   box.innerHTML = first.map(i => {
-    const lab = expiryLabel(daysLeft(i.expires));
-    const sub = [locLabel(i.location), amountText(i)].filter(Boolean).join(", ");
-    return `<li><a class="today-row" href="#/food/${esc(i.id)}">${foodArt(i.name, i, "today-art")}
-      <span class="grow"><strong>${esc(i.name)}</strong><span>${esc(sub)}</span></span>
-      <span class="when ${lab.cls}">${esc(friendlyWhen(i.expires))}</span></a></li>`;
+    const d = daysLeft(i.expires), lab = expiryLabel(d);
+    return `<li><a class="k-magnet" href="#/food/${esc(i.id)}" aria-label="${esc(i.name + ", " + friendlyWhen(i.expires))}">${foodArt(i.name, i, "k-mag-art")}
+      <span class="k-when ${lab.cls}">${esc(d !== null && d < 0 ? t("past") : d === 1 ? t("1 day") : shortLeft(d))}</span></a></li>`;
   }).join("");
-
+  $("#todayAllFood").textContent = items.length ? tn(items.length, "All 1 food", "All {n} foods") : t("Empty! Fill me up");
   const expiring = items.some(i => { const d = daysLeft(i.expires); return d !== null && d >= 0 && d <= RESCUE_DAYS && !i.leftover; });
   $("#todayCookBtn").classList.toggle("hidden", !expiring);
-  if (expiring) $("#todayAllFood").classList.add("hidden");
+  $("#todayAllFood").classList.toggle("hidden", expiring);
 
+  // The jar on the shelf fills up with the food you saved this month
   const since = addDaysFrom(todayStr(), -30);
   const saved = history.filter(h => h.outcome === "used" && h.date >= since && (h.d === null || h.d >= 0)).length;
-  $("#todayJar").innerHTML = `<img src="img/illustrations/tips-jar.svg" width="34" height="34" alt="">
-    <span class="grow">${esc(saved ? tn(saved, "1 food saved this month", "{n} foods saved this month") : t("Use food in time to fill your jar"))}</span>
-    <span class="go">${esc(t("Your jar"))}</span>`;
+  const fill = Math.min(100, Math.round(saved / 20 * 100));
+  const jar = $("#todayJar");
+  jar.setAttribute("aria-label", saved ? tn(saved, "Your jar: 1 food saved this month", "Your jar: {n} foods saved this month") : t("Your jar is empty. Use food in time to fill it."));
+  jar.innerHTML = `<span class="k-lid" aria-hidden="true"></span><span class="k-glass" aria-hidden="true"><span class="k-fill" style="height:${fill}%"></span><span class="k-count">${saved}</span></span>
+    <span class="k-label">${esc(t("Your jar"))}</span>`;
+
+  // The hat on the peg is the one Benji wears, or the hat for the season
+  const ha = $("#todayHatArt");
+  if (ha && typeof palOutfit === "function") {
+    const o = palOutfit(), h = o.art ? o : benjiHat(palSeason());
+    const art = o.art || (h && h.art ? h.art() : "");
+    ha.innerHTML = `<svg viewBox="14 -66 140 110" width="70" height="55" aria-hidden="true">${art}</svg>`;
+  }
 }
 
 function todayInit() {
