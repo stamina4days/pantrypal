@@ -20,7 +20,6 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Tip jar ($1, $3, or $5).** Any tip turns Benji's sprout gold (you can switch it back on the hats page) and earns the Supporter badge.
 - **Everything bundle ($9.99).** Every item above except tips, for less than buying them one at a time.
 - **The jack-o'-lantern hat.** Benji's free October hat is now a carved jack-o'-lantern with a glowing face.
-- New items say "Coming soon" until their Square links are added in `data/store.js` (tips have one link per amount). The private code maker lists every product.
 
 ## New in version 11.9
 - **Easier to read, and nicer to share (11.9.3).** The red date tags, the calendar top, the Cook these note, the recipe ribbons, and the cook mode step count all have stronger contrast. On the cookbook page in dark mode, the "Grab" tags and the Show more button were nearly invisible and are now clear. Sharing the Pantry Pal link in a text or social app now shows a picture of Benji with a short description. Purchase help goes to the support email, signaftersix@gmail.com, which is in the shop and the Terms, and the Terms explain what Square shares for a purchase.
