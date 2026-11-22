@@ -82,8 +82,14 @@ body.theme-space .recipe-scene { --wood: #8693A3; --wood-line: #6F7C8C; } body.t
 /* Words that sit right on a dark wall stay light */
 body.theme-cabin .plan-scene, body.theme-space .plan-scene { color: #F6EBD9; }
 
+/* The classic kitchen, for the mini kitchens in Settings */
+.tp-mini.theme-classic { --k-wall: #F1E3CC; --k-grout: #E5D2B3; --k-wood: #C98F5A; --k-cabinet: #9B6B45; --k-cabinet-line: #B07E55;
+  --k-fridge: #FBF8F2; --k-fridge-shade: #E6DFD3; --k-floor: #E2CDB4;
+  --k-wall-img: linear-gradient(var(--k-grout) 2px, transparent 2px), linear-gradient(90deg, var(--k-grout) 2px, transparent 2px); --k-wall-size: 44px 44px; }
+@media (prefers-color-scheme: dark) { .tp-mini.theme-classic { --k-wall: #2A231D; --k-grout: #352B23; --k-cabinet: #5A3F2A; --k-cabinet-line: #6E4E35;
+  --k-fridge: #E9E3D8; --k-fridge-shade: #D3CABB; --k-floor: #1A1511; } .tp-mini.theme-classic .tp-console span { color: #F6EBD9; } }
 /* Mini kitchens in Benji's shop: the same theme colors and wall piece, drawn at phone size and scaled down */
-.tp-frame { position: relative; width: 100%; aspect-ratio: 240 / 200; overflow: hidden; border-radius: 5px; border: 2px solid #233A31; box-sizing: border-box; }
+.tp-frame { display: block; position: relative; width: 100%; aspect-ratio: 240 / 200; overflow: hidden; border-radius: 5px; border: 2px solid #233A31; box-sizing: border-box; }
 .tp-mini { position: absolute; left: 0; top: 0; width: 240px; height: 200px; transform-origin: 0 0; transform: scale(var(--tp-s, .45)); overflow: hidden;
   background-color: var(--k-wall); background-image: var(--k-wall-img); background-size: var(--k-wall-size, auto); color: #233A31; }
 .tp-mini .tp-decor { top: 16px; right: 18px; }
@@ -104,8 +110,12 @@ body.theme-cabin .plan-scene, body.theme-space .plan-scene { color: #F6EBD9; }
 
 /* The theme picker in Settings */
 .theme-row { margin: 12px 0; }
-.theme-pick { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; margin-top: 6px; }
-.theme-pick button { display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 0; padding: 8px 4px; font-size: .85rem; font-weight: 800; }
+.theme-pick { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; margin-top: 6px; }
+.theme-pic { position: relative; display: block; width: 100%; }
+.theme-lock { position: absolute; left: 4px; top: 4px; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #FFFDF6; color: #233A31; box-shadow: 0 2px 0 rgba(0, 0, 0, .25); }
+.theme-lock .ic { width: 15px; height: 15px; margin: 0; }
+.theme-pick button.locked .tp-frame { filter: saturate(.7); }
+.theme-pick button { display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 0; padding: 6px; font-size: .85rem; font-weight: 800; }
 .theme-pick button.on { box-shadow: 0 0 0 3px var(--leaf); border-color: var(--leaf-deep); }
 .theme-pick button.locked { border-style: dashed; }
 .theme-swatch { position: relative; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 12px; border: 3px solid #233A31;

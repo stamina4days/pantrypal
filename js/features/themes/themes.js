@@ -19,15 +19,25 @@ function applyKitchenTheme() {
   renderThemePick();
 }
 
+/* A mini kitchen in a theme, drawn with that theme's own colors and wall piece (the same one Benji's shop shows) */
+function themeMiniHTML(id) {
+  return `<span class="tp-frame" aria-hidden="true"><span class="tp-mini theme-${id || "classic"}"><span class="tp-fridge"></span><span class="tp-decor">${id === "diner" ? "EAT" : ""}</span>
+    <span class="tp-benji">${palSVG("happy", 92, { pose: "wave", sprout: 1 })}</span><span class="tp-console"><i></i><b></b><span>${esc(t("Play"))}</span></span>
+    <span class="tp-counter"></span><span class="tp-floor"></span></span></span>`;
+}
+let themePickObserver = null;
 function renderThemePick() {
   const box = document.getElementById("themePick"); if (!box) return;
   const cur = settings.kitchenTheme || "";
   box.innerHTML = KITCHEN_THEMES.map(th => {
     const open = themeOpen(th), on = open && th.id === cur;
     return `<button type="button" data-theme="${th.id}" aria-pressed="${on}" class="${on ? "on" : ""} ${open ? "" : "locked"}">
-      <span class="theme-swatch" style="--a:${th.swatch[0]};--b:${th.swatch[1]};--c:${th.swatch[2]}">${open ? "" : `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg>`}</span>
+      <span class="theme-pic">${themeMiniHTML(th.id)}${open ? "" : `<span class="theme-lock"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg></span>`}</span>
       <span>${esc(t(th.name))}</span></button>`;
   }).join("");
+  const fit = () => box.querySelectorAll(".tp-frame").forEach(f => { if (f.clientWidth) f.style.setProperty("--tp-s", (f.clientWidth / 240).toFixed(4)); });
+  fit();
+  if (!themePickObserver && typeof ResizeObserver === "function") { themePickObserver = new ResizeObserver(fit); themePickObserver.observe(box); }
 }
 
 function themesInit() {
