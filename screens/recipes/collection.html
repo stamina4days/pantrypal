@@ -6,6 +6,12 @@
       <h2 id="colName"></h2>
       <p id="colDesc" class="hero-meta"></p>
     </div>
+    <div class="chip-row hidden" id="colFilter" role="group" data-t-aria="Show" aria-label="Show">
+      <button type="button" class="chip on" data-filter="all" aria-pressed="true" data-t>All</button>
+      <button type="button" class="chip" data-filter="ready" aria-pressed="false" data-t>Nothing to buy</button>
+      <button type="button" class="chip" data-filter="quick" aria-pressed="false" data-t>Under 20 min</button>
+      <button type="button" class="chip" data-filter="expiring" aria-pressed="false" data-t>Uses what's expiring</button>
+    </div>
     <div class="seg" id="colSort" role="group">
       <button data-sort="best" class="on" aria-pressed="true" data-t>Best for me</button>
       <button data-sort="time" aria-pressed="false" data-t>Quickest</button>

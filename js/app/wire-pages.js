@@ -30,6 +30,8 @@ function pagesInit() {
   $("#plCheck").addEventListener("click", checkPlace);
 
   segment("#colSort", "sort", v => { collectionSort = v; collectionLimit = 30; renderCollection(); });
+  segment("#colFilter", "filter", v => { cookNowFilter = v; collectionLimit = 30; renderCollection(); });
+  $("#colList").addEventListener("click", e => { if (e.target.closest("[data-cooknow-add]")) { $("#collectionPage").close(); openItem(); } });
   $("#colMore").addEventListener("click", () => { collectionLimit += 30; renderCollection(); });
 
   $("#weekBtn").addEventListener("click", openWeek);

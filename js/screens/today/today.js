@@ -44,6 +44,13 @@ function renderToday() {
     return `<li><a class="k-magnet" href="#/food/${esc(i.id)}" aria-label="${esc(i.name + ", " + friendlyWhen(i.expires))}">${foodArt(i.name, i, "k-mag-art")}
       <span class="k-when ${lab.cls}">${esc(d !== null && d < 0 ? t("past") : d === 1 ? t("1 day") : shortLeft(d))}</span></a></li>`;
   }).join("");
+  // What can I cook? The big button, with how many recipes need nothing from the store
+  const cc = $("#todayCanCookSub");
+  if (cc) {
+    const n = cookNowCount();
+    cc.textContent = !items.length ? t("Add your food and I'll find recipes")
+      : n ? tn(n, "1 recipe with nothing to buy", "{n} recipes with nothing to buy") : t("Recipes that need just one thing");
+  }
   $("#todayAllFood").textContent = items.length ? tn(items.length, "All 1 food", "All {n} foods") : t("Empty! Fill me up");
   const expiring = items.some(i => { const d = daysLeft(i.expires); return d !== null && d >= 0 && d <= RESCUE_DAYS && !i.leftover; });
   $("#todayCookBtn").classList.toggle("hidden", !expiring);
@@ -72,6 +79,7 @@ function todayInit() {
   $("#todayJar").addEventListener("click", () => showTab("stats"));
   $("#todayAddBtn").addEventListener("click", () => openItem());
   $("#todayCookBtn").addEventListener("click", () => openCollection("rescue"));
+  $("#todayCanCook").addEventListener("click", () => openCollection("cook-now"));
   $("#todayScanBtn").addEventListener("click", () => { openItem(null); openScanner(); });
   if (typeof talkSupported === "function" && talkSupported()) {
     $("#todayTalkBtn").classList.remove("hidden");
