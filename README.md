@@ -10,6 +10,12 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.19
+- **Your week with Benji.** Every Sunday (or the first time you open the app after), Benji shows how your week went: the food you used before it went bad, about how much money that saved, what got tossed, and how many meals you cooked. It's also on Waste Less and in Search, at `#/week-recap`.
+- **Share your week.** The recap is a picture with Benji, your savings, and stickers of the foods you saved. Tap Share my week to send it in a text or post it, or save it to your phone.
+- **Try a sample kitchen.** New here? Tap Try a sample kitchen on Today (or Just looking? during setup) to fill the kitchen with realistic food and see what Pantry Pal does before typing anything. Sample food never counts toward Waste Less or badges, and Clear the sample empties it in one tap.
+- **Paste an online order.** Ordered groceries from Walmart, Instacart, Kroger, Target, Amazon Fresh, or another store? Copy the item list from the order email or app, then use Add food > Online order (or Search) to paste it. Benji picks out the food with amounts and prices, skips things like paper towels and fees, and lets you check the list before adding it.
+
 ## New in version 11.18
 - **Move your kitchen with a code.** Settings > Share or move your kitchen now shows a code to scan. Point another phone or tablet's camera at it, tap the link, and your kitchen copies over. The code is made right on the phone, and nothing goes through a server. To move to a computer, send yourself the link instead. Links and codes are also smaller now, because empty details are left out.
 - **Benji's guessed dates are marked.** Food added from a receipt, the notepad, Say it, the pantry check, setup, or I bought these gets a "guessed date" tag on My Food until you check it. Its page explains where the date came from, with Looks right and Change the date buttons. Picking or changing a date yourself clears the tag.
