@@ -33,10 +33,15 @@ main { padding: 6px 14px 12px; max-width: 760px; margin: 0 auto; }
 .tab { display: none; }
 .tab.active { display: block; }
 .brand { flex: 1; }
-#pageTitle { font-size: clamp(1.45rem, 6.6vw, 2.3rem); overflow-wrap: normal; word-break: normal; hyphens: manual; line-height: 1.05; }
+#pageTitle { font-size: clamp(1.45rem, calc(6.6vw / var(--z, 1)), 2.3rem); overflow-wrap: normal; word-break: normal; hyphens: manual; line-height: 1.05; }
 
 /* Tabs drawn as a full-screen scene (Today's kitchen, the fridge, the recipe box, the calendar, the notepad)
    fill exactly the space between the header and the tabs, so a normal phone never has to scroll the room. */
 main:has(> .tab.active > .scene) { padding-bottom: 0; }
 body:has(.tab.active > .scene) { padding-bottom: var(--tabbar-h, 76px); }
 .scene { min-height: var(--scene-h); }
+
+/* Wide screens: the whole app sits in one phone-width column, header, tabs, and all (11.17.2) */
+@media (min-width: 600px) {
+  .bar-row, .timer-bar, main { max-width: 548px; }
+}

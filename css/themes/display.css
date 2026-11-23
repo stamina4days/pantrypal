@@ -2,9 +2,9 @@
 /* ---------- display settings ---------- */
 html.text-large { font-size: 112.5%; }
 html.text-xl { font-size: 125%; }
-html.text-large .tabbar button, html.text-xl .tabbar button { font-size: min(.78rem, 3.4vw); }
+html.text-large .tabbar button, html.text-xl .tabbar button { font-size: min(.78rem, calc(3.4vw / var(--z, 1))); }
 html.text-xl .top-actions .btn-label { font-size: .62rem; }
-html.text-xl #pageTitle { font-size: clamp(1.4rem, 7vw, 2rem); }
+html.text-xl #pageTitle { font-size: clamp(1.4rem, calc(7vw / var(--z, 1)), 2rem); }
 /* The text size picker */
 .text-size-row { display: grid; gap: 8px; padding: 10px 0; border-bottom: 2px dashed var(--line); }
 .ts-label { font-weight: 700; }

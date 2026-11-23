@@ -16,7 +16,7 @@
 .ci-row .row-btn { font-size: .8rem; padding: 0 9px; }
 .empty { text-align: center; color: var(--muted); margin-top: 24px; }
 .empty p { margin: 6px 0; }
-.mini-list { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 6px; max-height: 40vh; overflow: auto; }
+.mini-list { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 6px; max-height: calc(40vh / var(--z, 1)); overflow: auto; }
 .mini-list li { padding: 8px 12px; border: 2px solid var(--line); border-radius: 12px; background: var(--paper); }
 
 .fab {

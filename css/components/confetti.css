@@ -5,5 +5,5 @@
   animation: confetti-fall 1.6s cubic-bezier(.3, .6, .6, 1) forwards;
 }
 @keyframes confetti-fall {
-  to { transform: translate(var(--drift), 105vh) rotate(var(--spin)); }
+  to { transform: translate(var(--drift), calc(105vh / var(--z, 1))) rotate(var(--spin)); }
 }
