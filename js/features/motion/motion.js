@@ -11,13 +11,15 @@ const Motion = (() => {
 
   /* ---------- Benji talks: the bubble fills in word by word while his mouth moves ---------- */
   const heard = new Set();   // lines Benji already said this visit show up right away
-  function say(p, text) {
+  /* opts: { svg: the Benji who is talking, ms: time per word, force: say it even if he said it before } */
+  function say(p, text, opts) {
     if (!p) return;
+    const o = opts || {};
     text = text == null ? p.textContent : String(text);
     clearTimeout(p._typeTimer);
-    const svg = p.closest(".pal-row") && p.closest(".pal-row").querySelector(".pal");
+    const svg = o.svg || (p.closest(".pal-row") && p.closest(".pal-row").querySelector(".pal"));
     if (svg) svg.classList.remove("talking");
-    if (calm() || !text || heard.has(text)) { p.textContent = text; heard.add(text); return false; }
+    if (calm() || !text || (heard.has(text) && !o.force)) { p.textContent = text; heard.add(text); return false; }
     heard.add(text);
     p.textContent = "";
     const spans = text.split(/(\s+)/).filter(Boolean).map(w => {
@@ -30,10 +32,31 @@ const Motion = (() => {
     const step = () => {
       if (i >= spans.length || !p.isConnected) { if (svg) svg.classList.remove("talking"); return; }
       spans[i++].classList.add("on");
-      p._typeTimer = later(step, Math.min(110, 50 + spans[i - 1].textContent.length * 9));
+      p._typeTimer = later(step, o.ms || Math.min(110, 50 + spans[i - 1].textContent.length * 9));
     };
     step();
-    return true;
+    return spans.length;
+  }
+
+  /* The start screen: Benji waves and says hello, then waves again now and then */
+  let greetTimer = null;
+  function greet(svg, p) {
+    clearInterval(greetTimer);
+    if (!svg || !p) return;
+    const words = say(p, null, { svg, ms: 380, force: true });
+    if (!words || !svg.querySelector(".pal-wave")) return;
+    // Keep waving for as long as he's talking
+    const waves = Math.max(2, Math.ceil(words * 380 / 620));
+    svg.style.setProperty("--wave-n", waves);
+    restart(svg, "waving");
+    later(() => svg.classList.remove("waving"), waves * 620 + 50);
+    greetTimer = setInterval(() => {
+      if (!svg.isConnected) { clearInterval(greetTimer); return; }
+      if (document.hidden) return;
+      svg.style.setProperty("--wave-n", 2);
+      restart(svg, "waving");
+      later(() => svg.classList.remove("waving"), 1300);
+    }, 7000);
   }
 
   /* A new Benji on screen says his line and moves the way he feels. */
@@ -271,5 +294,5 @@ const Motion = (() => {
     document.addEventListener("visibilitychange", () => { if (!document.hidden) tickKitchen(); });
   }
 
-  return { init, say, jar, afterToday, coinHtml, unpack, badge, steam, fridge, planShown, turnPage, checkSprout, tickKitchen, fitKitchen, calm };
+  return { init, say, greet, jar, afterToday, coinHtml, unpack, badge, steam, fridge, planShown, turnPage, checkSprout, tickKitchen, fitKitchen, calm };
 })();
