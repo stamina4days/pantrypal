@@ -80,6 +80,7 @@ function renderOnboarding() {
       + `<div class="first-foods">${FIRST_FOODS.map(n => { const on = obPicked.has(n);
         return `<button type="button" class="pick-chip ff-pick ${on ? "on" : ""}" aria-pressed="${on}" data-ff="${esc(n)}">${foodArt(t(n), null, "pick-art")}<span>${esc(t(n))}</span></button>`; }).join("")}</div>
       <button type="button" id="obAudit" class="link-btn ff-more">${esc(t("Got lots more? Go through the whole kitchen"))}</button>
+      <button type="button" id="obSample" class="link-btn ff-more">${esc(t("Just looking? Try a sample kitchen"))}</button>
       <p class="muted small">${esc(t("Nothing in there yet? Just tap Done. Recipes, meal plans, and cook mode all work without food."))}</p>`;
   }
   body.innerHTML = h;

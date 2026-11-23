@@ -142,6 +142,7 @@ function itemFormInit() {
   $("#addAnother").addEventListener("click", () => saveItem(null, true));
   $("#addWayList").addEventListener("click", () => { $("#itemDialog").close(); $("#quickAddBtn").click(); });
   $("#addWayReceipt").addEventListener("click", () => { $("#itemDialog").close(); $("#receiptFile").click(); });
+  $("#addWayOrder").addEventListener("click", () => { $("#itemDialog").close(); openOrder(); });
 }
 
 function suggestExpiry(quiet) {
