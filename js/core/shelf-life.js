@@ -8,8 +8,20 @@ function shelfDirect(n) {
   }
   return best;
 }
+/* Canned, boxed, and dried foods keep for months in the pantry, even when the food inside (tomatoes, chicken) wouldn't.
+   Leftovers, prepped meals, and anything fresh or frozen are left alone. */
+const SHELF_STABLE = /\b(canned|can of|cans of|tinned|jarred|boxed|carton of|dried|dry|instant|evaporated|condensed|powdered|uht|shelf stable|soup|broth|stock|bouillon)\b/;
+const NOT_STABLE = /\b(fresh|frozen|leftovers?|prepped|homemade|cooked|opened)\b/;
+function packagedKey(name) {
+  const n = norm(name);
+  if (!SHELF_STABLE.test(n) || NOT_STABLE.test(n)) return null;
+  if (/\b(broth|stock|bouillon)\b/.test(n) && SHELF_LIFE.broth) return "broth";
+  return SHELF_LIFE.canned ? "canned" : null;
+}
 /* Works for English names and synonyms. */
 function shelfLookup(name) {
+  const packed = packagedKey(name);
+  if (packed) return packed;
   for (const k of chain(canon(name))) { const hit = shelfDirect(k); if (hit) return hit; }
   return shelfDirect(norm(name));
 }
@@ -33,6 +45,7 @@ function estimateShelf(name, loc) {
 const ROOM_TEMP = { banana: "Counter", avocado: "Counter", tomato: "Counter", peach: "Counter", mango: "Counter",
   pineapple: "Counter", onion: "Pantry", bread: "Pantry" };
 function guessLoc(name) {
+  if (packagedKey(name)) return "Pantry";
   const key = shelfLookup(name);
   if (key && ROOM_TEMP[key]) return ROOM_TEMP[key];
   return key && SHELF_LIFE[key][0] != null ? "Fridge" : "Pantry";
@@ -44,3 +57,23 @@ function locFromInput(v) {
   return hit || v || "Other";
 }
 const isStaple = name => settings.staples.includes(norm(name));
+/* 11.17.2: canned, boxed, and dried foods used to get the date of the fresh food (canned tomatoes got 5 days).
+   Once, fix the ones whose date was that short guess, so they stop showing up as expired. */
+function fixPackagedDates() {
+  if (settings.packagedFix || typeof items === "undefined") return;
+  let n = 0;
+  items.forEach(i => {
+    const key = packagedKey(i.name || "");
+    if (!key || i.leftover || !i.expires || locIndex(i.location) === 2) return;
+    const from = i.bought || i.added;
+    if (!from) return;
+    const span = Math.round((parseDay(i.expires) - parseDay(from)) / 86400000);
+    if (span > 14) return;
+    i.location = "Pantry";
+    i.expires = addDaysFrom(from, SHELF_LIFE[key][1]);
+    n++;
+  });
+  settings.packagedFix = true;
+  if (n) saveItems();
+  saveSettings();
+}

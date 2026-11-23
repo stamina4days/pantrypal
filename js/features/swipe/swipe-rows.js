@@ -37,7 +37,8 @@ function swipeInit() {
   });
   list.addEventListener("pointermove", e => {
     if (!row) return;
-    const mx = e.clientX - x0, my = e.clientY - y0;
+    const z = typeof ppZoom === "function" ? ppZoom() : 1;
+    const mx = (e.clientX - x0) / z, my = (e.clientY - y0) / z;
     if (!mode) {
       if (Math.abs(mx) < 8 && Math.abs(my) < 8) return;
       mode = Math.abs(mx) > Math.abs(my) * 1.2 ? "x" : "y";

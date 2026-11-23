@@ -6,7 +6,7 @@
 }
 .tabbar button {
   min-width: 0; border: 0; box-shadow: none; border-radius: 14px; background: none; padding: 4px 0 6px; min-height: 58px;
-  display: flex; flex-direction: column; align-items: center; gap: 1px; font-size: min(.72rem, 3.4vw); font-weight: 800; color: var(--muted);
+  display: flex; flex-direction: column; align-items: center; gap: 1px; font-size: min(.72rem, calc(3.4vw / var(--z, 1))); font-weight: 800; color: var(--muted);
 }
 /* Labels stay on one line, even with the phone's text made bigger */
 .tabbar button > span:last-child { max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -22,7 +22,12 @@
 .toast {
   position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom)); z-index: 50; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
   transition: .2s; background: var(--chalk); color: #F6F2E6; border: 2px solid var(--edge); border-radius: 16px; padding: 10px 14px;
-  display: flex; gap: 14px; align-items: center; width: max-content; max-width: 92vw; font-weight: 700; font-size: .92rem;
+  display: flex; gap: 14px; align-items: center; width: max-content; max-width: calc(92vw / var(--z, 1)); font-weight: 700; font-size: .92rem;
 }
 .toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
 .toast button { background: var(--lemon); color: #233A31; border: 0; box-shadow: none; min-height: 34px; padding: 4px 10px; border-radius: 10px; }
+
+/* Wide screens: the tabs line up with the app's column instead of stretching across the screen (11.17.2) */
+@media (min-width: 600px) {
+  .tabbar { left: 50%; right: auto; width: min(548px, 100%); transform: translateX(-50%); border-radius: 16px 16px 0 0; }
+}

@@ -1,6 +1,6 @@
 /* Cook mode chalkboard. */
 /* cook mode: a chalkboard */
-dialog.cook { width: 100vw; height: 100vh; max-height: 100vh; max-width: 100vw; margin: 0; border-radius: 0; border: 0; background: var(--chalk); color: #F6F2E6; }
+dialog.cook { width: calc(100vw / var(--z, 1)); height: calc(100vh / var(--z, 1)); max-height: calc(100vh / var(--z, 1)); max-width: calc(100vw / var(--z, 1)); margin: 0; border-radius: 0; border: 0; background: var(--chalk); color: #F6F2E6; }
 dialog.cook .muted { color: #C9D6CE; }
 dialog.cook button { background: #F6F2E6; color: #233A31; border-color: #F6F2E6; box-shadow: 0 3px 0 rgba(0, 0, 0, .35); }
 dialog.cook button.primary { background: var(--lemon); border-color: var(--lemon); }
