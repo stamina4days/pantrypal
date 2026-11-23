@@ -23,7 +23,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.17.3";
+  var BUILD = "11.17.4";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -40,31 +40,29 @@
   } catch (e) {}
 })();
 /* Big screens (a computer, a tablet, or a phone in desktop mode): show the app like a phone, made bigger to fit,
-   instead of a tiny phone stretched tall. Phones and small windows stay at normal size. */
+   instead of a tiny phone stretched tall. Phones and small windows stay at normal size.
+   Settings > Display > Screen size can pick Phone (never bigger) or Big screen (always fit) instead of Automatic. */
 (function () {
-  var root = document.documentElement, z = 1;
+  var root = document.documentElement, z = 1, mode = "auto";
+  try { mode = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}").screenSize || "auto"; } catch (e) {}
+  // Only browsers that zoom the standard way (Chrome, Edge, Firefox, Safari from 2024 on) get the bigger size
+  var canZoom = typeof Element !== "undefined" && "currentCSSZoom" in Element.prototype;
   window.ppZoom = function () { return z; };
   function fit() {
     var w = window.innerWidth, h = window.innerHeight, next = Math.floor(Math.min(h / 880, w / 440) * 20) / 20;
-    if (w < 600 || next < 1.15 || root.getAttribute("data-nozoom")) next = 1;
+    if (mode === "big") next = Math.max(1, next);
+    else if (mode === "phone" || w < 600 || next < 1.05) next = 1;
+    if (!canZoom) next = 1;
     if (next === z) return;
     z = next;
     root.style.zoom = z === 1 ? "" : String(z);
     root.style.setProperty("--z", String(z));
+    try { window.dispatchEvent(new Event("ppzoom")); } catch (e) {}
   }
+  window.ppSetScreen = function (m) { mode = m || "auto"; fit(); };
   fit();
   var t = null;
   window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 120); });
-  // Browsers that zoom the old way get the normal size instead
-  document.addEventListener("DOMContentLoaded", function () {
-    if (z === 1) return;
-    var probe = document.createElement("div");
-    probe.style.cssText = "position:fixed;left:0;top:0;width:1px;height:calc(100vh / var(--z, 1));visibility:hidden;pointer-events:none";
-    document.body.appendChild(probe);
-    var ok = Math.abs(probe.getBoundingClientRect().height - window.innerHeight) < window.innerHeight * 0.05;
-    probe.remove();
-    if (!ok) { root.setAttribute("data-nozoom", "1"); z = 2; fit(); }
-  });
 })();
 </script>
 <link rel="manifest" href="manifest.json">
