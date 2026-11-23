@@ -89,6 +89,7 @@ function checkNewBadges() {
     toast(fresh.length > 1
       ? (hats.length ? tn(hats.length, "{a} new badges! Benji unlocked a new hat.", "{a} new badges! Benji unlocked {n} new hats.", { a: fresh.length }) : t("{a} new badges!", { a: fresh.length }))
       : hat ? t("New badge: {name}! Benji unlocked the {hat}.", { name: t(b.name), hat: t(hat.name).toLowerCase() }) : t("New badge: {name}!", { name: t(b.name) }));
+    if (typeof Motion !== "undefined") Motion.badge(b);
     confetti(); sfx("cheer"); buzz([10, 50, 10, 50, 20]);
   }
 }

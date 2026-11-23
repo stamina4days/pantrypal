@@ -55,6 +55,7 @@ function confirmReceipt() {
   bump("receipts");
   const snap = snapshot();
   let n = 0;
+  const got = [];
   $$("#receiptBody [data-ri]:checked").forEach(c => {
     const i = Number(c.dataset.ri), r = receiptRows[i];
     const name = $(`#receiptBody [data-rn="${i}"]`).value.trim();
@@ -63,10 +64,12 @@ function confirmReceipt() {
     if (r.price) learnPrice(name, r.amount, r.unit, r.price);
     items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: r.amount, unit: r.unit || "", location: loc,
       expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name) });
+    got.push(name);
     n++;
   });
   saveItems(); saveSettings();
   $("#receiptDialog").close();
   renderAll();
+  if (typeof Motion !== "undefined") Motion.unpack(got);
   toast(tn(n, "Added 1 item from your receipt.", "Added {n} items from your receipt."), snap);
 }

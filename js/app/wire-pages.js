@@ -55,6 +55,7 @@ function pagesInit() {
   themesInit();
   swipeInit();
   palLifeInit();
+  if (typeof Motion !== "undefined") Motion.init();
   talkInit();
   homeScreenInit();
   kitchenShareInit();

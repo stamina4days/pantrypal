@@ -72,10 +72,11 @@ function renderToday() {
     const art = o.art || (h && h.art ? h.art() : "");
     ha.innerHTML = `<svg viewBox="14 -66 140 110" width="70" height="55" aria-hidden="true">${art}</svg>`;
   }
+  if (typeof Motion !== "undefined") { Motion.tickKitchen(); Motion.checkSprout(); requestAnimationFrame(Motion.afterToday); }
 }
 
 function todayInit() {
-  $("#todayAllFood").addEventListener("click", () => showTab("pantry"));
+  $("#todayAllFood").addEventListener("click", () => (typeof Motion !== "undefined" ? Motion.fridge(() => showTab("pantry")) : showTab("pantry")));
   $("#todayJar").addEventListener("click", () => showTab("stats"));
   $("#todayAddBtn").addEventListener("click", () => openItem());
   $("#todayCookBtn").addEventListener("click", () => openCollection("rescue"));
