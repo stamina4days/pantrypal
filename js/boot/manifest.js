@@ -27,6 +27,8 @@ const PP_PAGES = [
   "screens/plan/week.html",
   "screens/stats/badges.html",
   "screens/stats/tips.html",
+  "screens/stats/recap.html",
+  "screens/food/order.html",
   "screens/settings/settings.html",
   "screens/settings/setup.html",
   "screens/settings/help.html",

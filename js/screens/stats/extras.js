@@ -9,6 +9,10 @@ function renderStatsExtras() {
   box.innerHTML = `
     ${s.saved >= 1 ? `<div class="card money-card"><span class="money-big">${esc(fmtMoney(s.saved))}</span><span>${esc(t("of food saved from the trash, roughly"))}</span>
       <button type="button" class="link-btn money-how" data-explain="saved"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg> ${esc(t("How is this counted?"))}</button></div>` : ""}
+    <a class="card link-card recap-link" href="#/week-recap">
+      <img src="img/pal/proud.svg" width="40" height="54" alt="">
+      <span class="grow"><strong>${esc(t("Your week with Benji"))}</strong><span class="small muted">${esc(t("What you saved this week, as a picture to share"))}</span></span>
+      <span class="go"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/next.svg#i"/></svg></span></a>
     ${weeklyChartHtml()}
     <a class="card link-card" href="#/badges">
       <span class="badge-stack" aria-hidden="true">${(got.length ? got.slice(-3) : [{ id: "locked" }]).map(b => `<img src="img/badges/${b.id}.svg" width="44" height="44" alt="">`).join("")}</span>

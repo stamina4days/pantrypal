@@ -7,6 +7,8 @@ function buddyInit() {
     if (!b) return;
     const a = b.dataset.pal;
     if (a === "audit") openAudit();
+    if (a === "sample") loadSample();
+    if (a === "clear-sample") clearSample();
     if (a === "plan") { showTab("plan"); openPlanner(); }
     if (a === "quick") { showTab("recipes"); $("#quickBtn").click(); }
     if (a === "use") { focusItemId = b.dataset.id; recipeMode = "foryou"; setPressed("#recipeMode", $('#recipeMode [data-mode="foryou"]')); showTab("recipes"); }

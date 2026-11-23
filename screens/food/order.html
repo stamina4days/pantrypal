@@ -1,0 +1,14 @@
+<!-- Paste an online grocery order -->
+<dialog id="orderDialog" data-art="img/illustrations/market-crate.svg" data-accent="pantry" class="screen" aria-labelledby="orderTitle">
+  <div class="dialog-body">
+    <h2 id="orderTitle" data-t>Paste an online order</h2>
+    <p class="muted small" data-t>Ordered groceries online? Open the order in its email or the store's app (like Walmart, Instacart, Kroger, Target, or Amazon Fresh), copy the list of items, and paste it here. Benji picks out the food.</p>
+    <textarea id="orderText" rows="8" data-t-aria="Your order" aria-label="Your order" data-t-ph="Paste your order here" placeholder="Paste your order here"></textarea>
+    <p id="orderNote" class="muted small" aria-live="polite"></p>
+    <div class="actions">
+      <span class="spacer"></span>
+      <button id="cancelOrder" type="button" data-t>Cancel</button>
+      <button id="confirmOrder" type="button" class="primary" data-t>Find the food</button>
+    </div>
+  </div>
+</dialog>
