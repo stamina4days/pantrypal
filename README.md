@@ -10,6 +10,12 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.18
+- **Move your kitchen with a code.** Settings > Share or move your kitchen now shows a code to scan. Point another phone or tablet's camera at it, tap the link, and your kitchen copies over. The code is made right on the phone, and nothing goes through a server. To move to a computer, send yourself the link instead. Links and codes are also smaller now, because empty details are left out.
+- **Benji's guessed dates are marked.** Food added from a receipt, the notepad, Say it, the pantry check, setup, or I bought these gets a "guessed date" tag on My Food until you check it. Its page explains where the date came from, with Looks right and Change the date buttons. Picking or changing a date yourself clears the tag.
+- **Small phones with big text fit.** On a small phone with Large or Extra large text, Today's kitchen shrinks a little more when it has to, so everything stays above Add food.
+- **Sideways phones.** With the phone turned sideways, the header scrolls away, the tabs get slim, and each room keeps its full height so you can scroll instead of squinting. Benji suggests turning it upright once per visit.
+
 ## New in version 11.17
 - **The same size everywhere (11.17.4).** On a computer, a tablet, or a phone in desktop mode, the app now reliably grows to look the way it does on a phone. Before, a phone in desktop mode with its address bar showing could skip this and show a tiny app stretched tall. Settings > Display > Screen size lets you pick Automatic, Phone (keep it small), or Big screen (as big as the screen allows).
 - **Setup only offers pantry staples (11.17.3).** The foods you tap during setup are now things that keep for months, like rice, pasta, flour, canned goods, broth, oats, and coffee, and they all go in the Pantry. Fresh food like milk and eggs goes in with Add food, so nothing you tap on day one is about to go bad.
