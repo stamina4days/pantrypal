@@ -2,6 +2,7 @@
 /* Starting the app. */
 function init() {
   buildMatcher();
+  if (typeof fixPackagedDates === "function") fixPackagedDates();
   myRecipes.forEach(addMineToRecipes);
   applyDisplay();
 

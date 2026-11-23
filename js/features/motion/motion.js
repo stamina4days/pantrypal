@@ -132,8 +132,9 @@ const Motion = (() => {
       const f = document.createElement("div");
       f.className = "jar-drop";
       f.setAttribute("aria-hidden", "true");
-      f.style.left = (r.left + r.width / 2 - 18) + "px";
-      f.style.top = (r.top - 70) + "px";
+      const z = typeof ppZoom === "function" ? ppZoom() : 1;
+      f.style.left = ((r.left + r.width / 2) / z - 18) + "px";
+      f.style.top = (r.top / z - 70) + "px";
       f.innerHTML = foodArt(it.name, it, "jar-food") + `<span class="jar-splash"><i></i><i></i><i></i><i></i></span>`;
       document.body.appendChild(f);
       later(() => { restart(glass, "jar-wobble"); if (typeof sfx === "function") sfx("pop"); }, 520);
