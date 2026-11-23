@@ -93,6 +93,9 @@ Thanks for testing Pantry Pal! Work through the sections below on your phone. Yo
 - [ ] Settings > **Share or move your kitchen** > **Show a code to scan**. Scan the code with another phone or tablet's camera and tap the link. The kitchen copies over.
 - [ ] **Send a link instead** sends a link that copies your kitchen onto another phone or a computer.
 - [ ] Add food from a receipt or the notepad. My Food shows a "guessed date" tag on those foods. Open one: tap **Looks right** and the tag goes away.
+- [ ] Copy the item list from an online grocery order (email or app). Add food > **Online order**, paste it, and tap **Find the food**. Check that the foods, amounts, and prices look right, and that things like paper towels are unticked.
+- [ ] On an empty kitchen, tap **Try a sample kitchen** in Benji's bubble. Look around, then tap **Clear the sample**. Nothing from the sample shows up on Waste Less.
+- [ ] After a few days of marking food Used it or Tossed, open Waste Less > **Your week with Benji**. Tap **Share my week** and send the picture to yourself.
 - [ ] Turn your phone sideways on Today. Benji suggests turning it upright, and you can scroll to see the whole kitchen.
 
 ## Games and hats
