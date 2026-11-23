@@ -22,7 +22,7 @@ function addFirstFoods() {
     const name = t(raw);
     if (items.some(i => norm(i.name) === norm(name))) return;
     const loc = guessLoc(name) || "Fridge", est = estimateShelf(name, loc);
-    items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: 1, unit: "", location: loc,
+    items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: null, unit: "", location: loc,
       expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name) });
     n++;
   });

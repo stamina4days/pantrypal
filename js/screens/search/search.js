@@ -9,6 +9,7 @@ const SEARCH_ACTIONS = [
   { name: "Scan a barcode", icon: "camera", words: "scan barcode camera upc", run: () => { openItem(null); openScanner(); } },
   { name: "Read a receipt", icon: "receipt", words: "receipt photo scan store", run: () => { Router.go("food"); setTimeout(() => $("#receiptFile").click(), 50); } },
   { name: "Show Benji my kitchen", icon: "clipboard", words: "audit check kitchen pantry walk through what i have", run: () => openAudit() },
+  { name: "What can I cook?", icon: "chef", words: "what can i cook make now have ingredients dinner tonight hungry ideas recipes no shopping", run: () => openCollection("cook-now") },
   { name: "Cook with what's expiring", icon: "chef", words: "cook expiring use up rescue going bad tonight dinner leftovers", run: () => openCollection("rescue") },
   { name: "Plan my week", icon: "sparkle", words: "plan meals week dinner automatic menu planner", run: () => openPlanner() },
   { name: "Week at a glance", icon: "week", words: "week calendar plan overview glance", run: () => openWeek() },

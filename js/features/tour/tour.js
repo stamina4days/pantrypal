@@ -10,6 +10,8 @@ const TOUR_STEPS = [
     text: "Start here when you get home from the store. Type what you bought or scan a barcode, and I'll guess when each food goes bad." },
   { target: "#todayFridge", pose: "point", title: "Eat these first",
     text: "The magnets on my fridge are the foods to eat soonest, with how long each one has. Tap one to see it, or tap the note for all your food." },
+  { target: "#todayCanCook", pose: "point", title: "What can I cook?",
+    text: "Tap here any time you're hungry. I'll show you what you can make with the food you already have, no shopping needed." },
   { target: "#todaySpecial", pose: "point", title: "Dinner ideas",
     text: "The chalkboard has tonight's pick. Not sure what to make? I pick recipes that use what you already have, starting with whatever is about to go bad." },
   { target: "#tabbtn-plan", pose: "point", title: "Plan and shop",
