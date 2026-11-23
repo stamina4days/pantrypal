@@ -204,8 +204,9 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
   @keyframes sf-lamp { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
   .shopfront .splash-name { animation: sf-neon 6s infinite; }
   @keyframes sf-neon { 0%, 91%, 95%, 100% { opacity: 1; } 93% { opacity: .55; } }
+  /* Benji stands still behind the counter: he waves and talks instead of bouncing (11.17.1) */
   .splash.shopfront .sm-benji { animation: none; }
-  .shopfront .sm-benji .pal { animation: pal-hop 1.8s ease-in-out infinite; transform-origin: bottom center; }
+  .shopfront .sm-benji .pal.waving .pal-wave { animation-iteration-count: var(--wave-n, 2); }
 }
 
 /* First time: the terms and the name, on a paper notice taped up under the counter */
