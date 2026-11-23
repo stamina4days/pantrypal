@@ -23,7 +23,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.18";
+  var BUILD = "11.19";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -258,6 +258,8 @@
 <script src="js/features/shopping/running-low.js" defer></script>
 <script src="js/features/removing/remove.js" defer></script>
 <script src="js/features/receipts/parse.js" defer></script>
+<script src="js/features/receipts/order.js" defer></script>
+<script src="js/features/sample/sample.js" defer></script>
 <script src="js/features/timers/step-minutes.js" defer></script>
 <script src="js/features/photo-date/photo-date.js" defer></script>
 <script src="js/features/nutrition/nutrition.js" defer></script>
@@ -319,6 +321,7 @@
 <script src="js/screens/week/week.js" defer></script>
 <script src="js/screens/badges/badges.js" defer></script>
 <script src="js/screens/tips/tips.js" defer></script>
+<script src="js/screens/recap/recap.js" defer></script>
 <script src="js/screens/about/about.js" defer></script>
 <script src="js/screens/stats/chart.js" defer></script>
 <script src="js/screens/stats/extras.js" defer></script>
