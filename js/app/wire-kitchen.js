@@ -14,6 +14,7 @@ function kitchenInit() {
     if (b.dataset.cuisine) { obRead(); const c = b.dataset.cuisine; ob.data.cuisines = ob.data.cuisines.includes(c) ? ob.data.cuisines.filter(x => x !== c) : [...ob.data.cuisines, c]; renderOnboarding(); }
     if (b.dataset.ff) { const n = b.dataset.ff; obPicked.has(n) ? obPicked.delete(n) : obPicked.add(n); sfx("tick"); renderOnboarding(); }
     if (b.id === "obAudit") { obRead(); obSave(); addFirstFoods(); $("#onboardDialog").close(); openAudit(); }
+    if (b.id === "obSample") { obRead(); obSave(); obPicked = new Set(); $("#onboardDialog").close(); loadSample(); }
   });
   $("#onboardDialog").addEventListener("close", () => { if (!settings.onboarded) { settings.onboarded = true; saveSettings(); } });
 

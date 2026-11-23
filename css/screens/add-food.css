@@ -29,7 +29,7 @@ dialog.screen.sheet-page > form { padding-top: 10px; display: grid; gap: 14px; }
 .pick-chips::-webkit-scrollbar { display: none; }
 .pick-chip { flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 12px 0 6px; border-radius: 20px; border: 0; box-shadow: none; background: var(--sky); color: var(--ink); font-weight: 800; font-size: .92rem; }
 .pick-chip .pick-art, .pick-chip img { width: 28px; height: 28px; font-size: 22px; line-height: 28px; }
-.add-ways { display: flex; gap: 12px; margin-top: -8px; }
+.add-ways { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: -8px; }
 .add-ways .text-btn { display: inline-flex; align-items: center; gap: 4px; }
 .add-ways .ic { width: 18px; height: 18px; }
 .seg-pick { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; background: var(--sky); border-radius: 16px; padding: 4px; }

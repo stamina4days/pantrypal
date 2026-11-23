@@ -11,7 +11,8 @@ function greeting() {
 function palTodayHtml() {
   const dl = i => daysLeft(i.expires);
   if (!items.length) return palBubble("hungry", t("I'm empty and kind of hungry. Add what you bought, or show me what's in your kitchen!"),
-    [{ attrs: 'data-pal="audit" class="primary"', label: t("Show Benji my kitchen") }]);
+    [{ attrs: 'data-pal="audit" class="primary"', label: t("Show Benji my kitchen") }, { attrs: 'data-pal="sample"', label: t("Try a sample kitchen") }]);
+  if (hasSample()) return sampleBubbleHtml();
   const expired = items.filter(i => { const d = dl(i); return d !== null && d < 0; });
   if (expired.length) return palBubble("worried", tn(expired.length, "1 thing is past its date. Want me to clear it out?", "{n} things are past their date. Want me to clear them out?"),
     [{ attrs: 'data-toss="1" class="primary"', label: t("Clear them out") }]);
