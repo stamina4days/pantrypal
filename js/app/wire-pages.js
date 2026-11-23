@@ -77,10 +77,15 @@ function onScreenOpen(d) {
 
 /* Runs once the opening screen slides away. */
 /* Right after the start screen: do what was picked there. New people get setup first, then the tour.
-   Everyone else gets the tour on every visit unless they turned it off. */
+   Everyone else gets the tour once, or every visit if they turned that on in Settings. */
 function afterSplash(choice, landing) {
   settings.visits = (settings.visits || 0) + 1;
   saveSettings();
+  const deep0 = landing && landing.length > 2 && !/^#\/?(today)?$/.test(landing);
+  const autoTour = settings.onboarded && !deep0 && !String(choice || "").match(/^(shop|hats|play|tour)$/) && !(landing || "").startsWith("#list=")
+    && (settings.tourEveryVisit || !settings.toured);
+  if (autoTour) oneNudge("tour", true);
+  if (!settings.onboarded) oneNudge("welcome", true);
   renderAll();
   const shared = (landing || "").startsWith("#list=");
   importSharedList();
@@ -94,5 +99,5 @@ function afterSplash(choice, landing) {
   if (shared) return;
   if (!settings.onboarded) return openOnboarding("first");
   const deep = landing && landing.length > 2 && !/^#\/?(today)?$/.test(landing);
-  if (!settings.hideTour && !deep) setTimeout(startTour, 350);
+  if (autoTour && !deep) setTimeout(startTour, 350);
 }

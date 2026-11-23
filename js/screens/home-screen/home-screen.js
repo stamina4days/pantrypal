@@ -51,7 +51,7 @@ async function installNow() {
 function installNudgeHtml() {
   if (isInstalled() || settings.installNudgeOff || phoneKind() === "other") return "";
   const days = (settings.streak && (settings.streak.best || settings.streak.n)) || 0;
-  if (days < 2 && !(settings.counts && settings.counts.daysUsed >= 2)) return "";
+  if (!oneNudge("install", days >= 2 || (settings.counts && settings.counts.daysUsed >= 2))) return "";
   return palBubble("wink", t("Want me on your home screen? I'll open like a real app, with my own icon."),
     [{ attrs: 'data-hs="show" class="primary"', label: t("Show me how") }, { attrs: 'data-hs="later"', label: t("Not now") }], "install-nudge");
 }

@@ -20,7 +20,7 @@ function palTapped(btn) {
   sfx("pop"); buzz(8);
   const lines = palLines("tap");
   palTapCount++;
-  if (palTapCount % 4 === 0 && typeof palHatLine === "function") return palSay(btn.closest(".pal-row"), palYou(palHatLine()), true);
+  if (palTapCount % 8 === 0 && typeof palHatLine === "function") return palSay(btn.closest(".pal-row"), palYou(palHatLine()), true);
   palSay(btn.closest(".pal-row"), palYou(lines[palTapIdx++ % lines.length]));
 }
 function palDance() {

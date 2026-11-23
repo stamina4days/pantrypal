@@ -4,6 +4,14 @@
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+/* Benji asks for one thing per visit at most (the tour, the home screen tip, the backup reminder, or his hats).
+   The first one that wants to show claims the visit; it keeps showing on later redraws, the rest wait. */
+let ppNudge = null;
+function oneNudge(kind, wants) {
+  if (ppNudge === kind) return !!wants;
+  if (ppNudge || !wants) return false;
+  ppNudge = kind; return true;
+}
 const tn = (n, one, many, v) => t(n === 1 ? one : many, Object.assign({ n }, v || {}));
 /* Add-ons can plug into a few spots on the page. With none loaded, each spot adds nothing. */
 const ppHooks = {};
@@ -17,7 +25,8 @@ function toast(msg, undoSnap) {
   if (el.parentNode !== host) host.appendChild(el);
   el.innerHTML = `<span>${esc(msg)}</span>` + (undoSnap ? `<button id="undoBtn">${esc(t("Undo"))}</button>` : "");
   el.classList.add("show");
-  if (undoSnap) $("#undoBtn").onclick = () => { restore(undoSnap); el.classList.remove("show"); };
+  // Undo takes a snapshot() string, or a function that puts things back on its own
+  if (undoSnap) $("#undoBtn").onclick = () => { if (typeof undoSnap === "function") undoSnap(); else restore(undoSnap); el.classList.remove("show"); };
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove("show"), undoSnap ? 12000 : 7000);   // plenty of time to read, and to undo
 }
@@ -26,6 +35,20 @@ function restore(s) {
   const o = JSON.parse(s);
   ({ items, history, shopping, plan, cookedLog } = o);
   saveItems(); saveHistory(); saveShopping(); savePlan(); saveCooked(); renderAll();
+}
+/* The whole kitchen, recipes and settings included, for undoing the big ones (emptying it, bringing back a copy). */
+function wholeSnapshot() {
+  const s = JSON.stringify({ items, history, shopping, plan, cookedLog, myRecipes, barcodes, settings });
+  return () => {
+    const o = JSON.parse(s);
+    ({ items, history, shopping, plan, cookedLog, barcodes } = o);
+    RECIPES.filter(r => r.mine).forEach(r => RECIPES.splice(RECIPES.indexOf(r), 1));
+    myRecipes = o.myRecipes || []; myRecipes.forEach(addMineToRecipes);
+    Object.keys(settings).forEach(k => delete settings[k]); Object.assign(settings, o.settings);
+    saveItems(); saveHistory(); saveShopping(); saveBarcodes(); savePlan(); saveCooked(); saveMine(); saveSettings();
+    if (typeof renderDietSummary === "function") renderDietSummary();
+    renderAll(); toast(t("Everything's back."));
+  };
 }
 function download(filename, text, type) {
   const blob = new Blob([text], { type });

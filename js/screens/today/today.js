@@ -24,7 +24,7 @@ function palTodayHtml() {
   const savedWeek = history.filter(h => h.outcome === "used" && h.date >= addDaysFrom(todayStr(), -7)).length;
   if (settings.lastWin && Date.now() - settings.lastWin < 3 * 3600 * 1000 && savedWeek)
     return palBubble("proud", tn(savedWeek, "Look at you go! 1 thing saved from the trash this week.", "Look at you go! {n} things saved from the trash this week."), []);
-  if ((settings.visits || 0) % 3 === 2 && typeof palHatLine === "function")
+  if (typeof palHatLine === "function" && oneNudge("hats", (settings.visits || 0) >= 6 && settings.visits % 10 === 6))
     return palBubble("wink", palYou(palHatLine()), [{ attrs: 'data-go-hats class="primary"', label: t("See my hats") }]);
   const day = Math.floor(Date.now() / 86400000);
   const lines = [palYou(palDaily(palTimeOfDay())), palYou(palDaily(palSeason())), t("Everything in here is fresh and happy.")];

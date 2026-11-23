@@ -18,7 +18,7 @@ function backupNudgeHtml() {
   if (!items.length) return "";
   if (settings.backupNudgeAt && daysAgo(settings.backupNudgeAt) < 0) return "";
   const due = settings.lastBackup ? daysAgo(settings.lastBackup) >= 30 : (items.length >= 10 || daysAgo(settings.firstSeen) >= 7);
-  if (!due) return "";
+  if (!oneNudge("backup", due)) return "";
   return palBubble("worried", settings.lastBackup
       ? t("It's been a while since you saved a copy of your kitchen. Save a fresh one so a cleared browser can't wipe it.")
       : t("Your kitchen is saved only on this phone. If your browser data gets cleared, it's gone. Save a copy to be safe."),
@@ -42,6 +42,7 @@ function importBackup(file) {
       const incoming = Array.isArray(data) ? data : data.items;
       if (!Array.isArray(incoming)) throw new Error("bad file");
       if (!await Ask.confirm({ title: t("Bring back a copy?"), text: t("Replace everything here with this backup ({n} food items)?", { n: incoming.length }), yes: t("Replace"), danger: true })) return;
+      const undo = wholeSnapshot();
       items = incoming.filter(i => i && typeof i.name === "string").map(i => Object.assign({ id: uid() }, i));
       if (Array.isArray(data.history)) history = data.history;
       if (Array.isArray(data.shopping)) shopping = data.shopping;
@@ -60,7 +61,7 @@ function importBackup(file) {
       }
       saveItems(); saveHistory(); saveShopping(); saveBarcodes(); savePlan(); saveCooked(); saveMine(); saveSettings();
       renderDietSummary(); renderAll();
-      toast(t("Backup restored."));
+      toast(t("Backup restored."), undo);
     } catch (e) { Ask.notice({ title: t("Hmm, that didn't work"), text: t("That file doesn't look like a Pantry Pal backup."), mood: "worried" }); }
   };
   reader.readAsText(file);
