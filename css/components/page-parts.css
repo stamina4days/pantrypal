@@ -57,3 +57,7 @@ dialog.screen[data-accent="settings"] .page-hero h2 { color: var(--ink); }
 .pal-tip p { margin: 4px 0; }
 .list.mini-list > li, .mini-list > li { background: none; border: 0; padding: 0; box-shadow: none; border-radius: 0; }
 .pal-tip a, .page-body a:not([class]) { color: var(--leaf-deep); font-weight: 800; }
+/* The code to scan on Share or move your kitchen: black on white so any camera can read it */
+.qr-box { margin: 12px auto; max-width: 360px; text-align: center; }
+.qr-box .qr-svg { display: block; width: 100%; height: auto; background: #fff; border-radius: 12px; border: 2px solid var(--line); }
+.qr-note { margin: 8px 0 0; font-size: .9rem; font-weight: 700; }

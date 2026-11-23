@@ -349,6 +349,7 @@ const OFFLINE_FILES = [
  "js/features/reminders/reminders.js",
  "js/features/removing/remove.js",
  "js/features/share/kitchen-link.js",
+ "js/features/share/qr.js",
  "js/features/shopping/lists.js",
  "js/features/shopping/running-low.js",
  "js/features/store/store.js",

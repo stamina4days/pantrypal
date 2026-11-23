@@ -63,7 +63,7 @@ function confirmReceipt() {
     const loc = receiptLoc(name), est = estimateShelf(name, loc);
     if (r.price) learnPrice(name, r.amount, r.unit, r.price);
     items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: r.amount, unit: r.unit || "", location: loc,
-      expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name) });
+      expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name), dateGuess: !!est });
     got.push(name);
     n++;
   });

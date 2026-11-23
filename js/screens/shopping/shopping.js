@@ -77,7 +77,7 @@ function moveCheckedToFood() {
     const loc = guessLoc(x.name), est = estimateShelf(x.name, loc);
     items.push({ id: uid(), added: todayStr(), name: x.name, amount: parsed && parsed.amount != null ? parsed.amount : null,
       unit: parsed ? parsed.unit : "", location: loc,
-      bought: todayStr(), expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(x.name) });
+      bought: todayStr(), expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(x.name), dateGuess: !!est });
   });
   if (done.length) { sfx("ding"); buzz([10, 40, 10]); }
   list.items = list.items.filter(x => !x.done);
