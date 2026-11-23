@@ -14,7 +14,7 @@ const FOOD_STICKER = {
   cilantro: "herbs", parsley: "herbs", basil: "herbs", scallion: "herbs", herb: "herbs", jalapeno: "chili", "red pepper flakes": "chili",
   "black bean": "beans", "kidney bean": "beans", chickpea: "beans", lentil: "beans", bean: "beans", "coconut milk": "coconut",
   honey: "honey", "peanut butter": "peanut-butter", salsa: "salsa", mayonnaise: "jar", jam: "jar", oil: "oil", "olive oil": "oil",
-  flour: "flour", sugar: "sugar", salt: "salt", ginger: "ginger", juice: "juice", leftover: "leftovers"
+  flour: "flour", sugar: "sugar", salt: "salt", "soy sauce": "jar", "canned bean": "can", "canned soup": "can", ginger: "ginger", juice: "juice", leftover: "leftovers"
 };
 const AISLE_STICKER = { produce: "leafy", meat: "steak", dairy: "milk", bakery: "bread", pantry: "can", frozen: "ice", baking: "flour", other: "bag" };
 

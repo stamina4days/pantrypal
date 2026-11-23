@@ -4,7 +4,8 @@
 function foodStickerName(name, item) {
   if (item && item.leftover) return "leftovers";
   const k = canon(name);
-  return byKey("sticker", FOOD_STICKER, k) || AISLE_STICKER[aisleOf(name)] || "bag";
+  const raw = String(name || "").toLowerCase().trim().replace(/s$/, "");
+  return byKey("sticker", FOOD_STICKER, k) || FOOD_STICKER[raw] || AISLE_STICKER[aisleOf(name)] || "bag";
 }
 function foodArt(name, item, cls) {
   return `<img class="food-art ${cls || ""}" src="img/food/${foodStickerName(name, item)}.svg" alt="" width="40" height="40" loading="lazy">`;

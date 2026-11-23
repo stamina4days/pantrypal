@@ -12,8 +12,9 @@ function openOnboarding(mode) {
 function obLast() { return ob.mode === "first" ? 4 : 3; }
 /* First time: just two short steps, the look of the app, then the food you have right now.
    Household, diet, and cooking questions wait in Settings (People, diet, cooking time, and equipment). */
-const FIRST_FOODS = ["Milk", "Eggs", "Bread", "Butter", "Cheese", "Yogurt", "Chicken breast", "Ground beef", "Rice", "Pasta",
-  "Bananas", "Apples", "Spinach", "Carrots", "Onions", "Potatoes", "Tomatoes", "Lettuce"];
+/* Only pantry staples that keep for months, so nothing tapped here can go bad soon. Fresh food goes in through Add food with its own date. */
+const FIRST_FOODS = ["Rice", "Pasta", "Flour", "Sugar", "Salt", "Olive oil", "Oats", "Cereal", "Honey", "Canned soup",
+  "Canned tomatoes", "Canned beans", "Canned tuna", "Chicken broth", "Pasta sauce", "Lentils", "Soy sauce", "Coffee"];
 let obPicked = new Set();
 function obStepNo() { return ob.mode === "first" ? (ob.step === 0 ? 1 : 2) : ob.step; }
 function addFirstFoods() {
@@ -21,7 +22,7 @@ function addFirstFoods() {
   obPicked.forEach(raw => {
     const name = t(raw);
     if (items.some(i => norm(i.name) === norm(name))) return;
-    const loc = guessLoc(name) || "Fridge", est = estimateShelf(name, loc);
+    const loc = "Pantry", est = estimateShelf(name, loc);
     items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: null, unit: "", location: loc,
       expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name) });
     n++;
@@ -75,7 +76,7 @@ function renderOnboarding() {
       ${EQUIPMENT.map(e => check("equip:" + e, d.equipment.includes(e), t(EQUIP_LABEL[e]))).join("")}
       <p class="muted small">${esc(t("Everyone has a stovetop. Recipes that need something you don't have are hidden."))}</p>`;
   } else {
-    h += palBubble("hungry", t("What's in your kitchen right now? Tap everything you have. I'll guess where it goes and how long it keeps."), [])
+    h += palBubble("hungry", t("What's in your pantry right now? Tap the staples you have. Fresh food like milk and eggs goes in with Add food, so each one gets its own date."), [])
       + `<div class="first-foods">${FIRST_FOODS.map(n => { const on = obPicked.has(n);
         return `<button type="button" class="pick-chip ff-pick ${on ? "on" : ""}" aria-pressed="${on}" data-ff="${esc(n)}">${foodArt(t(n), null, "pick-art")}<span>${esc(t(n))}</span></button>`; }).join("")}</div>
       <button type="button" id="obAudit" class="link-btn ff-more">${esc(t("Got lots more? Go through the whole kitchen"))}</button>
