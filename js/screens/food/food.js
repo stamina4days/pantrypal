@@ -36,7 +36,8 @@ function renderPantry() {
   const rowHtml = i => {
     const lab = expiryLabel(daysLeft(i.expires));
     const sub = [locFilter === "All" ? locLabel(i.location) : "", amountText(i), i.opened ? friendlyOpened(i.opened) : ""].filter(Boolean).join(", ");
-    const tags = (i.staple ? `<span class="mini-tag">${esc(t("staple"))}</span>` : "") + (i.leftover ? `<span class="mini-tag">${esc(t("leftovers"))}</span>` : "");
+    const tags = (i.staple ? `<span class="mini-tag">${esc(t("staple"))}</span>` : "") + (i.leftover ? `<span class="mini-tag">${esc(t("leftovers"))}</span>` : "")
+      + (i.dateGuess && i.expires ? `<span class="mini-tag guess-mini">${esc(t("guessed date"))}</span>` : "");
     const frozen = locIndex(i.location) === 2;
     return `<li class="item swipe-row ${lab.cls}" data-id="${i.id}">
       <button type="button" class="swipe-btn freeze" data-swipe="freeze" data-id="${i.id}" tabindex="-1">${frozen ? `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/sun.svg#i"/></svg>${esc(t("Thaw"))}` : `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/snow.svg#i"/></svg>${esc(t("Freeze"))}`}</button>

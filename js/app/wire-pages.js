@@ -19,6 +19,7 @@ function renderPageExtras() {
 
 function pagesInit() {
   $("#ipActions").addEventListener("click", e => { const b = e.target.closest("[data-ip]"); if (b) itemPageAction(b.dataset.ip); });
+  $("#ipFresh").addEventListener("click", e => { const b = e.target.closest("[data-ip]"); if (b) itemPageAction(b.dataset.ip); });
   $("#ipAllRecipes").addEventListener("click", () => {
     focusItemId = itemPageId; recipeMode = "foryou";
     setPressed("#recipeMode", $('#recipeMode [data-mode="foryou"]'));

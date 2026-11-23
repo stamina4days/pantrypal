@@ -30,6 +30,9 @@ function freshnessHtml(i) {
   return `<div class="fresh-card ${lab.cls}">
     <div class="fresh-top"><strong>${esc(d < 0 ? lab.text : t("{n} of {m} days left", { n: d, m: total }))}</strong><span>${esc(t("Use by {date}", { date: prettyDate(i.expires) }))}</span></div>
     <div class="fresh-bar" role="img" aria-label="${esc(t("{p} percent of its time left", { p: pct }))}"><span style="width:${pct}%"></span></div>
+    ${i.dateGuess ? `<div class="guess-box"><span class="guess-tag">${esc(t("Benji's guess"))}</span>
+      <p>${esc(t("Benji picked this date from how long {name} usually keeps. Is it right?", { name: i.name }))}</p>
+      <div class="guess-btns"><button type="button" data-ip="sure">${esc(t("Looks right"))}</button><button type="button" data-ip="redate">${esc(t("Change the date"))}</button></div></div>` : ""}
     <p class="fresh-note">${esc(t("This date is an estimate. Check the package and the food itself before eating."))} <a href="#/terms">${esc(t("Food safety"))}</a></p>
     <button type="button" class="link-btn fresh-how" data-explain="date"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg> ${esc(t("How Benji picks this date"))}</button>
   </div>`;
@@ -105,6 +108,8 @@ function itemPageAction(a) {
   const i = items.find(x => x.id === itemPageId);
   if (!i) return;
   if (a === "edit") openItem(i.id);
+  if (a === "sure") { i.dateGuess = false; saveItems(); renderItemPage(); renderAll(); toast(t("Got it. {name} keeps that date.", { name: i.name })); }
+  if (a === "redate") { openItem(i.id); const f = $("#fExpires"); if (f) setTimeout(() => { try { f.focus(); f.showPicker && f.showPicker(); } catch (e) {} }, 350); }
   if (a === "open") { markOpened(i.id); renderItemPage(); }
   if (a === "one") { useOne(i.id); renderItemPage(); }
   if (a === "freeze") { editingId = i.id; freezeOrThaw(); renderItemPage(); }

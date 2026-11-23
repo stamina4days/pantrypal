@@ -172,6 +172,10 @@ function saveItem(e, keepOpen) {
     staple: $("#fStaple").checked
   };
   const wasNew = !editingId;
+  // A date left on Benji's guess stays marked as a guess; a date you picked or changed doesn't
+  const guess = palGuess();
+  if (wasNew) data.dateGuess = !!(data.expires && guess && guess.date === data.expires);
+  else { const old = items.find(i => i.id === editingId); if (old && old.expires !== data.expires) data.dateGuess = false; }
   if (editingId) Object.assign(items.find(i => i.id === editingId), data);
   else { items.push(Object.assign({ id: uid(), added: todayStr() }, data)); sfx("pop"); buzz(8); toast(palPick("added", { name })); }
   const key = norm(name);
