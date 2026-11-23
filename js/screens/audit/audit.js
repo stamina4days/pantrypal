@@ -38,7 +38,7 @@ function finishAudit() {
     const name = it[0];
     const est = estimateShelf(it[0], loc);
     items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: it[1], unit: it[2], location: loc,
-      expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name) });
+      expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name), dateGuess: !!est });
     added++;
   }));
   auditExtra.forEach(x => { items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), notes: "", barcode: "", staple: isStaple(x.name), ...x }); added++; });

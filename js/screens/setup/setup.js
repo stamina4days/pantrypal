@@ -24,7 +24,7 @@ function addFirstFoods() {
     if (items.some(i => norm(i.name) === norm(name))) return;
     const loc = "Pantry", est = estimateShelf(name, loc);
     items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: null, unit: "", location: loc,
-      expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name) });
+      expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name), dateGuess: !!est });
     n++;
   });
   obPicked = new Set();

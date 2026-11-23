@@ -17,7 +17,7 @@ function parseQuick(text) {
     const frozen = /\bfrozen\b|\bcongelad[oa]s?\b/i.test(name);
     const location = frozen ? "Freezer" : guessLoc(name);
     const est = estimateShelf(name, location);
-    return { name, amount, unit, location, expires: est ? addDaysFrom(todayStr(), est.days) : "" };
+    return { name, amount, unit, location, expires: est ? addDaysFrom(todayStr(), est.days) : "", dateGuess: !!est };
   });
 }
 function renderQuickPreview() {
