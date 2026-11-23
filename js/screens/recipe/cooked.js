@@ -70,8 +70,9 @@ function confirmCooked() {
 /* Meal plan panel */
 function showPlanPanel() {
   if (openMealId) {
+    const snap = snapshot();
     plan = plan.filter(m => m.id !== openMealId); savePlan();
-    $("#recipeDialog").close(); toast(t("Removed from your plan.")); renderAll();
+    $("#recipeDialog").close(); toast(t("Removed from your plan."), snap); renderAll();
     return;
   }
   $("#cookedPanel").classList.add("hidden");

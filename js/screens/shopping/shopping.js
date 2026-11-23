@@ -58,8 +58,12 @@ async function listMenu() {
   if (name === null) return;
   if (name !== Ask.EXTRA && name) list.name = name;
   else if (name === Ask.EXTRA && await Ask.confirm({ title: t("Delete this list?"), text: t("Delete \"{name}\" and its {n} items?", { name: list.name, n: list.items.length }), yes: t("Delete"), danger: true })) {
+    const snap = snapshot(), was = settings.activeList;
     shopping = shopping.filter(l => l.id !== list.id);
     settings.activeList = shopping[0] ? shopping[0].id : null;
+    saveShopping(); saveSettings(); renderShopping();
+    toast(t("Deleted {name}.", { name: list.name }), () => { restore(snap); settings.activeList = was; saveSettings(); renderShopping(); });
+    return;
   }
   saveShopping(); saveSettings(); renderShopping();
 }

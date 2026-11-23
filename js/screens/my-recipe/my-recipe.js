@@ -73,6 +73,7 @@ function saveMyRecipe(e) {
 async function deleteMine() {
   const r = openResult.recipe;
   if (!r.mine || !await Ask.confirm({ title: t("Delete this recipe?"), text: t("Delete {name} from your recipes?", { name: r.name }), yes: t("Delete"), danger: true })) return;
+  const snap = snapshot(), mine0 = myRecipes.slice(), favs0 = settings.favorites.slice();
   myRecipes = myRecipes.filter(m => m.id !== r.id);
   const idx = RECIPES.indexOf(r); if (idx >= 0) RECIPES.splice(idx, 1);
   plan = plan.filter(m => m.recipe !== r.name);
@@ -80,6 +81,10 @@ async function deleteMine() {
   saveMine(); savePlan(); saveSettings();
   $("#recipeDialog").close();
   renderAll();
+  toast(t("Deleted {name}.", { name: r.name }), () => {
+    myRecipes = mine0; if (idx >= 0) RECIPES.splice(idx, 0, r); settings.favorites = favs0;
+    saveMine(); saveSettings(); restore(snap);
+  });
 }
 function emailSuggestion() {
   if (!SUGGEST_EMAIL) return;
