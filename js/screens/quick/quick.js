@@ -35,5 +35,6 @@ function confirmQuick() {
   saveItems();
   $("#quickDialog").close();
   renderAll();
+  if (typeof Motion !== "undefined") Motion.unpack(list.map(x => x.name));
   toast(tn(list.length, "Added 1 item with an estimated date.", "Added {n} items with estimated dates."), snap);
 }

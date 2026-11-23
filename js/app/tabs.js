@@ -10,7 +10,7 @@ function showTab(name) {
     if (on) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
   });
   if (name === "recipes") { recipeLimit = PAGE_SIZE; renderRecipes(); }
-  if (name === "plan") renderPlan();
+  if (name === "plan") { renderPlan(); if (typeof Motion !== "undefined") Motion.planShown(); }
   if (name === "shopping") renderShopping();
   if (name === "stats") { renderStats(); if (typeof renderStatsExtras === "function") renderStatsExtras(); }
   if (name === "today") renderToday();

@@ -5,6 +5,7 @@ function openCookMode(r, f, fromRecipe) {
   renderCook();
   renderHints();
   $("#cookDialog").showModal();
+  if (typeof Motion !== "undefined") Motion.steam(r);
   keepAwake(true);
   if (settings.readAloud) speak(rSteps(r)[0]);
 }

@@ -5,18 +5,22 @@ function palSay(row, text, hatBtn) {
   const p = row && row.querySelector(".bubble p");
   if (!p) return;
   if (!p.dataset.orig) p.dataset.orig = p.textContent;
-  p.textContent = text;
+  if (typeof Motion !== "undefined") Motion.say(p, text); else p.textContent = text;
   const old = row.querySelector(".pal-hat-btn"); if (old) old.remove();
   if (hatBtn) p.insertAdjacentHTML("afterend", `<button type="button" class="pal-hat-btn" data-go-hats>${esc(t("See my hats"))}</button>`);
   clearTimeout(row._palTimer);
   row._palTimer = setTimeout(() => {
-    p.textContent = p.dataset.orig; delete p.dataset.orig;
+    if (typeof Motion !== "undefined") Motion.say(p, p.dataset.orig); else p.textContent = p.dataset.orig;
+    delete p.dataset.orig;
     const b = row.querySelector(".pal-hat-btn"); if (b) b.remove();
   }, hatBtn ? 7000 : 4200);
 }
 function palTapped(btn) {
   const svg = btn.querySelector(".pal");
-  if (svg) { svg.classList.remove("boing"); void svg.getBoundingClientRect(); svg.classList.add("boing"); }
+  if (svg) {
+    const cls = svg.querySelector(".pal-wave") && palTapCount % 2 ? "waving" : "boing";
+    svg.classList.remove("boing", "waving"); void svg.getBoundingClientRect(); svg.classList.add(cls);
+  }
   sfx("pop"); buzz(8);
   const lines = palLines("tap");
   palTapCount++;

@@ -17,20 +17,19 @@ function stampMoment(kind) {
   sfx(kind === "rescued" ? "thunk" : "pop");
   buzz(kind === "rescued" ? [12, 40, 24] : 10);
   if (kind === "rescued") palDance();
-  if (reducedMotion()) return;
   const el = momentLayer();
-  el.innerHTML = `<div class="moment-box"><div class="stamp stamp-${kind}"><span>${esc(words[kind] || words.used)}</span></div>
-    <p class="moment-say">${esc(palPick(kind === "rescued" ? "rescue" : "used"))}</p></div>`;
+  // Saving food saves money: a coin flips up and Benji catches it (a calm fade with reduce motion)
+  el.innerHTML = `<div class="moment-box${reducedMotion() ? " calm" : ""}"><div class="stamp stamp-${kind}"><span>${esc(words[kind] || words.used)}</span></div>
+    ${kind !== "saved" && typeof Motion !== "undefined" ? Motion.coinHtml() : ""}<p class="moment-say">${esc(palPick(kind === "rescued" ? "rescue" : "used"))}</p></div>`;
   clearTimeout(momentTimer);
-  momentTimer = setTimeout(() => { el.innerHTML = ""; }, 2000);
+  momentTimer = setTimeout(() => { el.innerHTML = ""; }, 2400);
 }
 
 function tearMoment(name) {
   sfx("rip"); buzz([6, 30, 6]);
-  if (reducedMotion()) return;
   const el = momentLayer();
   const half = side => `<div class="tear-half ${side}"><span class="tear-hole"></span><span class="tear-name">${esc(name)}</span></div>`;
-  el.innerHTML = `<div class="moment-box"><div class="tear">${half("l")}${half("r")}</div><p class="moment-say">${esc(palPick("tossed"))}</p></div>`;
+  el.innerHTML = `<div class="moment-box${reducedMotion() ? " calm" : ""}"><div class="tear">${half("l")}${half("r")}<span class="tear-bits"><i></i><i></i><i></i><i></i></span></div><p class="moment-say">${esc(palPick("tossed"))}</p></div>`;
   clearTimeout(momentTimer);
   momentTimer = setTimeout(() => { el.innerHTML = ""; }, 2000);
 }
@@ -40,6 +39,8 @@ let momentQueue = null;
 function foodMoment(item, outcome, d) {
   if (!outcome) return;
   const kind = outcome === "wasted" ? "tossed" : d !== null && d >= 0 && d <= 3 ? "rescued" : "used";
+  // Used in time: it drops into the jar on Today
+  if (kind !== "tossed" && (d === null || d >= 0) && typeof Motion !== "undefined") Motion.jar(item);
   if (!momentQueue) {
     momentQueue = { kind, name: item.name };
     setTimeout(() => {
