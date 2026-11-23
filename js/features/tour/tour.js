@@ -76,14 +76,16 @@ function renderTour() {
     </div>
     <p class="tour-where small">${esc(t("You can always find the tour in Help, in Settings, or on the start screen."))}</p>`;
   if (el) {
-    const r = el.getBoundingClientRect(), pad = 6;
+    // On big screens the page is zoomed: measure in the page's own pixels
+    const z = typeof ppZoom === "function" ? ppZoom() : 1, vh = innerHeight / z;
+    const b0 = el.getBoundingClientRect(), r = { left: b0.left / z, top: b0.top / z, width: b0.width / z, height: b0.height / z, bottom: b0.bottom / z }, pad = 6;
     Object.assign(hole.style, { display: "block", left: (r.left - pad) + "px", top: (r.top - pad) + "px", width: (r.width + pad * 2) + "px", height: (r.height + pad * 2) + "px" });
-    const below = r.top + r.height / 2 < innerHeight / 2;
+    const below = r.top + r.height / 2 < vh / 2;
     card.classList.toggle("tour-below", below);
     card.classList.toggle("tour-above", !below);
-    card.style.top = below ? Math.min(r.bottom + 16, innerHeight - card.offsetHeight - 12) + "px" : "";
-    card.style.bottom = below ? "" : Math.max(innerHeight - r.top + 16, 12) + "px";
-    if (!below && innerHeight - (innerHeight - r.top + 16) - card.offsetHeight < 8) { card.style.bottom = ""; card.style.top = "12px"; }
+    card.style.top = below ? Math.min(r.bottom + 16, vh - card.offsetHeight - 12) + "px" : "";
+    card.style.bottom = below ? "" : Math.max(vh - r.top + 16, 12) + "px";
+    if (!below && vh - (vh - r.top + 16) - card.offsetHeight < 8) { card.style.bottom = ""; card.style.top = "12px"; }
   } else {
     hole.style.display = "none";
     card.classList.remove("tour-below", "tour-above");
