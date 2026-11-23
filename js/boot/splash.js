@@ -81,6 +81,8 @@ const Splash = (() => {
     const focusFirst = sel => { if (!coarse) setTimeout(() => { const g = stage.querySelector(sel); if (g) g.focus(); }, 60); };
     return new Promise(done => {
       const benji = (mood, pose) => palSVG(mood, 132, { pose });
+      // Benji waves and says his hello word by word
+      const greet = () => { if (typeof Motion !== "undefined") Motion.greet(stage.querySelector(".sm-benji .pal"), stage.querySelector(".sm-hello")); };
       // The shop front behind every start screen: the striped awning, the brick wall, and a sidewalk
       s.classList.add("shopfront");
       if (!s.querySelector(".sf-street")) s.insertAdjacentHTML("beforeend", `<div class="sf-street" aria-hidden="true"></div>`);
@@ -116,6 +118,7 @@ const Splash = (() => {
       const notice = (hello, inner, mood, pose) => {
         s.classList.add("sf-first");
         stage.innerHTML = front(hello, mood, pose) + inner;
+        greet();
       };
       /* The first time (and after the terms change): read the terms, tick the box, then go on */
       const showTerms = () => {
@@ -225,6 +228,7 @@ const Splash = (() => {
             </div>
           </div>
           <button type="button" class="text-btn sm-rename" data-sm="name">${esc(name ? t("Not {name}? Change your name", { name }) : t("Tell Benji your name"))}</button>`;
+        greet();
         stage.querySelectorAll("[data-sm]").forEach(b => b.addEventListener("click", () => {
           const a = b.dataset.sm;
           if (a === "name") return showName(true);
