@@ -12,3 +12,4 @@
 .mini-tag { font-size: .7rem; font-weight: 800; color: var(--plum); border: 1.5px solid var(--plum); border-radius: 999px; padding: 0 6px; vertical-align: middle; }
 /* Friendly date words can be two short lines */
 .badge { white-space: normal; max-width: 7.2em; border-radius: 16px; text-align: center; line-height: 1.15; padding-top: 5px; padding-bottom: 5px; }
+.mini-tag.guess-mini { color: var(--muted); border-color: var(--muted); border-style: dashed; }

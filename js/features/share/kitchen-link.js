@@ -27,16 +27,51 @@ function openShareKitchen() {
   $("#skListsLabel").textContent = t("Shopping lists") + " (" + shopping.length + ")";
   $("#skPlanLabel").textContent = t("Meal plan") + " (" + tn(plan.length, "1 meal", "{n} meals") + ")";
   $("#skMineLabel").textContent = t("My recipes and notes") + " (" + myRecipes.length + ")";
+  $("#skQr").classList.add("hidden"); $("#skQr").innerHTML = "";
   $("#shareKitchenPage").showModal();
 }
 
-async function sendKitchen() {
-  const pack = { v: 1, from: (settings.userName || "").trim() };
-  if ($("#skFood").checked) pack.items = items;
+/* Leave out empty details so the link (and the code) stays small. unslimItem puts them back. */
+function slimItem(i) {
+  const o = {};
+  Object.keys(i).forEach(k => {
+    const v = i[k];
+    if (v === "" || v === null || v === undefined || v === false) return;
+    if ((k === "added" || k === "verified") && v === i.bought) return;
+    o[k] = v;
+  });
+  return o;
+}
+function unslimItem(i) {
+  const o = Object.assign({ amount: null, unit: "", notes: "", barcode: "", staple: false, expires: "", location: "Fridge" }, i);
+  if (o.bought) { if (!o.added) o.added = o.bought; if (!("verified" in i)) o.verified = o.bought; }
+  if (!o.added) o.added = todayStr();
+  return o;
+}
+async function kitchenUrl() {
+  const pack = { v: 2, from: (settings.userName || "").trim() };
+  if ($("#skFood").checked) pack.items = items.map(slimItem);
   if ($("#skLists").checked) pack.shopping = shopping;
   if ($("#skPlan").checked) pack.plan = plan;
   if ($("#skMine").checked) { pack.mine = myRecipes; pack.notes = settings.recipeNotes || {}; }
-  const url = location.href.split("#")[0] + "#kitchen=" + await packKitchen(pack);
+  return { pack, url: location.href.split("#")[0] + "#kitchen=" + await packKitchen(pack) };
+}
+/* The code to scan. Very big kitchens make a code too fine for a camera, so those get the link instead. */
+async function showKitchenQr() {
+  const box = $("#skQr");
+  const { url } = await kitchenUrl();
+  const q = QR.make(url);
+  box.classList.remove("hidden");
+  if (!q || q.version > 32) {
+    box.innerHTML = `<p class="qr-note">${esc(t("That's too much for one code. Untick something above, or send a link instead."))}</p>`;
+    return;
+  }
+  box.innerHTML = QR.svg(url, t("Code to copy your kitchen")) + `<p class="qr-note">${esc(t("On the other phone or tablet, open the camera and point it at this code. Tap the link that pops up and your kitchen copies over."))}</p>`;
+  box.scrollIntoView({ block: "center", behavior: "smooth" });
+}
+
+async function sendKitchen() {
+  const { pack, url } = await kitchenUrl();
   const text = pack.from ? t("{name} shared a kitchen with you on Pantry Pal.", { name: pack.from }) : t("Here's my kitchen on Pantry Pal.");
   try {
     if (navigator.share) { await navigator.share({ title: "Pantry Pal", text, url }); return; }
@@ -59,7 +94,7 @@ async function importKitchenLink() {
   if (!await Ask.confirm({ title: t("Someone shared a kitchen"), text: t("Copy {who} onto this phone? It has {n} foods. It gets added to what's here.", { who, n }), yes: t("Add it") })) return;
   const snap = snapshot();
   const ids = new Set(items.map(i => i.id));
-  (pack.items || []).forEach(i => { if (!ids.has(i.id)) items.push(i); });
+  (pack.items || []).forEach(i => { if (!ids.has(i.id)) items.push(unslimItem(i)); });
   const listIds = new Set(shopping.map(l => l.id));
   (pack.shopping || []).forEach(l => { if (!listIds.has(l.id)) shopping.push(l); });
   const planIds = new Set(plan.map(m => m.id));
@@ -75,5 +110,8 @@ async function importKitchenLink() {
 function kitchenShareInit() {
   $("#shareKitchenBtn").addEventListener("click", () => { $("#settingsDialog").close(); openShareKitchen(); });
   $("#skSend").addEventListener("click", sendKitchen);
+  $("#skQrBtn").addEventListener("click", showKitchenQr);
+  // A new choice of what to send makes a new code
+  ["#skFood", "#skLists", "#skPlan", "#skMine"].forEach(id => $(id).addEventListener("change", () => { if (!$("#skQr").classList.contains("hidden")) showKitchenQr(); }));
   window.addEventListener("hashchange", importKitchenLink);
 }
