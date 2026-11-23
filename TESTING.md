@@ -90,7 +90,10 @@ Thanks for testing Pantry Pal! Work through the sections below on your phone. Yo
 - [ ] The shopping list is grouped by store section, with an estimated total.
 - [ ] Tap the share magnet and send the list to yourself by text. Open the link on the same phone: it offers to add the list.
 - [ ] Check items off, then tap **I bought these**. They move into My Food.
-- [ ] Settings > **Share your kitchen** sends a link that copies your kitchen onto another phone.
+- [ ] Settings > **Share or move your kitchen** > **Show a code to scan**. Scan the code with another phone or tablet's camera and tap the link. The kitchen copies over.
+- [ ] **Send a link instead** sends a link that copies your kitchen onto another phone or a computer.
+- [ ] Add food from a receipt or the notepad. My Food shows a "guessed date" tag on those foods. Open one: tap **Looks right** and the tag goes away.
+- [ ] Turn your phone sideways on Today. Benji suggests turning it upright, and you can scroll to see the whole kitchen.
 
 ## Games and hats
 - [ ] Play > **Fridge Sort**: answer the cards. On a card about your real food, answer "About half" and check its amount on My Food.
