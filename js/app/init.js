@@ -184,6 +184,7 @@ function init() {
     $("#useSubs").checked = settings.useSubs;
     $("#remindersToggle").checked = settings.reminders;
     setPressed("#textSize", $(`#textSize [data-size="${textSizeNow()}"]`));
+    setPressed("#screenSize", $(`#screenSize [data-screen="${settings.screenSize || "auto"}"]`));
     $("#highContrast").checked = settings.highContrast;
     $("#tourAutoToggle").checked = !!settings.tourEveryVisit;
     $("#settingsDialog").showModal();
@@ -192,6 +193,7 @@ function init() {
   $("#assumeBasics").addEventListener("change", e => { settings.assumeBasics = e.target.checked; saveSettings(); renderAll(); });
   $("#useSubs").addEventListener("change", e => { settings.useSubs = e.target.checked; saveSettings(); renderAll(); });
   segment("#textSize", "size", v => setTextSize(v));
+  segment("#screenSize", "screen", v => { settings.screenSize = v; saveSettings(); if (window.ppSetScreen) ppSetScreen(v); });
   $("#highContrast").addEventListener("change", e => { settings.highContrast = e.target.checked; saveSettings(); applyDisplay(); });
   $("#remindersToggle").addEventListener("change", e => setReminders(e.target.checked));
   $("#calendarAll").addEventListener("click", () => calendarReminders(items));
