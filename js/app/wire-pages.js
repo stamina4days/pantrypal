@@ -60,6 +60,8 @@ function pagesInit() {
   talkInit();
   homeScreenInit();
   kitchenShareInit();
+  orderInit();
+  recapInit();
   $("#recipeNoteText").addEventListener("input", saveRecipeNote);
   $("#recipeFavBy").addEventListener("input", saveRecipeNote);
   $("#userNameInput").addEventListener("change", e => { settings.userName = e.target.value.trim(); saveSettings(); renderKitchenName(); renderAll(); });
@@ -104,4 +106,5 @@ function afterSplash(choice, landing) {
   if (!settings.onboarded) return openOnboarding("first");
   const deep = landing && landing.length > 2 && !/^#\/?(today)?$/.test(landing);
   if (autoTour && !deep) setTimeout(startTour, 350);
+  else if (!deep && (!choice || choice === "start") && typeof recapDue === "function" && recapDue() && oneNudge("recap", true)) setTimeout(openRecap, 600);
 }

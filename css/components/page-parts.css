@@ -61,3 +61,7 @@ dialog.screen[data-accent="settings"] .page-hero h2 { color: var(--ink); }
 .qr-box { margin: 12px auto; max-width: 360px; text-align: center; }
 .qr-box .qr-svg { display: block; width: 100%; height: auto; background: #fff; border-radius: 12px; border: 2px solid var(--line); }
 .qr-note { margin: 8px 0 0; font-size: .9rem; font-weight: 700; }
+/* Your week with Benji: the picture to share */
+.recap-card { margin: 10px auto 12px; max-width: 360px; }
+.recap-card img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; border-radius: 14px; border: 2px solid var(--edge); box-shadow: var(--shadow); background: #FBF3E4; }
+.recap-link img { flex: none; }

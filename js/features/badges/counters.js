@@ -42,7 +42,7 @@ function badgeStats() {
   const cuisines = new Set(cookedLog.map(x => { const r = recipeByName(x.name); return r && r.cuisine; }).filter(Boolean));
   c.plannedPeak = Math.max(c.plannedPeak || 0, plan.length);
   return {
-    added: items.length + history.length,
+    added: items.filter(i => !i.sample).length + history.length,
     audits: c.audits || 0,
     rescued,
     cooked: cookedLog.length,

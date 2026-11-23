@@ -15,9 +15,10 @@ function exportBackup() {
 const daysAgo = d => d ? Math.round((Date.now() - new Date(d + "T12:00:00").getTime()) / 86400000) : 0;
 function backupNudgeHtml() {
   if (!settings.firstSeen) { settings.firstSeen = todayStr(); saveSettings(); }
-  if (!items.length) return "";
+  const real = items.filter(i => !i.sample).length;   // a sample kitchen doesn't need saving
+  if (!real) return "";
   if (settings.backupNudgeAt && daysAgo(settings.backupNudgeAt) < 0) return "";
-  const due = settings.lastBackup ? daysAgo(settings.lastBackup) >= 30 : (items.length >= 10 || daysAgo(settings.firstSeen) >= 7);
+  const due = settings.lastBackup ? daysAgo(settings.lastBackup) >= 30 : (real >= 10 || daysAgo(settings.firstSeen) >= 7);
   if (!oneNudge("backup", due)) return "";
   return palBubble("worried", settings.lastBackup
       ? t("It's been a while since you saved a copy of your kitchen. Save a fresh one so a cleared browser can't wipe it.")

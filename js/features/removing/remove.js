@@ -5,6 +5,7 @@ let stapleNotes = [];
 function removeItem(item, outcome) {
   if (typeof foodMoment === "function") foodMoment(item, outcome, daysLeft(item.expires));
   items = items.filter(i => i.id !== item.id);
+  if (item.sample) { saveItems(); return; }   // sample foods never count toward Waste Less or badges
   if (outcome === "used" && item.bought && !item.leftover) learnUsage(item);
   if (outcome === "used") { settings.lastWin = Date.now(); saveSettings(); }
   if (outcome === "used" || outcome === "wasted") {
