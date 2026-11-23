@@ -23,7 +23,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.14.3";
+  var BUILD = "11.14.4";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -317,6 +317,8 @@
 <script src="js/boot/manifest.js" defer></script>
 <script src="js/boot/splash.js" defer></script>
 <script src="js/boot/loader.js" defer></script>
+<!-- Cloudflare Web Analytics: counts visits, no cookies, nothing personal. The numbers are in the Cloudflare dashboard. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a9f9d98dfd99499286c732b53b0940b8"}'></script>
 
 </body>
 </html>
