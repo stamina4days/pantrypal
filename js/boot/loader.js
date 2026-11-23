@@ -38,13 +38,22 @@ async function pool(list, limit, job) {
   return out;
 }
 
+/* Pages and recipes download at the same time. The bar shows both together. */
+const loadCount = { pages: [0, 0], recipes: [0, 0] };
+function report(what, done, total) {
+  loadCount[what] = [done, total];
+  const [pd, pt] = loadCount.pages, [rd, rt] = loadCount.recipes;
+  const pagesLeft = !pt || pd < pt;
+  if (Splash.progressAll) Splash.progressAll(pd + rd, (pt || 40) + (rt || 1), pagesLeft ? "pages" : "recipes", pagesLeft ? [pd, pt] : [rd, rt]);
+  else Splash.progress(done, total, what);
+}
 async function loadPages() {
   const all = [...PP_TABS, ...PP_PAGES];
   let done = 0;
   const html = await pool(all, 8, async p => {
     let h;
     try { h = await fetchText(p); } catch (e) { h = await fetchText(p).catch(() => { throw new Error("missing:" + p); }); }
-    Splash.progress(++done, all.length, "pages");
+    report("pages", ++done, all.length);
     return h;
   });
   const main = document.getElementById("main");
@@ -82,11 +91,11 @@ async function loadRecipes() {
   bundleRaw = new Map(bundle.map(r => [r.id, JSON.stringify(r)]));
   const need = files.filter(f => !byId.has(recipeIdOf(f)));
   let done = files.length - need.length;
-  Splash.progress(done, files.length, "recipes");
+  report("recipes", done, files.length);
   const got = new Map();
   await pool(need, 12, async f => {
     got.set(f, await fetchRecipeFile(f));
-    Splash.progress(++done, files.length, "recipes");
+    report("recipes", ++done, files.length);
   });
   const list = files.map(f => byId.get(recipeIdOf(f)) || got.get(f) || null);
   missingRecipes = files.filter((f, i) => !list[i]);
@@ -131,8 +140,7 @@ async function boot() {
   document.documentElement.lang = LANG;
   Splash.start();
   try {
-    await loadPages();
-    await loadRecipes();
+    await Promise.all([loadPages(), loadRecipes()]);
   } catch (e) {
     if (!healAndReload()) Splash.fail(e);
     return;

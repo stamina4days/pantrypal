@@ -1,7 +1,7 @@
 "use strict";
 /* A short guided tour of Today: what Pantry Pal is for and where things are. Benji points at each part of
-   the screen in turn. Runs after first-time setup and every time the app opens, until you tick
-   "Don't show this when I open the app". Also anytime from the start screen, Help, Settings, or Search. */
+   the screen in turn. Runs once after first-time setup (or every visit, if that's turned on in Settings).
+   Also anytime from the start screen, Help, Settings, or Search. */
 
 const TOUR_STEPS = [
   { mood: "wave", title: "Hi, I'm Benji!",
@@ -72,7 +72,6 @@ function renderTour() {
       ${first || last ? "" : `<button type="button" data-tour="back">${esc(t("Back"))}</button>`}
       <button type="button" class="primary" data-tour="next">${esc(last ? t("Let's go") : first ? t("Show me around") : t("Next"))}</button>
     </div>
-    <label class="check tour-hide"><input type="checkbox" data-tour-hide ${settings.hideTour ? "checked" : ""}> <span>${esc(t("Don't show this when I open the app"))}</span></label>
     <p class="tour-where small">${esc(t("You can always find the tour in Help, in Settings, or on the start screen."))}</p>`;
   if (el) {
     const r = el.getBoundingClientRect(), pad = 6;
@@ -108,8 +107,8 @@ function endTour() {
 
 function tourInit() {
   document.addEventListener("change", e => {
-    if (!e.target.matches("[data-tour-hide], #tourAutoToggle")) return;
-    settings.hideTour = e.target.matches("#tourAutoToggle") ? !e.target.checked : e.target.checked;
+    if (!e.target.matches("#tourAutoToggle")) return;
+    settings.tourEveryVisit = e.target.checked;
     saveSettings();
   });
   document.addEventListener("click", e => {
@@ -145,7 +144,7 @@ function tourInit() {
     startTour();
   }, 450);
   $("#onboardDialog").addEventListener("close", () => {
-    if (ob && ob.mode === "first" && !settings.hideTour) { pending = true; maybeStart(); }
+    if (ob && ob.mode === "first" && !settings.toured) { pending = true; maybeStart(); }
   });
   $("#auditDialog").addEventListener("close", maybeStart);
 }

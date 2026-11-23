@@ -4,7 +4,7 @@
 function kitchenInit() {
   // Setup
   $("#obNext").addEventListener("click", obNext);
-  $("#obBack").addEventListener("click", () => { obRead(); ob.step--; renderOnboarding(); });
+  $("#obBack").addEventListener("click", () => { obRead(); ob.step = ob.mode === "first" && ob.step === 4 ? 0 : ob.step - 1; renderOnboarding(); });
   $("#obSkip").addEventListener("click", () => { settings.onboarded = true; saveSettings(); $("#onboardDialog").close(); });
   $("#obBody").addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
@@ -12,8 +12,8 @@ function kitchenInit() {
     if (b.dataset.textsize) { obRead(); setTextSize(b.dataset.textsize); renderOnboarding(); }
     if (b.dataset.people) { obRead(); ob.data.people = Math.max(1, Math.min(12, ob.data.people + Number(b.dataset.people))); renderOnboarding(); }
     if (b.dataset.cuisine) { obRead(); const c = b.dataset.cuisine; ob.data.cuisines = ob.data.cuisines.includes(c) ? ob.data.cuisines.filter(x => x !== c) : [...ob.data.cuisines, c]; renderOnboarding(); }
-    if (b.id === "obAudit") { $("#onboardDialog").close(); openAudit(); }
-    if (b.id === "obSkipAudit") { $("#onboardDialog").close(); toast(t("No problem. Browse recipes or make a meal plan any time.")); showTab("recipes"); }
+    if (b.dataset.ff) { const n = b.dataset.ff; obPicked.has(n) ? obPicked.delete(n) : obPicked.add(n); sfx("tick"); renderOnboarding(); }
+    if (b.id === "obAudit") { obRead(); obSave(); addFirstFoods(); $("#onboardDialog").close(); openAudit(); }
   });
   $("#onboardDialog").addEventListener("close", () => { if (!settings.onboarded) { settings.onboarded = true; saveSettings(); } });
 

@@ -10,13 +10,33 @@ function openOnboarding(mode) {
   if (!$("#onboardDialog").open) $("#onboardDialog").showModal();
 }
 function obLast() { return ob.mode === "first" ? 4 : 3; }
+/* First time: just two short steps, the look of the app, then the food you have right now.
+   Household, diet, and cooking questions wait in Settings (People, diet, cooking time, and equipment). */
+const FIRST_FOODS = ["Milk", "Eggs", "Bread", "Butter", "Cheese", "Yogurt", "Chicken breast", "Ground beef", "Rice", "Pasta",
+  "Bananas", "Apples", "Spinach", "Carrots", "Onions", "Potatoes", "Tomatoes", "Lettuce"];
+let obPicked = new Set();
+function obStepNo() { return ob.mode === "first" ? (ob.step === 0 ? 1 : 2) : ob.step; }
+function addFirstFoods() {
+  let n = 0;
+  obPicked.forEach(raw => {
+    const name = t(raw);
+    if (items.some(i => norm(i.name) === norm(name))) return;
+    const loc = guessLoc(name) || "Fridge", est = estimateShelf(name, loc);
+    items.push({ id: uid(), added: todayStr(), bought: todayStr(), verified: todayStr(), name, amount: 1, unit: "", location: loc,
+      expires: est ? addDaysFrom(todayStr(), est.days) : "", notes: "", barcode: "", staple: isStaple(name) });
+    n++;
+  });
+  obPicked = new Set();
+  if (n) { saveItems(); toast(tn(n, "Added 1 food. Tap it on My Food to change anything.", "Added {n} foods. Tap any of them on My Food to change anything.")); }
+  return n;
+}
 function renderOnboarding() {
   const d = ob.data, body = $("#obBody");
   const check = (id, on, label) => `<label class="check"><input type="checkbox" data-ob="${id}" ${on ? "checked" : ""}> <span>${esc(label)}</span></label>`;
   const opts = (list, cur) => list.map(([v, l]) => `<option value="${v}" ${String(v) === String(cur) ? "selected" : ""}>${esc(l)}</option>`).join("");
-  let h = `<p class="muted small">${esc(t("Step {a} of {b}", { a: ob.step + (ob.mode === "first" ? 1 : 0), b: obLast() + (ob.mode === "first" ? 1 : 0) }))}</p>`;
+  let h = `<p class="muted small">${esc(t("Step {a} of {b}", { a: obStepNo(), b: ob.mode === "first" ? 2 : 3 }))}</p>`;
   if (ob.step === 0) {
-    h += palBubble("wink", t("It plans meals around the food you already have, so less goes to waste. Setup takes about a minute, and you can change any of it later."), [], "pal-big")
+    h += palBubble("wink", t("It plans meals around the food you already have, so less goes to waste. This takes a few seconds, and you can change any of it later."), [], "pal-big")
       + `<h2 class="center">${esc(t("Welcome to Pantry Pal"))}</h2>
       <h3>${esc(t("How much do you want to see?"))}</h3>
       <div class="view-pick">
@@ -55,15 +75,16 @@ function renderOnboarding() {
       ${EQUIPMENT.map(e => check("equip:" + e, d.equipment.includes(e), t(EQUIP_LABEL[e]))).join("")}
       <p class="muted small">${esc(t("Everyone has a stovetop. Recipes that need something you don't have are hidden."))}</p>`;
   } else {
-    h += palSVG("hungry", 64) + `<h2>${esc(t("Set up your pantry?"))}</h2>
-      <p>${esc(t("A quick pantry audit lets Pantry Pal plan around what you already have. Tap what's in your kitchen, which takes about two minutes."))}</p>
-      <div class="stack"><button id="obAudit" class="primary">${esc(t("Start pantry audit"))}</button><button id="obSkipAudit">${esc(t("Skip for now, I'll add food later"))}</button></div>
-      <p class="muted small">${esc(t("You can do this any time from My Food or Settings. Recipes, meal plans, and cook mode all work without it."))}</p>`;
+    h += palBubble("hungry", t("What's in your kitchen right now? Tap everything you have. I'll guess where it goes and how long it keeps."), [])
+      + `<div class="first-foods">${FIRST_FOODS.map(n => { const on = obPicked.has(n);
+        return `<button type="button" class="pick-chip ff-pick ${on ? "on" : ""}" aria-pressed="${on}" data-ff="${esc(n)}">${foodArt(t(n), null, "pick-art")}<span>${esc(t(n))}</span></button>`; }).join("")}</div>
+      <button type="button" id="obAudit" class="link-btn ff-more">${esc(t("Got lots more? Go through the whole kitchen"))}</button>
+      <p class="muted small">${esc(t("Nothing in there yet? Just tap Done. Recipes, meal plans, and cook mode all work without food."))}</p>`;
   }
   body.innerHTML = h;
   $("#obBack").classList.toggle("hidden", ob.step === (ob.mode === "first" ? 0 : 1));
-  $("#obNext").classList.toggle("hidden", ob.mode === "first" && ob.step === 4);
-  $("#obNext").textContent = ob.step === obLast() || (ob.mode === "first" && ob.step === 3 && false) ? t("Save") : t("Next");
+  $("#obNext").textContent = ob.mode === "first" && ob.step === 4
+    ? (obPicked.size ? tn(obPicked.size, "Add 1 food", "Add {n} foods") : t("Done")) : ob.step === obLast() ? t("Save") : t("Next");
   $("#obSkip").classList.toggle("hidden", ob.mode !== "first" || ob.step === 4);
 }
 function obRead() {
@@ -92,8 +113,8 @@ function obSave() {
 }
 function obNext() {
   obRead();
+  if (ob.mode === "first" && ob.step === 4) { obSave(); addFirstFoods(); renderAll(); $("#onboardDialog").close(); return; }
   if (ob.step >= obLast()) { obSave(); $("#onboardDialog").close(); toast(t("Saved your preferences.")); return; }
-  if (ob.mode === "first" && ob.step === 3) obSave();
-  ob.step++;
+  ob.step = ob.mode === "first" && ob.step === 0 ? 4 : ob.step + 1;
   renderOnboarding();
 }
