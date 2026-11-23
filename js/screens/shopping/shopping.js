@@ -83,6 +83,7 @@ function moveCheckedToFood() {
   list.items = list.items.filter(x => !x.done);
   saveItems(); saveShopping();
   renderAll();
+  if (typeof Motion !== "undefined") Motion.unpack(done.map(x => x.name));
   toast(tn(done.length, "Put 1 thing away in My Food. Tap it to change the date.", "Put {n} things away in My Food. Tap any to change its date."), snap);
 }
 async function shareList() {

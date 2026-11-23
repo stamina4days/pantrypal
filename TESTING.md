@@ -42,6 +42,17 @@ Thanks for testing Pantry Pal! Work through the sections below on your phone. Yo
 - [ ] Add food stays on screen, with no big empty gap between it and the tabs.
 - [ ] The five tabs (Today, My Food, Recipes, Plan, Shopping) sit in **one row** at the bottom.
 - [ ] Each tab fits on the screen without scrolling the whole page. Long lists scroll inside their own box.
+- [ ] Tap anywhere on Today. Benji's eyes look toward your tap. When he says something new, his mouth moves while the words fill in.
+- [ ] Tap Benji a few times. He bounces or waves his glove.
+- [ ] Look out the window over the counter. The sky matches the time of day, and there's weather for the season. The clock on the freezer shows the right time.
+- [ ] Turn music on. The game console's lights blink.
+- [ ] Tap **All foods** on the fridge door. The door swings open, then My Food slides in.
+- [ ] Mark a food as used before its date. A stamp lands, a coin flips up, and Benji catches it. Go back to Today: the food drops into your jar with a splash.
+- [ ] Mark a food as thrown out. The price tag rips and falls away.
+- [ ] Add food (one by hand, a receipt, or checked items on the shopping list). The food hops out of a bag and into a little fridge.
+- [ ] Earn a badge. It slams down with a puff of dust.
+- [ ] Open a recipe: it flips over like a card. Start cook mode: steam rises off the dish. Open Plan: the days turn like calendar pages.
+- [ ] Turn on reduce motion in your phone's settings (iPhone: Settings > Accessibility > Motion; Android: Settings > Accessibility > Remove animations). Nothing swings or flies; things fade in and out instead.
 
 ## Pages and moving around
 - [ ] Tap a food on My Food. Its page slides in. Tap Back, and it slides away.
