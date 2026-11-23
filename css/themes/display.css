@@ -11,6 +11,7 @@ html.text-xl #pageTitle { font-size: clamp(1.4rem, calc(7vw / var(--z, 1)), 2rem
 .text-size-pick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .text-size-pick button { display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 76px; padding: 6px 4px; font-size: .85rem; }
 .text-size-pick button[aria-pressed="true"] { background: var(--leaf); border-color: var(--leaf-deep); color: var(--on-color, #fff); }
+.screen-pick button { min-height: 48px; justify-content: center; font-size: .9rem; }
 .ts-aa { font-family: var(--hand); font-weight: 700; line-height: 1; }
 .ts-1 { font-size: 20px; } .ts-2 { font-size: 26px; } .ts-3 { font-size: 32px; }
 body.high-contrast {

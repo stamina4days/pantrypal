@@ -1,6 +1,6 @@
 "use strict";
 /* About page. */
-const APP_VERSION = "11.17.3";
+const APP_VERSION = "11.17.4";
 function openAbout() {
   const cuisines = new Set(RECIPES.map(r => r.cuisine));
   $("#abVersion").textContent = t("Version {v}", { v: APP_VERSION });
