@@ -156,3 +156,23 @@ body .top-actions .icon-btn { width: 44px; height: 44px; min-width: 44px; min-he
 }
 /* Wide screens: keep the kitchen phone-sized and centered */
 @media (min-width: 560px) { .kitchen { margin: 0 auto; max-width: 520px; border-radius: 18px; } }
+
+/* What can I cook? A big sign in the kitchen, between Benji's bubble and Benji (11.16) */
+.k-room { grid-template-rows: auto auto auto 1fr auto; grid-template-areas: "check check" "fridge bubble" "fridge cook" "fridge benji" "fridge counter"; }
+.k-cancook { grid-area: cook; position: relative; z-index: 2; display: flex; align-items: center; gap: 10px; margin: 0 14px 8px 0; min-height: 64px;
+  padding: 8px 10px 8px 8px; border: 0; border-radius: 18px; text-align: left; cursor: pointer;
+  background: #2A7F3F; color: #FFFFFF; box-shadow: inset 0 0 0 3px #1C5A2C, 0 5px 0 #123D1E; }
+.k-cancook:active { transform: translateY(3px); box-shadow: inset 0 0 0 3px #1C5A2C, 0 2px 0 #123D1E; }
+.k-cancook:focus-visible { outline: 3px solid var(--lemon); outline-offset: 3px; }
+.k-cc-pot { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: #FFF3DC; color: #1C5A2C; }
+.k-cc-pot img { width: 34px; height: 34px; display: block; }
+.k-cc-words { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.k-cc-words strong { font-size: 1.12rem; font-weight: 900; line-height: 1.15; }
+.k-cc-sub { font-size: .82rem; font-weight: 800; line-height: 1.2; color: #DCF2DD; }
+.k-cc-go { flex: none; width: 22px; height: 22px; margin: 0; }
+@media (prefers-color-scheme: dark) { .k-cancook { background: #2F8A46; } }
+@media (max-height: 700px) { .k-cancook { min-height: 54px; padding: 6px 8px; } .k-cc-pot { width: 36px; height: 36px; } .k-cc-pot img { width: 28px; height: 28px; } .k-cc-words strong { font-size: 1rem; } }
+/* Filters on the What can I cook? page */
+#colFilter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+#colFilter.hidden { display: none; }
+#colFilter .chip { min-height: 40px; }
