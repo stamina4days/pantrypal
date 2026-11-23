@@ -171,6 +171,7 @@ function saveItem(e, keepOpen) {
     barcode: $("#fBarcode").value,
     staple: $("#fStaple").checked
   };
+  const wasNew = !editingId;
   if (editingId) Object.assign(items.find(i => i.id === editingId), data);
   else { items.push(Object.assign({ id: uid(), added: todayStr() }, data)); sfx("pop"); buzz(8); toast(palPick("added", { name })); }
   const key = norm(name);
@@ -182,6 +183,7 @@ function saveItem(e, keepOpen) {
   if (keepOpen) { renderAll(); openItem(null); return; }
   $("#itemDialog").close();
   renderAll();
+  if (wasNew && typeof Motion !== "undefined") Motion.unpack([name]);
 }
 
 function freezeOrThaw() {
