@@ -23,7 +23,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.16";
+  var BUILD = "11.17";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -98,6 +98,7 @@
 <link rel="stylesheet" href="css/screens/scenes.css">
 <link rel="stylesheet" href="css/themes/kitchen-themes.css">
 <link rel="stylesheet" href="css/themes/display.css">
+<link rel="stylesheet" href="css/components/motion.css">
 <link rel="stylesheet" href="css/themes/print.css">
 </head>
 <body class="booting">
@@ -253,6 +254,7 @@
 <script src="js/features/badges/counters.js" defer></script>
 <script src="js/features/moments/sounds.js" defer></script>
 <script src="js/features/moments/stamps.js" defer></script>
+<script src="js/features/motion/motion.js" defer></script>
 <script src="js/core/friendly-dates.js" defer></script>
 <script src="js/features/household/kitchen.js" defer></script>
 <script src="js/features/household/recipe-notes.js" defer></script>
