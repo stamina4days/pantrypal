@@ -29,6 +29,16 @@ const Splash = (() => {
     if (!n) return;
     n.textContent = t(LINES[lineIdx++ % LINES.length]);
   }
+  /* Both downloads together: the bar fills with everything, the words name what's loading now. */
+  function progressAll(done, total, what, part) {
+    progress(part[0], part[1], what);
+    const s = el(); if (!s) return;
+    const pct = total ? Math.min(100, Math.round(done / total * 100)) : 0;
+    const bar = s.querySelector(".splash-fill");
+    if (bar) bar.style.width = pct + "%";
+    const meter = s.querySelector(".splash-meter");
+    if (meter) meter.setAttribute("aria-valuenow", String(pct));
+  }
   function progress(done, total, what) {
     const s = el(); if (!s) return;
     const pct = total ? Math.round(done / total * 100) : 0;
@@ -45,12 +55,12 @@ const Splash = (() => {
   function finish() {
     const s = el(); if (!s) return Promise.resolve();
     const fast = document.documentElement.classList.contains("fast");
-    const wait = fast ? 0 : Math.max(0, 900 - (Date.now() - started));
+    const wait = fast ? 0 : Math.max(0, 400 - (Date.now() - started));
     return new Promise(res => setTimeout(() => {
       clearInterval(lineTimer);
       s.classList.add("done");
       document.body.classList.remove("booting");
-      setTimeout(() => { s.remove(); res(); }, fast ? 200 : 520);
+      setTimeout(() => { s.remove(); res(); }, fast ? 200 : 320);
       try { localStorage.setItem("pantrypal.fast", "1"); } catch (e) {}
     }, wait));
   }
@@ -264,5 +274,5 @@ const Splash = (() => {
     if (c) c.innerHTML = `<button class="primary" onclick="location.reload()">${esc(t("Try again"))}</button>`;
     console.error(err);
   }
-  return { start, progress, menu, finish, fail };
+  return { start, progress, progressAll, menu, finish, fail };
 })();

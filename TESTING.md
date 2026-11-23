@@ -19,8 +19,9 @@ Thanks for testing Pantry Pal! Work through the sections below on your phone. Yo
 - [ ] Benji's shop front appears with a paper notice: **Read the terms** first, then tick the box. The "Let's get started" sign stays locked until you've done both.
 - [ ] Benji asks your name. Type it, or tap **Skip for now**.
 - [ ] The start menu shows Start and four hanging signs: Benji's shop, Benji's hats, Play a game, and Take the tour. Each one opens the right place.
-- [ ] Setup asks about your household, then the tour walks you through Today.
-- [ ] Tick "Don't show this when I open the app" in the tour, reopen the app, and check the tour stays away. You can turn it back on in Settings.
+- [ ] Setup is two quick steps: how the app looks, then tapping the foods you have right now. The foods you tapped show up on My Food with dates, then the tour walks you through Today.
+- [ ] Close the app and open it again. The tour doesn't come back on its own (it's still in Help and on the start screen).
+- [ ] Delete something, like a shopping list item or a meal in your plan. An Undo button shows at the bottom. Tap it and the thing comes back.
 
 ## Music
 - [ ] The first time, after you enter your name, Benji asks **Play music while you cook?** No music plays before you answer.
