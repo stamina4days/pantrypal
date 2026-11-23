@@ -198,3 +198,5 @@ body .top-actions .icon-btn { width: 44px; height: 44px; min-width: 44px; min-he
 .kitchen.fit3 .k-cc-words strong { font-size: 1rem; }
 .kitchen.fit3 .k-room { padding-top: 8px; }
 .kitchen.fit3 .k-magnets li:nth-child(3) { display: none; }
+/* The last step: the wall and the room shrink together until everything fits above Add food */
+.kitchen.fit4 .k-wall, .kitchen.fit4 .k-room { zoom: var(--kfit, 1); }

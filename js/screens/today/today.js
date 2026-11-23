@@ -81,12 +81,26 @@ function renderToday() {
 function fitToday() {
   const kit = $("#tab-today .kitchen");
   if (!kit || !$("#tab-today").classList.contains("active")) return;
-  kit.classList.remove("fit1", "fit2", "fit3");
+  kit.classList.remove("fit1", "fit2", "fit3", "fit4");
+  kit.style.removeProperty("--kfit");
   const room = parseFloat(getComputedStyle(kit).minHeight) || 0;
   if (!room) return;
   for (const step of ["fit1", "fit2", "fit3"]) {
     if (kit.offsetHeight <= room + 1) break;
     kit.classList.add(step);
+  }
+  // Still too tall (a small phone with big text): shrink the wall and the room together, never below 70%
+  if (kit.offsetHeight > room + 1 && "currentCSSZoom" in Element.prototype) {
+    const parts = [".k-wall", ".k-room"].map(s => kit.querySelector(s)).filter(Boolean);
+    let s = 1;
+    for (let pass = 0; pass < 3 && kit.offsetHeight > room + 1; pass++) {
+      const h = parts.reduce((n, el) => n + el.getBoundingClientRect().height / (window.ppZoom ? ppZoom() : 1), 0);
+      if (!h) break;
+      s = Math.max(0.7, s * (h - (kit.offsetHeight - room) - 2) / h);
+      kit.style.setProperty("--kfit", s.toFixed(3));
+      kit.classList.add("fit4");
+      if (s <= 0.7) break;
+    }
   }
 }
 
@@ -103,6 +117,12 @@ function todayInit() {
   }
   addEventListener("resize", () => requestAnimationFrame(fitToday));
   addEventListener("ppzoom", () => requestAnimationFrame(fitToday));
+  // Turned sideways: one gentle tip per visit
+  const side = matchMedia("(orientation: landscape) and (max-height: 500px) and (pointer: coarse)");
+  let sideTold = false;
+  const sideTip = () => { if (side.matches && !sideTold) { sideTold = true; toast(t("Pantry Pal fits best with your phone upright. Sideways, scroll to see everything.")); } };
+  if (side.addEventListener) side.addEventListener("change", sideTip);
+  setTimeout(sideTip, 1500);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitToday());
   const back = $("#statsBackBtn");
   if (back) back.addEventListener("click", () => showTab("today"));

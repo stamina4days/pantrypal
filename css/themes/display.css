@@ -26,4 +26,13 @@ body.high-contrast {
   }
   body.high-contrast button.primary { color: #000; }
 }
+/* A phone turned sideways: give each room its full height and let the page scroll, instead of squashing the kitchen */
+@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
+  :root { --scene-h: 560px; }
+  /* The header scrolls away and the tabs get slim, so more of the room shows */
+  html body .topbar { position: relative; }
+  html body .tabbar { padding-top: 3px; padding-bottom: calc(3px + env(safe-area-inset-bottom)); width: min(720px, 100%); }
+  html body .tabbar button { flex-direction: row; justify-content: center; gap: 6px; min-height: 40px; padding: 2px 4px; }
+  html body .tabbar .ico { font-size: 1.15rem; }
+}
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
