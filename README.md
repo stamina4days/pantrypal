@@ -10,6 +10,11 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.16
+- **What can I cook?** A big green button on Today says how many recipes you can make with nothing to buy. Tap it for those recipes first, then ones that need just one thing, with filters for Nothing to buy, Under 20 min, and Uses what's expiring. Each recipe says what you'd still need and which of your foods it uses. It's also in Search and on the tour.
+- **Smarter receipt reading.** Benji knows nearly 190 more store codes (like STRWBRY, CRMCHS, and SPGTI SCE), works out other shortened or misread words on his own (BANAMAS becomes Banana), merges the same food rung up twice into one line, and never mistakes things like dish soap or paper towels for food. The check sheet shows where each food will go and how long it keeps, puts the lines he isn't sure about in their own group, and the button says exactly how many foods it will add.
+- **First foods fix.** Foods you tap during setup no longer count as just one of each, so recipes don't ask for more eggs than you have.
+
 ## New in version 11.15
 - **Fewer interruptions.** The tour shows once, the first time, instead of every visit (turn on "Show the tour every time I open the app" in Settings if you want it back). Benji asks for at most one thing per visit, whether that's the home screen tip, the backup reminder, or his hats, and he brings up his hats much less often.
 - **A faster first minute.** Setup is now two quick steps: how the app looks, then tapping the foods you have right now from a grid of common ones. Benji guesses where each goes and how long it keeps, so Today has something to show right away. The household, diet, and cooking questions are still in Settings under People, diet, cooking time, and equipment. The Next and Done buttons stay in reach at the bottom of setup.
