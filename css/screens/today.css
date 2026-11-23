@@ -6,7 +6,7 @@ body[data-tab="today"] { --accent: var(--leaf); }
 
 /* A small header on every tab, so each scene has room */
 body .bar-row { padding-top: 8px; padding-bottom: 4px; align-items: center; }
-body #pageTitle { font-size: clamp(1.3rem, 5.6vw, 1.7rem); }
+body #pageTitle { font-size: clamp(1.3rem, calc(5.6vw / var(--z, 1)), 1.7rem); }
 body .top-actions .btn-label { display: none; }
 body .top-actions .icon-btn { width: 44px; height: 44px; min-width: 44px; min-height: 44px; padding: 0; border-radius: 50%; }
 
@@ -176,3 +176,25 @@ body .top-actions .icon-btn { width: 44px; height: 44px; min-width: 44px; min-he
 #colFilter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
 #colFilter.hidden { display: none; }
 #colFilter .chip { min-height: 40px; }
+
+/* When the kitchen doesn't fit (bigger text, short screens), it tightens up in steps until it does (11.17.2) */
+.kitchen.fit1 .k-cancook { min-height: 0; padding: 6px 8px 6px 6px; margin-bottom: 6px; }
+.kitchen.fit1 .k-cc-sub { display: none; }
+.kitchen.fit1 .k-cc-pot { width: 36px; height: 36px; }
+.kitchen.fit1 .k-cc-pot img { width: 28px; height: 28px; }
+.kitchen.fit1 .k-benji .bubble { margin-bottom: 8px; padding: 6px 8px; }
+.kitchen.fit2 .k-benji .bubble p { font-size: .82rem; line-height: 1.2; }
+.kitchen.fit2 .k-benji .bubble .read-aloud { width: 34px; height: 34px; min-height: 34px; }
+.kitchen.fit2 .k-benji .bubble-actions button { min-height: 36px; padding: 4px 10px; }
+.kitchen.fit2 .k-wall { padding-top: 10px; }
+#tab-today .kitchen.fit2 .k-board .cb-meta { display: none; }
+.kitchen.fit2 .k-hat-art svg { width: 54px; height: 42px; }
+.kitchen.fit2 .k-glass { width: 40px; height: 46px; }
+.kitchen.fit3 .k-flyer { padding: 10px 4px 5px; font-size: .78rem; }
+.kitchen.fit3 .k-flyer .ic { display: none; }
+.kitchen.fit3 .k-fridge .k-door { padding-bottom: 50px; }
+.kitchen.fit3 .k-fridge { min-height: 0; }
+.kitchen.fit3 .k-benji .pal-tap { min-height: 54px; }
+.kitchen.fit3 .k-cc-words strong { font-size: 1rem; }
+.kitchen.fit3 .k-room { padding-top: 8px; }
+.kitchen.fit3 .k-magnets li:nth-child(3) { display: none; }

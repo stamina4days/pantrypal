@@ -72,7 +72,22 @@ function renderToday() {
     const art = o.art || (h && h.art ? h.art() : "");
     ha.innerHTML = `<svg viewBox="14 -66 140 110" width="70" height="55" aria-hidden="true">${art}</svg>`;
   }
+  fitToday();
   if (typeof Motion !== "undefined") { Motion.tickKitchen(); Motion.checkSprout(); requestAnimationFrame(Motion.afterToday); }
+}
+
+/* The kitchen fills the space between the header and the tabs. When the text is bigger or the screen is short,
+   it tightens up a step at a time until everything fits, so nothing hides behind Add food. */
+function fitToday() {
+  const kit = $("#tab-today .kitchen");
+  if (!kit || !$("#tab-today").classList.contains("active")) return;
+  kit.classList.remove("fit1", "fit2", "fit3");
+  const room = parseFloat(getComputedStyle(kit).minHeight) || 0;
+  if (!room) return;
+  for (const step of ["fit1", "fit2", "fit3"]) {
+    if (kit.offsetHeight <= room + 1) break;
+    kit.classList.add(step);
+  }
 }
 
 function todayInit() {
@@ -86,6 +101,8 @@ function todayInit() {
     $("#todayTalkBtn").classList.remove("hidden");
     $("#todayTalkBtn").addEventListener("click", startTalking);
   }
+  addEventListener("resize", () => requestAnimationFrame(fitToday));
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitToday());
   const back = $("#statsBackBtn");
   if (back) back.addEventListener("click", () => showTab("today"));
 }
