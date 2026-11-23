@@ -102,6 +102,7 @@ function todayInit() {
     $("#todayTalkBtn").addEventListener("click", startTalking);
   }
   addEventListener("resize", () => requestAnimationFrame(fitToday));
+  addEventListener("ppzoom", () => requestAnimationFrame(fitToday));
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitToday());
   const back = $("#statsBackBtn");
   if (back) back.addEventListener("click", () => showTab("today"));
