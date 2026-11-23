@@ -31,6 +31,7 @@ function freshnessHtml(i) {
     <div class="fresh-top"><strong>${esc(d < 0 ? lab.text : t("{n} of {m} days left", { n: d, m: total }))}</strong><span>${esc(t("Use by {date}", { date: prettyDate(i.expires) }))}</span></div>
     <div class="fresh-bar" role="img" aria-label="${esc(t("{p} percent of its time left", { p: pct }))}"><span style="width:${pct}%"></span></div>
     <p class="fresh-note">${esc(t("This date is an estimate. Check the package and the food itself before eating."))} <a href="#/terms">${esc(t("Food safety"))}</a></p>
+    <button type="button" class="link-btn fresh-how" data-explain="date"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg> ${esc(t("How Benji picks this date"))}</button>
   </div>`;
 }
 
