@@ -97,10 +97,12 @@ function kitchenInit() {
     if (b.dataset.ciDone) { settings.lastCheckin = todayStr(); saveSettings(); renderPantry(); return; }
     if (!b.dataset.ci) return;
     const it = items.find(i => i.id === b.dataset.id); if (!it) return;
-    if (b.dataset.ci === "keep") { it.verified = todayStr(); saveItems(); }
-    else removeItem(it, b.dataset.ci);
-    const s = stapleSuffix();
-    if (s) toast(s.trim());
+    if (b.dataset.ci === "keep") { it.verified = todayStr(); saveItems(); const s = stapleSuffix(); if (s) toast(s.trim()); }
+    else {
+      const snap = snapshot();
+      removeItem(it, b.dataset.ci);
+      toast((b.dataset.ci === "wasted" ? t("Logged {name} as tossed.", { name: it.name }) : t("Removed {name}.", { name: it.name })) + stapleSuffix(), snap);
+    }
     renderPantry();
   });
 

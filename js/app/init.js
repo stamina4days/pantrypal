@@ -117,7 +117,11 @@ function init() {
   });
   $("#planBody").addEventListener("click", e => {
     const un = e.target.closest("[data-unplan]");
-    if (un) { e.stopPropagation(); plan = plan.filter(m => m.id !== un.dataset.unplan && m.fromId !== un.dataset.unplan); savePlan(); renderPlan(); return; }
+    if (un) {
+      e.stopPropagation(); const snap = snapshot();
+      plan = plan.filter(m => m.id !== un.dataset.unplan && m.fromId !== un.dataset.unplan); savePlan(); renderPlan();
+      toast(t("Removed from your plan."), snap); return;
+    }
     const add = e.target.closest("[data-plan-day]");
     if (add) {
       planTarget = add.dataset.planDay;
@@ -147,7 +151,11 @@ function init() {
   });
   $("#shopItems").addEventListener("click", e => {
     const list = currentList(); const del = e.target.closest("[data-del]");
-    if (list && del) { list.items = list.items.filter(x => x.id !== del.dataset.del); saveShopping(); renderShopping(); }
+    if (list && del) {
+      const snap = snapshot(), gone = list.items.find(x => x.id === del.dataset.del);
+      list.items = list.items.filter(x => x.id !== del.dataset.del); saveShopping(); renderShopping();
+      if (gone) toast(t("Took {name} off the list.", { name: gone.name }), snap);
+    }
   });
   $("#shopItems").addEventListener("change", e => {
     const list = currentList(), id = e.target.dataset.toggle;
@@ -158,7 +166,9 @@ function init() {
   $("#moveToFood").addEventListener("click", moveCheckedToFood);
   $("#clearChecked").addEventListener("click", () => {
     const list = currentList(); if (!list) return;
+    const snap = snapshot(), n = list.items.filter(x => x.done).length;
     list.items = list.items.filter(x => !x.done); saveShopping(); renderShopping();
+    if (n) toast(tn(n, "Cleared 1 checked item.", "Cleared {n} checked items."), snap);
   });
 
   // Stats
@@ -171,7 +181,7 @@ function init() {
     $("#remindersToggle").checked = settings.reminders;
     setPressed("#textSize", $(`#textSize [data-size="${textSizeNow()}"]`));
     $("#highContrast").checked = settings.highContrast;
-    $("#tourAutoToggle").checked = !settings.hideTour;
+    $("#tourAutoToggle").checked = !!settings.tourEveryVisit;
     $("#settingsDialog").showModal();
   });
   $("#closeSettings").addEventListener("click", () => $("#settingsDialog").close());
@@ -185,10 +195,12 @@ function init() {
   $("#importFile").addEventListener("change", e => { if (e.target.files[0]) importBackup(e.target.files[0]); e.target.value = ""; });
   $("#clearAll").addEventListener("click", async () => {
     if (!await Ask.confirm({ title: t("Empty your whole kitchen?"), text: t("Delete ALL your food, lists, plan, recipes, and stats? Export a backup first if you might want them back."), yes: t("Empty it"), danger: true })) return;
+    const undo = wholeSnapshot();
     items = []; history = []; shopping = []; plan = []; cookedLog = [];
     RECIPES.filter(r => r.mine).forEach(r => RECIPES.splice(RECIPES.indexOf(r), 1));
     myRecipes = []; settings.activeList = null; settings.favorites = []; settings.staples = [];
     saveItems(); saveHistory(); saveShopping(); savePlan(); saveCooked(); saveMine(); saveSettings(); renderAll();
+    toast(t("Your kitchen is empty."), undo);
   });
 
   // Tap outside a small sheet to close it
@@ -205,4 +217,3 @@ function init() {
     navigator.serviceWorker.register("sw.js").then(syncForReminders).catch(() => {});
   }
 }
-

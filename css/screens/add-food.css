@@ -55,3 +55,18 @@ dialog.screen.sheet-page > form { padding-top: 10px; display: grid; gap: 14px; }
 .secondary-btn { background: var(--paper); color: var(--leaf-deep); border: 2px solid var(--leaf); box-shadow: none; }
 #itemDialog p:empty, #itemDialog #remixBox:empty { display: none; }
 #itemDialog p { margin: 0; }
+/* First-time setup: tap the foods you have right now */
+.first-foods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 12px 0 4px; }
+.first-foods .ff-pick { flex-direction: column; justify-content: center; gap: 2px; min-height: 84px; padding: 8px 4px; border-radius: 14px;
+  background: var(--paper); border: 2px solid var(--line); font-size: .9rem; line-height: 1.15; text-align: center; position: relative; }
+.first-foods .ff-pick .pick-art { width: 40px; height: 40px; }
+.first-foods .ff-pick.on { background: #DCEFD9; border-color: #2F6F3E; color: #1F4D2A; }
+.first-foods .ff-pick.on::after { content: ""; position: absolute; top: 6px; right: 6px; width: 18px; height: 18px; border-radius: 50%;
+  background: #2F6F3E url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; }
+@media (prefers-color-scheme: dark) { .first-foods .ff-pick.on { background: #2E4A35; border-color: #9AD39F; color: #E4F4E4; } }
+html.text-large .first-foods, html.text-xl .first-foods { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ff-more { display: block; min-height: 44px; margin: 4px auto 0; font-weight: 800; }
+/* Setup: Next, Done, and Skip stay in reach at the bottom while the page scrolls */
+#onboardDialog .actions { position: sticky; bottom: 0; z-index: 5; flex: none; height: auto; margin: 12px -18px calc(-32px - env(safe-area-inset-bottom)); padding: 10px 18px calc(12px + env(safe-area-inset-bottom));
+  background: var(--paper); border-top: 3px solid var(--edge); align-items: center; }
+#onboardDialog .actions > button { margin: 0; }
