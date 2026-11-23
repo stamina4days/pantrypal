@@ -3,7 +3,7 @@
    OK/Cancel boxes. Each one returns a promise:
      await Ask.confirm({ title, text, yes, no, danger })      -> true or false
      await Ask.prompt({ title, label, value, chips, yes, no, extra }) -> the text, "" , null (cancel), or Ask.EXTRA
-     await Ask.notice({ title, text, ok })                       -> after it's closed
+     await Ask.notice({ title, text, ok })                       -> after it's closed (paras: [..] for several paragraphs)
      await Ask.copy({ title, text, value })                      -> after it's closed (offers a Copy button)
    The sheet isn't a page, so it never changes the address or the back button. */
 const Ask = (() => {
@@ -67,7 +67,8 @@ const Ask = (() => {
   }
 
   function notice(o) {
-    return show(`${head(o.title, o.mood || "happy")}${o.text ? `<p class="ask-text">${esc(o.text)}</p>` : ""}
+    const paras = o.paras || (o.text ? [o.text] : []);
+    return show(`${head(o.title, o.mood || "happy")}${paras.map(p => `<p class="ask-text">${esc(p)}</p>`).join("")}
       <div class="ask-actions"><button type="button" class="ask-yes primary">${esc(o.ok || t("Got it"))}</button></div>`, box => {
       box.querySelector(".ask-yes").onclick = () => finish(true);
     });

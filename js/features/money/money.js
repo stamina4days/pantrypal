@@ -163,10 +163,10 @@ function checkPriority(item) { return (1 - sureness(item)) * (1 + 2 * moneyAtRis
     const room = document.querySelector("#tab-today .kitchen");
     if (!room) return;
     let rk = document.getElementById("todayRisk");
-    if (!rk) { room.insertAdjacentHTML("afterbegin", `<p id="todayRisk" class="today-risk hidden"></p>`); rk = document.getElementById("todayRisk"); }
+    if (!rk) { room.insertAdjacentHTML("afterbegin", `<button type="button" id="todayRisk" class="today-risk hidden" data-explain="risk"></button>`); rk = document.getElementById("todayRisk"); }
     const risk = kitchenRisk(7);
     rk.classList.toggle("hidden", risk.total < 1);
-    rk.innerHTML = risk.total >= 1 ? `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/jar.svg#i"/></svg> ${esc(t("{money} of food could go to waste this week", { money: fmtMoney(risk.total) }))}` : "";
+    rk.innerHTML = risk.total >= 1 ? `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/jar.svg#i"/></svg> ${esc(t("{money} of food could go to waste this week", { money: fmtMoney(risk.total) }))} <svg class="ic risk-how" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg><span class="sr-only">${esc(t("How is this worked out?"))}</span>` : "";
   };
 
   // Week planner: score each meal by the dollars it rescues on the day it's cooked, then report the total

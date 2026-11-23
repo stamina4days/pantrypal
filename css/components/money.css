@@ -21,3 +21,11 @@
 @media (prefers-color-scheme: dark) { .sort-sure { color: var(--leaf); } }
 .sort-answers.five { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .sort-answers.five button { min-height: 72px; font-size: .88rem; }
+/* The money tag on Today is a button that explains itself (11.14.3) */
+button.today-risk { min-height: 30px; border: 0; cursor: pointer; text-align: left; line-height: 1.2; }
+button.today-risk.hidden { display: none; }
+.today-risk .risk-how { width: 16px; height: 16px; opacity: .85; }
+/* "How Benji picks this date" and "How is this counted?" links */
+.fresh-how, .money-how { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 4px 0; font-weight: 800; }
+.fresh-how .ic, .money-how .ic { width: 20px; height: 20px; margin: 0; }
+.money-card .money-how { align-self: center; }
