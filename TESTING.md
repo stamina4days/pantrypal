@@ -52,6 +52,7 @@ Thanks for testing Pantry Pal! Work through the sections below on your phone. Yo
 - [ ] Search (the magnifying glass) finds a food, a recipe, and things to do like "plan my week", "music", or "feedback".
 
 ## Adding food
+- [ ] On Today, the green **What can I cook?** button says how many recipes need nothing from the store. Tap it, then try each filter: Nothing to buy, Under 20 min, and Uses what's expiring.
 - [ ] Run **Show Benji my kitchen** (the pantry audit). Tap about 10 items, add one in the "Something else?" box, and finish.
 - [ ] My Food shows the items with dates and amounts.
 - [ ] Add food with the grocery bag: type a name or tap a quick pick, pick where it goes, and pick when it goes bad.
@@ -62,7 +63,7 @@ Thanks for testing Pantry Pal! Work through the sections below on your phone. Yo
 - [ ] **Barcode:** tap the camera button on My Food and scan a box or can. The camera opens, it beeps or vibrates, and the name fills in.
 - [ ] Scan the same barcode again. It says "Found in your saved barcodes."
 - [ ] **Read date:** open a food, tap Read date from package, and photograph a printed date. Check the date it filled in.
-- [ ] **Receipt:** tap the receipt button and photograph a grocery receipt. Fix any names, uncheck non-food, and add.
+- [ ] **Receipt:** tap the receipt button and photograph a grocery receipt. Benji lists the foods he found first, with where each goes and how long it keeps, and puts lines he isn't sure about below. Fix any names that look off, then tap **Add** (it says how many foods). Tell us any receipt names he got wrong, and which store it was from.
 
 ## Planning and cooking
 - [ ] Plan tab > **Plan my week** > Make my plan. Swap one meal, lock one, then Try again (the locked one stays).
