@@ -1,7 +1,7 @@
 /* Add food: a sheet that slides up, with tap chips instead of a long form. */
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 dialog.screen.sheet-page {
-  height: auto; max-height: calc(100dvh - 40px); margin: auto 0 0; border-radius: 28px 28px 0 0;
+  height: auto; max-height: calc(calc(100dvh / var(--z, 1)) - 40px); margin: auto 0 0; border-radius: 28px 28px 0 0;
   background: var(--paper); background-image: none; box-shadow: 0 -8px 28px rgba(23, 36, 46, .22);
 }
 dialog.screen.sheet-page::backdrop { background: rgba(23, 36, 46, .45); }
