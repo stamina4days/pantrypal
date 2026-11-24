@@ -224,7 +224,7 @@ const Splash = (() => {
             <button type="button" class="primary sm-go" data-sm="start"><span>${esc(t("Start"))}</span></button>
             <div class="sf-planks">
               ${sign("shop", "basket", t("Benji's shop"))}${sign("hats", "hat", t("Benji's hats"))}
-              ${sign("play", "game", t("Play a game"))}${sign("tour", "sparkle", t("Take the tour"))}
+              ${sign("play", "game", t("Play a game"))}${sign("tour", "signpost", t("Take the tour"))}
             </div>
           </div>
           <button type="button" class="text-btn sm-rename" data-sm="name">${esc(name ? t("Not {name}? Change your name", { name }) : t("Tell Benji your name"))}</button>`;
