@@ -1,6 +1,6 @@
 "use strict";
-/* Setup. */
-/* ---------- setup (first run and editing later) ---------- */
+/* Setup, both the first time (how the app looks, then pantry staples) and later from Settings
+   (people, diet, cooking time, and equipment). */
 let ob = null;
 function openOnboarding(mode) {
   const P = profile();

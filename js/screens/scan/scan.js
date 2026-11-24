@@ -1,6 +1,6 @@
 "use strict";
-/* Barcode scanner. */
-/* ---------- barcode scanner ---------- */
+/* The barcode scanner: uses the phone's built-in reader when there is one and falls back to ZXing,
+   then looks the code up in your saved barcodes and Open Food Facts. */
 let scanStream = null, scanTimer = null, zxingReader = null, scanDone = false;
 const scanStatus = s => { $("#scanStatus").textContent = s; };
 
