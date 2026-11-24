@@ -88,19 +88,31 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
   --sf-wood: #A0693B; --sf-wood-dark: #6E4524; --sf-wood-deep: #3A2818; --sf-street: #BDB3A6; --sf-curb: #9C9183;
   justify-content: flex-start; padding: 0 14px 52px; color: #F6EBD9; overflow-x: hidden;
   background-color: var(--sf-mortar);
-  /* Real bricks: each row is offset by half a brick */
+  /* The ivy cottage: a brick wall with ivy hanging off the awning and climbing both sides,
+     a lantern on each side of the sign, and pots of flowers and herbs on the sidewalk.
+     Each piece is its own picture in img/cottage/, so the wall fills any screen size. */
+  --sf-bricks: url("../../img/cottage/brick-light.svg");
+  --sf-glow: rgba(255, 198, 90, .22);
   background-image:
-    linear-gradient(var(--sf-mortar) 3px, transparent 3px),
-    linear-gradient(90deg, var(--sf-mortar) 3px, transparent 3px),
-    linear-gradient(90deg, var(--sf-mortar) 3px, transparent 3px),
-    linear-gradient(var(--sf-wall), var(--sf-wall));
-  background-size: 100% 26px, 64px 52px, 64px 52px, 100% 100%;
-  background-position: 0 0, 0 0, 32px 26px, 0 0;
+    url("../../img/cottage/lantern.svg"), url("../../img/cottage/lantern.svg"),
+    radial-gradient(circle at max(18px, 50% - 188px) 134px, var(--sf-glow), transparent 60px),
+    radial-gradient(circle at min(100% - 18px, 50% + 188px) 134px, var(--sf-glow), transparent 60px),
+    url("../../img/cottage/pots-left.svg"), url("../../img/cottage/pots-right.svg"),
+    url("../../img/cottage/ivy-drape.svg"),
+    url("../../img/cottage/ivy-left.svg"), url("../../img/cottage/ivy-right.svg"),
+    var(--sf-bricks);
+  background-size: 28px 45px, 28px 45px, auto, auto, 84px 58px, 84px 58px, 96px 70px, 64px 320px, 64px 320px, 80px 40px;
+  /* On a phone these sit at the screen edges. On a wide screen they stay close to the shop instead of drifting to the far edges. */
+  background-position: left max(4px, 50% - 202px) top 112px, right max(4px, 50% - 202px) top 112px, 0 0, 0 0,
+    left max(2px, 50% - 270px) bottom 36px, right max(2px, 50% - 270px) bottom 36px, 0 64px,
+    left max(-8px, 50% - 290px) top 0, right max(-8px, 50% - 290px) top 40px, 0 0;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-y, repeat-y, repeat;
 }
 .splash.shopfront::before { content: ""; position: absolute; inset: 0; pointer-events: none;
   background: repeating-linear-gradient(0deg, transparent 0 26px, rgba(0, 0, 0, .0) 26px 52px), radial-gradient(120% 70% at 50% 35%, transparent 40%, rgba(40, 20, 5, .22)); }
 @media (prefers-color-scheme: dark) {
-  .splash.shopfront { --sf-wall: #3A2A26; --sf-brick: #33241F; --sf-mortar: #241A18; --sf-room: #5A4130; --sf-room-deep: #3A2A20;
+  .splash.shopfront { --sf-bricks: url("../../img/cottage/brick-dark.svg"); --sf-glow: rgba(255, 198, 90, .3);
+    --sf-wall: #3A2A26; --sf-brick: #33241F; --sf-mortar: #241A18; --sf-room: #5A4130; --sf-room-deep: #3A2A20;
     --sf-rope: #CBB79C; --sf-street: #2E2A27; --sf-curb: #4A4440; }
   .splash.shopfront::before { background: radial-gradient(120% 70% at 50% 35%, transparent 35%, rgba(0, 0, 0, .45)); }
 }
@@ -189,9 +201,11 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
 .shopfront .sf-plank:nth-child(3) { rotate: 1deg; }
 .shopfront .sf-plank:nth-child(4) { rotate: -1.5deg; }
 .shopfront .sm-menu .ic { width: 22px; height: 22px; flex: none; }
-.shopfront .sm-rename { position: relative; z-index: 1; margin-top: 14px; min-height: 40px; padding: 4px 12px; border: 0; background: none; box-shadow: none;
-  font-family: var(--hand); font-size: 1.08rem; color: #6E4524; text-decoration: underline; }
-@media (prefers-color-scheme: dark) { .shopfront .sm-rename { color: #E2D3BC; } }
+.shopfront .sm-rename { position: relative; z-index: 1; margin-top: 14px; min-height: 40px; padding: 4px 12px; border: 0;
+  font-family: var(--hand); font-size: 1.08rem; color: #6E4524; text-decoration: underline;
+  /* A little paper label, so the link stays readable on the brick */
+  background: rgba(255, 243, 220, .92); border-radius: 8px; box-shadow: 0 2px 0 rgba(0, 0, 0, .25); }
+@media (prefers-color-scheme: dark) { .shopfront .sm-rename { color: #E2D3BC; background: rgba(36, 24, 18, .82); } }
 /* The sidewalk along the bottom */
 .sf-street { position: absolute; left: 0; right: 0; bottom: 0; height: 38px; z-index: 0;
   background: repeating-linear-gradient(90deg, var(--sf-street) 0 76px, var(--sf-curb) 76px 79px);
