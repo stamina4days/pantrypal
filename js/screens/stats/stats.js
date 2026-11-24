@@ -1,6 +1,5 @@
 "use strict";
-/* Waste Less. */
-/* ---------- WASTE LESS ---------- */
+/* The Waste Less page: money saved, food used and tossed, and the chart. */
 let statsRange = "30";
 function renderStats() {
   const cutoff = statsRange === "all" ? "" : addDaysFrom(todayStr(), -30);

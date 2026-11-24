@@ -1,6 +1,5 @@
 "use strict";
 /* Small cards shared by several pages. */
-
 /* A compact recipe row that links to the recipe's page. */
 function recipeMiniHtml(r, note) {
   return `<li><a class="recipe-mini" href="#/recipe/${esc(recipeId(r))}">

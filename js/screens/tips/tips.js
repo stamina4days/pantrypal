@@ -1,5 +1,5 @@
 "use strict";
-/* Storage tips page. */
+/* Make food last: storage tips, with the foods you have listed first. */
 let tipsPlace = "All";
 function openTips() {
   tipsPlace = "All";

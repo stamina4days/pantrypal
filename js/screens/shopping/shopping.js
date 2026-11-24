@@ -1,6 +1,5 @@
 "use strict";
-/* Shopping lists. */
-/* ---------- SHOPPING ---------- */
+/* The Shopping tab: the notepad lists, sharing a list by link, and I bought these. */
 function renderShopping() {
   const list = currentList();
   if (list) settings.activeList = list.id;

@@ -1,5 +1,5 @@
 "use strict";
-/* Pal-styled sheets that slide up from the bottom, in place of the browser's gray
+/* Benji's sheets that slide up from the bottom, in place of the browser's gray
    OK/Cancel boxes. Each one returns a promise:
      await Ask.confirm({ title, text, yes, no, danger })      -> true or false
      await Ask.prompt({ title, label, value, chips, yes, no, extra }) -> the text, "" , null (cancel), or Ask.EXTRA
