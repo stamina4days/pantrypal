@@ -48,20 +48,6 @@
 .radio-vol { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--ink); }
 .radio-vol input { flex: 1; accent-color: var(--leaf); min-height: 44px; }
 
-/* The old music pill (replaced by the music button in 11.13) */
-.radio-pill { display: inline-flex; align-self: flex-start; align-items: center; max-width: 100%; margin-bottom: 2px;
-  background: #3B2F2A; color: #FBF3E4; border-radius: 999px; padding: 0 2px; }
-.radio-pill button { border: 0; box-shadow: none; background: none; color: inherit; min-height: 36px; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: .82rem; border-radius: 999px; }
-.radio-pill .rp-open { padding: 0 4px 0 10px; min-width: 0; }
-.radio-pill .rp-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.radio-pill .rp-stop { width: 36px; justify-content: center; padding: 0; }
-.radio-pill .ic { width: 20px; height: 20px; margin: 0; --icf: #F4D27A; }
-@media (prefers-color-scheme: dark) { .radio-pill { background: #F6EBD9; color: #2A1B10; } .radio-pill .ic { --icf: #C98F55; } }
-@media (prefers-reduced-motion: no-preference) {
-  .radio-pill:not(.hidden) .rp-open .ic { animation: rp-bob 1.6s ease-in-out infinite; }
-  @keyframes rp-bob { 50% { transform: translateY(-2px) rotate(-6deg); } }
-}
-
 /* Fridge Sort */
 .sort-body { padding-top: 14px; }
 .sort-top { display: flex; justify-content: space-between; font-weight: 800; color: var(--muted); }
@@ -146,7 +132,7 @@
 }
 .radio-pill { display: none !important; }
 
-/* ---------- The music menu (11.14): what's playing, the volume, and every song ---------- */
+/* ---------- The music menu: what's playing, the volume, and every song ---------- */
 .music-sheet .dialog-body { padding-bottom: calc(22px + env(safe-area-inset-bottom)); }
 .mu-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .mu-head h2 { margin: 0; font-family: var(--hand); font-weight: 700; font-size: 1.7rem; }

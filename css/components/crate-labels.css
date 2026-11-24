@@ -1,5 +1,4 @@
-/* Recipe cards. */
-/* recipe cards: crate labels */
+/* Recipe cards, labeled like produce crates. */
 .recipe { padding-left: 14px; }
 .r-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .r-head strong { min-width: 0; overflow-wrap: anywhere; font-size: 1.05rem; }

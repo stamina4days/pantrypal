@@ -1,5 +1,4 @@
-/* Recipe page. */
-/* recipe detail */
+/* A recipe's page. */
 .recipe-head { display: flex; align-items: flex-start; gap: 8px; }
 .recipe-head h2 { flex: 1; }
 .rate-btn { font-size: 1.15rem; }

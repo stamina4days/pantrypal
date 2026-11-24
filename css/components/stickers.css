@@ -1,5 +1,4 @@
-/* Fruit-sticker dates. */
-/* fruit-sticker dates */
+/* Dates drawn as the little stickers you find on fruit. */
 .badge {
   flex: none; font-size: .8rem; font-weight: 900; padding: 6px 10px; border-radius: 999px; border: 2px solid #fff;
   box-shadow: 0 0 0 2px var(--ink), 0 3px 0 2px rgba(35, 58, 49, .25); transform: rotate(-4deg); white-space: nowrap; color: #fff;

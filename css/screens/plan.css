@@ -1,5 +1,4 @@
-/* Plan. */
-/* plan */
+/* The Plan tab. */
 .day-head { display: flex; justify-content: space-between; align-items: center; margin: 18px 0 6px; }
 .day-head h3, h3.day-head { margin: 18px 0 6px; color: var(--plum); }
 .day-head h3 { margin: 0; }

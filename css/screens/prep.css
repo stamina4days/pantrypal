@@ -1,5 +1,4 @@
-/* Prep, timers, receipts. */
-/* prep, timers, receipts */
+/* Prep day, timers, and the receipt check sheet. */
 .task { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1.5px dashed var(--line); color: var(--ink); font-size: .96rem; line-height: 1.45; font-weight: 600; }
 .task input { width: 22px; height: 22px; min-height: 22px; flex: none; margin-top: 1px; accent-color: var(--leaf); }
 .task.done span { text-decoration: line-through; color: var(--muted); }
@@ -13,7 +12,7 @@
 .receipt-row { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1.5px dashed var(--line); }
 .receipt-row input[type=checkbox] { width: 22px; height: 22px; min-height: 22px; margin-top: 12px; flex: none; accent-color: var(--leaf); }
 .receipt-row .r-name { margin-top: 0; }
-/* Receipt check (11.16): a summary, where each food goes, and a separate group for lines that may not be food */
+/* Receipt check: a summary, where each food goes, and a separate group for lines that may not be food */
 .receipt-sum { margin: 4px 0 6px; font-weight: 900; font-size: 1.05rem; }
 .receipt-row .r-where { display: block; margin-top: 4px; font-weight: 800; color: var(--leaf-deep); }
 .receipt-row .r-raw { display: block; margin-top: 2px; font-size: .8rem; }
