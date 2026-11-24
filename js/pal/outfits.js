@@ -16,6 +16,18 @@ const HAT_INK = 'stroke="var(--pal-ink)" stroke-width="4" stroke-linejoin="round
 const hatDome = fill => `<path d="M38 22 C38 -20 122 -20 122 22 Z" fill="${fill}" ${HAT_INK}/>`;
 const hatBand = fill => `<rect x="34" y="14" width="92" height="13" rx="6.5" fill="${fill}" ${HAT_INK}/>`;
 const hatRibs = color => `<path d="M58 -8 V14 M80 -11 V14 M102 -8 V14" stroke="${color}" stroke-width="3" stroke-linecap="round"/>`;
+const HAT_INK3 = 'stroke="var(--pal-ink)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"';
+/* The same piece flipped onto the other side of Benji's head (the hat area is 160 wide) */
+const hatMirror = art => `<g transform="translate(160 0) scale(-1 1)">${art}</g>`;
+/* A five-pointed star centered on cx, cy */
+const hatStar = (cx, cy, r, fill) => {
+  let d = "";
+  for (let i = 0; i < 10; i++) {
+    const a = Math.PI / 5 * i - Math.PI / 2, rr = i % 2 ? r * .45 : r;
+    d += `${i ? "L" : "M"}${(cx + rr * Math.cos(a)).toFixed(1)} ${(cy + rr * Math.sin(a)).toFixed(1)} `;
+  }
+  return `<path d="${d}Z" fill="${fill}" ${HAT_INK3}/>`;
+};
 
 /* unlock: the badge that earns the hat. season: worn automatically in that season. game: won in the Play corner.
    shop: the shop item (data/store.js) that includes it. */
@@ -147,7 +159,62 @@ const BENJI_HATS = [
     + `<circle cx="80" cy="25" r="3" fill="#2E8FC7"/>` },
   { id: "pilot", name: "Pilot cap", shop: "hats-jobs", lift: 20, art: () =>
     `<path d="M36 16 C30 -8 130 -8 124 16 Z" fill="#23365A" ${HAT_INK}/><path d="M42 12 H118 V22 H42 Z" fill="#1A2740" ${HAT_INK}/><path d="M44 22 C60 32 100 32 116 22 Z" fill="#111A2C" ${HAT_INK}/>`
-    + `<path d="M62 2 C70 6 74 4 80 0 C86 4 90 6 98 2" fill="none" stroke="#F4C542" stroke-width="3.5" stroke-linecap="round"/><circle cx="80" cy="1" r="3.5" fill="#F4C542"/><path d="M46 14 H114" stroke="#F4C542" stroke-width="2"/>` }
+    + `<path d="M62 2 C70 6 74 4 80 0 C86 4 90 6 98 2" fill="none" stroke="#F4C542" stroke-width="3.5" stroke-linecap="round"/><circle cx="80" cy="1" r="3.5" fill="#F4C542"/><path d="M46 14 H114" stroke="#F4C542" stroke-width="2"/>` },
+  // The free anime pack: anime looks for Benji, none of them any one character
+  { id: "cat-ears", name: "Cat ears", shop: "hats-anime", lift: 0, art: () => {
+    const ear = `<path d="M46 12 L44 -34 L76 0 Z" fill="#3A3340" ${HAT_INK}/><path d="M52 4 L51 -20 L67 -2 Z" fill="#F4A6B8"/>`;
+    return ear + hatMirror(ear)
+      + `<path d="M36 26 C40 -4 120 -4 124 26" fill="none" stroke="var(--pal-ink)" stroke-width="13" stroke-linecap="round"/><path d="M36 26 C40 -4 120 -4 124 26" fill="none" stroke="#3A3340" stroke-width="6" stroke-linecap="round"/>`; } },
+  { id: "hero-hair", name: "Hero hair", shop: "hats-anime", lift: 0, noSprout: true, art: () =>
+    // Spiky green hair worn like a wig: a dark base, a mid layer, and bright tips so the spikes look shaded
+    `<path d="M32 30 L22 8 L36 5 L30 -24 L48 -11 L50 -46 L64 -20 L76 -59 L84 -20 L100 -52 L102 -17 L120 -33 L116 -1 L136 2 L124 22 L128 32 C110 18 50 18 32 30 Z" fill="#1E5A3C" ${HAT_INK}/>`
+    + `<path d="M40 22 L34 8 L44 8 L40 -11 L52 -1 L54 -30 L64 -8 L76 -43 L82 -11 L96 -36 L98 -8 L112 -20 L110 5 L124 8 L116 22 C100 12 56 12 40 22 Z" fill="#2E8556"/>`
+    + `<path d="M56 -17 L54 -30 L60 -20 Z M76 -33 L76 -43 L80 -27 Z M96 -27 L96 -36 L99 -24 Z M110 -8 L112 -20 L113 -4 Z" fill="#7FD9A0"/>`
+    + `<path d="M58 -4 L64 -14 M78 -17 L80 -30 M96 -11 L98 -24" stroke="#55B97E" stroke-width="3" stroke-linecap="round"/>`
+    + `<path d="M42 30 L52 18 L58 28 L68 12 L74 26 L84 8 L90 26 L100 12 L106 26 L114 18 L118 30" fill="#2E8556" ${HAT_INK3}/>`
+    + `<path d="M56 24 L60 20 M78 22 L82 15 M100 22 L102 18" stroke="#1E5A3C" stroke-width="2.5" stroke-linecap="round"/>` },
+  { id: "twin-tails", name: "Twin tails", shop: "hats-anime", lift: 0, noSprout: true, art: () => {
+    const tail = `<path d="M40 8 C12 6 0 44 8 96 C14 104 20 98 18 90 C16 60 24 34 44 20 Z" fill="#B79CE8" ${HAT_INK}/><path d="M24 30 C16 50 14 70 16 86" fill="none" stroke="#D9C8F7" stroke-width="3" stroke-linecap="round"/>`;
+    return tail + hatMirror(tail)
+      + `<path d="M34 30 C30 -18 130 -18 126 30 L118 20 L110 30 L100 16 L90 28 L80 14 L70 28 L60 16 L50 30 L42 20 Z" fill="#B79CE8" ${HAT_INK}/>`
+      + `<path d="M56 2 C64 -4 78 -6 90 -4" fill="none" stroke="#D9C8F7" stroke-width="4" stroke-linecap="round"/>`
+      + hatStar(38, 8, 10, "#FFD55E") + hatStar(122, 8, 10, "#FFD55E"); } },
+  { id: "headband", name: "Training headband", shop: "hats-anime", lift: 0, art: () =>
+    // A tied cloth headband with a little embroidered Benji patch on the front
+    `<path d="M126 18 C140 10 150 20 162 8 C156 26 144 26 132 26" fill="#2A2A2E" ${HAT_INK}/><path d="M126 22 C142 26 148 40 160 40 C148 48 136 38 128 30" fill="#2A2A2E" ${HAT_INK}/>`
+    + `<path d="M34 28 C38 4 122 4 126 28 L124 16 C118 -6 42 -6 36 16 Z" fill="#2A2A2E" ${HAT_INK}/>`
+    + `<path d="M40 22 C52 8 108 8 120 22" fill="none" stroke="#6A6A72" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/>`
+    + `<circle cx="126" cy="22" r="7" fill="#1A1A1E" ${HAT_INK3}/>`
+    + `<g transform="translate(80 8)"><circle r="15" fill="#FFF3DC" ${HAT_INK3}/><circle r="11.5" fill="none" stroke="#2A2A2E" stroke-width="1.6" stroke-dasharray="2 2.4"/>`
+    + `<text y="7.5" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="900" font-size="21" fill="#5BA85A" stroke="var(--pal-ink)" stroke-width="1.4" paint-order="stroke">$</text>`
+    + `<circle cx="-3" cy="-1" r="1.4" fill="var(--pal-ink)"/><circle cx="3" cy="-1" r="1.4" fill="var(--pal-ink)"/></g>` },
+  { id: "fox-mask", name: "Festival fox mask", shop: "hats-anime", lift: 0, art: () =>
+    `<path d="M38 26 C42 0 118 0 122 26" fill="none" stroke="#E5482F" stroke-width="5" stroke-linecap="round"/>`
+    + `<g transform="translate(108 -6) rotate(18)"><path d="M-22 -14 L-26 -40 L-8 -22 Z M22 -14 L26 -40 L8 -22 Z" fill="#FFFDF6" ${HAT_INK3}/><path d="M-20 -18 L-22 -32 L-12 -22 Z M20 -18 L22 -32 L12 -22 Z" fill="#E5482F"/>`
+    + `<path d="M-26 -16 C-24 -30 24 -30 26 -16 C28 4 10 22 0 26 C-10 22 -28 4 -26 -16 Z" fill="#FFFDF6" ${HAT_INK}/>`
+    + `<path d="M-18 -6 Q-11 -12 -5 -6 M5 -6 Q11 -12 18 -6" stroke="var(--pal-ink)" stroke-width="3" fill="none" stroke-linecap="round"/>`
+    + `<path d="M-20 -2 L-9 0 M20 -2 L9 0" stroke="#E5482F" stroke-width="3" stroke-linecap="round"/><path d="M-4 -24 Q0 -30 4 -24 Q0 -18 -4 -24Z" fill="#E5482F"/>`
+    + `<ellipse cx="0" cy="18" rx="4" ry="3" fill="var(--pal-ink)"/></g>` },
+  { id: "tiara", name: "Crystal leaf tiara", shop: "hats-anime", lift: 0, noSprout: true, art: () => {
+    // A silver vine of leaves and crystals across the top, a big teardrop gem in front, and a chain of crystals hanging down one side
+    const leaf = (x, y, a, s) => `<path transform="translate(${x} ${y}) rotate(${a}) scale(${s})" d="M0 0 C4 -6 12 -6 16 0 C12 6 4 6 0 0 Z" fill="#E4E9F0" stroke="#8C95A3" stroke-width="1.6" stroke-linejoin="round"/>`;
+    const gem = (x, y, r, c) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="#8C95A3" stroke-width="1.5"/><circle cx="${x - r * .35}" cy="${y - r * .35}" r="${r * .35}" fill="#FFFFFF"/>`;
+    let o = `<path d="M34 28 C40 6 120 6 126 28" fill="none" stroke="#8C95A3" stroke-width="5" stroke-linecap="round"/><path d="M34 28 C40 6 120 6 126 28" fill="none" stroke="#E4E9F0" stroke-width="2.5" stroke-linecap="round"/>`;
+    [[40, 18, -120, 1], [44, 12, -60, 1.1], [52, 8, -140, 1], [56, 4, -70, 1.1], [66, 2, -150, .9], [94, 2, -30, .9], [104, 4, -110, 1.1], [108, 8, -40, 1], [116, 12, -120, 1.1], [120, 18, -60, 1], [60, -2, -100, 1.2], [100, -2, -80, 1.2], [70, -4, -120, .9], [90, -4, -60, .9]].forEach(l => o += leaf(...l));
+    o += gem(48, 6, 3.5, "#D8F1FF") + gem(62, -6, 3, "#F3E1FF") + gem(98, -6, 3, "#D8F1FF") + gem(112, 6, 3.5, "#F3E1FF") + gem(70, 8, 2.6, "#E8FFF4") + gem(90, 8, 2.6, "#E8FFF4");
+    o += `<path d="M80 -4 C86 2 88 10 80 18 C72 10 74 2 80 -4 Z" fill="#6FB6F2" stroke="#4A6A8C" stroke-width="2" stroke-linejoin="round"/><path d="M78 2 C78 6 80 9 82 10" stroke="#D8F1FF" stroke-width="2" fill="none" stroke-linecap="round"/>`;
+    o += `<path d="M36 26 C34 44 30 58 32 74" fill="none" stroke="#B9C1CC" stroke-width="2.2" stroke-dasharray="2.5 2"/>` + gem(34, 46, 2.4, "#F3E1FF")
+      + `<path d="M32 74 C36 80 36 86 32 90 C28 86 28 80 32 74 Z" fill="#D8F1FF" stroke="#8C95A3" stroke-width="1.6"/>`;
+    return o; } },
+  { id: "ribbon", name: "Big ribbon bow", shop: "hats-anime", lift: 0, art: () =>
+    `<g transform="translate(112 4) rotate(14)"><path d="M0 0 C-14 -26 -44 -24 -40 -4 C-38 10 -16 8 0 0 Z" fill="#E5482F" ${HAT_INK}/><path d="M0 0 C14 -26 44 -24 40 -4 C38 10 16 8 0 0 Z" fill="#E5482F" ${HAT_INK}/>`
+    + `<path d="M-4 4 L-16 30 L-8 28 L-4 36 L2 8 Z M4 4 L14 30 L6 28 L4 36 L-2 8 Z" fill="#C2361F" ${HAT_INK3}/>`
+    + `<path d="M-30 -10 C-26 -16 -18 -14 -14 -8 M30 -10 C26 -16 18 -14 14 -8" stroke="#FF8F7A" stroke-width="3" fill="none" stroke-linecap="round"/>`
+    + `<ellipse cx="0" cy="0" rx="8" ry="9" fill="#E5482F" ${HAT_INK}/></g>` },
+  { id: "cowlick", name: "Messy hair", shop: "hats-anime", lift: 0, noSprout: true, art: () =>
+    `<path d="M80 -14 C78 -34 92 -44 100 -38 C90 -36 86 -28 88 -14" fill="#6B4A2E" ${HAT_INK3}/>`
+    + `<path d="M30 34 C22 10 30 -16 56 -18 C70 -26 100 -24 112 -14 C134 -8 140 14 130 34 L122 22 L118 32 L108 18 L100 30 L92 16 L84 28 L76 16 L68 30 L60 18 L52 30 L44 20 L38 32 Z" fill="#6B4A2E" ${HAT_INK}/>`
+    + `<path d="M50 -6 C62 -14 80 -16 94 -12" fill="none" stroke="#9A7150" stroke-width="4" stroke-linecap="round"/>` }
 ];
 const benjiHat = id => BENJI_HATS.find(h => h.id === id);
 
