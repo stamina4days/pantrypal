@@ -1,6 +1,6 @@
 "use strict";
-/* Using up and tossing food. */
-/* ---------- removing food (feeds Waste Less and staples) ---------- */
+/* Taking food out of the kitchen as Used it or Tossed. Each one is logged in history, which feeds Waste Less,
+   the badges, and the staples list. */
 let stapleNotes = [];
 function removeItem(item, outcome) {
   if (typeof foodMoment === "function") foodMoment(item, outcome, daysLeft(item.expires));

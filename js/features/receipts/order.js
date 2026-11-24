@@ -5,6 +5,7 @@
 
 /* Lines that are never a product: totals, fees, order details, status words, and buttons */
 const ORDER_SKIP = /^(sub ?total|total|order total|estimated total|grand total|items? total|tax(es)?|tips?|driver tip|delivery( fee)?|service fee|bag fee|bottle deposit|fees?|savings|you saved|saved|discount|coupons?|promo|payment|paid|charged|visa|mastercard|amex|american express|discover|debit|credit|card ending|ending in|order|placed|delivered|arriv|shipped|shipping|ship to|deliver(ing|y) to|address|qty|quantity|weight|price|each|ea\b|per lb|unit price|substitut|replaced|replacement|refund|out of stock|not available|unavailable|add to cart|buy (it )?again|write a review|review|rate|return|view|details|track|thank|hi\b|hello|dear|your (order|items|receipt)|receipt|invoice|questions|help|contact|pickup|picked|shopper|shopped|sold by|fulfilled|item(s)? (in|from)|show|see all|edit|cancel|manage)\b/i;
+/* How order emails and apps lay out each item. A price, a quantity, or a size on its own line belongs to the item above it. */
 const ORDER_PRICE = /^[-+]?\s*\$\s*\d+(?:[.,]\d{2})?(\s*(\/\s*(lb|ea|each|oz))|\s*(each|ea))?$|^[-+]?\d+\.\d{2}$/i;
 const ORDER_QTY = /^(?:qty|quantity)\s*[:.]?\s*(\d{1,3})\b|^(\d{1,3})\s*(?:x|×)$|^x\s*(\d{1,3})$|^(\d{1,3})\s*(?:items?|units?)$/i;
 const ORDER_SIZE_ONLY = /^(?:approx\.?\s*|about\s*)?\d+(?:[.,]\d+)?\s*(?:lb|lbs|pound|pounds|oz|fl oz|ounce|ounces|kg|g|ct|count|pk|pack|each|ea|gal|gallon|gallons|qt|quart|pt|pint|l|ml|dozen)\.?(?:\s*(?:bag|bunch|box|can|bottle|jar|pkg|package))?$/i;

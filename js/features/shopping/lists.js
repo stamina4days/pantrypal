@@ -1,6 +1,5 @@
 "use strict";
-/* Shopping list helpers. */
-/* ---------- shopping list helpers ---------- */
+/* Small helpers for picking a shopping list and adding to it. */
 function currentList() { return shopping.find(l => l.id === settings.activeList) || shopping[0] || null; }
 function addToList(list, name, amt, from) {
   const existing = list.items.find(x => !x.done && norm(x.name) === norm(name));

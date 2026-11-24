@@ -1,6 +1,5 @@
 "use strict";
-/* Expiry reminders. */
-/* ---------- REMINDERS ---------- */
+/* Expiry reminders: phone notifications where the browser allows them, and a calendar file that works everywhere. */
 function icsEsc(s) { return String(s).replace(/\\/g, "\\\\").replace(/[,;]/g, m => "\\" + m).replace(/\n/g, "\\n"); }
 function makeICS(list) {
   const stamp = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
