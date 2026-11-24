@@ -1,6 +1,5 @@
 "use strict";
-/* Recipes list. */
-/* ---------- RECIPES ---------- */
+/* The Recipes tab: the recipe box, the For you, All, and Saved bookmarks, filters, and search. */
 let recipeMode = "foryou";
 let recipeResults = [];
 let recipeLimit = PAGE_SIZE;

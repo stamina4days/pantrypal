@@ -1,5 +1,5 @@
 "use strict";
-/* A recipe. */
+/* A recipe's page: ingredients marked with what you have, servings, steps, and its buttons. */
 function openRecipe(x, mealId) {
   openMealId = mealId || null;
   const meal = mealId ? plan.find(m => m.id === mealId) : null;
@@ -19,7 +19,7 @@ function renderRecipeDetail() {
   const subBy = new Map(x.subbed.map(s => [s.g, s]));
   const fav = settings.favorites.includes(r.name);
   $("#recipeTitle").textContent = rName(r);
-  $("#recipeEmoji").innerHTML = recipeArt(r, "hero-art-img");
+  $("#recipeArt").innerHTML = recipeArt(r, "hero-art-img");
   if (typeof renderRecipeNote === "function") renderRecipeNote();
   $("#favBtn").innerHTML = fav ? `<svg class="ic on" aria-hidden="true"><use href="img/icons/ui/star.svg#i"/></svg>` : `<svg class="ic" aria-hidden="true"><use href="img/icons/ui/star.svg#i"/></svg>`;
   $("#favBtn").setAttribute("aria-pressed", fav);

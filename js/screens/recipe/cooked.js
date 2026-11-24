@@ -1,5 +1,5 @@
 "use strict";
-/* I cooked this, and plan it. */
+/* The two panels under a recipe: I cooked this (takes the food used out of the kitchen) and adding it to the plan. */
 function showCookedPanel() {
   $("#planPanel").classList.add("hidden");
   const used = new Map();
