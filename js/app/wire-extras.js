@@ -1,6 +1,5 @@
 "use strict";
-/* Extras buttons. */
-/* ---------- wiring ---------- */
+/* Buttons that live on many pages at once (tips, feedback, the tour, and the like), handled with one click listener on the whole document. */
 function extrasInit() {
   document.addEventListener("click", e => {
     const ok = e.target.closest("[data-hint-ok]");

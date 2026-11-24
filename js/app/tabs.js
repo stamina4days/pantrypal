@@ -1,6 +1,5 @@
 "use strict";
-/* Switching tabs. */
-/* ---------- wiring ---------- */
+/* Switching between the five tabs, and renderAll(), which redraws every tab after the data changes. */
 function showTab(name) {
   if (typeof setPageTitle === "function") setPageTitle(name);
   $$(".tab").forEach(tb => tb.classList.toggle("active", tb.id === "tab-" + name));

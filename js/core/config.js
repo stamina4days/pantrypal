@@ -1,5 +1,6 @@
 "use strict";
-/* App settings that rarely change. */
+/* Fixed settings: the localStorage keys, the places food can live, and the addresses of the two
+   libraries loaded only when needed (ZXing for barcodes, Tesseract for reading text in photos). */
 const KEYS = {
   items: "pantrypal.items.v1", settings: "pantrypal.settings.v1", history: "pantrypal.history.v1",
   shopping: "pantrypal.shopping.v1", barcodes: "pantrypal.barcodes.v1", plan: "pantrypal.plan.v1",

@@ -1,5 +1,6 @@
 "use strict";
-/* Starting the app. */
+/* init() runs once, after the loader has every page and recipe in place: it builds the name matcher,
+   applies the display settings, hooks up the buttons, and draws the first tab. */
 function init() {
   buildMatcher();
   if (typeof fixPackagedDates === "function") fixPackagedDates();

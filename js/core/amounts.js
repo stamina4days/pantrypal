@@ -1,6 +1,5 @@
 "use strict";
-/* Amounts and fractions. */
-/* ---------- amounts ---------- */
+/* Reading and writing amounts: "1 1/2" becomes 1.5, 0.25 prints as "1/4", and recipe amounts scale with servings. */
 const fmtNum = n => String(Math.round(n * 100) / 100);
 const hasAmount = i => typeof i.amount === "number" && !isNaN(i.amount);
 function amountText(i) { return hasAmount(i) ? (fmtNum(i.amount) + " " + (i.unit || "")).trim() : (i.unit || ""); }

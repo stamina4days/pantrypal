@@ -1,5 +1,5 @@
 "use strict";
-/* Adding amounts together. */
+/* Adding up amounts for the shopping list, so three recipes that each need garlic become one line. */
 /* Add up amounts that share a unit: ["2 cloves","1 clove","3 cloves"] -> ["6 cloves"] */
 function sumAmts(list) {
   const groups = new Map(), other = [];

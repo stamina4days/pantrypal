@@ -1,6 +1,5 @@
 "use strict";
-/* Kitchen buttons. */
-/* ---------- wiring ---------- */
+/* Hooks up the buttons on the main tabs: My Food, Recipes, Plan, Shopping, and Settings. */
 function kitchenInit() {
   // Setup
   $("#obNext").addEventListener("click", obNext);
@@ -105,13 +104,6 @@ function kitchenInit() {
       toast((b.dataset.ci === "wasted" ? t("Logged {name} as tossed.", { name: it.name }) : t("Removed {name}.", { name: it.name })) + stapleSuffix(), snap);
     }
     renderPantry();
-  });
-
-  // Restock suggestions
-  $("#shopSuggest").addEventListener("click", e => {
-    const b = e.target.closest("[data-restock]"); if (!b) return;
-    const it = items.find(i => i.id === b.dataset.restock), list = currentList();
-    if (it && list) { addToList(list, it.name, "", t("restock")); saveShopping(); renderShopping(); }
   });
 
   // Settings
