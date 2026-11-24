@@ -1,5 +1,6 @@
 "use strict";
-/* Pal's buttons. */
+/* The buttons inside Benji's speech bubbles. Each one carries a data-pal action, and this one listener
+   handles them all, so a new bubble only needs the right data-pal value. */
 function buddyInit() {
   document.addEventListener("click", e => {
     if (e.target.closest("[data-go-hats]") && !e.target.closest("#badgesPage")) { $$("dialog[open]").forEach(d => d.close()); openHats(); return; }

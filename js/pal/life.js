@@ -1,5 +1,5 @@
 "use strict";
-/* Pal's little reactions: say hi when tapped, dance when you rescue food. */
+/* Benji's little reactions: say hi when tapped, dance when you rescue food. */
 let palTapIdx = 0, palTapCount = 0;
 function palSay(row, text, hatBtn) {
   const p = row && row.querySelector(".bubble p");

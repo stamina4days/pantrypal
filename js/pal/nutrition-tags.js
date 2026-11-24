@@ -1,6 +1,5 @@
 "use strict";
-/* Nutrition as market tags. */
-/* ---------- nutrition as little market tags ---------- */
+/* Shows a recipe's calories, protein, carbs, and fat as little market tags. */
 function nutritionHtml(r) {
   const n = nutritionOf(r);
   const box = (v, l) => `<span class="nbox"><strong>${esc(v)}</strong><span>${esc(l)}</span></span>`;

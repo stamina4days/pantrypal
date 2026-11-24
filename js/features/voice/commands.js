@@ -1,5 +1,5 @@
 "use strict";
-/* Voice commands in cook mode. */
+/* Hands-free cook mode: listens for "next", "back", "repeat", "timer", and "ingredients". */
 function toggleVoice() {
   if (!cook) return;
   if (cook.listening) { cook.listening = false; try { cook.rec.stop(); } catch (e) {} renderCook(); return; }

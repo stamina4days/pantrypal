@@ -1,6 +1,6 @@
 "use strict";
-/* Setting food aside for meals. */
-/* ---------- inventory with quantities ---------- */
+/* Sets food aside for planned meals. Each food in the kitchen becomes an entry with grams left, and recipes take
+   from the soonest-expiring entries first, so two meals in the plan never count the same chicken. */
 function makeEntry(item) {
   const key = canon(item.name);
   const g = itemGrams(item, key);

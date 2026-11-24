@@ -1,6 +1,5 @@
 "use strict";
-/* Reading aloud and keeping the screen on. */
-/* ---------- cook mode and voice ---------- */
+/* Cook mode's read aloud, and keeping the screen awake while you cook. */
 let cook = null, wakeLock = null;
 function speak(text) {
   try {

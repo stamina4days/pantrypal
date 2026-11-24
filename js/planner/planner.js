@@ -1,6 +1,7 @@
 "use strict";
-/* Planning the week. */
-/* opts: {start, days, forced: {slotKey: recipeName}, exclude: {slotKey: [names]}} */
+/* Plan my week. runPlanner() goes day by day and picks the best recipe for each meal (see score.js),
+   setting food aside as it goes so later meals don't count on food an earlier one used up.
+   opts: {start, days, forced: {slotKey: recipeName}, exclude: {slotKey: [names]}} */
 function runPlanner(opts) {
   const P = profile();
   const dk = dislikeKeys();
