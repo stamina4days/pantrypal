@@ -1,6 +1,5 @@
 "use strict";
-/* Prep day. */
-/* ---------- prep day ---------- */
+/* The Prep day page: pick the meals, follow the combined steps, then Done takes the food used out of the kitchen. */
 let prepMeals = [];
 function openPrep() {
   const today = todayStr();

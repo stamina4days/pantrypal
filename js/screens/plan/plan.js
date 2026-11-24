@@ -1,6 +1,5 @@
 "use strict";
-/* The meal plan. */
-/* ---------- PLAN ---------- */
+/* The Plan tab: the wall calendar, each day's meals, and turning the plan into a shopping list. */
 function renderPlan() {
   const { evs } = planReservations();
   const today = todayStr();

@@ -1,6 +1,5 @@
 "use strict";
-/* Quick add. */
-/* ---------- quick add ---------- */
+/* The notepad for adding several foods at once, one per line, like "2 lbs chicken" or "a dozen eggs". */
 const QA_UNITS = "lbs?|pounds?|oz|ounces?|kg|kilos?|g|grams?|cups?|cans?|bags?|boxes|box|bottles?|packs?|packages?|bunch(?:es)?|heads?|loaf|loaves|dozen|gallons?|gal|liters?|litros?|ml|pieces?|slices?|cartons?|jars?|latas?|bolsas?|cajas?|botellas?|paquetes?|piezas?|docenas?|manojos?|frascos?|rebanadas?";
 const QA_RE = new RegExp(`^(\\d+\\s+\\d+\\/\\d+|\\d+\\/\\d+|\\d+(?:[.,]\\d+)?)\\s*(?:(${QA_UNITS})\\.?\\s+(?:of\\s+|de\\s+)?)?(.+)$`, "i");
 function parseQuick(text) {

@@ -1,6 +1,6 @@
 "use strict";
-/* Receipt check. */
-/* ---------- receipts ---------- */
+/* Reads a receipt photo, then shows the check sheet where you fix names before the food is added.
+   Pasted online orders (order.js) use the same sheet. */
 async function readReceipt(file) {
   toast(t("Reading your receipt. This can take up to 30 seconds."));
   try {
