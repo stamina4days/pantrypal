@@ -10,9 +10,10 @@ const STORE_KEY = { kty: "EC", crv: "P-256", x: "5z8CcvyxM9MEFoptnk7mZz33DZzmIp-
 /* Anything a code can unlock: the shop items, plus each tip jar amount. */
 const storeItem = id => STORE_ITEMS.find(x => x.id === id)
   || STORE_ITEMS.filter(x => x.tiers).flatMap(x => x.tiers.map(tr => ({ ...tr, kind: "tip", name: x.name }))).find(x => x.id === id);
-/* What the Everything bundle unlocks: every item except the bundle itself and tips. */
-const BUNDLE_HAS = () => STORE_ITEMS.filter(x => x.kind !== "bundle" && x.kind !== "tip").map(x => x.id);
+/* What the Everything bundle unlocks: every item except the bundle itself, tips, and free items. */
+const BUNDLE_HAS = () => STORE_ITEMS.filter(x => x.kind !== "bundle" && x.kind !== "tip" && !x.free).map(x => x.id);
 const ownsItem = id => {
+  if (STORE_ITEMS.some(x => x.id === id && x.free)) return true;
   const o = settings.owned || [];
   return o.includes(id) || (o.includes("bundle") && BUNDLE_HAS().includes(id));
 };
@@ -134,7 +135,8 @@ function renderShop() {
     : `<button type="button" class="wide" disabled>${esc(t("Coming soon"))}</button>`;
   const owned = it => `<p class="store-owned"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> ${esc(t(
     it.kind === "themes" ? "Yours! Pick one in Settings." : it.kind === "radio" ? "Yours! Find them in the music menu."
-    : it.kind === "outfits" ? "Yours! Dress Benji on the hats page." : it.kind === "bundle" ? "Yours! Everything in the shop is unlocked." : "Yours! Find them in Benji's hats."))}</p>`;
+    : it.kind === "outfits" ? "Yours! Dress Benji on the hats page." : it.kind === "bundle" ? "Yours! Everything in the shop is unlocked."
+    : it.free ? "Free for everyone! Find them in Benji's hats." : "Yours! Find them in Benji's hats."))}</p>`;
   box.innerHTML = STORE_ITEMS.map(it => {
     if (it.kind === "tip") {
       const tiers = it.tiers.map((tr, i) => {
@@ -157,7 +159,7 @@ function renderShop() {
     return `<li class="store-item sp-poster ${it.kind === "bundle" ? "sp-bundle" : ""}">
       <span class="sp-awning" aria-hidden="true"></span>
       ${it.kind === "bundle" && !own ? `<span class="sp-ribbon">${esc(t("Best deal"))}</span>` : ""}
-      <div class="sp-head"><h3>${esc(t(it.name))}</h3>${own ? coin(t("Owned"), "sp-coin-wide sp-owned") : coin(it.price)}</div>
+      <div class="sp-head"><h3>${esc(t(it.name))}</h3>${it.free ? coin(t("Free"), "sp-coin-wide") : own ? coin(t("Owned"), "sp-coin-wide sp-owned") : coin(it.price)}</div>
       <p class="sp-desc">${esc(t(it.desc))}</p>
       ${show(it)}
       ${it.kind === "bundle" && !own ? `<p class="sp-was"><s>${esc(it.was)}</s> <b>${esc(it.price)}</b>. ${esc(t("Already own a pack? Email us your shop ID and we'll take its price off."))}</p>` : ""}

@@ -29,7 +29,9 @@ function renderHats() {
   };
   $("#htSeason").innerHTML = BENJI_HATS.filter(x => x.season).map(card).join("");
   $("#htEarn").innerHTML = BENJI_HATS.filter(x => !x.season && !x.game && !x.shop).map(card).join("");
-  $("#htShop").innerHTML = BENJI_HATS.filter(x => x.shop).map(card).join("");
+  const free = id => STORE_ITEMS.some(x => x.id === id && x.free);
+  $("#htFree").innerHTML = BENJI_HATS.filter(x => x.shop && free(x.shop)).map(card).join("");
+  $("#htShop").innerHTML = BENJI_HATS.filter(x => x.shop && !free(x.shop)).map(card).join("");
   $("#htGame").innerHTML = BENJI_HATS.filter(x => x.game).map(card).join("");
   // Outfits: "No outfit" first, then the outfit pack
   const wearing = benjiOutfitNow();
