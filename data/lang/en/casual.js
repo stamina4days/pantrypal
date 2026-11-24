@@ -1,5 +1,4 @@
-/* English: Benji's casual wording. */
-/* Benji's friendly voice. English keys stay the same in the code; these swap in casual wording. */
+/* Benji's friendly voice. The code keeps its plain English wording, and these lines swap in the casual version. */
 const I18N_EN = {
   "Search your food...": "Find food...",
   "Browse all": "All recipes",

@@ -1,6 +1,5 @@
 "use strict";
-/* Language and display settings. */
-/* ---------- language and display ---------- */
+/* Puts the right words on the page (the data-t labels) and applies the display settings: text size, simple or full view, and high contrast. */
 function applyLang() {
   document.documentElement.lang = LANG;
   $$("[data-t]").forEach(el => {

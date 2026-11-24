@@ -1,5 +1,4 @@
-/* Typical grocery prices. */
-/* ---------- typical US grocery prices, dollars per kg ---------- */
+/* Typical US grocery prices, in dollars per kg. Prices from your own receipts take their place when Benji has them. */
 const PRICE_KG = {
   "chicken breast": 8.8, "chicken thigh": 6.6, chicken: 8.8, "ground beef": 11, beef: 18, steak: 22, "stew meat": 15, pork: 7.7, bacon: 15,
   ham: 11, sausage: 11, shrimp: 20, salmon: 22, fish: 15, tuna: 13, tofu: 6.6, egg: 6.5, milk: 1.1, butter: 11, cheese: 13, mozzarella: 11,

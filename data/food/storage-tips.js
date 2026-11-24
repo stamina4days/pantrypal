@@ -1,4 +1,4 @@
-/* Storage tips Pal shares on food pages and the Tips page.
+/* Storage tips Benji shares on food pages and the Tips page.
    [food name the matcher knows, where it keeps best, tip] */
 const STORAGE_TIPS = [
   ["berries", "Fridge", "Don't wash berries until you eat them. Water makes them mold faster."],

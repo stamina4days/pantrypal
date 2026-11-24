@@ -1,5 +1,4 @@
-/* What can stand in when you are missing something. */
-/* When you're missing "need", any of "use" can stand in. */
+/* What can stand in when you're missing something: when a recipe needs "need", any of "use" will do. */
 const SUBS = [
   { need: "cream", use: ["milk"], note: "Use milk with 1 tablespoon of melted butter per cup. It'll be a little thinner." },
   { need: "sour cream", use: ["yogurt"], note: "Plain yogurt works the same way." },

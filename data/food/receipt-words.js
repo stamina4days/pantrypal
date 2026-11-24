@@ -1,5 +1,5 @@
-/* Receipt abbreviations and lines to skip. */
-/* ---------- receipts ---------- */
+/* Receipt shorthand and the lines to skip. Stores squeeze names to fit, so "CHKN BRST BNLS" needs
+   RECEIPT_ABBR to become "chicken breast". An empty string drops the word. */
 const RECEIPT_ABBR = {
   MLK: "milk", WHL: "whole", CHKN: "chicken", CHK: "chicken", CKN: "chicken", CHIX: "chicken", BRST: "breast", BRSTS: "breast", BNLS: "", SKNLS: "", BL: "", SL: "",
   THGH: "thighs", THGHS: "thighs", GRD: "ground", GRND: "ground", BF: "beef", TRKY: "turkey", PRK: "pork", BCN: "bacon", SAUS: "sausage", SSG: "sausage",
@@ -17,7 +17,7 @@ const RECEIPT_ABBR = {
   BRTH: "broth", BROTH: "broth", STK: "stock", OAT: "oats", OATS: "oats", RCE: "rice", PNT: "peanut", SLSA: "salsa", TOFU: "tofu", HAM: "ham", CORN: "corn",
   PEAS: "peas", GRBNZ: "chickpeas", CHKPEA: "chickpeas", LNTL: "lentils", COCO: "coconut", GV: "", KS: "", HT: "", MM: "", SIG: "", ORG: "", ORGANIC: "",
   NAT: "", CLSC: "", FAM: "", PK: "", PKG: "", CT: "", EA: "", OZ: "", LB: "", LBS: "", GAL: "", HLF: "", ITM: "", TX: "", RTL: "", REG: "",
-  // More store codes (11.16): fruit, dairy, bakery, meat, pantry, and store brand tags to drop
+  // More store codes: fruit, dairy, bakery, meat, pantry, and store brand tags to drop
   STRWBRY: "strawberries", STRWBRRY: "strawberries", RASPB: "raspberries", RSPBRY: "raspberries", BLKBRY: "blackberries", GRP: "grapes", GRPS: "grapes",
   ORNG: "oranges", ORNGS: "oranges", PCH: "peaches", PEACH: "peaches", PNAPL: "pineapple", PINEAPL: "pineapple", WTRMLN: "watermelon", MNGO: "mango", PEAR: "pears",
   CLMNTN: "clementines", CUTIES: "clementines", KIWI: "kiwi", CANT: "cantaloupe", CNTLP: "cantaloupe",

@@ -1,5 +1,4 @@
-/* Servings for the classic recipes. */
-/* Servings for the classic recipes (generated recipes set their own). */
+/* Servings for the classic recipes (the newer recipe files set their own). */
 const SERVES = {
   "Fluffy Pancakes": 4, "French Toast": 2, "Banana Bread": 8, "Overnight Oats": 1, "Scrambled Eggs on Toast": 1,
   "Shakshuka": 2, "Grilled Cheese": 1, "Tomato Soup": 4, "Chicken Noodle Soup": 6, "Lentil Soup": 6,
