@@ -44,7 +44,7 @@
 .store-id-row button { min-height: 44px; padding: 4px 14px; display: inline-flex; align-items: center; gap: 6px; }
 .store-id-row .ic { width: 20px; height: 20px; margin: 0; }
 
-/* Shop previews: theme swatches, radio stations, the bundle, and the tip jar (11.10) */
+/* Shop previews: theme swatches, radio stations, the bundle, and the tip jar */
 .store-hat .theme-swatch { width: 56px; height: 56px; }
 .radio-dot { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #22382B; color: #FFC94D; border: 3px solid #233A31;
   font: 900 1.4rem/1 Nunito, sans-serif; }
@@ -59,7 +59,7 @@
 .store-tip-stage { display: flex; flex-direction: column; align-items: center; font-weight: 900; }
 .store-tip-reward .pal { flex: none; }
 
-/* ---------- Benji's shop posters (11.12): each item looks like its shop poster ---------- */
+/* ---------- Benji's shop posters: each item looks like its shop poster ---------- */
 .sp-poster { position: relative; list-style: none; overflow: hidden; padding: 34px 14px 16px; border-radius: 16px; color: #233A31;
   background: #FBF3E4; border: 3px solid #233A31; box-shadow: 0 5px 0 #C9B9A2; }
 @media (prefers-color-scheme: dark) { .sp-poster { box-shadow: 0 5px 0 #0E0B08; } }

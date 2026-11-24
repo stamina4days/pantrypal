@@ -123,7 +123,7 @@ body #addBtn.fab { display: none; }
 #tab-pantry .fridge-scene .row-face .fr-when { font-family: Nunito, var(--font, sans-serif); font-weight: 900; font-size: .78rem; max-width: 46%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #tab-pantry .fridge-scene #itemList .swipe-row .row-face { border-top: 0; }
 
-/* Compact pass (11.9.1) */
+/* Smaller shelf buttons and rows so more food fits on a phone screen */
 #tab-pantry .fridge-scene { padding-top: 8px; }
 #tab-pantry .fridge-scene .shelf-chips { grid-auto-columns: minmax(58px, 1fr); gap: 6px; padding-bottom: 6px; }
 #tab-pantry .fridge-scene .shelf-chips .chip { min-height: 46px; padding: 3px 3px 2px; font-size: .68rem; border-radius: 10px; }
