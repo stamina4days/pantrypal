@@ -19,7 +19,6 @@ const RADIO_STATIONS = [
   { id: "holiday", name: "Holiday tunes", short: "Holiday", desc: "Cozy holiday tunes", src: "audio/holiday.mp3", shop: "radio",
     icon: '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M12 3v2"/></svg>' }
 ];
-const stationOpen = s => !s.shop || (typeof ownsItem === "function" && ownsItem(s.shop));
 /* Each kitchen theme has its own song, and the classic kitchen plays the Pantry Pal song */
 const MUSIC_MAIN = { id: "main", name: "Pantry Pal song", short: "Pantry Pal", desc: "The classic kitchen's song", src: "audio/main.mp3" };
 const THEME_SONGS = {

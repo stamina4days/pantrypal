@@ -1,5 +1,5 @@
 "use strict";
-/* Thumbs up and down. */
+/* Thumbs up and down on recipes. The planner picks thumbs-up recipes more often and skips thumbs-down ones. */
 function renderRating() {
   if (!openResult) return;
   const v = (settings.ratings || {})[openResult.recipe.name] || 0;
