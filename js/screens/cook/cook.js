@@ -1,5 +1,5 @@
 "use strict";
-/* Cook mode. */
+/* Cook mode: one step at a time in big text, with timers, read aloud, and voice commands. */
 function openCookMode(r, f, fromRecipe) {
   cook = { r, f, idx: 0, fromRecipe, listening: false, rec: null };
   renderCook();

@@ -1,6 +1,5 @@
 "use strict";
-/* Your own recipes. */
-/* ---------- your own recipes and suggestions ---------- */
+/* Adding, editing, and deleting your own recipes, and emailing one in as a suggestion. */
 const AMT_RE = /^((?:\d+\s+)?\d+(?:[\/.]\d+)?\s*(?:cups?|tbsp|tablespoons?|tsp|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|cloves?|cans?|slices?|pinch(?:es)?|handfuls?|bunch(?:es)?|stalks?|heads?|sticks?|packages?|large|medium|small)?\.?)\s+(.+)$/i;
 function toIngString(line) {
   let opt = false;

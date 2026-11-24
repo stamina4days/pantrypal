@@ -1,5 +1,5 @@
 "use strict";
-/* Badges page. */
+/* The badges page: every badge with its progress. The badges themselves are defined in data/badges.js. */
 function openBadges() {
   renderBadges();
   $("#badgesPage").showModal();

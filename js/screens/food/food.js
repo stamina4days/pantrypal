@@ -1,6 +1,5 @@
 "use strict";
-/* My Food. */
-/* ---------- MY FOOD ---------- */
+/* The My Food tab: the open fridge with its shelf buttons and the food on them. */
 let locFilter = "All";
 let editingId = null;
 
