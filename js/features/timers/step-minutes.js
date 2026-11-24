@@ -1,6 +1,5 @@
 "use strict";
-/* Finding times in recipe steps. */
-/* ---------- timers in step text ---------- */
+/* Finds the cooking time in a recipe step so cook mode can offer a timer for it. */
 /* "simmer 25 to 30 minutes" -> 30; "1 1/2 hours" -> 90; returns minutes or null */
 function stepMinutes(text) {
   const s = String(text).toLowerCase();

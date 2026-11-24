@@ -21,7 +21,6 @@ const isSupporter = () => (settings.owned || []).some(id => /^tip-/.test(id));
 const benjiGolden = () => isSupporter() && settings.goldenSprout !== false;
 /* Bigger tips grow a bigger golden sprout: $1 a sprout, $3 a leafy one, $5 in full bloom. */
 const benjiGoldStage = () => !benjiGolden() ? 0 : ownsItem("tip-5") ? 3 : ownsItem("tip-3") ? 2 : 1;
-const hatFromShop = h => !!(h && h.shop);
 
 function b64urlBytes(s) {
   const b = atob(s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((s.length + 3) % 4));

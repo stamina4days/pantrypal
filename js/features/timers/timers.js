@@ -1,6 +1,5 @@
 "use strict";
-/* Kitchen timers. */
-/* ---------- timers ---------- */
+/* Kitchen timers that keep running while you move around the app, and the beep when one finishes. */
 let timers = [], timerTick = null, audioCtx = null;
 function startTimer(label, minutes) {
   try { audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)(); audioCtx.resume(); } catch (e) {}
