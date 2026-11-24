@@ -160,7 +160,7 @@
 .pday.today .row-btn { color: #C8D8CC; }
 .rbook-page .recipe .r-head strong { font-size: 1.12rem; }
 
-/* ---------- Compact pass (11.9.1): smaller pieces so more of each room fits ---------- */
+/* ---------- Smaller pieces so more of each room fits on a phone screen ---------- */
 /* Tips: a small note, not a banner */
 .scene .hint-slot .hint { max-width: min(250px, 72%); padding: 6px 10px 2px; font-size: .74rem; line-height: 1.25; margin: 0 0 8px auto; }
 .scene .hint-slot .hint .ic { width: 13px; height: 13px; }
@@ -233,6 +233,6 @@
 .empty-cart { width: 80px; height: 51px; }
 .shop-scene .bought-bar #moveToFood, .shop-scene .bought-bar #clearChecked { min-height: 44px; font-size: .85rem; }
 
-/* Readable on paper in dark mode too (11.9.3) */
+/* Readable on paper in dark mode too */
 .rbook-page .tag.miss, .pday .tag.miss { color: #6E5E4A; border-color: #9C8B72; }
 .rbook-page button.wide { background: #F1E8D8; color: #233A31; border-color: #B8A486; }
