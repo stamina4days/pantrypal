@@ -1,6 +1,5 @@
 "use strict";
-/* What this phone supports. */
-/* ---------- what this phone supports ---------- */
+/* Settings > Check what this phone supports: tests the camera, voice, notifications, and other features this phone has. */
 async function runDiagnostics() {
   const rows = [];
   const add = (label, ok, note) => rows.push({ label, ok, note });

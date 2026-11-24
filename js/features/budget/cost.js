@@ -1,5 +1,6 @@
 "use strict";
-/* Prices and costs. */
+/* What food costs: your own receipt prices when Benji has them, typical US prices otherwise.
+   Used for recipe costs, the shopping list total, and the money numbers. */
 function pricePerG(key) {
   if (!key) return null;
   const learned = settings.prices || {};
@@ -20,12 +21,6 @@ function costOf(r) {
   return sum / (r.serves || 4);
 }
 const fmtMoney = v => new Intl.NumberFormat(locale(), { style: "currency", currency: "USD" }).format(v || 0);
-function nutritionLine(r) {
-  const n = nutritionOf(r);
-  const parts = [t("{n} calories", { n: Math.round(n.cal) }), t("{n} g protein", { n: Math.round(n.protein) }), t("{n} g carbs", { n: Math.round(n.carbs) }),
-    t("{n} g fat", { n: Math.round(n.fat) }), t("about {cost}", { cost: fmtMoney(costOf(r)) })];
-  return t("Per serving:") + " " + parts.join(", ") + (n.coverage < 0.7 ? " " + t("(partial estimate)") : "");
-}
 /* Learn real prices from receipts */
 function learnPrice(name, amount, unit, price) {
   const key = canon(name);

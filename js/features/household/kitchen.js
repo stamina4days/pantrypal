@@ -1,5 +1,5 @@
 "use strict";
-/* Your kitchen: Pal uses your name, and the header says whose kitchen this is. */
+/* Your kitchen: Benji uses your name, and the header says whose kitchen this is. */
 function renderKitchenName() {
   const n = (settings.userName || "").trim();
   const el = document.querySelector(".brand-name");

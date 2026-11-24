@@ -1,6 +1,8 @@
 "use strict";
 /* Little helper: steps in cook mode that a kid can safely do get a hand mark.
    Finish a recipe that had any, and the kids earn a sticker. */
+/* A step counts when it has a kid-friendly action and nothing sharp or hot, so "stir the dressing" does
+   but "stir the sauce over low heat" doesn't. */
 const HELPER_YES = /\b(wash|rinse|stir|mix|whisk|measure|pour|sprinkle|toss|mash|spread|tear|arrange|layer|scoop|shake|pat dry|line|grease|combine|beat|crack|top with|garnish|squeeze)\b/i;
 const HELPER_NO = /\b(knife|chop|slice|dice|cut|mince|grate|fry|saut|boil|simmer|bake|oven|broil|grill|heat|hot|melt|steam|toast|warm|skillet|pan|pot|drain|blender|sear|roast|microwave|stove|oil)\b/i;
 function isHelperStep(r, idx) {

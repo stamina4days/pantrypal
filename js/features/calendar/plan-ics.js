@@ -1,6 +1,5 @@
 "use strict";
-/* Meal plan to calendar. */
-/* ---------- meal plan to calendar ---------- */
+/* Turns the meal plan into a calendar file (.ics) with each meal at breakfast, lunch, or dinner time. */
 function planICS() {
   const stamp = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
   const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Pantry Pal//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];

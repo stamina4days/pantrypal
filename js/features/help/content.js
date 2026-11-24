@@ -1,6 +1,5 @@
 "use strict";
-/* Help topics and tips. */
-/* ---------- help and one-time tips ---------- */
+/* The words on the Help page and in the one-time tips. Edit the text here to change them. */
 const HELP = [
   ["How Benji's numbers work", ["Dates: Benji guesses how long each food keeps from general food safety guidelines, counted from the day you add it. Milk is about a week in the fridge, for example. Opening a package shortens it and freezing makes it much longer. It's only an estimate, so if the package says something different, open the food and tap Edit. Each food's page has a How Benji picks this date link.",
     "Money: every food gets a price, from your receipts when you've scanned one, or a typical US grocery price. Money at risk on Today is his guess at what could be thrown out this week. Saved from the trash on Waste Less adds up the food you finished before its date. Tap either one to see how it's worked out."]],

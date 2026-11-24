@@ -1,6 +1,6 @@
 "use strict";
-/* Check-ins, usage, and restocking. */
-/* ---------- check-ins, usage, ratings ---------- */
+/* Asks every few days whether things are still there, and learns how fast your kitchen goes through each food.
+   Running low on the shopping list uses what it learns. */
 function checkinHtml() {
   if (!settings.checkins || !items.length) return "";
   const today = todayStr();
@@ -29,13 +29,3 @@ function learnUsage(item) {
 }
 function usageFor(item) { const u = (settings.usage || {})[(canon(item.name) || norm(item.name)).trim()]; return u && u.n ? u : null; }
 function usageText(item) { const u = usageFor(item); return u ? t("You usually finish this in about {n} days.", { n: Math.max(1, Math.round(u.avg)) }) : ""; }
-function restockHtml(list) {
-  const soon = items.filter(i => {
-    const u = usageFor(i);
-    if (!u || !i.bought || i.leftover || !(i.staple || u.n >= 2)) return false;
-    return addDaysFrom(i.bought, Math.round(u.avg)) <= addDaysFrom(todayStr(), 2) && !list.items.some(x => !x.done && norm(x.name) === norm(i.name));
-  });
-  if (!soon.length) return "";
-  return `<div class="card"><h3>${esc(t("Running low soon"))}</h3><p class="muted small">${esc(t("Based on how fast you usually go through these."))}</p>
-    <div class="chips wrap">${soon.map(i => `<button class="chip" data-restock="${i.id}">+ ${esc(i.name)}</button>`).join("")}</div></div>`;
-}
