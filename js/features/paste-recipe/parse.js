@@ -1,6 +1,5 @@
 "use strict";
-/* Turning pasted text into a recipe. */
-/* ---------- paste a recipe from a website ---------- */
+/* Turns a recipe copied from a website into the add-recipe form: the name, times, ingredients, and steps. */
 function parseDur(s) {
   let min = 0;
   const h = String(s).match(/(\d+(?:\.\d+)?)\s*(?:h|hr|hrs|hours?)\b/i);

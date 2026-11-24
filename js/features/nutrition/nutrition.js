@@ -1,5 +1,6 @@
 "use strict";
-/* Nutrition per serving. */
+/* Works out calories, protein, carbs, and fat per serving from the ingredients. The result is saved on
+   the recipe (r._nutr) so it's only worked out once. */
 function nutritionOf(r) {
   if (r._nutr) return r._nutr;
   let cal = 0, protein = 0, carbs = 0, fat = 0, known = 0, total = 0;

@@ -1,6 +1,6 @@
 "use strict";
-/* Reading a date from a photo. */
-/* ---------- reading an expiration date from a photo ---------- */
+/* Reads a printed expiration date from a photo of the package. The month list includes a few Spanish
+   abbreviations (ENE, ABR, AGO, DIC) because imported products often print them. */
 const MONTHS = { JAN: 1, FEB: 2, MAR: 3, APR: 4, MAY: 5, JUN: 6, JUL: 7, AUG: 8, SEP: 9, OCT: 10, NOV: 11, DEC: 12, ENE: 1, ABR: 4, AGO: 8, DIC: 12 };
 function findExpiryDate(text, today) {
   const T = " " + String(text).toUpperCase().replace(/\|/g, "1") + " ";
@@ -33,6 +33,8 @@ function findExpiryDate(text, today) {
   const re5 = new RegExp(`\\b(20\\d{2})\\s*${mon}\\s*(\\d{1,2})\\b`, "g");
   while ((m = re5.exec(T))) add(+m[1], mo(m[2]), +m[3], m.index, m[0]);
   if (!cands.length) return null;
+  // Words printed next to the real expiration date, in English and Spanish. A date printed right after one of these wins
+  // over other dates on the package, like a packing date. With none nearby, the latest date wins.
   const kw = /(BEST|USE BY|USE|EXP|BB|SELL|ENJOY|CONSUMIR|CADUCA|CAD|VENCE|VENC|FECHA)/g;
   const kwPos = [];
   while ((m = kw.exec(T))) kwPos.push(m.index + m[0].length);

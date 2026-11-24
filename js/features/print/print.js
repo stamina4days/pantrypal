@@ -1,6 +1,5 @@
 "use strict";
-/* Printing. */
-/* ---------- printing ---------- */
+/* Printing the meal plan, the shopping list, and the prep day checklist. */
 function printSheet(title, html) {
   $$("dialog[open]").forEach(d => d.close());
   $("#printArea").innerHTML = `<h1>${esc(title)}</h1>` + html + `<p class="print-foot">Pantry Pal, ${esc(prettyDate(todayStr()))}</p>`;

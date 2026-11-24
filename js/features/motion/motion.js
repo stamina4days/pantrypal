@@ -1,5 +1,5 @@
 "use strict";
-/* Motion (11.17): the moves that make the app feel alive.
+/* Motion: the moves that make the app feel alive.
    Benji looks at your taps, talks while his bubble fills in word by word, waves, hops, wrings his gloves, yawns, and his sprout grows.
    Food you use in time drops into the jar, a coin flips up for Benji to catch, groceries hop out of the bag and into the fridge,
    badges slam down, cook mode steams, the fridge door swings open, and the kitchen window shows the time of day and the season.
@@ -210,6 +210,7 @@ const Motion = (() => {
   }
 
   /* ---------- the kitchen window and clock: the time of day, the season, the weather ---------- */
+  // Seasons are flipped south of the equator. The time zone is the only hint we have without asking for location.
   function southern() {
     try { return /^(Australia|Pacific\/Auckland|America\/(Sao_Paulo|Argentina|Santiago|Montevideo|Asuncion)|Africa\/Johannesburg)/.test(Intl.DateTimeFormat().resolvedOptions().timeZone || ""); } catch (e) { return false; }
   }
