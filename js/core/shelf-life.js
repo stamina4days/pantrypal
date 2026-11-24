@@ -1,5 +1,6 @@
 "use strict";
-/* How long food keeps. */
+/* How long food keeps, and where it belongs. Canned, boxed, and dried versions of a food (canned tomatoes,
+   chicken broth) get the long pantry time, not the fresh food's few days. */
 function shelfDirect(n) {
   let best = null, bestLen = 0;
   for (const k of Object.keys(SHELF_LIFE)) {
@@ -57,8 +58,9 @@ function locFromInput(v) {
   return hit || v || "Other";
 }
 const isStaple = name => settings.staples.includes(norm(name));
-/* 11.17.2: canned, boxed, and dried foods used to get the date of the fresh food (canned tomatoes got 5 days).
-   Once, fix the ones whose date was that short guess, so they stop showing up as expired. */
+/* Before version 11.17.2, canned, boxed, and dried foods got the fresh food's date (canned tomatoes got 5 days).
+   This runs once per kitchen and fixes the ones still on that short guess, so they stop showing up as expired.
+   settings.packagedFix marks it done. */
 function fixPackagedDates() {
   if (settings.packagedFix || typeof items === "undefined") return;
   let n = 0;

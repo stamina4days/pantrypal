@@ -1,5 +1,6 @@
 "use strict";
-/* Converting amounts to grams. */
+/* Turns amounts into grams so different units can be compared: "2 lbs chicken" in the kitchen against
+   "1 cup diced chicken" in a recipe. Weights per item and per cup come from data/food/weights.js. */
 const _lk = new Map();
 function _table(name, obj) {
   if (!_lk.has(name)) { const m = new Map(); for (const [k, v] of Object.entries(obj)) m.set(norm(k).trim(), v); _lk.set(name, m); }

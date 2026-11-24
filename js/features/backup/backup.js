@@ -1,6 +1,5 @@
 "use strict";
-/* Backups. */
-/* ---------- backup ---------- */
+/* Saving a copy of the kitchen to a file and bringing it back, plus Benji's occasional reminder to do it. */
 function exportBackup() {
   settings.lastBackup = todayStr(); settings.backupNudgeAt = null; saveSettings();
   download(`pantry-backup-${todayStr()}.json`, JSON.stringify({

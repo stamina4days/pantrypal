@@ -1,6 +1,6 @@
 "use strict";
-/* Saving and loading everything in this browser. */
-/* ---------- storage ---------- */
+/* Everything is saved in this browser's localStorage, one key per kind of data (see KEYS in config.js).
+   There's no server, so a full or blocked storage is the one way saving can fail, and the user is told when it does. */
 function load(key, fallback) {
   try { const v = JSON.parse(localStorage.getItem(key)); return v == null ? fallback : v; }
   catch (e) { return fallback; }

@@ -1,5 +1,4 @@
 "use strict";
-/* Language switching and the t() helper. */
 /* English only for now. English text is the key. data/lang/en holds the casual and plain-word
    versions. A new language can plug in here later. */
 const LANG = "en";

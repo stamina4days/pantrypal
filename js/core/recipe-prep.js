@@ -1,6 +1,6 @@
 "use strict";
-/* Getting recipes ready to search and match. */
-/* ---------- build lookup tables from recipe data ---------- */
+/* Gets every recipe ready once at startup: works out the plain name of each ingredient and builds the lookup
+   tables that searching and matching use, so they don't redo that work on every keystroke. */
 let SUBS_PREP = [];
 const PROTEIN_GROUPS = [["seafood", ["shrimp", "salmon", "fish", "tuna"]], ["chicken", ["chicken"]], ["beef", ["ground beef", "beef", "steak", "stew meat"]],
   ["pork", ["pork", "bacon", "ham", "sausage"]], ["tofu", ["tofu"]], ["beans", ["black bean", "kidney bean", "chickpea", "lentil"]], ["eggs", ["egg"]]];

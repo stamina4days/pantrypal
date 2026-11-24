@@ -1,6 +1,6 @@
 "use strict";
-/* Matching food names. */
-/* ---------- name matching ---------- */
+/* Matching food names. "Roma tomatoes" and "tomato" need to count as the same food, so canon() boils a name
+   down to its plain form (singular, known phrases, aliases), and related() also accepts a parent, like chicken for chicken thighs. */
 function singular(w) {
   if (w.length <= 3 || /(ss|us|is)$/.test(w)) return w;
   if (w.endsWith("ies")) return w.slice(0, -3) + "y";

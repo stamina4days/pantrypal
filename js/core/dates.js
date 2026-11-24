@@ -1,6 +1,6 @@
 "use strict";
-/* Dates in local days. */
-/* ---------- dates (local days, no timezone surprises) ---------- */
+/* Dates are kept as "YYYY-MM-DD" strings in local time. Working in whole local days, never UTC timestamps,
+   keeps a food from changing days near midnight or when the clocks change. */
 function toStr(d) {
   return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
 }

@@ -15,15 +15,6 @@ function friendlyWhen(dateStr) {
   if (d <= 45) return t("In a few weeks");
   return t("Keeps a while");
 }
-function friendlyBought(dateStr) {
-  if (!dateStr) return "";
-  const ago = -daysLeft(dateStr);
-  if (ago <= 0) return t("bought today");
-  if (ago === 1) return t("bought yesterday");
-  if (ago <= 6) return t("bought {day}", { day: weekdayOf(dateStr) });
-  if (ago <= 13) return t("bought last week");
-  return t("bought {date}", { date: prettyDate(dateStr) });
-}
 function friendlyOpened(dateStr) {
   const ago = -daysLeft(dateStr);
   if (ago <= 0) return t("opened today");

@@ -1,6 +1,7 @@
 "use strict";
-/* Ranking recipes by what you have. */
-/* ---------- recipe scoring ---------- */
+/* Ranks recipes by how well they fit what's in your kitchen, giving the most weight to food that's about to go bad. */
+/* How much using a food counts, by days left: food that's due today counts 20 times more than food with weeks to go.
+   Food with no date counts a little, so recipes still lean toward what you have. */
 function urgencyWeight(d) {
   if (d === null) return 0.3;
   if (d <= 0) return 10;
@@ -16,10 +17,6 @@ function basePool() {
     .filter(i => !i.leftover && (!hasAmount(i) || i.amount > 0))
     .map(makeEntry)
     .filter(p => p.key && (p.d === null || p.d >= 0));
-}
-function bestMatch(pool, key) {
-  const a = allocate(pool, key, null);
-  return a ? a.allocs[0].p : null;
 }
 function findSub(g, pool, onDate) {
   for (const s of SUBS_PREP) {

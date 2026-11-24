@@ -2,7 +2,6 @@
 /* All recipes. The loader fills RECIPES from data/recipes when the app starts.
    Each built-in recipe is its own file, so adding one is just adding a file. */
 const RECIPES = [];
-const MY_RECIPES = [];
 
 /* "Chicken Fried Rice" -> "chicken-fried-rice" (used for file names and page addresses) */
 function recipeSlug(name) {

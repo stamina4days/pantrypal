@@ -1,6 +1,5 @@
 "use strict";
-/* Diets and allergies. */
-/* ---------- diets ---------- */
+/* Diets and allergies: which recipes each diet rules out, and the labels shown on recipe cards. */
 const DIETS = {
   vegetarian: { label: "Vegetarian", ex: ["meat", "pork", "fish", "shellfish"], swap: { broth: "use vegetable broth" } },
   vegan: { label: "Vegan", ex: ["meat", "pork", "fish", "shellfish", "dairy", "egg", "honey"],
