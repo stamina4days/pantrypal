@@ -4,13 +4,14 @@
      right away and refreshes in the background, so the app opens fast with no signal.
    Bump CACHE when you publish a big change to clear out old copies. */
 importScripts("offline-files.js");   // defines OFFLINE_FILES
-const CACHE = "pantrypal-v11zo";
+const CACHE = "pantrypal-v11zp";
 const DATA_CACHE = "pantrypal-data";
 
 self.addEventListener("install", e => {
   e.waitUntil((async () => {
     const c = await caches.open(CACHE);
-    await c.addAll(OFFLINE_FILES);
+    // cache: "reload" skips the browser's own short-term copy, so a new version never saves old files
+    await c.addAll(OFFLINE_FILES.map(f => new Request(f, { cache: "reload" })));
     // Recipes come from data/recipes.json (in the list above). Single recipe files are saved as they load.
   })());
   self.skipWaiting();
