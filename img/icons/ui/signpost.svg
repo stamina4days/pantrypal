@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Signpost</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3v26M11 29h10"/><path d="M8 6h15l3.5 3.5L23 13H8z" fill="var(--icf, #FFD23F)"/><path d="M24 15.5H9l-3.5 3.5L9 22.5h15z" fill="var(--icf, #FFD23F)"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

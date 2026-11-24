@@ -60,7 +60,7 @@ const feedbackButton = () => `<button class="wide feedback-btn" type="button" da
 function openHelp() {
   $("#helpBody").innerHTML = `<div class="feedback-card"><p><strong>${esc(t("Found a problem, or have an idea?"))}</strong> ${esc(t("Tell us. It opens an email to us with a few details about your phone filled in."))}</p>${feedbackButton()}</div>`
     + HELP.map(([title, paras]) => `<h3>${esc(t(title))}</h3>${paras.map(p => `<p>${esc(t(p))}</p>`).join("")}`).join("")
-    + `<p><button class="wide" type="button" data-start-tour><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> ${esc(t("Take the tour"))}</button></p>`
+    + `<p><button class="wide" type="button" data-start-tour><svg class="ic" aria-hidden="true"><use href="img/icons/ui/signpost.svg#i"/></svg> ${esc(t("Take the tour"))}</button></p>`
     + `<p><button class="link-btn" id="resetHints">${esc(t("Show the tips again"))}</button></p>`;
   $("#helpDialog").showModal();
 }

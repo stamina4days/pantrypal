@@ -20,7 +20,7 @@ function renderPlannerOpts(P) {
     </div>
     <p class="small">${esc(t("Cooking for {n}, {lunch}, {bf}", { n: P.people, lunch: P.lunches ? t("leftovers for lunch") : t("no lunches"), bf: P.breakfasts ? t("breakfast prep") : t("no breakfast prep") }))}
       <button type="button" class="link-btn" id="poEdit">${esc(t("Change"))}</button></p>
-    <button id="poGo" class="primary wide"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/sparkle.svg#i"/></svg> ${esc(t("Make my plan"))}</button>`;
+    <button id="poGo" class="primary wide"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/meal-plan.svg#i"/></svg> ${esc(t("Make my plan"))}</button>`;
   $("#plannerActions").innerHTML = "";
 }
 function runAndShow(extraForced) {
