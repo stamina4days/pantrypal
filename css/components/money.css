@@ -21,7 +21,7 @@
 @media (prefers-color-scheme: dark) { .sort-sure { color: var(--leaf); } }
 .sort-answers.five { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .sort-answers.five button { min-height: 72px; font-size: .88rem; }
-/* The money tag on Today is a button that explains itself (11.14.3) */
+/* The money tag on Today is a button that explains itself */
 button.today-risk { min-height: 30px; border: 0; cursor: pointer; text-align: left; line-height: 1.2; }
 button.today-risk.hidden { display: none; }
 .today-risk .risk-how { width: 16px; height: 16px; opacity: .85; }

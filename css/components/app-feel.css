@@ -13,7 +13,7 @@ button, a, input, select, textarea, label, [role="button"] { touch-action: manip
 html.fast .splash-stage, html.fast .splash-awning { display: none; }
 html.fast .splash.done { transition-duration: .18s; transform: none; }
 
-/* ---------- Pal-styled sheets (js/ui/ask.js) ---------- */
+/* ---------- Benji's sheets that slide up from the bottom (js/ui/ask.js) ---------- */
 dialog.ask-sheet {
   width: min(520px, calc(100vw / var(--z, 1))); max-width: calc(100vw / var(--z, 1)); margin: auto auto 0; padding: 0; border: 0;
   border-radius: 28px 28px 0 0; background: var(--paper); color: var(--ink);
