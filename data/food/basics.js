@@ -1,4 +1,3 @@
-/* Things most kitchens always have. */
 /* Things most kitchens always have. Used by the "assume basics" setting. */
 const BASICS = [
   "salt", "pepper", "water", "oil", "olive oil", "vegetable oil", "sugar", "flour",

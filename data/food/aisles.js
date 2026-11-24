@@ -1,5 +1,4 @@
-/* Store sections. */
-/* ---------- store sections ---------- */
+/* Store sections for grouping the shopping list: [id, name, foods that belong there]. */
 const AISLES = [
   ["produce", "Produce", ["onion", "garlic", "potato", "sweet potato", "carrot", "celery", "bell pepper", "broccoli", "cauliflower", "spinach", "kale", "lettuce",
     "tomato", "cucumber", "zucchini", "mushroom", "cabbage", "avocado", "lemon", "lime", "banana", "apple", "berry", "strawberry", "blueberry", "raspberry",

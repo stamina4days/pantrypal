@@ -1,4 +1,4 @@
-/* Family kitchen table (version 11.1).
+/* The family kitchen table look.
    Cream paper, a red gingham cloth along the top, cards taped down with butter yellow tape,
    handwritten headings, and a honey wood shelf for the tabs. Loaded last so it wins. */
 :root {
@@ -162,7 +162,7 @@ dialog.screen.sheet-page::backdrop { background: rgba(59, 47, 42, .45); }
 @media (prefers-color-scheme: dark) { .secondary-btn { color: var(--leaf); border-color: var(--leaf); } }
 .pal-guess, .guess-chip { background: var(--plum-pill); color: var(--plum-ink); }
 
-/* Pal's sheets */
+/* Benji's sheets */
 dialog.ask-sheet { background: var(--sky); }
 dialog.ask-sheet h2 { font-family: var(--hand); font-weight: 700; font-size: 1.55rem; }
 dialog.ask-sheet::backdrop { background: rgba(59, 47, 42, .45); }

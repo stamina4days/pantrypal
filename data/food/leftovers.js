@@ -1,5 +1,4 @@
-/* Leftover remix ideas. */
-/* ---------- leftover ideas ---------- */
+/* Ideas for turning leftovers into a new meal, by the kind of dish they came from. */
 const REMIX = {
   asian: ["Wrap it in a warm tortilla with a little cheese for a quick quesadilla.",
     "Toss it with cooked noodles and a splash of soy sauce.",

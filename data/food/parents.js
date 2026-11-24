@@ -1,5 +1,4 @@
-/* Specific foods that can stand in for general ones. */
-/* Specific things that can stand in for a general ingredient (and the reverse). */
+/* Specific foods that can stand in for a general ingredient, and the reverse. */
 const PARENTS = {
   "cheddar cheese": "cheese", "mozzarella": "cheese", "monterey jack": "cheese",
   "pepper jack": "cheese", "colby": "cheese", "swiss cheese": "cheese", "provolone": "cheese",

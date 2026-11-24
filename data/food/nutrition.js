@@ -1,5 +1,4 @@
-/* Nutrition per 100 g. */
-/* ---------- nutrition per 100 g: [calories, protein, carbs, fat] (typical values, raw unless noted) ---------- */
+/* Nutrition per 100 g: [calories, protein, carbs, fat]. Typical values, raw unless noted. */
 const NUTR = {
   "chicken breast": [120, 23, 0, 2.6], "chicken thigh": [177, 19, 0, 11], chicken: [165, 31, 0, 3.6], "ground beef": [215, 18.6, 0, 15],
   beef: [190, 24, 0, 10], steak: [190, 24, 0, 10], "stew meat": [160, 21, 0, 8], pork: [220, 19, 0, 16], bacon: [400, 12, 1.4, 38],

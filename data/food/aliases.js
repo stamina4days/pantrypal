@@ -1,5 +1,4 @@
-/* Other names people type for foods. */
-/* Other names people type -> the name recipes use. */
+/* Other names people type for foods, and the name recipes use for each. */
 const ALIASES = {
   "black pepper": "pepper", "canola oil": "vegetable oil", "extra virgin olive oil": "olive oil",
   "brown sugar": "sugar", "white sugar": "sugar", "all purpose flour": "flour",

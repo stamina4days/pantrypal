@@ -1,5 +1,4 @@
-/* The pantry audit checklist. */
-/* ---------- pantry audit list: [name, amount, unit] ---------- */
+/* The Show Benji my kitchen checklist: [name, amount, unit] for each food you can tap. */
 const AUDIT = [
   ["fridge", "Fridge", "Fridge", [
     ["Eggs", 12, ""], ["Milk", 1, "gallon"], ["Butter", 1, "lb"], ["Cheddar cheese", 8, "oz"],

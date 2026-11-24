@@ -1,5 +1,4 @@
-/* Phrases that look like food words but are not. */
-/* Phrases that contain a food word but aren't that food. */
+/* Phrases that contain a food word but aren't that food, like "garlic powder" for garlic. */
 const IGNORE = [
   "garlic powder", "onion powder", "garlic salt", "celery salt", "onion soup mix", "potato chips",
   "ice cream", "cream of mushroom", "cream of chicken", "apple juice", "orange juice",

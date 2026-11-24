@@ -1,5 +1,4 @@
-/* Printing. */
-/* ---------- printing ---------- */
+/* What the plan, the shopping list, and the prep checklist look like on paper. */
 #printArea { display: none; }
 @media print {
   body.printing > *:not(#printArea) { display: none !important; }
