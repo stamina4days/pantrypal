@@ -49,9 +49,10 @@
   var canZoom = typeof Element !== "undefined" && "currentCSSZoom" in Element.prototype;
   window.ppZoom = function () { return z; };
   function fit() {
+    // The layout is drawn for a phone about 440 by 880. Grow it by whole 5% steps until it fills the window.
     var w = window.innerWidth, h = window.innerHeight, next = Math.floor(Math.min(h / 880, w / 440) * 20) / 20;
     if (mode === "big") next = Math.max(1, next);
-    else if (mode === "phone" || w < 600 || next < 1.05) next = 1;
+    else if (mode === "phone" || w < 600 || next < 1.05) next = 1;   // phones, and windows only a little bigger, stay as is
     if (!canZoom) next = 1;
     if (next === z) return;
     z = next;
@@ -169,23 +170,6 @@
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Full pages load into here from screens/ -->
 <div id="screens"></div>
 
@@ -208,7 +192,6 @@
 <script src="data/food/prices.js" defer></script>
 <script src="data/food/leftovers.js" defer></script>
 <script src="data/food/audit-list.js" defer></script>
-<script src="data/food/emoji.js" defer></script>
 <script src="data/food/shelf-life.js" defer></script>
 <script src="data/food/storage-tips.js" defer></script>
 <script src="data/food/stickers.js" defer></script>
@@ -242,7 +225,7 @@
 <script src="js/ui/confetti.js" defer></script>
 <script src="js/pal/face.js" defer></script>
 <script src="js/pal/lines.js" defer></script>
-<script src="js/pal/emoji.js" defer></script>
+<script src="js/ui/food-art.js" defer></script>
 <script src="js/pal/outfits.js" defer></script>
 <script src="js/pal/voice.js" defer></script>
 <script src="js/pal/life.js" defer></script>
