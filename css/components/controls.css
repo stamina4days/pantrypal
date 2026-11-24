@@ -1,5 +1,4 @@
-/* Buttons, inputs, and chips. */
-/* ---------- buttons, inputs, chips ---------- */
+/* Buttons, text boxes, and chips: the shared look every page builds on. */
 button { cursor: pointer; }
 button, .btn-like {
   border: 2px solid var(--edge); background: var(--paper); border-radius: 14px; padding: 9px 14px; min-height: 44px; font-weight: 800;

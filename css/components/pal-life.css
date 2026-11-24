@@ -1,4 +1,4 @@
-/* Pal blinks, bounces when tapped, and dances when you rescue food */
+/* Benji blinks, bounces when tapped, and dances when you rescue food */
 .pal-tap { padding: 0; border: 0; background: none; box-shadow: none; min-height: 0; flex: none; cursor: pointer; border-radius: 16px; }
 .pal-tap:active { transform: none; box-shadow: none; }
 @media (prefers-reduced-motion: no-preference) {
@@ -65,7 +65,7 @@ img.cb-art { width: 64px; height: 64px; flex: none; transform: rotate(-6deg); }
 }
 @keyframes say-in { from { opacity: 0; transform: translateY(10px) scale(.9); } to { opacity: 1; transform: none; } }
 .stamp { animation: stamp-down .5s cubic-bezier(.2, 1.4, .4, 1) both, stamp-fade .4s 1.6s ease-in forwards; }
-/* Read-aloud button tucked in the corner of Pal's speech bubble */
+/* Read-aloud button tucked in the corner of Benji's speech bubble */
 .bubble { position: relative; }
 .read-aloud {
   float: right; margin: -4px -6px 4px 8px; width: 40px; height: 40px; min-height: 40px; padding: 0; border-radius: 50%;

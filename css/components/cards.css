@@ -1,5 +1,4 @@
 /* Cards, alerts, and banners. */
-/* ---------- cards, alerts, banners ---------- */
 .card { background: var(--paper); border: 2px solid var(--edge); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 12px; box-shadow: var(--shadow); }
 .card h3 { margin: 0 0 6px; }
 .card ol, .card ul { margin: 0; padding-left: 20px; }

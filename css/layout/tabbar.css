@@ -1,5 +1,4 @@
-/* Bottom tabs. */
-/* ---------- bottom tabs: crate labels ---------- */
+/* The five tabs along the bottom, and the toast message that pops up above them. */
 .tabbar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px;
   background: var(--paper); border-top: 3px solid var(--edge); padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
@@ -27,7 +26,7 @@
 .toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
 .toast button { background: var(--lemon); color: #233A31; border: 0; box-shadow: none; min-height: 34px; padding: 4px 10px; border-radius: 10px; }
 
-/* Wide screens: the tabs line up with the app's column instead of stretching across the screen (11.17.2) */
+/* Wide screens: the tabs line up with the app's column instead of stretching across the screen */
 @media (min-width: 600px) {
   .tabbar { left: 50%; right: auto; width: min(548px, 100%); transform: translateX(-50%); border-radius: 16px 16px 0 0; }
 }

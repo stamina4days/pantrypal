@@ -1,5 +1,4 @@
-/* Food cards that look like price tags. */
-/* ---------- lists: price tags ---------- */
+/* Food rows drawn as price tags, with the date as a fruit sticker. */
 .list { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
 .list > li { min-width: 0; }
 .item, .recipe, .shop-item {

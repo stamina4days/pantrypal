@@ -1,5 +1,4 @@
-/* Benji, the money-saving dollar sign. */
-/* ---------- Benji ---------- */
+/* Benji, the money-saving dollar sign, and his speech bubble. */
 .pal-row { display: flex; gap: 10px; align-items: flex-end; margin: 4px 0 14px; }
 .pal { flex: none; overflow: visible; }
 /* At night Benji gets a thin cream outline, like a sticker, so he stands out on the dark table. */

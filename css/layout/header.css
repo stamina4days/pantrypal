@@ -1,5 +1,4 @@
-/* The striped awning header. */
-/* ---------- the awning header ---------- */
+/* The header with the striped awning, and the column the app sits in. */
 .topbar {
   position: sticky; top: 0; z-index: 5;
   background: var(--sky);
@@ -41,7 +40,7 @@ main:has(> .tab.active > .scene) { padding-bottom: 0; }
 body:has(.tab.active > .scene) { padding-bottom: var(--tabbar-h, 76px); }
 .scene { min-height: var(--scene-h); }
 
-/* Wide screens: the whole app sits in one phone-width column, header, tabs, and all (11.17.2) */
+/* Wide screens: the whole app sits in one phone-width column, header, tabs, and all */
 @media (min-width: 600px) {
   .bar-row, .timer-bar, main { max-width: 548px; }
 }
