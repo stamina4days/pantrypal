@@ -1,6 +1,6 @@
 "use strict";
-/* Small interface helpers. */
-/* ---------- small UI helpers ---------- */
+/* Small helpers used everywhere: $ and $$ for finding elements, esc() for safe HTML, toast() with Undo,
+   and oneNudge(), which keeps Benji to one request per visit. */
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
