@@ -1,5 +1,4 @@
-/* Large text and high contrast. */
-/* ---------- display settings ---------- */
+/* The display settings (text size, screen size, and high contrast), and the layout for a phone turned sideways. */
 html.text-large { font-size: 112.5%; }
 html.text-xl { font-size: 125%; }
 html.text-large .tabbar button, html.text-xl .tabbar button { font-size: min(.78rem, calc(3.4vw / var(--z, 1))); }
