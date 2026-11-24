@@ -1,6 +1,5 @@
 "use strict";
-/* Pantry audit. */
-/* ---------- pantry audit ---------- */
+/* Show Benji my kitchen: a big tap-to-add list for going through the whole kitchen at once. */
 let auditSel = new Set(), auditExtra = [];
 function openAudit() {
   auditSel = new Set(); auditExtra = [];

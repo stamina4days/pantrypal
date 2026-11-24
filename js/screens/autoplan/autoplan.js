@@ -1,6 +1,5 @@
 "use strict";
-/* Plan my week. */
-/* ---------- auto planner UI ---------- */
+/* The Plan my week sheet: options, the proposed plan, swapping and locking meals, and saving it. */
 let plannerState = null;
 function openPlanner() {
   const P = profile();

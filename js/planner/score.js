@@ -1,6 +1,5 @@
 "use strict";
-/* Scoring meals for the week. */
-/* ---------- the planner ---------- */
+/* Scores each recipe for one slot in the week plan: food it uses up, what you'd have to buy, cost, and variety. */
 function slotKey(date, slot) { return date + "|" + slot; }
 
 function scoreForPlan(r, inv, D, f, ctx) {

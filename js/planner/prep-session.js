@@ -1,6 +1,6 @@
 "use strict";
-/* Building a prep day. */
-/* ---------- prep day ---------- */
+/* Builds a prep day from several meals: preheat once, cook shared grains once, chop everything together,
+   then pack and store each meal. */
 const CHOP_KEYS = ["onion", "garlic", "bell pepper", "carrot", "celery", "broccoli", "cauliflower", "zucchini", "mushroom", "potato", "sweet potato",
   "cabbage", "scallion", "cilantro", "tomato", "cucumber", "jalapeno", "ginger", "green bean", "asparagus", "butternut squash", "brussel sprout", "kale"];
 
