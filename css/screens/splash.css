@@ -45,9 +45,10 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
   .splash { background-image: radial-gradient(circle at 50% 30%, rgba(93, 182, 234, .16), transparent 55%); }
   .splash-name { color: var(--leaf); }
 }
-/* No numbers or progress bars: just Pal getting the kitchen ready */
-.splash-meter { display: none; }
+/* While loading: Benji, the progress bar, and his loading lines. The "3 of 12 pages" count stays hidden
+   to keep it simple, except when loading fails, when it holds the Try again button. */
 .splash:not(.failed) .splash-count { display: none; }
+.splash.failed .splash-meter { display: none; }
 .splash-line { font-size: 1.05rem; }
 /* Start screen: once everything is loaded, the opening screen becomes a menu, like a game's */
 .splash.menu .splash-stage { width: min(360px, 100%); gap: 0; }
@@ -204,7 +205,7 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
   @keyframes sf-lamp { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
   .shopfront .splash-name { animation: sf-neon 6s infinite; }
   @keyframes sf-neon { 0%, 91%, 95%, 100% { opacity: 1; } 93% { opacity: .55; } }
-  /* Benji stands still behind the counter: he waves and talks instead of bouncing (11.17.1) */
+  /* Benji stands still behind the counter: he waves and talks instead of bouncing */
   .splash.shopfront .sm-benji { animation: none; }
   .shopfront .sm-benji .pal.waving .pal-wave { animation-iteration-count: var(--wave-n, 2); }
 }
@@ -314,7 +315,7 @@ body.booting .topbar, body.booting .tabbar { visibility: hidden; }
   .sf-first .sf-shelf { display: none; }
 }
 
-/* "Play music while you cook?" asked once (11.14.2) */
+/* "Play music while you cook?" asked once */
 .sf-music { position: relative; z-index: 4; text-align: left; }
 .sf-music-q { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-weight: 900; font-size: 1rem; line-height: 1.25; color: #3A2E22; }
 .sf-music-q .ic { flex: none; width: 22px; height: 22px; margin: 0; }

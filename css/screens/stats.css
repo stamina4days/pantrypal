@@ -1,5 +1,4 @@
-/* Waste Less chalkboard. */
-/* waste less: chalkboard sign */
+/* Waste Less, written on a chalkboard sign. */
 .stat-hero { text-align: center; background: var(--chalk); color: #F6F2E6; border: 3px solid var(--edge); border-radius: 18px; padding: 18px 14px; margin-bottom: 12px; box-shadow: var(--shadow); }
 .stat-hero .big { font-family: var(--hand); font-size: 4rem; color: var(--lemon); line-height: 1; }
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
