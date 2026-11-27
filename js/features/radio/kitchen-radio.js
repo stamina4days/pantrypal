@@ -182,6 +182,7 @@ const Radio = (() => {
         <span class="mu-tend" aria-hidden="true">${auto ? ic("check") : ""}</span></button>` +
       MUSIC_GROUPS.map(g => {
         const tracks = g.tracks(), open = !g.shop || (typeof ownsItem === "function" && ownsItem(g.shop));
+        if (!open && typeof isPlayApp !== "undefined" && isPlayApp) return "";   // no paid extras in the Google Play app
         const item = g.shop && typeof STORE_ITEMS !== "undefined" ? STORE_ITEMS.find(x => x.id === g.shop) : null;
         const head = `<h3 class="mu-group-title">${esc(t(g.name))}<span class="mu-badge ${open ? "own" : ""}">${open ? ic("unlock") : ic("lock")} ${esc(open ? (g.shop ? t("Unlocked") : t("Free")) : t("Locked"))}</span></h3>`;
         const how = open || !item ? "" : `<div class="mu-how"><p>${esc(t("Get all four with the {item} for {price}, or everything in the shop with the Everything bundle for {bundle}.", { item: t(item.name), price: item.price, bundle: priceOf("bundle") }))}</p>
