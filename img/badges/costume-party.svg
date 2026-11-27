@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img"><title>costume party</title>
+<polygon points="120.0,64.0 113.3,77.2 112.5,92.0 100.1,100.1 92.0,112.5 77.2,113.3 64.0,120.0 50.8,113.3 36.0,112.5 27.9,100.1 15.5,92.0 14.7,77.2 8.0,64.0 14.7,50.8 15.5,36.0 27.9,27.9 36.0,15.5 50.8,14.7 64.0,8.0 77.2,14.7 92.0,15.5 100.1,27.9 112.5,36.0 113.3,50.8" fill="#B79CE8" stroke="#233A31" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="64" r="40" fill="#FFFDF6" stroke="#233A31" stroke-width="3"/>
+<path d="M40 60 L38 34 L56 52 Z M88 60 L90 34 L72 52 Z" fill="#3A3340" stroke="#233A31" stroke-width="3.5" stroke-linejoin="round"/><path d="M43 54 L42 41 L51 50 Z M85 54 L86 41 L77 50 Z" fill="#F4A6B8"/>
+<path d="M38 74 C38 52 90 52 90 74 C90 86 80 92 64 92 C48 92 38 86 38 74 Z" fill="#FFFDF6" stroke="#233A31" stroke-width="3.5"/>
+<path d="M48 72 Q53 67 58 72 M70 72 Q75 67 80 72" fill="none" stroke="#233A31" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M44 76 L54 77 M84 76 L74 77" stroke="#E5482F" stroke-width="3" stroke-linecap="round"/><ellipse cx="64" cy="84" rx="4" ry="3" fill="#233A31"/>
+<path d="M22 40 l3 -6 3 6 -6 -3 6 0 z M100 96 l3 -6 3 6 -6 -3 6 0 z" fill="#FFD23F" stroke="#233A31" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="102" cy="36" r="3.5" fill="#E5482F"/><circle cx="26" cy="94" r="3.5" fill="#2E8FC7"/>
+</svg>

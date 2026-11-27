@@ -1,13 +1,13 @@
 /* Benji's shop. Each item is paid for with a Square checkout link, then unlocked with the code the buyer gets.
    buyUrl: paste the item's Square payment link here. While it's empty, the shop shows "Coming soon".
    kind decides the preview in the shop. The tip jar has one Square link per amount (tiers).
-   free: everyone owns it, with no code needed. */
+   free: costs nothing. Tap Get it free in the shop to claim it, no code needed. */
 const STORE_ITEMS = [
   { id: "bundle", kind: "bundle", name: "Everything bundle", price: "$9.99", was: "$14.93",
     desc: "Every item in the shop at once: all four kitchen themes, all four hat packs, the outfit pack, and the radio pack.",
     buyUrl: "https://square.link/u/bzliF3dr" },
   { id: "hats-anime", kind: "hats", name: "Anime hat pack", price: "Free", free: true,
-    desc: "Eight anime looks for Benji, free for everyone: cat ears, hero hair, twin tails, a training headband, a festival fox mask, a crystal leaf tiara, a big ribbon bow, and messy hair.",
+    desc: "Eight anime looks for Benji, free for everyone. Tap Get it free to open the box: cat ears, hero hair, twin tails, a training headband, a festival fox mask, a crystal leaf tiara, a big ribbon bow, and messy hair. Rescue food to unlock new colors.",
     hats: ["cat-ears", "hero-hair", "twin-tails", "headband", "fox-mask", "tiara", "ribbon", "cowlick"] },
   { id: "themes", kind: "themes", name: "Kitchen theme pack", price: "$2.99",
     desc: "Four new looks for every room in the app, each with its own song: a diner, a log cabin, a beach shack, and a space station. Switch anytime in Settings.",

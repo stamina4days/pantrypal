@@ -20,7 +20,7 @@ function stampMoment(kind) {
   const el = momentLayer();
   // Saving food saves money: a coin flips up and Benji catches it (a calm fade with reduce motion)
   el.innerHTML = `<div class="moment-box${reducedMotion() ? " calm" : ""}"><div class="stamp stamp-${kind}"><span>${esc(words[kind] || words.used)}</span></div>
-    ${kind !== "saved" && typeof Motion !== "undefined" ? Motion.coinHtml() : ""}<p class="moment-say">${esc(palPick(kind === "rescued" ? "rescue" : "used"))}</p></div>`;
+    ${kind !== "saved" && typeof Motion !== "undefined" ? Motion.coinHtml() : ""}<p class="moment-say">${esc((kind === "rescued" && typeof hatRescueLine === "function" && hatRescueLine()) || palPick(kind === "rescued" ? "rescue" : "used"))}</p></div>`;
   clearTimeout(momentTimer);
   momentTimer = setTimeout(() => { el.innerHTML = ""; }, 2400);
 }
@@ -39,6 +39,7 @@ let momentQueue = null;
 function foodMoment(item, outcome, d) {
   if (!outcome) return;
   const kind = outcome === "wasted" ? "tossed" : d !== null && d >= 0 && d <= 3 ? "rescued" : "used";
+  if (kind === "rescued" && typeof hatRescued === "function") hatRescued();
   // Used in time: it drops into the jar on Today
   if (kind !== "tossed" && (d === null || d >= 0) && typeof Motion !== "undefined") Motion.jar(item);
   if (!momentQueue) {

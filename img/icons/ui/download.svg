@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<title>Save</title>
+<symbol id="i" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20v5a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2v-5"/><path d="M16 4v16M10 14l6 6 6-6"/></g></symbol>
+<use href="#i" color="#233A31"/>
+</svg>

@@ -22,6 +22,7 @@ function palTapped(btn) {
     svg.classList.remove("boing", "waving"); void svg.getBoundingClientRect(); svg.classList.add(cls);
   }
   sfx("pop"); buzz(8);
+  if (typeof palHatTap === "function" && palHatTap(btn)) { palTapCount++; return; }
   const lines = palLines("tap");
   palTapCount++;
   if (palTapCount % 8 === 0 && typeof palHatLine === "function") return palSay(btn.closest(".pal-row"), palYou(palHatLine()), true);

@@ -20,6 +20,7 @@ function renderAll() {
   if (typeof renderHints === "function") renderHints();
   renderPantry();
   if (typeof renderToday === "function") renderToday();
+  if (typeof renderGift === "function") renderGift();
   if ($("#tab-recipes").classList.contains("active")) renderRecipes();
   if ($("#tab-plan").classList.contains("active")) renderPlan();
   if ($("#tab-shopping").classList.contains("active")) renderShopping();
