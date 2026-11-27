@@ -90,7 +90,7 @@ const Splash = (() => {
       const crate = foods => `<span class="sf-crate" aria-hidden="true">${foods.map(food).join("")}</span>`;
       const shelf = (side, foods) => `<span class="sf-shelf sf-shelf-${side}" aria-hidden="true">${foods.map(food).join("")}</span>`;
       /* The marquee sign and the lit window with Benji behind the counter */
-      const front = (hello, mood = "happy", pose = "wave") => `<div class="sf-sign"><h1 class="splash-name" id="smTitle">Pantry Pal</h1></div>
+      const front = (hello, mood = "happy", pose = "wave") => `<div class="sf-sign"><h1 class="splash-name" id="smTitle">Benji's Kitchen</h1></div>
           <div class="sf-front">
             <div class="sf-window">
               <span class="sf-lamp" aria-hidden="true"></span>
@@ -268,7 +268,7 @@ const Splash = (() => {
     s.classList.add("failed");
     const n = s.querySelector(".splash-line");
     const fileHint = location.protocol === "file:"
-      ? t("Pantry Pal needs to run from a web address, like your GitHub Pages site. Opening the file straight from your phone won't load the recipes.")
+      ? t("Benji's Kitchen needs to run from a web address, like your GitHub Pages site. Opening the file straight from your phone won't load the recipes.")
       : t("Check your connection and try again. Once it loads one time, it works offline.");
     const miss = String(err && err.message || "").startsWith("missing:") ? String(err.message).slice(8) : "";
     if (n) n.textContent = t("I couldn't unpack the groceries.") + " " + (miss
