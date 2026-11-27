@@ -1,0 +1,112 @@
+/* Fun with Benji's hats: the unboxing, his hat reactions, the rescue meter, the daily gift on Today, and the photo booth */
+
+/* ---------- Opening a pack ---------- */
+.unbox { width: min(420px, 100vw); padding: 26px 0 30px; gap: 10px; }
+.unbox::before { content: ""; position: fixed; inset: 0; z-index: -1; background: color-mix(in srgb, var(--paper) 86%, transparent); }
+.unbox.ub-out { animation: stamp-fade .45s ease-in forwards; }
+.ub-stage { position: relative; width: 340px; height: 330px; }
+.ub-box { position: absolute; left: 50%; bottom: 0; width: 124px; height: 92px; margin-left: -62px; z-index: 3; }
+.ub-body { position: absolute; inset: 22px 6px 0; border-radius: 8px; background: #E5482F; border: 4px solid #233A31;
+  background-image: linear-gradient(90deg, transparent 42%, #FFD23F 42%, #FFD23F 58%, transparent 58%); }
+.ub-lid { position: absolute; left: 0; right: 0; top: 4px; height: 26px; border-radius: 7px; background: #C43820; border: 4px solid #233A31;
+  background-image: linear-gradient(90deg, transparent 42%, #FFD23F 42%, #FFD23F 58%, transparent 58%); }
+.ub-bow { position: absolute; left: 50%; top: -14px; width: 0; height: 0; }
+.ub-bow::before, .ub-bow::after { content: ""; position: absolute; top: 0; width: 30px; height: 22px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: #FFD23F; border: 4px solid #233A31; }
+.ub-bow::before { right: -2px; transform: rotate(-24deg); }
+.ub-bow::after { left: -2px; transform: rotate(24deg); }
+.unbox.gold .ub-body, .unbox.gold .ub-lid { background-color: #F4C542; background-image: linear-gradient(90deg, transparent 42%, #E5482F 42%, #E5482F 58%, transparent 58%); }
+.unbox.gold .ub-bow::before, .unbox.gold .ub-bow::after { background: #E5482F; }
+.ub-benji { position: absolute; left: 50%; bottom: 46px; z-index: 2; transform: translateX(-50%); }
+.ub-benji .pal { display: block; }
+.ub-hats { position: absolute; left: 50%; bottom: 150px; width: 0; height: 0; z-index: 4; }
+.ub-hat { position: absolute; left: 0; top: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))); }
+.ub-hat .hat-only { display: block; filter: drop-shadow(0 4px 2px rgba(0, 0, 0, .18)); }
+.unbox.gold .ub-hat .hat-only { filter: drop-shadow(0 0 10px rgba(255, 213, 94, .9)); }
+.ub-spark { position: absolute; left: 0; top: 0; width: 22px; height: 22px; margin: -11px; background: #FFD23F; transform: translate(var(--x), var(--y));
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+.ub-say { animation: say-in .3s 1.6s cubic-bezier(.3, 1.5, .5, 1) both !important; }
+.unbox.calm .ub-lid, .unbox.calm .ub-bow { display: none; }
+.unbox.calm .ub-stage, .unbox.calm .ub-say { animation: calm-fade 3s both !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .unbox:not(.calm) .ub-box { animation: ub-shake .7s ease-in-out both; transform-origin: 50% 100%; }
+  .unbox:not(.calm) .ub-lid, .unbox:not(.calm) .ub-bow { animation: ub-lid .55s .7s cubic-bezier(.3, .7, .5, 1) both; }
+  .unbox:not(.calm) .ub-bow { animation-name: ub-bow; }
+  .unbox:not(.calm) .ub-hat { animation: ub-hat .6s var(--d) cubic-bezier(.25, 1.5, .5, 1) both; }
+  .unbox:not(.calm) .ub-spark { animation: ub-hat .6s var(--d) cubic-bezier(.25, 1.5, .5, 1) both, ub-twinkle .9s calc(var(--d) + .6s) ease-in-out infinite; }
+  .unbox:not(.calm) .ub-benji { animation: ub-benji .55s 1.25s cubic-bezier(.3, 1.4, .5, 1) both; }
+  @keyframes ub-shake { 0%, 100% { transform: none; } 15% { transform: rotate(-7deg); } 30% { transform: rotate(7deg); } 45% { transform: rotate(-6deg); }
+    60% { transform: rotate(6deg) translateY(-6px); } 75% { transform: rotate(-3deg); } }
+  @keyframes ub-lid { to { transform: translate(70px, -150px) rotate(50deg); opacity: 0; } }
+  @keyframes ub-bow { to { transform: translate(70px, -150px) rotate(70deg); opacity: 0; } }
+  @keyframes ub-hat { from { transform: translate(-50%, 40px) scale(.2); opacity: 0; } 40% { opacity: 1; }
+    to { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1); opacity: 1; } }
+  @keyframes ub-twinkle { 50% { scale: .6; } }
+  @keyframes ub-benji { from { transform: translate(-50%, 130px); opacity: 0; } 30% { opacity: 1; } to { transform: translateX(-50%); } }
+}
+
+/* ---------- Benji reacts to his hats ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .pal.hat-twitch .pal-hat { transform-box: view-box; transform-origin: 80px 20px; animation: hat-twitch .45s ease-in-out 2; }
+  .pal.hat-swish .pal-hat { transform-box: view-box; transform-origin: 80px 30px; animation: hat-swish .9s ease-in-out; }
+  .pal.hat-shine { animation: hat-shine 1.4s ease-in-out; }
+  .pal.hat-peek .hat-fox { transform-box: view-box; animation: fox-peek 1.6s ease-in-out; }
+  .pal.hat-peek .pal-eyes, .pal.hat-peek .pal-mouth, .pal.hat-peek .pal-talk { animation: fox-hide 1.6s step-end; }
+  .pal.powerup { animation: hero-glow 1.7s ease-in-out; }
+  .pal.powerup .pal-hat { transform-box: view-box; transform-origin: 80px 30px; animation: hero-hop .42s ease-in-out 3; }
+  @keyframes hat-twitch { 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
+  @keyframes hat-swish { 20% { transform: rotate(-7deg); } 45% { transform: rotate(6deg); } 70% { transform: rotate(-3deg); } }
+  @keyframes hat-shine { 40% { filter: drop-shadow(0 0 8px #D8F1FF) drop-shadow(0 0 14px #F3E1FF); } }
+  @keyframes fox-peek { 0%, 100% { transform: none; } 18%, 38% { transform: translate(-28px, 88px); } 48%, 56% { transform: translate(-12px, 82px); } 66%, 78% { transform: translate(-28px, 88px); } }
+  @keyframes fox-hide { 0% { opacity: 1; } 16% { opacity: 0; } 86% { opacity: 1; } }
+  @keyframes hero-glow { 30%, 70% { filter: drop-shadow(0 0 6px #A6F0C0) drop-shadow(0 0 14px #FFE58A); } }
+  @keyframes hero-hop { 50% { transform: translateY(-8px); } }
+}
+
+/* ---------- The rescue meter on the hats page ---------- */
+.hat-meter:empty { display: none; }
+.hat-meter { margin: 4px 0 10px; padding: 12px; border-radius: 12px; background: color-mix(in srgb, var(--leaf) 14%, var(--paper)); border: 2px solid color-mix(in srgb, var(--leaf) 40%, var(--paper)); }
+.hm-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 10px; }
+.hm-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 8px 0 6px; }
+.hm-bar i { height: 16px; border-radius: 8px; background: color-mix(in srgb, var(--ink) 12%, var(--paper)); border: 2px solid color-mix(in srgb, var(--ink) 25%, transparent); }
+.hm-bar i.on { background: var(--leaf); border-color: var(--leaf-deep); }
+.hat-meter .muted { margin: 0; }
+
+/* ---------- The daily gift on Today, sitting on the counter by the fridge ---------- */
+.k-gift { grid-area: counter; position: relative; z-index: 2; align-self: start; justify-self: start; margin: -40px 0 0 -16px; width: 44px; height: 42px;
+  min-height: 0; padding: 0; border: 0; background: none; cursor: pointer; }
+.k-gift-box { position: absolute; left: 4px; right: 4px; bottom: 0; height: 26px; border-radius: 4px; background: #E5482F; border: 3px solid #233A31;
+  background-image: linear-gradient(90deg, transparent 40%, #FFD23F 40%, #FFD23F 60%, transparent 60%); }
+.k-gift-lid { position: absolute; left: 0; right: 0; bottom: 22px; height: 12px; z-index: 1; border-radius: 4px; background: #C43820; border: 3px solid #233A31;
+  background-image: linear-gradient(90deg, transparent 40%, #FFD23F 40%, #FFD23F 60%, transparent 60%); }
+.k-gift-lid::before, .k-gift-lid::after { content: ""; position: absolute; bottom: 7px; width: 13px; height: 10px; border-radius: 50%; background: #FFD23F; border: 3px solid #233A31; }
+.k-gift-lid::before { right: 50%; transform: rotate(-25deg); }
+.k-gift-lid::after { left: 50%; transform: rotate(25deg); }
+.k-gift.big .k-gift-box, .k-gift.big .k-gift-lid { background-color: #F4C542; background-image: linear-gradient(90deg, transparent 40%, #E5482F 40%, #E5482F 60%, transparent 60%); }
+.k-gift.big .k-gift-lid::before, .k-gift.big .k-gift-lid::after { background: #E5482F; }
+.k-gift::after { content: ""; position: absolute; top: -6px; left: -6px; width: 14px; height: 14px; border-radius: 50%; background: #E5482F; border: 3px solid var(--k-wall, #FFF3DC); }
+.k-gift:focus-visible { outline: 3px solid var(--lemon); outline-offset: 3px; border-radius: 6px; }
+.k-gift:active { transform: translateY(2px); }
+@media (prefers-reduced-motion: no-preference) {
+  .k-gift .k-gift-lid { animation: gift-wiggle 3.6s ease-in-out infinite; transform-origin: 50% 100%; }
+  @keyframes gift-wiggle { 0%, 78%, 100% { transform: none; } 82% { transform: translateY(-4px) rotate(-8deg); } 88% { transform: translateY(-4px) rotate(8deg); } 94% { transform: none; } }
+}
+.kitchen.fit4 .k-gift { zoom: var(--kfit, 1); }
+
+/* ---------- Photo booth ---------- */
+.tile-booth .pt-ic { background: color-mix(in srgb, var(--plum) 30%, var(--paper)); }
+.booth-body h2 { margin-bottom: 4px; }
+.booth-stage { display: flex; justify-content: center; margin: 10px 0 6px; }
+.booth-stage canvas { width: min(100%, 300px); height: auto; aspect-ratio: 900 / 1120; border-radius: 8px; box-shadow: 0 6px 0 var(--press), 0 10px 24px rgba(0, 0, 0, .18); background: var(--paper); }
+.booth-body h3 { margin: 14px 0 6px; }
+.booth-hats { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 10px; scroll-snap-type: x proximity; }
+.booth-hat { flex: none; width: 64px; height: 60px; min-height: 0; padding: 4px; border-radius: 12px; display: grid; place-items: center; scroll-snap-align: start; }
+.booth-hat .hat-only { width: 48px; height: 48px; }
+.booth-hat.on { outline: 3px solid var(--leaf-deep); outline-offset: 1px; background: color-mix(in srgb, var(--leaf) 18%, var(--paper)); }
+.booth-nohat { font-weight: 800; font-size: .85rem; }
+.booth-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.booth-chips .chip { min-height: 44px; }
+.booth-chips .chip.on { background: var(--leaf-deep); color: #FFFFFF; border-color: var(--leaf-deep); }
+.booth-cap { display: flex; flex-direction: column; gap: 4px; margin: 16px 0 12px; font-weight: 800; }
+.booth-cap input { width: 100%; }
+.booth-actions { display: grid; gap: 10px; }

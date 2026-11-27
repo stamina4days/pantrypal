@@ -76,6 +76,8 @@ body .top-actions .icon-btn { width: 44px; height: 44px; min-width: 44px; min-he
 .k-benji .bubble .read-aloud { background: #F1E8D8; color: #233A31; border-color: #D9C8AE; }
 .k-benji .bubble-actions { margin-top: 6px; }
 .k-benji .bubble-actions button { min-height: 40px; padding: 6px 12px; font-size: .9rem; }
+/* The bubble stays cream in dark mode, so its plain buttons do too */
+.k-benji .bubble-actions button:not(.primary) { background: #FFFDF6; color: #233A31; border-color: #AD7D51; box-shadow: 0 3px 0 #D9B48C; }
 /* Benji grows into whatever room is left, from small to full size */
 /* He always stands on the counter: pinned to the bottom of his spot, feet on the wood */
 .k-benji .pal-tap { grid-area: benji; justify-self: start; align-self: end; margin: 0 0 -6px 14px; position: relative; z-index: 1;
