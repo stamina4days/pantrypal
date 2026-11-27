@@ -2,7 +2,7 @@
 /* Kitchen music: real songs from the audio folder. Music starts when you tap Start on the start screen
    (phones only allow sound after a tap). The music button in the header opens the music menu: what's playing,
    the volume, and every song, with the locked ones and how to get them.
-   What plays: the song you picked, or your kitchen theme's song, or the Pantry Pal song.
+   What plays: the song you picked, or your kitchen theme's song, or the theme song.
    Samples play 10 seconds from partway into a song, past the intro. */
 
 const RADIO_STATIONS = [
@@ -19,8 +19,8 @@ const RADIO_STATIONS = [
   { id: "holiday", name: "Holiday tunes", short: "Holiday", desc: "Cozy holiday tunes", src: "audio/holiday.mp3", shop: "radio",
     icon: '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M12 3v2"/></svg>' }
 ];
-/* Each kitchen theme has its own song, and the classic kitchen plays the Pantry Pal song */
-const MUSIC_MAIN = { id: "main", name: "Pantry Pal song", short: "Pantry Pal", desc: "The classic kitchen's song", src: "audio/main.mp3" };
+/* Each kitchen theme has its own song, and the classic kitchen plays the theme song */
+const MUSIC_MAIN = { id: "main", name: "Theme song", short: "Theme", desc: "The classic kitchen's song", src: "audio/main.mp3" };
 const THEME_SONGS = {
   diner: { id: "theme:diner", name: "Bubblegum Love", short: "Diner", desc: "The diner's song", src: "audio/diner.mp3", shop: "themes" },
   cabin: { id: "theme:cabin", name: "Log cabin song", short: "Cabin", desc: "The log cabin's song", src: "audio/cabin.mp3", shop: "themes" },
@@ -81,7 +81,7 @@ const Radio = (() => {
     fadeTo(vol(), at ? 400 : 1200);
     return true;
   }
-  /* The song to play when none is picked: the theme's song, or the Pantry Pal song */
+  /* The song to play when none is picked: the theme's song, or the theme song */
   function defaultId() {
     const th = settings.kitchenTheme || "";
     const open = typeof KITCHEN_THEMES !== "undefined" && typeof themeOpen === "function" && KITCHEN_THEMES.some(x => x.id === th && themeOpen(x));
