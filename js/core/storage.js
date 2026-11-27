@@ -38,13 +38,14 @@ function saveItems() {
   // Remember the most each food has been, so the shopping list can tell when it's running low.
   items.forEach(i => { if (i.amount > 0 && !(i.full >= i.amount)) i.full = i.amount; });
   store(KEYS.items, items); syncForReminders();
+  if (typeof kitchenSyncSoon === "function") kitchenSyncSoon();
   if (typeof updateAppBadge === "function") updateAppBadge();
 }
 const saveHistory = () => store(KEYS.history, history);
-const saveShopping = () => store(KEYS.shopping, shopping);
+const saveShopping = () => { const ok = store(KEYS.shopping, shopping); if (typeof kitchenSyncSoon === "function") kitchenSyncSoon(); return ok; };
 const saveBarcodes = () => store(KEYS.barcodes, barcodes);
 const saveSettings = () => store(KEYS.settings, settings);
-const savePlan = () => store(KEYS.plan, plan);
+const savePlan = () => { const ok = store(KEYS.plan, plan); if (typeof kitchenSyncSoon === "function") kitchenSyncSoon(); return ok; };
 const saveCooked = () => store(KEYS.cooked, cookedLog);
 const saveMine = () => store(KEYS.mine, myRecipes);
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);

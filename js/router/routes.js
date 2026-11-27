@@ -99,5 +99,6 @@ const DEEP_LINKS = [
   [/^music$/, () => openMusic()],
   [/^play\/fridge-sort$/, () => openSort()],
   [/^play\/food-word$/, () => openWord()],
-  [/^play\/photo-booth$/, () => openBooth()]
+  [/^play\/photo-booth$/, () => openBooth()],
+  [/^join\/(.+)$/, m => { joinFromLink(decodeURIComponent(m[1])); }]
 ];

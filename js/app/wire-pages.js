@@ -62,6 +62,7 @@ function pagesInit() {
   talkInit();
   homeScreenInit();
   kitchenShareInit();
+  syncInit();
   orderInit();
   recapInit();
   $("#recipeNoteText").addEventListener("input", saveRecipeNote);

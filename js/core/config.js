@@ -15,6 +15,9 @@ const PAGE_SIZE = 40;
    While it's empty, the suggestion buttons stay hidden. */
 const SUGGEST_EMAIL = "";
 
+/* The kitchen sync server (server/sync-worker.js on Cloudflare). While it's empty, live sharing stays hidden. */
+const SYNC_URL = "https://pantrypal-sync.stamina4days.workers.dev";
+
 const ZXING_URL = "https://unpkg.com/@zxing/library@0.21.3/umd/index.min.js";       // barcode fallback (iPhone)
 const TESSERACT_URL = "https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"; // reads dates from photos
 const DATA_CACHE = "pantrypal-data";
