@@ -74,8 +74,8 @@ async function redeemCode(raw) {
   saveSettings();
   toast(it.kind === "tip" ? (!wasSupporter ? t("Thank you for the tip! Benji's sprout turned gold, and you earned the Supporter badge.")
       : benjiGoldStage() > wasStage ? t("Thank you! Benji's golden sprout just grew.") : t("Thank you for another tip! You're the best."))
-    : it.kind === "bundle" ? t("Unlocked everything in Benji's shop! Thank you for supporting Pantry Pal.")
-    : t("Unlocked the {item}! Thank you for supporting Pantry Pal.", { item: t(it.name) }));
+    : it.kind === "bundle" ? t("Unlocked everything in Benji's shop! Thank you for supporting Benji's Kitchen.")
+    : t("Unlocked the {item}! Thank you for supporting Benji's Kitchen.", { item: t(it.name) }));
   if (typeof applyKitchenTheme === "function") applyKitchenTheme();
   if (typeof Radio !== "undefined") Radio.render();
   if (typeof unboxMoment === "function" && it.kind !== "tip") unboxMoment(it);
@@ -166,7 +166,7 @@ function renderShop() {
       return `<li class="store-item sp-poster sp-tipjar">
         <span class="sp-awning" aria-hidden="true"></span>
         <div class="sp-head"><h3>${esc(t(it.name))}</h3>${coin(t("You pick"), "sp-coin-wide")}</div>
-        <p class="sp-desc">${esc(t("Just want to say thanks? Any tip helps keep Pantry Pal free. The bigger the tip, the bigger Benji's golden sprout grows."))}</p>
+        <p class="sp-desc">${esc(t("Just want to say thanks? Any tip helps keep Benji's Kitchen free. The bigger the tip, the bigger Benji's golden sprout grows."))}</p>
         <div class="sp-tiers">${tiers}</div>
         ${isSupporter() ? `<p class="store-owned"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> ${esc(t("Thank you! Your golden sprout and Supporter badge are unlocked."))}</p>` : ""}
       </li>`;
