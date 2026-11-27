@@ -13,7 +13,6 @@ const storeItem = id => STORE_ITEMS.find(x => x.id === id)
 /* What the Everything bundle unlocks: every item except the bundle itself, tips, and free items. */
 const BUNDLE_HAS = () => STORE_ITEMS.filter(x => x.kind !== "bundle" && x.kind !== "tip" && !x.free).map(x => x.id);
 const ownsItem = id => {
-  if (STORE_ITEMS.some(x => x.id === id && x.free)) return true;
   const o = settings.owned || [];
   return o.includes(id) || (o.includes("bundle") && BUNDLE_HAS().includes(id));
 };
@@ -79,12 +78,26 @@ async function redeemCode(raw) {
     : t("Unlocked the {item}! Thank you for supporting Pantry Pal.", { item: t(it.name) }));
   if (typeof applyKitchenTheme === "function") applyKitchenTheme();
   if (typeof Radio !== "undefined") Radio.render();
-  if (typeof confetti === "function") confetti();
-  sfx("cheer"); buzz([10, 50, 10, 50, 20]);
+  if (typeof unboxMoment === "function" && it.kind !== "tip") unboxMoment(it);
+  else { if (typeof confetti === "function") confetti(); sfx("cheer"); buzz([10, 50, 10, 50, 20]); }
   renderShop();
   if ($("#hatsPage") && $("#hatsPage").open) renderHats();
   renderAll();
   return true;
+}
+
+/* Free packs start locked. One tap in the shop claims it, then the box opens. */
+function claimFreeItem(id) {
+  const it = storeItem(id);
+  if (!it || !it.free || ownsItem(id)) return;
+  settings.owned = [...(settings.owned || []), id];
+  if (it.id === "hats-anime") { settings.counts = settings.counts || {}; settings.counts.rescueMeter = settings.counts.rescueMeter || 0; }
+  saveSettings();
+  if (typeof unboxMoment === "function") unboxMoment(it);
+  toast(t("The {item} is yours! Find it in Benji's hats.", { item: t(it.name) }));
+  renderShop();
+  if ($("#hatsPage") && $("#hatsPage").open) renderHats();
+  renderAll();
 }
 
 function openShop() {
@@ -136,7 +149,8 @@ function renderShop() {
   const owned = it => `<p class="store-owned"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/check.svg#i"/></svg> ${esc(t(
     it.kind === "themes" ? "Yours! Pick one in Settings." : it.kind === "radio" ? "Yours! Find them in the music menu."
     : it.kind === "outfits" ? "Yours! Dress Benji on the hats page." : it.kind === "bundle" ? "Yours! Everything in the shop is unlocked."
-    : it.free ? "Free for everyone! Find them in Benji's hats." : "Yours! Find them in Benji's hats."))}</p>`;
+    : "Yours! Find them in Benji's hats."))}</p>`;
+  const claim = it => `<button type="button" class="primary wide store-claim" data-store-claim="${esc(it.id)}"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/gift.svg#i"/></svg> <span>${esc(t("Get it free"))}</span></button>`;
   box.innerHTML = STORE_ITEMS.map(it => {
     if (it.kind === "tip") {
       const tiers = it.tiers.map((tr, i) => {
@@ -159,11 +173,11 @@ function renderShop() {
     return `<li class="store-item sp-poster ${it.kind === "bundle" ? "sp-bundle" : ""}">
       <span class="sp-awning" aria-hidden="true"></span>
       ${it.kind === "bundle" && !own ? `<span class="sp-ribbon">${esc(t("Best deal"))}</span>` : ""}
-      <div class="sp-head"><h3>${esc(t(it.name))}</h3>${it.free ? coin(t("Free"), "sp-coin-wide") : own ? coin(t("Owned"), "sp-coin-wide sp-owned") : coin(it.price)}</div>
+      <div class="sp-head"><h3>${esc(t(it.name))}</h3>${own ? coin(t("Owned"), "sp-coin-wide sp-owned") : it.free ? coin(t("Free"), "sp-coin-wide") : coin(it.price)}</div>
       <p class="sp-desc">${esc(t(it.desc))}</p>
       ${show(it)}
       ${it.kind === "bundle" && !own ? `<p class="sp-was"><s>${esc(it.was)}</s> <b>${esc(it.price)}</b>. ${esc(t("Already own a pack? Email us your shop ID and we'll take its price off."))}</p>` : ""}
-      ${own ? owned(it) : buy(it.buyUrl, t("Buy for {price}", { price: it.price }))}
+      ${own ? owned(it) : it.free ? claim(it) : buy(it.buyUrl, t("Buy for {price}", { price: it.price }))}
     </li>`;
   }).join("");
   if (typeof Radio !== "undefined") Radio.render();
@@ -192,6 +206,8 @@ function storeInit() {
   $("#shopPage").addEventListener("click", e => {
     if (e.target.closest("[data-store-buy]")) { copyShopId(true); toast(t("Your shop ID {id} is copied. Paste it into the shop ID box at checkout. Your code arrives by email within 24 hours.", { id: shopIdText() })); }
     if (e.target.closest("#storeIdCopy")) copyShopId(false);
+    const cl = e.target.closest("[data-store-claim]");
+    if (cl) claimFreeItem(cl.dataset.storeClaim);
     const sample = e.target.closest("[data-radio-sample]");
     if (sample && typeof Radio !== "undefined") {
       if (Radio.previewing() === sample.dataset.radioSample) Radio.endPreview();
