@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS kitchens (
+  id TEXT PRIMARY KEY,
+  v INTEGER NOT NULL,
+  d TEXT NOT NULL,
+  updated INTEGER NOT NULL,
+  seen INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS kitchens_seen ON kitchens (seen);

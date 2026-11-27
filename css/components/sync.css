@@ -1,0 +1,12 @@
+/* The shared kitchen card on the Share your kitchen page */
+.sk-live h3 { display: flex; align-items: center; gap: 8px; }
+.sk-live > button { margin-top: 8px; }
+.sk-live-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--leaf); box-shadow: 0 0 0 3px color-mix(in srgb, var(--leaf) 30%, transparent); }
+.sk-live-dot.off { background: var(--muted); box-shadow: none; }
+.sk-code { margin: 10px 0 4px; padding: 10px 12px; border: 2px dashed var(--line); border-radius: 12px; background: var(--sky);
+  font-weight: 900; font-size: 1.35rem; letter-spacing: .08em; text-align: center; font-variant-numeric: tabular-nums; user-select: all; }
+.sk-status { text-align: center; margin: 0 0 10px; }
+.sk-live-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sk-live-btns button { min-height: 48px; font-size: .9rem; }
+.sk-live.hidden + .sk-copy-head { display: none; }
+.sk-copy-head { margin: 18px 0 6px; }
