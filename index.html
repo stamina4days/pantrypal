@@ -3,27 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- Pantry Pal draws its own light and dark colors, so the browser must not repaint them -->
+<!-- Benji's Kitchen draws its own light and dark colors, so the browser must not repaint them -->
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#FBF3E4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1813" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Track your groceries and cook what expires first. Free, works offline, no account needed.">
 <!-- How a shared link looks in texts and social apps -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Pantry Pal">
-<meta property="og:title" content="Pantry Pal">
+<meta property="og:site_name" content="Benji's Kitchen">
+<meta property="og:title" content="Benji's Kitchen">
 <meta property="og:description" content="Cook what you have before it goes to waste. Free, works offline, no account needed.">
 <meta property="og:url" content="https://stamina4days.github.io/pantrypal/">
 <meta property="og:image" content="https://stamina4days.github.io/pantrypal/img/social-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Benji, a cheerful green dollar sign, stands on a crate of produce next to the words Pantry Pal.">
+<meta property="og:image:alt" content="Benji, a cheerful green dollar sign, stands on a crate of produce next to the words Benji's Kitchen.">
 <meta name="twitter:card" content="summary_large_image">
-<title>Pantry Pal</title>
+<title>Benji's Kitchen</title>
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.22";
+  var BUILD = "11.23";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -72,7 +72,7 @@
 <link rel="apple-touch-icon" href="img/icons/icon-180.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Pantry Pal">
+<meta name="apple-mobile-web-app-title" content="Benji's Kitchen">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,7 +136,7 @@
   <div class="splash-stage">
     <img class="splash-pal benji-art" src="img/pal/happy.svg" width="132" height="177" alt="">
     <img class="splash-crate" src="img/illustrations/market-crate.svg" width="200" height="136" alt="">
-    <p class="splash-name">Pantry Pal</p>
+    <p class="splash-name">Benji's Kitchen</p>
     <p class="splash-tag">Benji is waking up</p>
     <div class="splash-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="splash-fill"></span></div>
     <p class="splash-count">&nbsp;</p>
@@ -148,7 +148,7 @@
 <header class="topbar">
   <div class="awning" aria-hidden="true"></div>
   <div class="bar-row">
-  <div class="brand"><span class="brand-name">Pantry Pal</span><h1 id="pageTitle">Today</h1></div>
+  <div class="brand"><span class="brand-name">Benji's Kitchen</span><h1 id="pageTitle">Today</h1></div>
   <div class="top-actions">
     <button id="musicBtn" class="icon-btn music-btn" aria-haspopup="dialog" aria-label="Music menu"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/music.svg#i"/></svg><span class="music-eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
     <button id="searchBtn" class="icon-btn" data-t-aria="Search" aria-label="Search"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/search.svg#i"/></svg><span class="btn-label" data-t>Search</span></button>
