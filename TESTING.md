@@ -1,6 +1,6 @@
-# Pantry Pal: testing checklist
+# Benji's Kitchen: testing checklist
 
-Thanks for testing Pantry Pal! Work through the sections below on your phone. You don't have to do them all at once, and it's fine to skip anything your phone can't do.
+Thanks for testing Benji's Kitchen! Work through the sections below on your phone. You don't have to do them all at once, and it's fine to skip anything your phone can't do.
 
 ## How to report a problem
 - Use **Send feedback** in Settings or on the Help page (the ? button at the top). It opens an email with your phone model and app version already filled in.

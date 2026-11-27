@@ -127,7 +127,7 @@ async function drawBooth() {
   c.font = `800 26px ${cs.getPropertyValue("--body").trim() || "sans-serif"}`;
   c.textAlign = "right"; c.fillStyle = booth.frame === "stars" ? "rgba(255,255,255,.75)" : "rgba(35,58,49,.6)";
   if (booth.frame === "kitchen") c.fillStyle = "rgba(255,253,246,.7)";
-  c.fillText("Pantry Pal", W - (booth.frame === "kitchen" ? 140 : 80), H - (booth.frame === "kitchen" ? 100 : 60));
+  c.fillText("Benji's Kitchen", W - (booth.frame === "kitchen" ? 140 : 80), H - (booth.frame === "kitchen" ? 100 : 60));
   c.restore();
   cv.setAttribute("aria-label", t("Benji's photo: {caption}", { caption }));
 }
