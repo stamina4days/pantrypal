@@ -190,11 +190,11 @@ const BENJI_HATS = [
     + `<circle cx="-3" cy="-1" r="1.4" fill="var(--pal-ink)"/><circle cx="3" cy="-1" r="1.4" fill="var(--pal-ink)"/></g>` },
   { id: "fox-mask", name: "Festival fox mask", shop: "hats-anime", lift: 0, art: () =>
     `<path d="M38 26 C42 0 118 0 122 26" fill="none" stroke="#E5482F" stroke-width="5" stroke-linecap="round"/>`
-    + `<g transform="translate(108 -6) rotate(18)"><path d="M-22 -14 L-26 -40 L-8 -22 Z M22 -14 L26 -40 L8 -22 Z" fill="#FFFDF6" ${HAT_INK3}/><path d="M-20 -18 L-22 -32 L-12 -22 Z M20 -18 L22 -32 L12 -22 Z" fill="#E5482F"/>`
+    + `<g class="hat-fox"><g transform="translate(108 -6) rotate(18)"><path d="M-22 -14 L-26 -40 L-8 -22 Z M22 -14 L26 -40 L8 -22 Z" fill="#FFFDF6" ${HAT_INK3}/><path d="M-20 -18 L-22 -32 L-12 -22 Z M20 -18 L22 -32 L12 -22 Z" fill="#E5482F"/>`
     + `<path d="M-26 -16 C-24 -30 24 -30 26 -16 C28 4 10 22 0 26 C-10 22 -28 4 -26 -16 Z" fill="#FFFDF6" ${HAT_INK}/>`
     + `<path d="M-18 -6 Q-11 -12 -5 -6 M5 -6 Q11 -12 18 -6" stroke="var(--pal-ink)" stroke-width="3" fill="none" stroke-linecap="round"/>`
     + `<path d="M-20 -2 L-9 0 M20 -2 L9 0" stroke="#E5482F" stroke-width="3" stroke-linecap="round"/><path d="M-4 -24 Q0 -30 4 -24 Q0 -18 -4 -24Z" fill="#E5482F"/>`
-    + `<ellipse cx="0" cy="18" rx="4" ry="3" fill="var(--pal-ink)"/></g>` },
+    + `<ellipse cx="0" cy="18" rx="4" ry="3" fill="var(--pal-ink)"/></g></g>` },
   { id: "tiara", name: "Crystal leaf tiara", shop: "hats-anime", lift: 0, noSprout: true, art: () => {
     // A silver vine of leaves and crystals across the top, a big teardrop gem in front, and a chain of crystals hanging down one side
     const leaf = (x, y, a, s) => `<path transform="translate(${x} ${y}) rotate(${a}) scale(${s})" d="M0 0 C4 -6 12 -6 16 0 C12 6 4 6 0 0 Z" fill="#E4E9F0" stroke="#8C95A3" stroke-width="1.6" stroke-linejoin="round"/>`;
@@ -216,10 +216,41 @@ const BENJI_HATS = [
     + `<path d="M30 34 C22 10 30 -16 56 -18 C70 -26 100 -24 112 -14 C134 -8 140 14 130 34 L122 22 L118 32 L108 18 L100 30 L92 16 L84 28 L76 16 L68 30 L60 18 L52 30 L44 20 L38 32 Z" fill="#6B4A2E" ${HAT_INK}/>`
     + `<path d="M50 -6 C62 -14 80 -16 94 -12" fill="none" stroke="#9A7150" stroke-width="4" stroke-linecap="round"/>` }
 ];
+
+/* New colors of the anime hats. Rescue ones unlock as the rescue meter fills (one every RESCUE_STEP rescues once the pack is yours).
+   Golden ones come from day 7 of the daily gift calendar, one per finished week. */
+const RESCUE_STEP = 5;
+const HAT_VARIANTS = [
+  { base: "cat-ears", id: "cat-ears-white", name: "White cat ears", rescue: 1, swap: { "#3A3340": "#F2EEF4", "#F4A6B8": "#F7B9C8" } },
+  { base: "twin-tails", id: "twin-tails-pink", name: "Pink twin tails", rescue: 2, swap: { "#B79CE8": "#F29CC0", "#D9C8F7": "#FFD3E5" } },
+  { base: "ribbon", id: "ribbon-blue", name: "Blue ribbon bow", rescue: 3, swap: { "#E5482F": "#3B8FD9", "#C2361F": "#2A6FB0", "#FF8F7A": "#9ACBFF" } },
+  { base: "hero-hair", id: "hero-hair-violet", name: "Violet hero hair", rescue: 4, swap: { "#1E5A3C": "#47306E", "#2E8556": "#6E4BA8", "#7FD9A0": "#CDB5F5", "#55B97E": "#9A7CD6" } },
+  { base: "headband", id: "headband-red", name: "Red training headband", rescue: 5, swap: { "#2A2A2E": "#B3302A", "#1A1A1E": "#86211C", "#6A6A72": "#F09A90" } },
+  { base: "cowlick", id: "cowlick-auburn", name: "Auburn messy hair", rescue: 6, swap: { "#6B4A2E": "#A4462A", "#9A7150": "#DB8A62" } },
+  { base: "fox-mask", id: "fox-mask-blue", name: "Blue fox mask", rescue: 7, swap: { "#E5482F": "#3B8FD9" } },
+  { base: "tiara", id: "tiara-rose", name: "Rose crystal tiara", rescue: 8, swap: { "#E4E9F0": "#F8DCCF", "#8C95A3": "#B7826C", "#6FB6F2": "#F08CA8", "#4A6A8C": "#A84E68", "#D8F1FF": "#FFE3EC" } },
+  { base: "cat-ears", id: "cat-ears-gold", name: "Golden cat ears", golden: 1, swap: { "#3A3340": "#E0AE2A", "#F4A6B8": "#FFE58A" } },
+  { base: "hero-hair", id: "hero-hair-gold", name: "Golden hero hair", golden: 2, swap: { "#1E5A3C": "#A8740C", "#2E8556": "#E0AE2A", "#7FD9A0": "#FFF3B0", "#55B97E": "#FFD55E" } },
+  { base: "fox-mask", id: "fox-mask-gold", name: "Golden fox mask", golden: 3, swap: { "#FFFDF6": "#F6CF52", "#E5482F": "#A8740C" } },
+  { base: "ribbon", id: "ribbon-gold", name: "Golden ribbon bow", golden: 4, swap: { "#E5482F": "#F0BE34", "#C2361F": "#C8901A", "#FF8F7A": "#FFF1A8" } }
+];
+const hatRecolor = (art, swap) => art.replace(/#[0-9A-F]{6}/gi, c => swap[c.toUpperCase()] || c);
+HAT_VARIANTS.forEach(v => {
+  const b = BENJI_HATS.find(h => h.id === v.base);
+  if (b) BENJI_HATS.push({ id: v.id, name: v.name, base: v.base, rescue: v.rescue, golden: v.golden, needs: v.golden ? "" : b.shop, lift: b.lift, noSprout: b.noSprout, art: () => hatRecolor(b.art(), v.swap) });
+});
+/* The anime hats themselves, without their color variants */
+const ANIME_HATS = BENJI_HATS.filter(h => h.shop === "hats-anime").map(h => h.id);
+const hatBaseId = id => { const h = BENJI_HATS.find(x => x.id === id); return h && h.base ? h.base : id; };
+const rescueMeter = () => (typeof settings !== "undefined" && settings.counts && settings.counts.rescueMeter) || 0;
+const giftWeeks = () => (typeof settings !== "undefined" && settings.gift && settings.gift.weeks) || 0;
+
 const benjiHat = id => BENJI_HATS.find(h => h.id === id);
 
 /* Is this hat Benji's yet? */
 function hatUnlocked(h) {
+  if (h && h.golden) return giftWeeks() >= h.golden;
+  if (h && h.rescue) return typeof ownsItem === "function" && ownsItem(h.needs) && rescueMeter() >= h.rescue * RESCUE_STEP;
   if (h && h.shop) return typeof ownsItem === "function" && ownsItem(h.shop);
   if (!h || !h.unlock) return !!h;
   if (typeof badgeList !== "function") return false;
