@@ -4,7 +4,7 @@ let itemPageId = null;
 
 function openItemPage(id) {
   if (!items.some(i => i.id === id)) return false;
-  itemPageId = id;
+  itemPageId = id; ipDatesOpen = false;
   renderItemPage();
   $("#itemPage").showModal();
 }
@@ -20,9 +20,29 @@ function palLineFor(i) {
   return ["proud", t("I'm good for a while. Relax!")];
 }
 
+/* Quick date chips: change a date in one tap, without opening the whole edit form */
+let ipDatesOpen = false;
+function quickDatesHtml(i) {
+  const opts = [[0, t("Today")], [1, t("Tomorrow")], [3, t("3 days")], [7, t("A week")], [14, t("2 weeks")], [30, t("A month")], [90, t("3 months")]];
+  return `<div class="ip-dates" role="group" aria-label="${esc(t("Good until"))}">
+    ${opts.map(([n, label]) => { const date = addDaysFrom(todayStr(), n), on = date === i.expires;
+      return `<button type="button" class="exp-chip ${on ? "on" : ""}" aria-pressed="${on}" data-ip="date:${date}">${esc(label)}</button>`; }).join("")}
+    <label class="exp-chip ip-pick"><span>${esc(t("Pick a date"))}</span><input type="date" id="ipDateIn" value="${esc(i.expires || "")}" aria-label="${esc(t("Pick a date"))}"></label>
+  </div>`;
+}
+function setItemDate(date) {
+  const i = items.find(x => x.id === itemPageId); if (!i || !date) return;
+  i.expires = date; i.dateGuess = false;
+  saveItems(); ipDatesOpen = false;
+  sfx("pop"); buzz(8);
+  renderItemPage(); renderAll();
+  toast(t("{name} is good until {date}.", { name: i.name, date: prettyDate(date) }));
+}
+document.addEventListener("change", e => { if (e.target && e.target.id === "ipDateIn" && e.target.value) setItemDate(e.target.value); });
+
 function freshnessHtml(i) {
   const d = daysLeft(i.expires);
-  if (d === null) return "";
+  if (d === null) return `<div class="fresh-card"><div class="fresh-top"><strong>${esc(t("No date yet"))}</strong><span>${esc(t("Tap how long it keeps"))}</span></div>${quickDatesHtml(i)}</div>`;
   const start = i.bought || i.added;
   const total = start ? Math.max(1, daysBetween(start, i.expires)) : Math.max(d, 1);
   const pct = Math.max(0, Math.min(100, Math.round(d / total * 100)));
@@ -32,7 +52,9 @@ function freshnessHtml(i) {
     <div class="fresh-bar" role="img" aria-label="${esc(t("{p} percent of its time left", { p: pct }))}"><span style="width:${pct}%"></span></div>
     ${i.dateGuess ? `<div class="guess-box"><span class="guess-tag">${esc(t("Benji's guess"))}</span>
       <p>${esc(t("Benji picked this date from how long {name} usually keeps. Is it right?", { name: i.name }))}</p>
-      <div class="guess-btns"><button type="button" data-ip="sure">${esc(t("Looks right"))}</button><button type="button" data-ip="redate">${esc(t("Change the date"))}</button></div></div>` : ""}
+      <div class="guess-btns"><button type="button" data-ip="sure">${esc(t("Looks right"))}</button><button type="button" data-ip="redate" aria-expanded="${ipDatesOpen}">${esc(t("Change the date"))}</button></div></div>`
+      : `<button type="button" class="link-btn ip-redate" data-ip="redate" aria-expanded="${ipDatesOpen}"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/calendar.svg#i"/></svg> ${esc(t("Change the date"))}</button>`}
+    ${ipDatesOpen ? quickDatesHtml(i) : ""}
     <p class="fresh-note">${esc(t("This date is an estimate. Check the package and the food itself before eating."))} <a href="#/terms">${esc(t("Food safety"))}</a></p>
     <button type="button" class="link-btn fresh-how" data-explain="date"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/help.svg#i"/></svg> ${esc(t("How Benji picks this date"))}</button>
   </div>`;
@@ -109,7 +131,8 @@ function itemPageAction(a) {
   if (!i) return;
   if (a === "edit") openItem(i.id);
   if (a === "sure") { i.dateGuess = false; saveItems(); renderItemPage(); renderAll(); toast(t("Got it. {name} keeps that date.", { name: i.name })); }
-  if (a === "redate") { openItem(i.id); const f = $("#fExpires"); if (f) setTimeout(() => { try { f.focus(); f.showPicker && f.showPicker(); } catch (e) {} }, 350); }
+  if (a === "redate") { ipDatesOpen = !ipDatesOpen; renderItemPage(); const c = $("#ipFresh .ip-dates button"); if (c) c.focus(); }
+  if (a.startsWith("date:")) setItemDate(a.slice(5));
   if (a === "open") { markOpened(i.id); renderItemPage(); }
   if (a === "one") { useOne(i.id); renderItemPage(); }
   if (a === "freeze") { editingId = i.id; freezeOrThaw(); renderItemPage(); }

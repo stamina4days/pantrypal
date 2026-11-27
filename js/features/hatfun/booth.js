@@ -135,9 +135,24 @@ async function drawBooth() {
 function boothBlob() {
   return new Promise(res => $("#boothCanvas").toBlob(b => res(b), "image/png"));
 }
+/* iPhones and iPads can't download files from a home screen app, so Save opens the share sheet (it has Save Image) */
+const boothIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 async function boothSave() {
   await drawBooth();
   const b = await boothBlob(); if (!b) { toast(t("This phone couldn't make the picture.")); return; }
+  if (boothIOS()) {
+    const f = new File([b], "benji-photo.png", { type: "image/png" });
+    if (navigator.canShare && navigator.canShare({ files: [f] })) {
+      toast(t("Tap Save Image to keep it in your photos."));
+      try { await navigator.share({ files: [f] }); } catch (e) {}
+      return;
+    }
+    // No share sheet: show the picture on its own page, where press and hold saves it
+    const url = URL.createObjectURL(b);
+    const w = window.open(url, "_blank");
+    if (w) { toast(t("Press and hold the picture, then tap Save to Photos.")); setTimeout(() => URL.revokeObjectURL(url), 60000); return; }
+    URL.revokeObjectURL(url);
+  }
   const a = document.createElement("a");
   a.href = URL.createObjectURL(b); a.download = "benji-photo.png";
   document.body.appendChild(a); a.click(); a.remove();

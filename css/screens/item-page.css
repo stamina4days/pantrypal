@@ -30,3 +30,8 @@
 .guess-tag { display: inline-block; background: var(--lemon); color: #3A2A12; border: 2px solid var(--edge); border-radius: 999px; padding: 0 10px; font-size: .78rem; font-weight: 900; transform: rotate(-2deg); }
 .guess-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .guess-btns button { min-height: 44px; font-size: .9rem; }
+/* Quick date chips on the food page */
+.fresh-card .link-btn { margin: 6px 0 0; }
+.ip-dates { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; text-align: left; }
+.ip-pick { position: relative; cursor: pointer; }
+.ip-pick input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; border: 0; padding: 0; }
