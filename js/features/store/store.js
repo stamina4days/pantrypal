@@ -151,7 +151,9 @@ function renderShop() {
     : it.kind === "outfits" ? "Yours! Dress Benji on the hats page." : it.kind === "bundle" ? "Yours! Everything in the shop is unlocked."
     : "Yours! Find them in Benji's hats."))}</p>`;
   const claim = it => `<button type="button" class="primary wide store-claim" data-store-claim="${esc(it.id)}"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/gift.svg#i"/></svg> <span>${esc(t("Get it free"))}</span></button>`;
-  box.innerHTML = STORE_ITEMS.map(it => {
+  // In the Google Play app: free items and things you already own only
+  const shown = STORE_ITEMS.filter(it => !(typeof isPlayApp !== "undefined" && isPlayApp) || it.free || (it.kind !== "tip" && ownsItem(it.id)));
+  box.innerHTML = shown.map(it => {
     if (it.kind === "tip") {
       const tiers = it.tiers.map((tr, i) => {
         const tt = TIP_TIERS[i] || TIP_TIERS[0];

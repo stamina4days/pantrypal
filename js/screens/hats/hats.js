@@ -43,7 +43,9 @@ function renderHats() {
   $("#htColors").innerHTML = animeOwned ? colors.map(card).join("") : "";
   $("#htGold").innerHTML = BENJI_HATS.filter(x => x.golden).map(card).join("");
   $("#htFree").innerHTML = BENJI_HATS.filter(x => x.shop && free(x.shop)).map(card).join("");
-  $("#htShop").innerHTML = BENJI_HATS.filter(x => x.shop && !free(x.shop)).map(card).join("");
+  const paid = BENJI_HATS.filter(x => x.shop && !free(x.shop) && (!(typeof isPlayApp !== "undefined" && isPlayApp) || hatUnlocked(x)));
+  $("#htShop").innerHTML = paid.map(card).join("");
+  $$(".ht-paid").forEach(el => el.classList.toggle("hidden", !paid.length));
   $("#htGame").innerHTML = BENJI_HATS.filter(x => x.game).map(card).join("");
   // Outfits: "No outfit" first, then the outfit pack
   const wearing = benjiOutfitNow();
@@ -54,7 +56,9 @@ function renderHats() {
       <span class="hat-pic">${palSVG("happy", 78, { pose: "rest", sprout: 1, outfit: false, wear: o ? o.id : false })}${open ? "" : `<span class="hat-lock"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg></span>`}</span>
       <strong>${esc(t(o ? o.name : "No outfit"))}</strong><span class="small">${esc(how)}</span></button></li>`;
   };
-  $("#htOutfits").innerHTML = [null, ...BENJI_OUTFITS].map(ocard).join("");
+  const outs = BENJI_OUTFITS.filter(o => !(typeof isPlayApp !== "undefined" && isPlayApp) || outfitUnlocked(o));
+  $("#htOutfits").innerHTML = outs.length ? [null, ...outs].map(ocard).join("") : "";
+  $$(".ht-outfits").forEach(el => el.classList.toggle("hidden", !outs.length));
   // Supporters can switch the golden sprout off and on
   $("#htGolden").innerHTML = isSupporter() ? `<label class="check"><input type="checkbox" id="htGoldenSwitch" ${settings.goldenSprout !== false ? "checked" : ""}> <span>${esc(t("Golden sprout, a thank-you for your tip"))}</span></label>` : "";
 }
