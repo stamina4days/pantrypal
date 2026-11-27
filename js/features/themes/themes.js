@@ -30,7 +30,7 @@ let themePickObserver = null;
 function renderThemePick() {
   const box = document.getElementById("themePick"); if (!box) return;
   const cur = settings.kitchenTheme || "";
-  box.innerHTML = KITCHEN_THEMES.map(th => {
+  box.innerHTML = KITCHEN_THEMES.filter(th => !(typeof isPlayApp !== "undefined" && isPlayApp) || themeOpen(th)).map(th => {
     const open = themeOpen(th), on = open && th.id === cur;
     return `<button type="button" data-theme="${th.id}" aria-pressed="${on}" class="${on ? "on" : ""} ${open ? "" : "locked"}">
       <span class="theme-pic">${themeMiniHTML(th.id)}${open ? "" : `<span class="theme-lock"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/lock.svg#i"/></svg></span>`}</span>

@@ -93,6 +93,11 @@
 }
 .kitchen.fit4 .k-gift { zoom: var(--kfit, 1); }
 
+/* ---------- The Google Play app: only free extras in the shop ---------- */
+.store-play { display: none; }
+.play-app .store-play { display: block; }
+.play-app .store-web, .play-app .store-id, .play-app .store-when, .play-app .store-how { display: none; }
+
 /* ---------- Photo booth ---------- */
 .tile-booth .pt-ic { background: color-mix(in srgb, var(--plum) 30%, var(--paper)); }
 .booth-body h2 { margin-bottom: 4px; }

@@ -2,6 +2,17 @@
    buyUrl: paste the item's Square payment link here. While it's empty, the shop shows "Coming soon".
    kind decides the preview in the shop. The tip jar has one Square link per amount (tiers).
    free: costs nothing. Tap Get it free in the shop to claim it, no code needed. */
+/* The Google Play app opens the site with ?src=play (or from an android-app:// referrer). Google's rules cover
+   selling extras inside Play apps, so there the shop shows only free items and what you already own.
+   The flag lives in sessionStorage, so the same phone's browser keeps the full shop. */
+const isPlayApp = (() => {
+  try {
+    if (/[?&]src=play\b/.test(location.search) || /^android-app:\/\//.test(document.referrer)) sessionStorage.setItem("pantrypal.play", "1");
+    const on = sessionStorage.getItem("pantrypal.play") === "1";
+    if (on) document.documentElement.classList.add("play-app");
+    return on;
+  } catch (e) { return false; }
+})();
 const STORE_ITEMS = [
   { id: "bundle", kind: "bundle", name: "Everything bundle", price: "$9.99", was: "$14.93",
     desc: "Every item in the shop at once: all four kitchen themes, all four hat packs, the outfit pack, and the radio pack.",
