@@ -91,7 +91,7 @@ function emailSuggestion() {
   const by = $("#sBy").value.trim(), notes = $("#sNotes").value.trim();
   const snippet = JSON.stringify({ id: recipeSlug(d.name), name: d.name, type: d.type, time: d.time, serves: d.serves, ing: d.ing, steps: d.steps }, null, 2);
   const body = [
-    "Recipe suggestion for Pantry Pal", "",
+    "Recipe suggestion for Benji's Kitchen", "",
     `Name: ${d.name}`, `Meal: ${d.type}`, `Time: about ${d.time} minutes`, `Serves: ${d.serves}`, by ? `Suggested by: ${by}` : "", "",
     "Ingredients:", ...d.rawIng.map(l => "- " + l), "",
     "Steps:", ...d.steps.map((s, i) => `${i + 1}. ${s}`), "",

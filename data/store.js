@@ -42,6 +42,6 @@ const STORE_ITEMS = [
     desc: "Four new stations for the kitchen radio, each with its own song: Coffee shop, Campfire, Ocean waves, and Holiday tunes.",
     buyUrl: "https://square.link/u/zeKqN2iA" },
   { id: "tip", kind: "tip", name: "Tip jar", price: "You pick",
-    desc: "Just want to say thanks? Any tip helps keep Pantry Pal free, and earns you the Supporter badge and a golden sprout for Benji. The bigger the tip, the bigger the sprout: $1 grows a golden sprout, $3 a leafy one, and $5 a golden sprout in full bloom.",
+    desc: "Just want to say thanks? Any tip helps keep Benji's Kitchen free, and earns you the Supporter badge and a golden sprout for Benji. The bigger the tip, the bigger the sprout: $1 grows a golden sprout, $3 a leafy one, and $5 a golden sprout in full bloom.",
     tiers: [{ id: "tip-1", price: "$1", buyUrl: "https://square.link/u/qx1ahyY2" }, { id: "tip-3", price: "$3", buyUrl: "https://square.link/u/TdOTuFH2" }, { id: "tip-5", price: "$5", buyUrl: "https://square.link/u/ZVcrkq6E" }] }
 ];

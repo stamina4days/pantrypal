@@ -62,7 +62,7 @@ function importBackup(file) {
       saveItems(); saveHistory(); saveShopping(); saveBarcodes(); savePlan(); saveCooked(); saveMine(); saveSettings();
       renderDietSummary(); renderAll();
       toast(t("Backup restored."), undo);
-    } catch (e) { Ask.notice({ title: t("Hmm, that didn't work"), text: t("That file doesn't look like a Pantry Pal backup."), mood: "worried" }); }
+    } catch (e) { Ask.notice({ title: t("Hmm, that didn't work"), text: t("That file doesn't look like a Benji's Kitchen backup."), mood: "worried" }); }
   };
   reader.readAsText(file);
 }

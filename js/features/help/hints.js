@@ -47,13 +47,13 @@ function feedbackMailto() {
     t("What happened, or what's your idea?"), "", "", "",
     "----",
     t("These details help us fix things. You can delete them."),
-    "Pantry Pal " + (typeof APP_VERSION !== "undefined" ? APP_VERSION : ""),
+    "Benji's Kitchen " + (typeof APP_VERSION !== "undefined" ? APP_VERSION : ""),
     "Phone and browser: " + ua,
     "Screen: " + screen.width + " x " + screen.height + ", window " + innerWidth + " x " + innerHeight,
     "Text size: " + (settings.textSize || "normal") + ", theme: " + (settings.kitchenTheme || "classic") + (installed ? ", on the home screen" : ", in the browser"),
     "Page: " + (location.hash || "#/today")
   ].join("\n");
-  return "mailto:" + FEEDBACK_EMAIL + "?subject=" + encodeURIComponent(t("Pantry Pal feedback")) + "&body=" + encodeURIComponent(body);
+  return "mailto:" + FEEDBACK_EMAIL + "?subject=" + encodeURIComponent(t("Benji's Kitchen feedback")) + "&body=" + encodeURIComponent(body);
 }
 function sendFeedback() { location.href = feedbackMailto(); }
 const feedbackButton = () => `<button class="wide feedback-btn" type="button" data-feedback><svg class="ic" aria-hidden="true"><use href="img/icons/ui/mail.svg#i"/></svg> ${esc(t("Send feedback"))}</button>`;
