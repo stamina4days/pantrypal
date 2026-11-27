@@ -1,5 +1,5 @@
 "use strict";
-/* Help putting Pantry Pal on the home screen. On Android, Chrome can do it in one tap;
+/* Help putting Benji's Kitchen on the home screen. On Android, Chrome can do it in one tap;
    on iPhone it takes three taps in Safari, shown with pictures. */
 let installPrompt = null, hsPhone = null;
 window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); installPrompt = e; });
@@ -16,7 +16,7 @@ function phoneKind() {
 }
 const HS_STEPS = {
   iphone: [
-    ["img/install/iphone-share.svg", "Open Pantry Pal in Safari, then tap the Share button at the bottom of the screen. It's a square with an arrow pointing up."],
+    ["img/install/iphone-share.svg", "Open Benji's Kitchen in Safari, then tap the Share button at the bottom of the screen. It's a square with an arrow pointing up."],
     ["img/install/iphone-add.svg", "Scroll down a little and tap \"Add to Home Screen.\""],
     ["img/install/done.svg", "Tap \"Add\" in the top corner. Benji's icon shows up on your home screen."]
   ],

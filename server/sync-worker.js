@@ -1,4 +1,4 @@
-/* Pantry Pal kitchen sync: a tiny Cloudflare Worker with a D1 database.
+/* Benji's Kitchen kitchen sync: a tiny Cloudflare Worker with a D1 database.
    Each shared kitchen is one row: an id, a version number, and the kitchen's data.
    The data arrives already locked (encrypted) with the household's kitchen code, which never leaves the phones,
    so this server can't read anyone's food, lists, or plans. It only stores and hands back the locked data.

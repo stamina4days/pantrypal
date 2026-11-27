@@ -20,7 +20,7 @@ const HELP = [
 const HINTS = {
   food: "Tap any item to edit it, freeze it, or find recipes that use it. The -1 button uses one up.",
   recipes: "For you ranks recipes by what's expiring. Browse all has every recipe, and Saved keeps your favorites. Tap a recipe for servings, nutrition, and cook mode.",
-  plan: "Tap Plan my week and Pantry Pal builds your meals. Swap or lock any meal, then get your shopping list in one tap.",
+  plan: "Tap Plan my week and Benji's Kitchen builds your meals. Swap or lock any meal, then get your shopping list in one tap.",
   shopping: "Check items off as you shop, then tap Move checked to My Food. The list is grouped by store section.",
   prep: "Check things off as you go and tap a time to start a timer. When you're done, your meals move into My Food as prepped containers.",
   cook: "Tap Next to move through the steps. Turn on Voice commands to say \"next\" or \"timer\" with messy hands."

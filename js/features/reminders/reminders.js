@@ -3,12 +3,12 @@
 function icsEsc(s) { return String(s).replace(/\\/g, "\\\\").replace(/[,;]/g, m => "\\" + m).replace(/\n/g, "\\n"); }
 function makeICS(list) {
   const stamp = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-  const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Pantry Pal//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
+  const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Benji's Kitchen//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
   for (const i of list) {
     const day = addDaysFrom(i.expires, -1).replace(/-/g, "");
     const title = t("{name} expires tomorrow", { name: i.name });
     lines.push("BEGIN:VEVENT", `UID:${i.id}-${i.expires}@pantrypal`, `DTSTAMP:${stamp}`, `DTSTART:${day}T090000`, "DURATION:PT15M",
-      `SUMMARY:${icsEsc(title)}`, `DESCRIPTION:${icsEsc(t("Use it up or freeze it. Open Pantry Pal for recipe ideas."))}`,
+      `SUMMARY:${icsEsc(title)}`, `DESCRIPTION:${icsEsc(t("Use it up or freeze it. Open Benji's Kitchen for recipe ideas."))}`,
       "BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${icsEsc(title)}`, "TRIGGER:PT0M", "END:VALARM", "END:VEVENT");
   }
   lines.push("END:VCALENDAR");
@@ -55,7 +55,7 @@ async function setReminders(on) {
   if (reg && "periodicSync" in reg) {
     try { await reg.periodicSync.register("expiry-check", { minInterval: 12 * 60 * 60 * 1000 }); background = true; } catch (e) {}
   }
-  try { if (reg) await reg.showNotification("Pantry Pal", { body: t("Reminders are on."), icon: "img/icons/icon-192.png", tag: "test" }); } catch (e) {}
+  try { if (reg) await reg.showNotification("Benji's Kitchen", { body: t("Reminders are on."), icon: "img/icons/icon-192.png", tag: "test" }); } catch (e) {}
   status.textContent = background
     ? t("On. Your phone will check about once a day and let you know what expires tomorrow.")
     : t("Notifications are allowed, but this browser can't check while the app is closed. On Android, use Chrome and Add to Home screen, then turn this on again. Calendar reminders below work on every phone.");
