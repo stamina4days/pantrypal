@@ -202,6 +202,13 @@ function openGift() {
 }
 
 function hatFunInit() {
+  // In 11.20 the anime pack was owned by everyone. Anyone already wearing one of its hats keeps the pack.
+  const worn = settings.benjiHat && benjiHat(settings.benjiHat);
+  if (worn && hatBaseId(worn.id) && ANIME_HATS.includes(hatBaseId(worn.id)) && !ownsItem("hats-anime")) {
+    settings.owned = [...(settings.owned || []), "hats-anime"];
+    noteHatWorn(worn.id);
+    saveSettings();
+  }
   const gb = $("#todayGiftBtn"); if (gb) gb.addEventListener("click", openGift);
   renderGift();
   // A new day while the app stays open
