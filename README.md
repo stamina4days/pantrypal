@@ -1,4 +1,4 @@
-# Pantry Pal
+# Benji's Kitchen
 
 A kitchen app that plans and preps meals around the food you already have. Works offline, in English, with no account or server. It also works without a pantry: anyone can browse recipes, plan meals, and use cook mode.
 
@@ -10,10 +10,16 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Every button opens its own page.** Pages slide in from the right with a striped awning in the color of their tab, and a Back button up top. Your phone's back button and swipe-back work too.
 - **Every page has an address,** so you can bookmark or share it. For example `#/recipe/shakshuka`, `#/cook/shakshuka`, `#/place/Fridge`, `#/collection/quick`, `#/plan/week`, `#/badges`, `#/tips`, `#/settings`.
 
+## New in version 11.23
+- **A new name: Benji's Kitchen.** Pantry Pal is now Benji's Kitchen, named after its mascot. The web address and everything saved on your phone stay the same.
+
+## New in version 11.22
+- **Shared kitchens.** Keep My Food, the shopping lists, and the meal plan the same on every phone in your home. Start one in Settings, under Share or move your kitchen, and join from another phone with the code or by scanning it. Everything is locked with the kitchen code before it leaves the phone, so the sync server can't read it.
+
 ## New in version 11.19
 - **Your week with Benji.** Every Sunday (or the first time you open the app after), Benji shows how your week went: the food you used before it went bad, about how much money that saved, what got tossed, and how many meals you cooked. It's also on Waste Less and in Search, at `#/week-recap`.
 - **Share your week.** The recap is a picture with Benji, your savings, and stickers of the foods you saved. Tap Share my week to send it in a text or post it, or save it to your phone.
-- **Try a sample kitchen.** New here? Tap Try a sample kitchen on Today (or Just looking? during setup) to fill the kitchen with realistic food and see what Pantry Pal does before typing anything. Sample food never counts toward Waste Less or badges, and Clear the sample empties it in one tap.
+- **Try a sample kitchen.** New here? Tap Try a sample kitchen on Today (or Just looking? during setup) to fill the kitchen with realistic food and see what Benji's Kitchen does before typing anything. Sample food never counts toward Waste Less or badges, and Clear the sample empties it in one tap.
 - **Paste an online order.** Ordered groceries from Walmart, Instacart, Kroger, Target, Amazon Fresh, or another store? Copy the item list from the order email or app, then use Add food > Online order (or Search) to paste it. Benji picks out the food with amounts and prices, skips things like paper towels and fees, and lets you check the list before adding it.
 
 ## New in version 11.18
@@ -45,7 +51,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Undo for every delete.** Taking something off a shopping list, clearing checked items, deleting a list, removing a meal from your plan, answering Used up or Tossed in a check-in, deleting one of your recipes, emptying your whole kitchen, and bringing back a copy all show an Undo button now.
 
 ## New in version 11.14
-- **Visitor counts (11.14.4).** Pantry Pal now uses Cloudflare Web Analytics to count visits, so we can see how many people use it. It uses no cookies and never sees your food or anything you type. The Terms page explains it under Your information.
+- **Visitor counts (11.14.4).** Benji's Kitchen now uses Cloudflare Web Analytics to count visits, so we can see how many people use it. It uses no cookies and never sees your food or anything you type. The Terms page explains it under Your information.
 - **How Benji works out his numbers (11.14.3).** Each food's page has a How Benji picks this date link that explains where that food's date came from (general food safety times, counted from the day you added it) and how to change it. Tap the money tag on Today, or How is this counted? under the savings on Waste Less, to see how prices and money at risk are worked out. The Help page has a new How Benji's numbers work section.
 - **No surprise sound, and backup reminders (11.14.2).** The first time, Benji asks "Play music while you cook?" right after you tell him your name (or on the start screen), so music never starts until you say yes. Anyone who hasn't answered yet sees the question once. Benji also reminds you to save a copy of your kitchen, since it's saved only on your phone: the first time once you've added about 10 foods or used the app for a week, then about once a month, with a Save a copy button right in the reminder.
 - **Ready for testers (11.14.1).** A Send feedback button in Settings and on the Help page (and in Search) opens an email to us with the app version, phone, and screen size filled in. Benji's shop now says up top that unlock codes arrive by email within 24 hours. The songs are half the size, with even volume. TESTING.md is rewritten as a checklist for testers.
@@ -53,7 +59,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **The tabs stay in one row.** If a style file fails to load, for example on a weak connection while the site is updating, the app now notices and loads it again, so the tabs no longer break into two rows with a gap above them. The tab labels also stay on one line when your phone's text size is turned up.
 
 ## New in version 11.13
-- **Real music.** Pantry Pal now plays real songs. The Pantry Pal song starts when you tap Start, and the music button at the top turns it on and off. Each kitchen theme has its own song, like "Bubblegum Love" in the diner. The radio pack stations are real songs too, including "All I Move Is Caffeine" at the Coffee Shop. Shop samples play from the middle of each song. Songs need a connection and aren't saved for offline use.
+- **Real music.** Benji's Kitchen now plays real songs. The Benji's Kitchen song starts when you tap Start, and the music button at the top turns it on and off. Each kitchen theme has its own song, like "Bubblegum Love" in the diner. The radio pack stations are real songs too, including "All I Move Is Caffeine" at the Coffee Shop. Shop samples play from the middle of each song. Songs need a connection and aren't saved for offline use.
 
 ## New in version 11.12
 - **Theme pictures in Settings (11.12.1).** The kitchen theme picker in Settings now shows the same mini kitchens as Benji's shop, including the classic kitchen, instead of the old color swatches.
@@ -63,7 +69,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **A warmer welcome (11.11.1).** The first screens now show Benji in his lit shop window. The terms are a paper notice taped under the counter with two numbered steps, read the terms and tick the box, and the "Let's get started" sign unlocks once both are done. The name screen uses the same notice.
 - **A new start screen.** Benji's shop front got a full makeover: a marquee sign with light bulbs, a lit shop window with a hanging lamp and stocked shelves, Benji behind the counter saying hello, crates of produce, and wooden signs on ropes. Benji's shop now has its own sign there too.
 - **Benji's shop on Today.** A shop flyer is stuck to the fridge door, so the shop is one tap away.
-- **Agree to the terms first.** The first time you open Pantry Pal, you open the terms, tick the box, and then continue. People who already use the app see it once too.
+- **Agree to the terms first.** The first time you open Benji's Kitchen, you open the terms, tick the box, and then continue. People who already use the app see it once too.
 
 ## New in version 11.10
 - **Everything in the shop is for sale (11.10.1).** Every item now has its Square checkout link. Bigger tips grow a bigger golden sprout: $1 a golden sprout, $3 a leafy one, and $5 a golden sprout in full bloom with a star flower, and the tip jar shows all three.
@@ -77,11 +83,11 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **The jack-o'-lantern hat.** Benji's free October hat is now a carved jack-o'-lantern with a glowing face.
 
 ## New in version 11.9
-- **Easier to read, and nicer to share (11.9.3).** The red date tags, the calendar top, the Cook these note, the recipe ribbons, and the cook mode step count all have stronger contrast. On the cookbook page in dark mode, the "Grab" tags and the Show more button were nearly invisible and are now clear. Sharing the Pantry Pal link in a text or social app now shows a picture of Benji with a short description. Purchase help goes to the support email, signaftersix@gmail.com, which is in the shop and the Terms, and the Terms explain what Square shares for a purchase.
+- **Easier to read, and nicer to share (11.9.3).** The red date tags, the calendar top, the Cook these note, the recipe ribbons, and the cook mode step count all have stronger contrast. On the cookbook page in dark mode, the "Grab" tags and the Show more button were nearly invisible and are now clear. Sharing the Benji's Kitchen link in a text or social app now shows a picture of Benji with a short description. Purchase help goes to the support email, signaftersix@gmail.com, which is in the shop and the Terms, and the Terms explain what Square shares for a purchase.
 - **Shop codes work on one phone (11.9.2).** Benji's shop shows each phone its own shop ID, like PP-7K3Q-M9WX, and Buy copies it for you. Paste it at checkout, and the unlock code you get back only works on that phone, so it can't be shared. Your purchases and shop ID are saved in your backup, so restoring it on a new phone keeps your hats.
 - **Smaller pieces in every room (11.9.1).** The tips, recipe cards, calendar, fridge shelves, and notepad are all more compact, so more of your food, recipes, and days fit on the screen at once. The recipe ribbons now sit above the cookbook page instead of over the first recipe, and the pantry audit button on an empty fridge is easy to read.
 - **Every tab is its own room, and fits on the screen.** Each tab now fills exactly the space between the header and the tabs, so a normal phone never has to scroll the page. Long lists scroll inside their spot instead. The header is smaller on every tab, with round Search, Help, and Settings buttons.
-- **Start screen: Benji's shop front.** A striped awning, a glowing Pantry Pal sign, and Benji in the shop window behind crates of produce, with a chalkboard that welcomes you back. Start and the other choices are wooden signs hanging on ropes.
+- **Start screen: Benji's shop front.** A striped awning, a glowing Benji's Kitchen sign, and Benji in the shop window behind crates of produce, with a chalkboard that welcomes you back. Start and the other choices are wooden signs hanging on ropes.
 - **My Food: the open fridge.** Fridge, Freezer, Pantry, and Counter are little appliance buttons. Your food sits inside a lit fridge with glass shelves, each with a price tag that says how long it has. Add food is the grocery bag. When it's empty, Benji peeks in.
 - **Recipes: a recipe box and a cookbook.** Collections are index cards standing in a wooden recipe box. For you, All, and Saved are ribbon bookmarks on a lined cookbook page.
 - **Plan: a wall calendar.** This week hangs on a nail, each day with its meal as a sticker and today circled. Tap an empty day to add a meal, or a planned day to turn to its page. Today's page is a chalkboard, and Week at a glance and the shopping list sit on the table.
@@ -91,7 +97,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Buying the Fun hat pack is turned on** through Square.
 
 ## New in version 11.8
-- **Colors fixed on phones with automatic dark mode (11.8.1).** Some phones darken websites on their own, which turned the fridge, the sticky note, the game console, and the Add food bag murky. Pantry Pal now tells the phone it has its own dark mode, so its colors show as designed.
+- **Colors fixed on phones with automatic dark mode (11.8.1).** Some phones darken websites on their own, which turned the fridge, the sticky note, the game console, and the Add food bag murky. Benji's Kitchen now tells the phone it has its own dark mode, so its colors show as designed.
 - **Today is Benji's kitchen.** The home screen is now a little kitchen instead of a stack of boxes. The foods to eat first are magnets on the fridge, each with how long it has. Tonight's recipe is on a chalkboard, the jar of food you saved sits on a shelf and fills up, Benji's hat hangs on a peg (tap it for his hat closet), and a game console on the counter opens Play. Benji stands on the counter and sways, and Add food is a grocery bag on the floor that stays in view on small phones. The header on Today is smaller to make room. Light and dark kitchens both.
 - **Money smarts for everyone, free.** Money at risk, recipes ranked by money saved, the week plan that rescues the most money, and the smarter Fridge Sort (all described under 11.7) are now part of the free app.
 - **Benji's shop.** Settings, Search, or `#/shop` opens a shop for optional extras. The first is the Fun hat pack ($1.99): a cowboy hat, a pirate hat, a viking helmet, and a frog hat, which also show on the hats page under "From Benji's shop." Buy opens a Square checkout; the buyer then gets an unlock code or link (`#/redeem/<code>`). Codes are signed, so the app can check them on the phone and nobody can make one up, and they're saved in backups. Everything that saves food and money stays free. Buying goes through the Square payment link in `buyUrl` in `data/store.js`.
@@ -112,12 +118,12 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **English only.** Spanish is gone for now: the language button, the setting, the setup choice, Benji's Spanish lines, and the Spanish text files. More languages will come in a future update. Older recipe files still carry their Spanish text, but the app ignores it.
 
 ## New in version 11.5
-- **Meet Benji:** the mascot is now Benji, a green dollar sign with white gloves and a sprout on top, because every food you save is money saved. The app is still Pantry Pal.
+- **Meet Benji:** the mascot is now Benji, a green dollar sign with white gloves and a sprout on top, because every food you save is money saved.
 - **The sprout grows as you save:** a seed at first, then a sprout at $10 of food saved, more leaves at $50, and a flower at $100.
 - **More moods and poses:** Benji waves, cheers, points, holds a coin when the fridge is empty, gets sleepy late at night, and looks surprised.
 - **Benji's hats:** Settings, Badges, or Search ("hats") opens Benji's closet. He can change hats with the seasons (knit hats, a holiday hat, a sun hat, a pumpkin hat, and a spring flower), wear any hat you pick, or go without. Badges unlock eight more: a chef's hat (First dish), an upside-down turkey with the drumsticks up like horns (Rescue squad), a party hat (On a roll), a top hat (Money saver), a crown (Zero waste week), a beret (World kitchen), a night cap (Midnight snack), and a ball cap (Little helper).
 - **New app icon** with Benji on it.
-- **Guided tour:** after first-time setup, Benji walks new visitors through what Pantry Pal is for and where everything is on Today. Take it again anytime from Help, Settings, or Search ("tour"), or at `#/tour`.
+- **Guided tour:** after first-time setup, Benji walks new visitors through what Benji's Kitchen is for and where everything is on Today. Take it again anytime from Help, Settings, or Search ("tour"), or at `#/tour`.
 
 ## New in version 11.4
 - **Play corner:** a yellow Play button on Today opens little games that help your kitchen, plus the kitchen radio. A red dot means today's word puzzle is waiting.
@@ -188,7 +194,7 @@ A farmers market style: a striped awning across the top, price-tag food cards, f
 - **Badges:** 24 stickers to earn, like First rescue, Prep pro, Zero waste week, and Money saver. Benji celebrates new ones.
 - **Make food last:** storage tips for 42 foods, with the ones you have listed first.
 - **Waste Less** now shows money saved and a chart of the last 8 weeks.
-- **About Pantry Pal** in Settings.
+- **About Benji's Kitchen** in Settings.
 
 ## Features
 **Plan my week (Plan tab)**
