@@ -124,7 +124,7 @@ async function drawRecapCard(r) {
   // Benji and the sign-off
   try { const b = await loadImg("img/pal/proud.svg"); ctx.drawImage(b, 780, 990, 230, 309); } catch (e) {}
   ctx.textAlign = "left"; ctx.fillStyle = ink;
-  ctx.font = "700 72px Kalam, cursive"; ctx.fillText("Pantry Pal", 90, 1110);
+  ctx.font = "700 72px Kalam, cursive"; ctx.fillText("Benji's Kitchen", 90, 1110);
   ctx.font = "800 36px Nunito, sans-serif"; ctx.fillText(t("Cook what you have"), 90, 1166); ctx.fillText(t("before it goes to waste."), 90, 1210);
   ctx.fillStyle = green; ctx.font = "900 34px Nunito, sans-serif"; ctx.fillText("stamina4days.github.io/pantrypal", 90, 1268);
   return new Promise((ok, no) => c.toBlob(b => b ? ok(b) : no(new Error("no picture")), "image/png"));
@@ -135,8 +135,8 @@ async function shareRecap() {
   let blob;
   try { blob = await drawRecapCard(r); } catch (e) { toast(t("Couldn't make the picture on this phone.")); return; }
   const file = new File([blob], "my-week-with-benji.png", { type: "image/png" });
-  const text = r.saved >= 1 ? t("I saved {money} of groceries from the trash this week with Pantry Pal.", { money: fmtMoney(r.saved) })
-    : tn(r.used, "I used 1 food before it went bad this week with Pantry Pal.", "I used {n} foods before they went bad this week with Pantry Pal.");
+  const text = r.saved >= 1 ? t("I saved {money} of groceries from the trash this week with Benji's Kitchen.", { money: fmtMoney(r.saved) })
+    : tn(r.used, "I used 1 food before it went bad this week with Benji's Kitchen.", "I used {n} foods before they went bad this week with Benji's Kitchen.");
   const url = "https://stamina4days.github.io/pantrypal/";
   try {
     if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text: text + " " + url }); return; }

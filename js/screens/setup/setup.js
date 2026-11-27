@@ -38,7 +38,7 @@ function renderOnboarding() {
   let h = `<p class="muted small">${esc(t("Step {a} of {b}", { a: obStepNo(), b: ob.mode === "first" ? 2 : 3 }))}</p>`;
   if (ob.step === 0) {
     h += palBubble("wink", t("It plans meals around the food you already have, so less goes to waste. This takes a few seconds, and you can change any of it later."), [], "pal-big")
-      + `<h2 class="center">${esc(t("Welcome to Pantry Pal"))}</h2>
+      + `<h2 class="center">${esc(t("Welcome to Benji's Kitchen"))}</h2>
       <h3>${esc(t("How much do you want to see?"))}</h3>
       <div class="view-pick">
         <button type="button" data-view="simple" class="view-card ${d.view !== "full" ? "on" : ""}" aria-pressed="${d.view !== "full"}"><strong>${esc(t("Keep it simple"))}</strong><span>${esc(t("Big buttons, just the basics. Great for anyone."))}</span></button>
