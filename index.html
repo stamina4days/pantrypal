@@ -23,7 +23,7 @@
 <script>
 /* Runs first. After an update, clear the old offline copy so old and new files never mix. Bump BUILD with every release. */
 (function () {
-  var BUILD = "11.21";
+  var BUILD = "11.22";
   try {
     if (localStorage.getItem("pantrypal.fast")) document.documentElement.classList.add("fast");
     try { var st = JSON.parse(localStorage.getItem("pantrypal.settings.v1") || "{}"); var ts = st.textSize || (st.largeText ? "large" : ""); if (ts && ts !== "normal") document.documentElement.classList.add("text-" + ts); } catch (e2) {}
@@ -121,6 +121,7 @@
 <link rel="stylesheet" href="css/components/money.css">
 <link rel="stylesheet" href="css/screens/hats.css">
 <link rel="stylesheet" href="css/components/hatfun.css">
+<link rel="stylesheet" href="css/components/sync.css">
 <link rel="stylesheet" href="css/themes/kitchen.css">
 <link rel="stylesheet" href="css/screens/scenes.css">
 <link rel="stylesheet" href="css/themes/kitchen-themes.css">
@@ -274,6 +275,7 @@
 <script src="js/features/voice/talk-to-add.js" defer></script>
 <script src="js/features/share/qr.js" defer></script>
 <script src="js/features/share/kitchen-link.js" defer></script>
+<script src="js/features/sync/sync.js" defer></script>
 <script src="js/features/swipe/swipe-rows.js" defer></script>
 <script src="js/features/radio/kitchen-radio.js" defer></script>
 <script src="js/features/badge/app-badge.js" defer></script>
