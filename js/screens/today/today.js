@@ -121,7 +121,7 @@ function todayInit() {
   // Turned sideways: one gentle tip per visit
   const side = matchMedia("(orientation: landscape) and (max-height: 500px) and (pointer: coarse)");
   let sideTold = false;
-  const sideTip = () => { if (side.matches && !sideTold) { sideTold = true; toast(t("Pantry Pal fits best with your phone upright. Sideways, scroll to see everything.")); } };
+  const sideTip = () => { if (side.matches && !sideTold) { sideTold = true; toast(t("Benji's Kitchen fits best with your phone upright. Sideways, scroll to see everything.")); } };
   if (side.addEventListener) side.addEventListener("change", sideTip);
   setTimeout(sideTip, 1500);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitToday());

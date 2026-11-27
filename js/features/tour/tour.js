@@ -1,11 +1,11 @@
 "use strict";
-/* A short guided tour of Today: what Pantry Pal is for and where things are. Benji points at each part of
+/* A short guided tour of Today: what Benji's Kitchen is for and where things are. Benji points at each part of
    the screen in turn. Runs once after first-time setup (or every visit, if that's turned on in Settings).
    Also anytime from the start screen, Help, Settings, or Search. */
 
 const TOUR_STEPS = [
   { mood: "wave", title: "Hi, I'm Benji!",
-    text: "Pantry Pal helps you save money by saving food. It keeps track of what you bought, tells you what to eat first, and finds recipes that use it up. Every bit of food you don't throw away is money you keep." },
+    text: "Benji's Kitchen helps you save money by saving food. It keeps track of what you bought, tells you what to eat first, and finds recipes that use it up. Every bit of food you don't throw away is money you keep." },
   { target: ".today-add", pose: "point", title: "Add your groceries",
     text: "Start here when you get home from the store. Type what you bought or scan a barcode, and I'll guess when each food goes bad." },
   { target: "#todayFridge", pose: "point", title: "Eat these first",
