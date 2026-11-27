@@ -1,4 +1,4 @@
-# Pantry Pal sync server
+# Benji's Kitchen sync server
 
 The shared kitchen feature needs a tiny server that stores each household's locked (encrypted) kitchen.
 It runs free on Cloudflare: a Worker (the code in `sync-worker.js`) and a D1 database.

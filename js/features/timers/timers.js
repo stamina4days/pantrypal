@@ -37,7 +37,7 @@ async function alarm(tm) {
   try {
     if ("Notification" in window && Notification.permission === "granted" && document.hidden) {
       const reg = await swReady(1000);
-      if (reg) reg.showNotification("Pantry Pal", { body: t("Timer done: {label}", { label: tm.label }), icon: "img/icons/icon-192.png", tag: "timer-" + tm.id });
+      if (reg) reg.showNotification("Benji's Kitchen", { body: t("Timer done: {label}", { label: tm.label }), icon: "img/icons/icon-192.png", tag: "timer-" + tm.id });
     }
   } catch (e) {}
 }

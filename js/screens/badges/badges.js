@@ -10,7 +10,7 @@ function renderBadges() {
   $("#bgMeta").textContent = t("{a} of {b} earned", { a: got, b: list.length });
   const s = settings.streak || { n: 0, best: 0 };
   $("#bgStreak").innerHTML = palBubble(got >= list.length / 2 ? "proud" : "happy",
-    s.n > 1 ? t("You've opened Pantry Pal {n} days in a row. Your best is {b}.", { n: s.n, b: s.best || s.n })
+    s.n > 1 ? t("You've opened Benji's Kitchen {n} days in a row. Your best is {b}.", { n: s.n, b: s.best || s.n })
       : got ? t("Look at you go! Keep using food before it expires to earn more.") : t("Every badge is a little win. Use up food, cook, and plan to start collecting."));
   $("#bgGrid").innerHTML = list.map(b => {
     const pct = Math.round(b.have / b.goal * 100);

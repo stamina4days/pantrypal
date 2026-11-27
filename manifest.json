@@ -1,6 +1,6 @@
 {
-  "name": "Pantry Pal",
-  "short_name": "Pantry Pal",
+  "name": "Benji's Kitchen",
+  "short_name": "Benji's Kitchen",
   "description": "Save money by saving food. Track your food, cook what expires first, and plan your week.",
   "start_url": "./#/food",
   "scope": "./",

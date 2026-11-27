@@ -1,6 +1,6 @@
 "use strict";
 /* The About and Terms pages. APP_VERSION is shown on About and in feedback emails, so bump it with every release. */
-const APP_VERSION = "11.22";
+const APP_VERSION = "11.23";
 function openAbout() {
   const cuisines = new Set(RECIPES.map(r => r.cuisine));
   $("#abVersion").textContent = t("Version {v}", { v: APP_VERSION });

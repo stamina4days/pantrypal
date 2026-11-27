@@ -1,5 +1,5 @@
 "use strict";
-/* A sample kitchen, so someone new can see what Pantry Pal does before typing anything in.
+/* A sample kitchen, so someone new can see what Benji's Kitchen does before typing anything in.
    Sample foods are marked, never count toward Waste Less or badges, and clear out with one tap. */
 const SAMPLE_FOODS = [
   ["Spinach", "Fridge", 1, 1, "bag"], ["Chicken breast", "Fridge", 2, 2, "lb"], ["Strawberries", "Fridge", 2, 1, "lb"],
