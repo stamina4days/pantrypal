@@ -16,6 +16,10 @@
         <span class="pt-ic"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/grid.svg#i"/></svg></span>
         <span class="grow"><strong data-t>Daily food word</strong><span data-t>Guess today's 5-letter food. Solve it to unlock a recipe.</span><em id="plyWordState"></em></span>
       </button>
+      <button id="plyBoothBtn" class="play-tile tile-booth" type="button">
+        <span class="pt-ic"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/camera.svg#i"/></svg></span>
+        <span class="grow"><strong data-t>Photo booth</strong><span data-t>Dress Benji up, add a caption, and save the picture.</span></span>
+      </button>
     </div>
     <section class="radio-card" aria-labelledby="radioTitle">
       <div class="radio-head">
@@ -25,6 +29,26 @@
       <p class="muted small" id="plyMusicNow"></p>
       <button type="button" id="plyMusicBtn" class="primary wide"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/music.svg#i"/></svg> <span data-t>Open the music menu</span></button>
     </section>
+  </div>
+</dialog>
+
+<!-- Photo booth: Benji in any hat, a frame and a caption, saved as a picture -->
+<dialog id="boothPage" class="screen page" data-accent="today" aria-labelledby="bthTitle">
+  <div class="page-body booth-body">
+    <h2 id="bthTitle" data-t>Photo booth</h2>
+    <p class="muted small" data-t>Dress Benji up, pick a frame, and add a caption. Then save the picture or share it.</p>
+    <div class="booth-stage"><canvas id="boothCanvas" width="900" height="1120" role="img" aria-label=""></canvas></div>
+    <h3 data-t>Hat</h3>
+    <div id="boothHats" class="booth-hats" role="group" data-t-aria="Pick a hat" aria-label="Pick a hat"></div>
+    <h3 data-t>Pose</h3>
+    <div id="boothPoses" class="booth-chips" role="group" data-t-aria="Pick a pose" aria-label="Pick a pose"></div>
+    <h3 data-t>Frame</h3>
+    <div id="boothFrames" class="booth-chips" role="group" data-t-aria="Pick a frame" aria-label="Pick a frame"></div>
+    <label class="booth-cap"><span data-t>Caption</span><input id="boothCaption" type="text" maxlength="40" autocomplete="off"></label>
+    <div class="booth-actions">
+      <button type="button" id="boothSave" class="primary wide"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/download.svg#i"/></svg> <span data-t>Save picture</span></button>
+      <button type="button" id="boothShare" class="wide"><svg class="ic" aria-hidden="true"><use href="img/icons/ui/share.svg#i"/></svg> <span data-t>Share</span></button>
+    </div>
   </div>
 </dialog>
 

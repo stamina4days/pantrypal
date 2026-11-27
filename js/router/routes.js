@@ -41,7 +41,8 @@ const ROUTES = {
   musicDialog: "music",
   sortPage: "play/fridge-sort",
   wordPage: "play/food-word",
-  hatsPage: "benji/hats"
+  hatsPage: "benji/hats",
+  boothPage: "play/photo-booth"
 };
 
 const recipeId = r => r ? (r.mine ? "mine-" + r.id : (r.id || recipeSlug(r.name))) : "";
@@ -97,5 +98,6 @@ const DEEP_LINKS = [
   [/^play$/, () => openPlay()],
   [/^music$/, () => openMusic()],
   [/^play\/fridge-sort$/, () => openSort()],
-  [/^play\/food-word$/, () => openWord()]
+  [/^play\/food-word$/, () => openWord()],
+  [/^play\/photo-booth$/, () => openBooth()]
 ];

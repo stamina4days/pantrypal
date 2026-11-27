@@ -53,6 +53,8 @@ function pagesInit() {
   tourInit();
   hatsInit();
   storeInit();
+  hatFunInit();
+  boothInit();
   themesInit();
   swipeInit();
   palLifeInit();
