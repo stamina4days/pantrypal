@@ -1,5 +1,5 @@
 "use strict";
-/* Starts Pantry Pal: loads every page and every recipe file, then hands off to the app. */
+/* Starts Benji's Kitchen: loads every page and every recipe file, then hands off to the app. */
 
 /* If a style file failed to load (a network hiccup, or the site was mid-update), the page falls apart:
    the tabs turn into plain wrapped buttons, for one. Spot any style file that came back empty and load it again. */

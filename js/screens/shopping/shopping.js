@@ -90,7 +90,7 @@ async function shareList() {
   const open = list.items.filter(x => !x.done);
   const payload = { n: list.name, i: open.map(x => [x.name, x.amt]) };
   const url = location.href.split("#")[0] + "#list=" + encodeURIComponent(JSON.stringify(payload));
-  const text = `${list.name}\n${open.map(x => "- " + [x.amt, x.name].filter(Boolean).join(" ")).join("\n")}\n\n${t("Open it in Pantry Pal:")} ${url}`;
+  const text = `${list.name}\n${open.map(x => "- " + [x.amt, x.name].filter(Boolean).join(" ")).join("\n")}\n\n${t("Open it in Benji's Kitchen:")} ${url}`;
   try {
     if (navigator.share) { await navigator.share({ title: list.name, text }); return; }
     await navigator.clipboard.writeText(text);
