@@ -244,7 +244,7 @@ function renderSyncCard(showQr) {
   if (!syncOn()) {
     box.innerHTML = `<h3>${esc(t("Keep every phone in sync"))}</h3>
       <p>${esc(t("Share one kitchen with everyone in your home. Food, shopping lists, and the meal plan stay the same on every phone that joins."))}</p>
-      <p class="muted small">${esc(t("No account needed. Your kitchen is locked with its code before it leaves this phone, so not even Pantry Pal can read it."))}</p>
+      <p class="muted small">${esc(t("No account needed. Your kitchen is locked with its code before it leaves this phone, so not even Benji's Kitchen can read it."))}</p>
       <button type="button" class="primary wide" data-sync="start">${ic("house")} <span>${esc(t("Start a shared kitchen"))}</span></button>
       <button type="button" class="wide" data-sync="join">${ic("plus")} <span>${esc(t("Join with a code"))}</span></button>`;
     return;
