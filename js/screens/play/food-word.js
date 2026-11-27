@@ -104,7 +104,7 @@ function wordKey(k) {
 async function shareWord() {
   const s = wordState(), [answer] = todaysWord();
   const grid = s.guesses.map(g => wordMarks(g, answer).map(m => (m === "y" ? "\u{1F7E9}" : m === "m" ? "\u{1F7E8}" : "⬜")).join("")).join("\n");
-  const text = t("Pantry Pal food word {n}: {score}", { n: wordDayNumber(todayStr()), score: s.won ? s.guesses.length + "/6" : "X/6" }) + "\n" + grid;
+  const text = t("Benji's Kitchen food word {n}: {score}", { n: wordDayNumber(todayStr()), score: s.won ? s.guesses.length + "/6" : "X/6" }) + "\n" + grid;
   try {
     if (navigator.share) { await navigator.share({ text }); return; }
     await navigator.clipboard.writeText(text); toast(t("Copied. Paste it into a text."));

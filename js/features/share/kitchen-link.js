@@ -72,9 +72,9 @@ async function showKitchenQr() {
 
 async function sendKitchen() {
   const { pack, url } = await kitchenUrl();
-  const text = pack.from ? t("{name} shared a kitchen with you on Pantry Pal.", { name: pack.from }) : t("Here's my kitchen on Pantry Pal.");
+  const text = pack.from ? t("{name} shared their kitchen with you. Open it in Benji's Kitchen.", { name: pack.from }) : t("Here's my kitchen. Open it in Benji's Kitchen.");
   try {
-    if (navigator.share) { await navigator.share({ title: "Pantry Pal", text, url }); return; }
+    if (navigator.share) { await navigator.share({ title: "Benji's Kitchen", text, url }); return; }
   } catch (e) { if (e && e.name === "AbortError") return; }
   try { await navigator.clipboard.writeText(url); toast(t("Link copied. Paste it in a text or email.")); }
   catch (e) { Ask.copy({ title: t("Copy this link and send it:"), value: url }); }
